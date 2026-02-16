@@ -1,0 +1,19 @@
+﻿@using GoldenBarbers.Client.Services;
+@using Shared.DTOs;
+
+@inject CarouselService CarouselService
+
+<div class="slide fade @(IsActive ? "active" : "")">
+    <img src="@Icon" alt="Slide">
+    <div class="caption">@Name</div>
+</div>
+
+
+@code {
+    [Parameter]
+    public string Icon { get; set; } = "";
+    [Parameter]
+    public string Name { get; set; } = "";
+    [Parameter]
+    public bool IsActive { get; set; }
+}

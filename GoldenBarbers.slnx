@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="GoldenBarbers.Client/GoldenBarbers.Client.csproj" />
+  <Project Path="GoldenBarbers/GoldenBarbers.csproj" />
+  <Project Path="Shared/Shared.csproj" Id="b0af3fe4-0035-427e-ac8d-fa314115f88c" />
+</Solution>

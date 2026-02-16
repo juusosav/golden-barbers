@@ -1,0 +1,69 @@
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs;
+
+@page "/" 
+
+@inject CarouselService CarouselService
+@inject NavigationManager Navigation
+
+<div class="carousel-container">
+
+    @if (carousel != null)
+    {
+
+
+        @for (int i = 0; i < carousel.Count; i++)
+        {
+            <CarouselCard Icon="@carousel[i].Image"
+                          Name="@carousel[i].Name"
+                          IsActive="@(i == 0)" />
+        }
+
+    }
+</div>
+
+<div class="slide-container">
+    @if (carousel != null)
+    {
+
+        <a class="prev" onclick="carousel.changeSlide(-1)">❮</a>
+        <a class="next" onclick="carousel.changeSlide(1)">❯</a>
+
+    }
+</div>
+
+<div class="homepage-container">
+    <div class="homepage-container-item">
+        <button class="btn btn-info" @onclick="GoToBooking">Book Appointment</button>
+    </div>
+
+</div>
+
+
+@code {
+    private List<CarouselDto>? carousel;
+
+    private bool _initialized;
+
+    private void GoToBooking()
+    {
+        Navigation.NavigateTo("/book-appointment");
+    }
+
+    [Inject] IJSRuntime JS { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        carousel = await CarouselService.GetCarouselItemsAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized && carousel != null)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("carousel.init");
+        }
+    }
+}

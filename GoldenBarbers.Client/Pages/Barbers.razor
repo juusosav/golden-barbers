@@ -1,0 +1,36 @@
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs;
+
+@page "/our-team"
+@inject BarberService BarberService
+
+<div class="barberpage-title-container">
+    <h1 class="barberpage-title-text">Meet the team</h1>
+</div>
+
+@if (barbers == null)
+{
+    <p class="custom-loader">Loading...</p>
+}
+else
+{
+    <div class="barber-container">
+        @foreach (var b in barbers)
+        {
+            <BarberCard Portrait="@b.Portrait"
+                        Name="@b.Name"
+                        Position="@b.Position"
+                        Description="@b.Description" />
+        }
+    </div>
+}
+
+@code {
+    private List<BarberDto>? barbers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        barbers = await BarberService.GetBarbersAsync();
+    }
+}
