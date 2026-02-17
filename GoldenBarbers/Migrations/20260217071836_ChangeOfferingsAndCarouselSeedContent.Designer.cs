@@ -3,6 +3,7 @@ using System;
 using GoldenBarbers.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace GoldenBarbers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260217071836_ChangeOfferingsAndCarouselSeedContent")]
+    partial class ChangeOfferingsAndCarouselSeedContent
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -223,7 +226,7 @@ namespace GoldenBarbers.Migrations
                             JuniorPrice = 30,
                             Name = "Dutch Beard Treatment",
                             SeniorPrice = 35,
-                            TraineePrice = 22
+                            TraineePrice = 25
                         },
                         new
                         {
@@ -231,7 +234,7 @@ namespace GoldenBarbers.Migrations
                             Description = "Classic american beard trimming with razorblade and foaming.",
                             JuniorPrice = 25,
                             Name = "American Beard Trim",
-                            SeniorPrice = 28,
+                            SeniorPrice = 30,
                             TraineePrice = 22
                         });
                 });

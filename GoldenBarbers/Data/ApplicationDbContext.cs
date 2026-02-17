@@ -82,6 +82,7 @@ namespace GoldenBarbers.Data
                     {
                         Id = new Guid("39cb2981-ab90-4971-a4aa-f22d5a7b0a9f"),
                         Name = "Barber Haircut",
+                        Description = "Classic professional barber haircut.",
                         SeniorPrice = 38,
                         JuniorPrice = 30,
                         TraineePrice = 22
@@ -89,26 +90,32 @@ namespace GoldenBarbers.Data
                     new Offering
                     {
                         Id = new Guid("55583c0e-9d27-4af5-af9d-1508bd3e3e3f"),
-                        Name = "Short Hair Coloring and Haircut",
-                        SeniorPrice = 100,
-                        JuniorPrice = 90,
-                        TraineePrice = 75
+                        Name = "Haircut & Beard Treatment",
+                        Description = 
+                            "Haircut with a complete beard treatment package including steaming and grooming",
+                        SeniorPrice = 50,
+                        JuniorPrice = 45,
+                        TraineePrice = 37
                     },
                     new Offering
                     {
                         Id = new Guid("353a0efa-a853-4393-819f-fe36f771cf3b"),
-                        Name = "Long Hair Coloring with Haircut",
-                        SeniorPrice = 130,
-                        JuniorPrice = 118,
-                        TraineePrice = 100
+                        Name = "Dutch Beard Treatment",
+                        Description =
+                            "The old-school treatment for a dutch beard style including finishing beard treatment with oils.",
+                        SeniorPrice = 35,
+                        JuniorPrice = 30,
+                        TraineePrice = 22
                     },
                     new Offering
                     {
                         Id = new Guid("e7efb624-fa78-4bd5-9c29-cb710e32d0cc"),
-                        Name = "Party Hairstyling with Haircut",
-                        SeniorPrice = 70,
-                        JuniorPrice = 58,
-                        TraineePrice = 50
+                        Name = "American Beard Trim",
+                        Description =
+                            "Classic american beard trimming with razorblade and foaming.",
+                        SeniorPrice = 28,
+                        JuniorPrice = 25,
+                        TraineePrice = 22
                     }
                     );
             });
@@ -120,7 +127,7 @@ namespace GoldenBarbers.Data
                     {
                         Id = new Guid("14c09ff8-c38f-4d7e-9e27-7e498f4a446d"),
                         Image = "/images/barbershop_photo1.png",
-                        Name = "Haircuts"
+                        Name = "Haircuts & Styling"
                     },
                     new Carousel
                     {

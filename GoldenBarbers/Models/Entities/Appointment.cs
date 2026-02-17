@@ -4,9 +4,17 @@
     {
         public Guid Id { get; set; }
 
-        public TimeSpan Timeslot { get; set; }
+        public DateTime AppointmentDateTime { get; set; }
+
+        public int DurationMinutes { get; set; }
 
         public Guid BarberId { get; set; }
+
+        public Guid OfferingId { get; set; }
+
+        public string CustomerName { get; set; } = "";
+
+        public string CustomerEmail { get; set; } = "";
 
         public List<Offering> Offerings { get; set; } = [];
 

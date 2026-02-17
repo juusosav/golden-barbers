@@ -7,6 +7,8 @@
 
         public string Name { get; set; } = "";
 
+        public string Description { get; set; } = "";
+
         public int SeniorPrice { get; set; }
 
         public int JuniorPrice { get; set; }

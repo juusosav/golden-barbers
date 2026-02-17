@@ -22,7 +22,7 @@ namespace GoldenBarbers.Controllers
         public async Task<ActionResult<IEnumerable<BarberDto>>> GetAllBarbers()
         {
             var allBarbers = await _context.Barbers
-                .Select(b => new BarberDto()
+                .Select(b => new BarberDto
                 {
                     Id = b.Id,
                     Name = b.Name,

@@ -17,7 +17,8 @@ builder.Services.AddScoped(sp =>
     new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 builder.Services.AddScoped<BarberService>();
-
 builder.Services.AddScoped<CarouselService>();
+builder.Services.AddScoped<OfferingService>();
+builder.Services.AddScoped<TimeslotService>();
 
 await builder.Build().RunAsync();

@@ -5,9 +5,10 @@
 @page "/" 
 
 @inject CarouselService CarouselService
+@inject OfferingService OfferingService
 @inject NavigationManager Navigation
 
-<div class="carousel-container">
+<header class="carousel-container">
 
     @if (carousel != null)
     {
@@ -21,9 +22,9 @@
         }
 
     }
-</div>
+</header>
 
-<div class="slide-container">
+<div class="arrows-container">
     @if (carousel != null)
     {
 
@@ -37,12 +38,29 @@
     <div class="homepage-container-item">
         <button class="gold-button" @onclick="GoToBooking">Book Appointment</button>
     </div>
+</div>
 
+<div class="homepage-container">
+    <h2 class="homepage-container-item">Our Services</h2>
+</div>
+
+<div class="homepage-container">
+    @if (offerings != null)
+    {
+        @foreach (var offering in offerings)
+        {
+            <OfferingsCard Name="@offering.Name" 
+                           Description="@offering.Description"
+                           TraineePrice="@offering.TraineePrice"/>
+        }
+    }
 </div>
 
 
 @code {
     private List<CarouselDto>? carousel;
+
+    private List<OfferingDto>? offerings;
 
     private bool _initialized;
 
@@ -56,6 +74,7 @@
     protected override async Task OnInitializedAsync()
     {
         carousel = await CarouselService.GetCarouselItemsAsync();
+        offerings = await OfferingService.GetAllOfferingsAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)

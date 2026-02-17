@@ -1,11 +1,186 @@
 ﻿@using GoldenBarbers.Client.Services;
 @using System.Threading.Tasks
-@using Shared.DTOs;
+@using Shared.DTOs
+@using GoldenBarbers.Client.Helpers
+
+@inject BarberService BarberService
+@inject OfferingService OfferingService
+@inject TimeslotService TimeslotService
 
 @page "/book-appointment"
 
-<h1>Page for booking appointments</h1>
+<h2>Book an Appointment</h2>
+
+<EditForm Model="@appointment" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <label>Select Service: </label>
+    <InputSelect @bind-Value="appointment.OfferingId">
+        <option value="">-- Select --</option>
+
+        @if (offerings != null)
+        {
+            @foreach (var o in offerings)
+            {
+                <option value="@o.Id">@o.Name</option>
+            }
+        }
+        else
+        {
+            <option>----------</option>
+        }
+    </InputSelect>
+
+    <br />
+
+    <label>Select Barber: </label>
+    <InputSelect @bind-Value="appointment.BarberId">
+        <option value="">-- Select --</option>
+
+        @if (barbers != null)
+        {
+            @foreach (var b in barbers)
+            {
+                <option value="@b.Id">@b.Name</option>
+            }
+        }
+        else
+        {
+            <option>-----------</option>
+        }
+    </InputSelect>
+
+    <br />
+
+    <div>
+        <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
+        <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
+        <button type="button" @onclick="NextWeek">Next Week ➡</button>
+    </div>
+
+    @if (timeslots == null || barbers == null)
+    {
+        <p class="custom-loader">Loading calendar...</p>
+    }
+    else
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    @foreach (var b in barbers)
+                    {
+                        <th>@b.Name</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var time in timeRanges)
+                {
+                    <tr>
+                        <td>@time.ToString("HH:mm")</td>
+                        @foreach (var b in barbers)
+                        {
+                            var slot = timeslots.FirstOrDefault(s =>
+                            s.BarberId == b.Id && s.Start == time);
+                            <td>
+                                @if (slot == null)
+                                {
+                                    <span>N/A</span>
+                                }
+                                else if (!slot.IsAvailable)
+                                {
+                                    <span>Occupied</span>
+                                }
+                                else
+                                {
+                                    <button type="button" class="timeslot"
+                                            @onclick="() => SelectSlot(slot)">
+                                        Select
+                                    </button>
+                                }
+                            </td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    @if (selectedSlot != null)
+    {
+        <div class="booking-summary">
+            <h3>Selected Slot</h3>
+            <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
+            <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
+            <button type="submit">Confirm Booking</button>
+        </div>
+    }
+
+</EditForm>
 
 @code {
+    AppointmentDto appointment = new();
 
+    private List<OfferingDto>? offerings;
+    private List<BarberDto>? barbers;
+    private List<TimeslotDto>? timeslots;
+    private TimeslotDto? selectedSlot;
+
+    private DateTime weekStart = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+    private DateTime weekEnd => weekStart.AddDays(7);
+
+    private List<DateTime> timeRanges = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        offerings = await OfferingService.GetAllOfferingsAsync();
+        barbers = await BarberService.GetBarbersAsync();
+    }
+
+    private async Task LoadSlots()
+    {
+        timeslots = await TimeslotService.GetWeeklySlotsAsync(weekStart);
+        selectedSlot = null;
+        StateHasChanged();
+    }
+
+    private void GenerateTimeRanges()
+    {
+        timeRanges.Clear();
+        var startTime = weekStart.Date.AddHours(9);
+        var endTime = weekStart.Date.AddHours(17);
+
+        while (startTime < endTime)
+        {
+            timeRanges.Add(startTime);
+            startTime = startTime.AddMinutes(30);
+        }
+    }
+
+    private async Task PrevWeek()
+    {
+        weekStart = weekStart.AddDays(-7);
+        await LoadSlots();
+    }
+
+    private async Task NextWeek()
+    {
+        weekStart = weekStart.AddDays(7);
+        await LoadSlots();
+    }
+
+    private void SelectSlot(TimeslotDto timeslot)
+    {
+        selectedSlot = timeslot;
+        appointment.BarberId = timeslot.BarberId;
+        appointment.AppointmentDateTime = timeslot.Start;
+    }
+
+    public void HandleValidSubmit()
+    {
+        Console.WriteLine($"Booking: {appointment.BarberId} at {appointment.AppointmentDateTime}");
+
+    }
 }

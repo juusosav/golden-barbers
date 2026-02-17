@@ -1,0 +1,22 @@
+﻿@using GoldenBarbers.Client.Services;
+@using Shared.DTOs;
+
+@inject OfferingService OfferingService
+
+
+<div class="homepage-container-item">
+    <div class="homepage-container-item-box">
+        <h3>@Name</h3>
+        <p style="max-width: 500px; margin-top: 10px;">@Description</p>
+        <p>From @TraineePrice €</p>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public string Name { get; set; } = "";
+    [Parameter]
+    public string Description { get; set; } = "";
+    [Parameter]
+    public int TraineePrice { get; set; }
+}

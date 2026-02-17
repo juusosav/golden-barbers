@@ -8,15 +8,18 @@ namespace Shared.DTOs
 {
     public class OfferingDto
     {
-        
+
         public Guid Id { get; set; }
 
         public string Name { get; set; } = "";
 
-        public TimeSpan Timeslot { get; set; }
+        public string Description { get; set; } = "";
 
-        public double Rate { get; set; }
+        public int SeniorPrice { get; set; }
 
-        public int AppointmentId { get; set; }
+        public int JuniorPrice { get; set; }
+
+        public int TraineePrice { get; set; }
+
     }
 }
