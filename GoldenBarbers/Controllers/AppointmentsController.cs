@@ -24,6 +24,8 @@ namespace GoldenBarbers.Controllers
         [HttpGet("available-slots")]
         public async Task<ActionResult<List<TimeslotDto>>> GetAvailableSlotsAsync([FromQuery] DateTime weekStart)
         {
+            weekStart = DateTime.SpecifyKind(weekStart.Date, DateTimeKind.Utc);
+
             if (weekStart == default)
             {
                 return BadRequest("weekStart query parameter is required");
@@ -40,7 +42,7 @@ namespace GoldenBarbers.Controllers
                 .ToListAsync();
 
             var appointments = await _context.Appointments
-                .Where(a => a.AppointmentDateTime >= weekStart && a.AppointmentDateTime <= weekEnd)
+                .Where(a => a.AppointmentDateTime >= weekStart && a.AppointmentDateTime < weekEnd)
                 .Select(a => new AppointmentDto
                 {
                     BarberId = a.BarberId,
@@ -53,25 +55,29 @@ namespace GoldenBarbers.Controllers
 
             foreach (var b in barbers)
             {
-                DateTime dayStart = weekStart.Date.AddHours(9);
-                DateTime dayEnd = weekStart.Date.AddHours(17);
-
-                for (var current = dayStart; current < dayEnd; current = current.AddMinutes(30))
+                for (int day = 0; day < 7; day++)
                 {
-                    var occupied = appointments.Any(a =>
+                    var currentDate = weekStart.Date.AddDays(day);
+                    var dayStart = currentDate.AddHours(9);
+                    var dayEnd = currentDate.AddHours(17);
+
+                    for (var current = dayStart; current < dayEnd; current = current.AddMinutes(30))
+                    {
+                        var occupied = appointments.Any(a =>
                         a.BarberId == b.Id &&
                         a.AppointmentDateTime <= current &&
                         current < a.AppointmentDateTime.AddMinutes(a.DurationMinutes)
                     );
 
-                    slots.Add(new TimeslotDto
-                    {
-                        BarberId = b.Id,
-                        BarberName = b.Name,
-                        Start = current,
-                        Duration = 30,
-                        IsAvailable = !occupied
-                    });
+                        slots.Add(new TimeslotDto
+                        {
+                            BarberId = b.Id,
+                            BarberName = b.Name,
+                            Start = current,
+                            Duration = 30,
+                            IsAvailable = !occupied
+                        });
+                    }
                 }
             }
 
