@@ -20,5 +20,6 @@ builder.Services.AddScoped<BarberService>();
 builder.Services.AddScoped<CarouselService>();
 builder.Services.AddScoped<OfferingService>();
 builder.Services.AddScoped<TimeslotService>();
+builder.Services.AddScoped<AppointmentsService>();
 
 await builder.Build().RunAsync();

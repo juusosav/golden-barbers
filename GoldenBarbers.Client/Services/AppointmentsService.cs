@@ -19,5 +19,10 @@ namespace GoldenBarbers.Client.Services
             return await _http.GetFromJsonAsync<List<TimeslotDto>>(query)
                 ?? new List<TimeslotDto>();
         }
+
+        public async Task CreateAppointmentAsync(AppointmentDto dto)
+        {
+            await _http.PostAsJsonAsync("api/appointments", dto);
+        }
     }
 }

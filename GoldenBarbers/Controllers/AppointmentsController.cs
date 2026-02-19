@@ -85,5 +85,30 @@ namespace GoldenBarbers.Controllers
             return slots;
 
         }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateAppointment([FromBody] AppointmentDto dto)
+        {
+            if (dto == null)
+            {
+                return BadRequest();
+            }
+
+            var appointment = new Appointment
+            {
+                Id = Guid.NewGuid(),
+                BarberId = dto.BarberId,
+                OfferingId = dto.OfferingId,
+                AppointmentDateTime = dto.AppointmentDateTime,
+                DurationMinutes = dto.DurationMinutes,
+                CustomerName = dto.CustomerName,
+                CustomerEmail = dto.CustomerEmail
+            };
+
+            _context.Appointments.Add(appointment);
+            await _context.SaveChangesAsync();
+
+            return Ok(appointment);
+        }
     }
 }
