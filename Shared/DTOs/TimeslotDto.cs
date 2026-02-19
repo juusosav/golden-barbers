@@ -8,6 +8,7 @@ namespace Shared.DTOs
 {
     public class TimeslotDto
     {
+        public Guid Id { get; set; }
         public DateTime Start { get; set; }
 
         public DateTime End => Start.AddMinutes(Duration); 

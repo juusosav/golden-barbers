@@ -291,3 +291,48 @@ h1:focus {
     .gold-button:hover {
         box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
     }
+
+
+.calendar-table {
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+
+    .calendar-table th, .calendar-table td {
+        border: 1px solid #ccc;
+        padding: 8px;
+        text-align: center;
+    }
+
+.timeslot {
+    background-color: #1b6ec2;
+    color: white;
+    padding: 4px 8px;
+    border: none;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+    .timeslot:hover {
+        background-color: #145a96;
+    }
+
+    .timeslot:focus {
+        background-color: #26b050;
+    }
+
+.reserved {
+    color: red;
+}
+
+.unavailable {
+    color: gray;
+}
+
+.booking-summary {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+}

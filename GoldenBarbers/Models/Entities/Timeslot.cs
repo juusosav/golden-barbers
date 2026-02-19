@@ -2,6 +2,7 @@
 {
     public class Timeslot
     {
+        public Guid Id { get; set; }
         public DateTime Start { get; set; }
 
         public DateTime End => Start.AddMinutes(Duration);

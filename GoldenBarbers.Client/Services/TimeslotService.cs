@@ -14,10 +14,9 @@ namespace GoldenBarbers.Client.Services
 
         public async Task<List<TimeslotDto>> GetWeeklySlotsAsync(DateTime weekStart)
         {
-            var weekStartString = weekStart.ToString("yyyy-MM-dd");
-
+            Console.WriteLine($"Requesting slots for: {weekStart:yyyy-MM-dd}");
             return await _http.GetFromJsonAsync<List<TimeslotDto>>(
-                $"api/appointments/weekly?weekStart={weekStartString}") ??
+                $"api/appointments/available-slots?weekStart={weekStart:yyyy-MM-dd}") ??
                 new List<TimeslotDto>();
         }
     }

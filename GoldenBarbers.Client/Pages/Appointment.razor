@@ -16,7 +16,8 @@
     <ValidationSummary />
 
     <label>Select Service: </label>
-    <InputSelect @bind-Value="appointment.OfferingId">
+    <br />
+    <InputSelect @bind-Value="SelectedOfferingId">
         <option value="">-- Select --</option>
 
         @if (offerings != null)
@@ -35,7 +36,8 @@
     <br />
 
     <label>Select Barber: </label>
-    <InputSelect @bind-Value="appointment.BarberId">
+    <br />
+    <InputSelect @bind-Value="SelectedBarberId">
         <option value="">-- Select --</option>
 
         @if (barbers != null)
@@ -53,71 +55,111 @@
 
     <br />
 
-    <div>
-        <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
-        <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
-        <button type="button" @onclick="NextWeek">Next Week ➡</button>
-    </div>
+    @if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+    {
+        <div>
+            <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
+            <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
+            <button type="button" @onclick="NextWeek">Next Week ➡</button>
+        </div>
 
-    @if (timeslots == null || barbers == null)
-    {
-        <p class="custom-loader">Loading calendar...</p>
-    }
-    else
-    {
-        <table>
-            <thead>
-                <tr>
-                    <th>Time</th>
-                    @foreach (var b in barbers)
-                    {
-                        <th>@b.Name</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var time in timeRanges)
-                {
+        @if (timeslots == null || barbers == null)
+        {
+            <p class="custom-loader">Loading calendar...</p>
+        }
+        else
+        {
+            <table class="calendar-table">
+                <thead>
                     <tr>
-                        <td>@time.ToString("HH:mm")</td>
-                        @foreach (var b in barbers)
+                        <th>Time</th>
+                        @foreach (var day in Enumerable.Range(0, 7))
                         {
-                            var slot = timeslots.FirstOrDefault(s =>
-                            s.BarberId == b.Id && s.Start == time);
-                            <td>
-                                @if (slot == null)
-                                {
-                                    <span>N/A</span>
-                                }
-                                else if (!slot.IsAvailable)
-                                {
-                                    <span>Occupied</span>
-                                }
-                                else
-                                {
-                                    <button type="button" class="timeslot"
-                                            @onclick="() => SelectSlot(slot)">
-                                        Select
-                                    </button>
-                                }
-                            </td>
+                            var currentDay = weekStart.AddDays(day);
+                            <th>@currentDay.ToString("ddd dd")</th>
                         }
                     </tr>
-                }
-            </tbody>
-        </table>
-    }
+                </thead>
+                <tbody>
+                    @foreach (var time in timeRanges)
+                    {
 
-    @if (selectedSlot != null)
-    {
-        <div class="booking-summary">
-            <h3>Selected Slot</h3>
-            <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
-            <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
-            <button type="submit">Confirm Booking</button>
+                        <tr>
+                            <td>@time.ToString("HH:mm")</td>
+
+                            @foreach (var day in Enumerable.Range(0, 7))
+                            {
+                                var currentDate = weekStart.AddDays(day);
+                                var currentDateTime = currentDate.Date.Add(time.TimeOfDay);
+
+                                var daySlots = timeslots
+                                .Where(s =>
+                                s.Start.Date == currentDate.Date &&
+                                s.Start.TimeOfDay == time.TimeOfDay &&
+                                s.BarberId == appointment.BarberId &&
+                                s.IsAvailable)
+                                .ToList();
+
+                                <td>
+                                    @if (!daySlots.Any())
+                                    {
+                                        <span class="unavailable">N/A</span>
+                                    }
+
+                                    else
+                                    {
+                                        @foreach (var slot in daySlots)
+                                        {
+                                            <button class="timeslot" type="button"
+                                                    @onclick="() => SelectSlot(slot)">
+
+                                                @(selectedSlot?.Id == slot.Id ? "Selected!" : "Select")
+                                            </button>
+                                            <br />
+                                        }
+                                    }
+                                </td>
+                            }
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+
+        @if (selectedSlot != null)
+        {
+            <div class="booking-summary">
+                <h3>Appoinment Information</h3>
+
+                @if (barbers != null)
+                {
+                    <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
+                }
+
+                @if (offerings != null && appointment.OfferingId != Guid.Empty)
+                {
+                    var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
+                    <p>Service: @selectedOffering?.Name</p>
+                }
+
+                <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
+            </div>
+        }
+        <br />
+        <div>
+            <h3>Contact information: </h3>
+            <label>
+                Your name:
+                <InputText @bind-Value="appointment.CustomerName"></InputText>
+            </label>
+            <br />
+            <label>
+                Your email:
+                <InputText @bind-Value="appointment.CustomerEmail"></InputText>
+            </label>
+            <button class="btn btn-light" type="submit">Confirm Booking</button>
         </div>
     }
-
 </EditForm>
 
 @code {
@@ -128,6 +170,38 @@
     private List<TimeslotDto>? timeslots;
     private TimeslotDto? selectedSlot;
 
+    private Guid _selectedBarberId;
+
+    private Guid SelectedBarberId
+    {
+        get => _selectedBarberId;
+        set
+        {
+            if (_selectedBarberId != value)
+            {
+                _selectedBarberId = value;
+                appointment.BarberId = value;
+                selectedSlot = null;
+            }
+        }
+    }
+
+    private Guid _selectedOfferingId;
+
+    private Guid SelectedOfferingId
+    {
+        get => _selectedOfferingId;
+        set
+        {
+            if (_selectedOfferingId != value)
+            {
+                _selectedOfferingId = value;
+                appointment.OfferingId = value;
+                selectedSlot = null;
+            }
+        }
+    }
+
     private DateTime weekStart = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
     private DateTime weekEnd => weekStart.AddDays(7);
 
@@ -137,6 +211,9 @@
     {
         offerings = await OfferingService.GetAllOfferingsAsync();
         barbers = await BarberService.GetBarbersAsync();
+
+        GenerateTimeRanges();
+        await LoadSlots();
     }
 
     private async Task LoadSlots()
@@ -144,6 +221,7 @@
         timeslots = await TimeslotService.GetWeeklySlotsAsync(weekStart);
         selectedSlot = null;
         StateHasChanged();
+
     }
 
     private void GenerateTimeRanges()
@@ -177,6 +255,13 @@
         appointment.BarberId = timeslot.BarberId;
         appointment.AppointmentDateTime = timeslot.Start;
     }
+
+    private void OnBarberChanged(ChangeEventArgs e)
+    {
+        appointment.BarberId = Guid.Parse(e.Value?.ToString() ?? Guid.Empty.ToString());
+        selectedSlot = null;
+    }
+
 
     public void HandleValidSubmit()
     {

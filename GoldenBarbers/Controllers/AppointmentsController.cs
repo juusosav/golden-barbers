@@ -71,6 +71,7 @@ namespace GoldenBarbers.Controllers
 
                         slots.Add(new TimeslotDto
                         {
+                            Id = Guid.NewGuid(),
                             BarberId = b.Id,
                             BarberName = b.Name,
                             Start = current,
