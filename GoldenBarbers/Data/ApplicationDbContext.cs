@@ -29,48 +29,69 @@ namespace GoldenBarbers.Data
                     {
                         Id = new Guid("dfe81b2e-4310-4f31-ad0b-ace635786aef"),
                         Name = "John Smith",
-                        Position = "Senior Hairdresser",
-                        Description = "Multitalented barber.",
+                        Position = "Senior Barber",
+                        Description = 
+                            "John brings over a decade of experience to the chair, " +
+                            "specializing in precision fades and classic gentleman’s cuts. " +
+                            "His attention to detail and calm approach make every appointment feel relaxed and professional. " +
+                            "Whether you’re after a sharp modern style or a timeless look, " +
+                            "John ensures you leave feeling confident.",
                         Portrait = "/images/John_headshot.jpg"
                     },
                     new Barber
                     {
                         Id = new Guid("fe04ae76-45e3-4b91-98f3-0eae566f5850"),
                         Name = "Rebecca Anderson",
-                        Position = "Senior Hairdresser",
-                        Description = "Astute eye for beauty and elegance.",
+                        Position = "Style Specialist",
+                        Description = 
+                            "Rebecca has a natural talent for understanding what suits each client’s " +
+                            "face shape and personality. She specializes in modern cuts, textured styles, " +
+                            "and detailed finishing work. Her warm and welcoming approach ensures every visit " +
+                            "feels comfortable and personalized.",
                         Portrait = "/images/Rebecca_headshot.jpg"
                     },
                     new Barber
                     {
                         Id = new Guid("db70dad6-650f-48ec-9867-66019827b11d"),
                         Name = "Charles Jackson",
-                        Position = "Junior Hairdresser",
-                        Description = "Style is not optional.",
+                        Position = "Master Barber",
+                        Description = "Charles is known for his sharp eye for style and perfectly sculpted beard work. " +
+                        "With a passion for traditional barbering techniques and modern trends, " +
+                        "he blends the best of both worlds. Clients appreciate his friendly personality and dedication " +
+                        "to getting every detail right.",
                         Portrait = "/images/Charles_headshot.jpg"
                     },
                     new Barber
                     {
                         Id = new Guid("8da88ae7-30a0-46d2-bd0e-3c33fff09fa0"),
                         Name = "Sarah Jones",
-                        Position = "Junior Hairdresser",
-                        Description = "Hair makes my day.",
+                        Position = "Precision barber",
+                        Description = "Sarah is known for her steady hand and flawless finishing touches. " +
+                        "From sharp skin fades to perfectly shaped beards, she approaches every cut with focus and care. " +
+                        "Clients value her professionalism and ability to bring their vision to life. " +
+                        "She believes great grooming is all about precision and consistency.",
                         Portrait = "/images/Sarah_headshot.jpg"
                     },
                     new Barber
                     {
                         Id = new Guid("55cd3319-dbf0-40fd-84f9-6c7d6ff08305"),
                         Name = "Hannah Lawson",
-                        Position = "Junior Hairdresser",
-                        Description = "Hallelujah!",
+                        Position = "Creative Barber",
+                        Description = "Hannah combines creativity with technical skill to deliver standout results. " +
+                        "She enjoys working with both classic styles and bold, modern looks, always tailoring each cut " +
+                        "to the individual. Her friendly attitude and attention to " +
+                        "detail make her a favorite among clients.",
                         Portrait = "/images/Hannah_headshot.jpg"
                     },
                     new Barber
                     {
                         Id = new Guid("2fecf3a8-0b1b-464d-9603-288fd86ccd13"),
                         Name = "Steve Robertson",
-                        Position = "Trainee Hairdresser",
-                        Description = "An up-and-coming talent in the beauty industry.",
+                        Position = "Trainee Barber",
+                        Description = "Steve is our talented trainee, bringing fresh energy and a strong desire to " +
+                        "master the craft. He is currently refining his skills under the guidance of our senior team, " +
+                        "focusing on clean cuts and precise styling. Steve is detail-oriented, patient, and " +
+                        "committed to continuous improvement.",
                         Portrait = "/images/Steve_headshot.jpg"
                     });
             });
@@ -105,7 +126,7 @@ namespace GoldenBarbers.Data
                             "The old-school treatment for a dutch beard style including finishing beard treatment with oils.",
                         SeniorPrice = 35,
                         JuniorPrice = 30,
-                        TraineePrice = 22
+                        TraineePrice = 25
                     },
                     new Offering
                     {
@@ -115,7 +136,7 @@ namespace GoldenBarbers.Data
                             "Classic american beard trimming with razorblade and foaming.",
                         SeniorPrice = 28,
                         JuniorPrice = 25,
-                        TraineePrice = 22
+                        TraineePrice = 23
                     }
                     );
             });
