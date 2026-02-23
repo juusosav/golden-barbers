@@ -98,6 +98,7 @@ namespace GoldenBarbers.Controllers
             {
                 Id = Guid.NewGuid(),
                 BarberId = dto.BarberId,
+                BarberPositionId = dto.BarberPositionId,
                 OfferingId = dto.OfferingId,
                 AppointmentDateTime = dto.AppointmentDateTime,
                 DurationMinutes = dto.DurationMinutes,

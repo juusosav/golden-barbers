@@ -26,7 +26,8 @@ namespace GoldenBarbers.Controllers
                 {
                     Id = b.Id,
                     Name = b.Name,
-                    Position = b.Position,
+                    PositionId = b.PositionId,
+                    PositionName = b.PositionName,
                     Description = b.Description,
                     Portrait = b.Portrait
                 })
@@ -44,7 +45,8 @@ namespace GoldenBarbers.Controllers
                 {
                     Id = b.Id,
                     Name = b.Name,
-                    Position = b.Position,
+                    PositionId = b.PositionId,
+                    PositionName = b.PositionName,
                     Description = b.Description,
                     Portrait = b.Portrait
                 })

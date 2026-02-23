@@ -12,6 +12,8 @@
 
         public Guid OfferingId { get; set; }
 
+        public int BarberPositionId { get; set; }
+
         public string CustomerName { get; set; } = "";
 
         public string CustomerEmail { get; set; } = "";
