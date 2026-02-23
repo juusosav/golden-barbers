@@ -89,6 +89,7 @@ h1:focus {
 
 .custom-nav-item {
     text-decoration: none;
+    font-size: 18px;
     border-radius: 1px;
     padding: 4px;
 }
@@ -206,12 +207,29 @@ h1:focus {
     }
 }
 
+.button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 24px;
+}
+
+.button-container-item {
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
 .homepage-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background-color: #191919;
 }
 
 .homepage-container-item {
@@ -221,16 +239,33 @@ h1:focus {
     border-radius: 2px;
 }
 
-    .homepage-container-item-box {
-        background-color: rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        border-radius: 4px;
+.homepage-container-item-box {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    border-radius: 4px;
+}
+
+    .homepage-container-item-box:hover {
+        background-color: rgba(0, 0, 0, 0.5);
+        transition: ease-in-out 0.3s;
     }
 
-        .homepage-container-item-box:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-            transition: ease-in-out 0.3s;
-        }
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #191919;
+}
+
+.footer-container-item {
+    color: white;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 2px;
+}
 
 .barber-container {
     display: flex;
@@ -247,6 +282,8 @@ h1:focus {
     border: 1px solid #ccc;
     margin: 50px;
     min-width: 25rem;
+    max-width: 25rem;
+    max-height: 31rem;
     background-color: rgb(3, 3, 2, 0.8);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -266,11 +303,20 @@ h1:focus {
 }
 
 .barberpage-title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    background-color: #191919;
     text-align: center;
+    border-radius: 4px;
 }
 
 .barberpage-title-text {
-    color: white;
+    color: whitesmoke;
+    width: 600px;
+    font-size: 20px;
 }
 
 .gold-button {
@@ -337,6 +383,47 @@ h1:focus {
     color: white;
 }
 
+.booking-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .booking-text {
     color: white;
+}
+
+.barber-selection {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.barber-selection-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    width: 140px;
+    height: 240px;
+}
+
+    .barber-selection-item:active {
+        background-color: white;
+    }
+
+
+.barber-selected {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    color: white;
+    width: 140px;
+    height: 240px;
+    color: black;
+    background-color: white;
 }

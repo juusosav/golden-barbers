@@ -12,7 +12,9 @@ namespace Shared.DTOs
         public Guid Id { get; set; }
         public string Name { get; set; } = "";
 
-        public string Position { get; set; } = "";
+        public int PositionId { get; set; }
+
+        public string PositionName { get; set; } = "";
 
         public string Description { get; set; } = "";
 

@@ -25,36 +25,61 @@
 </header>
 
 <!--<div class="arrows-container">
-    @if (carousel != null)
-    {
+@if (carousel != null)
+{
 
-        <a class="prev" onclick="carousel.changeSlide(-1)">❮</a>
-        <a class="next" onclick="carousel.changeSlide(1)">❯</a>
+                                <a class="prev" onclick="carousel.changeSlide(-1)">❮</a>
+                                <a class="next" onclick="carousel.changeSlide(1)">❯</a>
 
-    }
+}
 </div> -->
 
-<div class="homepage-container">
-    <div class="homepage-container-item">
+<div class="button-container">
+    <div class="button-container-item">
         <button class="gold-button" @onclick="GoToBooking">Book Appointment</button>
     </div>
 </div>
 
 <div class="homepage-container">
-    <h2 class="homepage-container-item">Our Services</h2>
-</div>
+    <h2 class="homepage-container-item"><strong>Our Services</strong></h2>
 
-<div class="homepage-container">
     @if (offerings != null)
     {
         @foreach (var offering in offerings)
         {
-            <OfferingsCard Name="@offering.Name" 
+            <OfferingsCard Name="@offering.Name"
                            Description="@offering.Description"
-                           TraineePrice="@offering.TraineePrice"/>
+                           TraineePrice="@offering.TraineePrice" />
         }
     }
 </div>
+
+<footer>
+    <div class="footer-container">
+        <div class="footer-container-item">
+            <h2>Golden Barbers</h2>
+            <br />
+            <h3>Address</h3>
+            <p>
+                128 King’s Avenue
+                Suite 4
+                Westbridge, WB2 7LT
+                United Kingdom
+            </p>
+            <h3>Contact</h3>
+            <p>
+                📞 +44 20 7946 0823
+                ✉ info@goldenbarbers.co.uk
+            </p>
+            <h3>Opening hours</h3>
+            <p>
+                Mon – Fri: 9:00 AM – 7:00 PM
+                Saturday: 9:00 AM – 5:00 PM
+                Sunday: Closed
+            </p>
+        </div>
+    </div>
+</footer>
 
 
 @code {

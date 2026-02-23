@@ -6,7 +6,18 @@
 @inject BarberService BarberService
 
 <div class="barberpage-title-container">
-    <h1 class="barberpage-title-text">Meet the team</h1>
+    <p class="barberpage-title-text">
+        <strong>
+            At Golden Barbers, our team is the heart of everything we do.
+            Each member of our staff is dedicated to delivering exceptional service,
+            combining skill, creativity, and attention to detail to ensure every client
+            leaves looking sharp and feeling confident.
+            <br /><br />
+            We pride ourselves on maintaining a welcoming, professional environment where quality and
+            consistency always come first. Whether you’re visiting for a classic cut, a modern style,
+            or expert grooming advice, you’re in capable hands with our talented team.
+        </strong>
+    </p>
 </div>
 
 @if (barbers == null)
@@ -20,7 +31,7 @@ else
         {
             <BarberCard Portrait="@b.Portrait"
                         Name="@b.Name"
-                        Position="@b.Position"
+                        PositionName="@b.PositionName"
                         Description="@b.Description" />
         }
     </div>

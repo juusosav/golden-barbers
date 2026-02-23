@@ -10,52 +10,73 @@
 
 @page "/book-appointment"
 
-<h2 class="booking-text">Book an Appointment</h2>
-<br />
+<div class="booking-container">
+    <h2 class="booking-text">Book an Appointment</h2>
+    <br />
+</div>
+
 
 <EditForm Model="@appointment" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
-    <ValidationSummary />
+    <div class="booking-container">
+        <label class="booking-text">Select Service: </label>
+        <br />
 
-    <label class="booking-text">Select Service: </label>
-    <br />
-    <InputSelect @bind-Value="SelectedOfferingId">
-        <option value="">-- Select --</option>
+        <InputSelect @bind-Value="SelectedOfferingId">
+            <option value="">-- Select --</option>
 
-        @if (offerings != null)
-        {
-            @foreach (var o in offerings)
+            @if (offerings != null)
             {
-                <option value="@o.Id">@o.Name</option>
+                @foreach (var o in offerings)
+                {
+                    <option value="@o.Id">@o.Name</option>
+                }
             }
-        }
-        else
-        {
-            <option>----------</option>
-        }
-    </InputSelect>
-
-    <br /><br />
-
-    <label class="booking-text">Select Barber: </label>
-    <br />
-    <InputSelect @bind-Value="SelectedBarberId">
-        <option value="">-- Select --</option>
-
-        @if (barbers != null)
-        {
-            @foreach (var b in barbers)
+            else
             {
-                <option value="@b.Id">@b.Name</option>
+                <option>----------</option>
             }
-        }
-        else
-        {
-            <option>-----------</option>
-        }
-    </InputSelect>
+        </InputSelect>
 
-    <br /><br />
+        <br /><br />
+
+        <label class="booking-text">Select Barber: </label>
+        <br />
+
+        <div class="barber-selection">
+
+            @if (barbers != null)
+            {
+                @foreach (var b in barbers)
+                {
+                    @if (_selectedBarberId == b.Id)
+                    {
+                        <div>
+                            <div class="barber-selected" @onclick="() => SelectBarber(b.Id)">
+
+                                <img style="width: 100px" src="@b.Portrait" alt="Barber" />
+                                <p>@b.Name</p>
+                                <p>@b.PositionName</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div class="barber-selection-item" @onclick="() => SelectBarber(b.Id)">
+
+                                <img style="width: 100px" src="@b.Portrait" alt="Barber" />
+                                <p>@b.Name</p>
+                                <p>@b.PositionName</p>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <br />
+    <br />
 
     @if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
     {
@@ -130,42 +151,67 @@
 
         @if (selectedSlot != null)
         {
-            <div class="booking-summary">
-                <h3>Appoinment Information</h3>
-                <br />
+            <div class="booking-container">
+                <div class="booking-summary">
+                    <h3>Appointment Information</h3>
+                    <br />
 
-                @if (barbers != null)
-                {
-                    <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
-                }
+                    @if (barbers != null)
+                    {
+                        <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
 
-                @if (offerings != null && appointment.OfferingId != Guid.Empty)
-                {
-                    var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
-                    <p>Service: @selectedOffering?.Name</p>
-                }
+                    }
 
-                <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
+                    @if (offerings != null && barbers != null)
+                    {
+                        var selectedBarber = barbers.First(b => b.Id == selectedSlot.BarberId);
+                        var selectedOffering = offerings.First(o => o.Id == appointment.OfferingId);
+
+                        int price = selectedBarber.PositionId switch
+                        {
+                            1 => selectedOffering.SeniorPrice,
+                            2 => selectedOffering.JuniorPrice,
+                            3 => selectedOffering.TraineePrice,
+                            _ => 0
+                        };
+
+                        <p>Price: @price €</p>
+                    }
+
+
+                    @if (offerings != null && appointment.OfferingId != Guid.Empty)
+                    {
+                        var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
+                        <p>Service: @selectedOffering?.Name</p>
+                    }
+
+                    <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
+                </div>
             </div>
         }
         <br />
 
         @if (selectedSlot != null)
         {
-            <div class="booking-text">
-                <h3>Contact information: </h3>
-                <br />
-                <label>
-                    Your name:
-                    <InputText @bind-Value="appointment.CustomerName"></InputText>
-                </label>
-                <br />
-                <label>
-                    Your email:
-                    <InputText @bind-Value="appointment.CustomerEmail"></InputText>
-                </label>
-                <br /><br />
-                <button class="btn btn-light" type="submit">Confirm Booking</button>
+            <div class="booking-container">
+                <div class="booking-text">
+                    <h3>Contact information: </h3>
+                    <br />
+                    <label>
+                        Your name:
+                        <InputText @bind-Value="appointment.CustomerName"></InputText>
+                        <ValidationMessage For="@(() => appointment.CustomerName)" />
+                    </label>
+                    <br /><br />
+                    <label>
+                        Your email:
+                        <InputText @bind-Value="appointment.CustomerEmail"></InputText>
+                        <ValidationMessage For="@(() => appointment.CustomerEmail)" />
+
+                    </label>
+                    <br /><br />
+                    <button class="btn btn-light" type="submit">Confirm Booking</button>
+                </div>
             </div>
         }
     }
@@ -223,6 +269,16 @@
 
         GenerateTimeRanges();
         await LoadSlots();
+    }
+
+    private void SelectOffering(Guid offeringId)
+    {
+        SelectedOfferingId = offeringId;
+    }
+
+    private void SelectBarber(Guid barberId)
+    {
+        SelectedBarberId = barberId;
     }
 
     private async Task LoadSlots()
