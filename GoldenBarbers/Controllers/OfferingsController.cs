@@ -27,6 +27,7 @@ namespace Server.Controllers
                 {
                     Id = o.Id,
                     Name = o.Name,
+                    Icon = o.Icon,
                     Description = o.Description,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
