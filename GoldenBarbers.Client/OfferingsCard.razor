@@ -6,6 +6,7 @@
 
 <div class="homepage-container-item">
     <div class="homepage-container-item-box">
+        <img style="max-height: 120px; padding-bottom: 10px;" src=@Icon />
         <h3>@Name</h3>
         <p style="max-width: 500px; margin-top: 10px;">@Description</p>
         <p>From @TraineePrice €</p>
@@ -17,6 +18,8 @@
     public string Name { get; set; } = "";
     [Parameter]
     public string Description { get; set; } = "";
+    [Parameter]
+    public string Icon { get; set; } = "";
     [Parameter]
     public int TraineePrice { get; set; }
 }

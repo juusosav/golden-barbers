@@ -22,28 +22,40 @@
         <label class="booking-text">Select Service: </label>
         <br />
 
-        <InputSelect @bind-Value="SelectedOfferingId">
-            <option value="">-- Select --</option>
+        <div class="selection">
 
             @if (offerings != null)
             {
-                @foreach (var o in offerings)
+                foreach (var o in offerings)
                 {
-                    <option value="@o.Id">@o.Name</option>
+                    @if (_selectedOfferingId == o.Id)
+                    {
+                        <div>
+                            <div class="selected" @onclick="() => SelectOffering(o.Id)">
+                                <img src="@o.Icon" alt="Offering" />
+                                <p>@o.Name</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div class="selection-item" @onclick="() => SelectOffering(o.Id)">
+                                <img src="@o.Icon" alt="Offering" />
+                                <p>@o.Name</p>
+                            </div>
+                        </div>
+                    }
                 }
             }
-            else
-            {
-                <option>----------</option>
-            }
-        </InputSelect>
+        </div>
 
         <br /><br />
 
         <label class="booking-text">Select Barber: </label>
         <br />
 
-        <div class="barber-selection">
+        <div class="selection">
 
             @if (barbers != null)
             {
@@ -52,9 +64,9 @@
                     @if (_selectedBarberId == b.Id)
                     {
                         <div>
-                            <div class="barber-selected" @onclick="() => SelectBarber(b.Id)">
+                            <div class="selected" @onclick="() => SelectBarber(b.Id)">
 
-                                <img style="width: 100px" src="@b.Portrait" alt="Barber" />
+                                <img src="@b.Portrait" alt="Barber" />
                                 <p>@b.Name</p>
                                 <p>@b.PositionName</p>
                             </div>
@@ -63,9 +75,9 @@
                     else
                     {
                         <div>
-                            <div class="barber-selection-item" @onclick="() => SelectBarber(b.Id)">
+                            <div class="selection-item" @onclick="() => SelectBarber(b.Id)">
 
-                                <img style="width: 100px" src="@b.Portrait" alt="Barber" />
+                                <img src="@b.Portrait" alt="Barber" />
                                 <p>@b.Name</p>
                                 <p>@b.PositionName</p>
                             </div>
@@ -80,10 +92,12 @@
 
     @if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
     {
-        <div class="booking-text">
-            <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
-            <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
-            <button type="button" @onclick="NextWeek">Next Week ➡</button>
+        <div class="booking-container">
+            <div class="booking-text">
+                <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
+                <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
+                <button type="button" @onclick="NextWeek">Next Week ➡</button>
+            </div>
         </div>
 
         @if (timeslots == null || barbers == null)
@@ -92,61 +106,63 @@
         }
         else
         {
-            <table class="calendar-table">
-                <thead>
-                    <tr>
-                        <th>Time</th>
-                        @foreach (var day in Enumerable.Range(0, 7))
-                        {
-                            var currentDay = weekStart.AddDays(day);
-                            <th>@currentDay.ToString("ddd dd")</th>
-                        }
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var time in timeRanges)
-                    {
-
+            <div class="booking-container">
+                <table class="calendar-table">
+                    <thead>
                         <tr>
-                            <td>@time.ToString("HH:mm")</td>
-
+                            <th>Time</th>
                             @foreach (var day in Enumerable.Range(0, 7))
                             {
-                                var currentDate = weekStart.AddDays(day);
-                                var currentDateTime = currentDate.Date.Add(time.TimeOfDay);
-
-                                var daySlots = timeslots
-                                .Where(s =>
-                                s.Start.Date == currentDate.Date &&
-                                s.Start.TimeOfDay == time.TimeOfDay &&
-                                s.BarberId == appointment.BarberId &&
-                                s.IsAvailable)
-                                .ToList();
-
-                                <td>
-                                    @if (!daySlots.Any())
-                                    {
-                                        <span class="unavailable">Reserved</span>
-                                    }
-
-                                    else
-                                    {
-                                        @foreach (var slot in daySlots)
-                                        {
-                                            <button class="timeslot" type="button"
-                                                    @onclick="() => SelectSlot(slot)">
-
-                                                @(selectedSlot?.Id == slot.Id ? "Selected!" : "Select")
-                                            </button>
-                                            <br />
-                                        }
-                                    }
-                                </td>
+                                var currentDay = weekStart.AddDays(day);
+                                <th>@currentDay.ToString("ddd dd")</th>
                             }
                         </tr>
-                    }
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        @foreach (var time in timeRanges)
+                        {
+
+                            <tr>
+                                <td>@time.ToString("HH:mm")</td>
+
+                                @foreach (var day in Enumerable.Range(0, 7))
+                                {
+                                    var currentDate = weekStart.AddDays(day);
+                                    var currentDateTime = currentDate.Date.Add(time.TimeOfDay);
+
+                                    var daySlots = timeslots
+                                    .Where(s =>
+                                    s.Start.Date == currentDate.Date &&
+                                    s.Start.TimeOfDay == time.TimeOfDay &&
+                                    s.BarberId == appointment.BarberId &&
+                                    s.IsAvailable)
+                                    .ToList();
+
+                                    <td>
+                                        @if (!daySlots.Any())
+                                        {
+                                            <span class="unavailable">Reserved</span>
+                                        }
+
+                                        else
+                                        {
+                                            @foreach (var slot in daySlots)
+                                            {
+                                                <button class="timeslot" type="button"
+                                                        @onclick="() => SelectSlot(slot)">
+
+                                                    @(selectedSlot?.Id == slot.Id ? "Selected!" : "Select")
+                                                </button>
+                                                <br />
+                                            }
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
         }
 
         @if (selectedSlot != null)
@@ -197,6 +213,9 @@
                 <div class="booking-text">
                     <h3>Contact information: </h3>
                     <br />
+                    <p>Please enter your contact information for appointment confirmation. <br />You will receive a confirmation email to your supplied email address.</p>
+
+                    <br />
                     <label>
                         Your name:
                         <InputText @bind-Value="appointment.CustomerName"></InputText>
@@ -210,7 +229,7 @@
 
                     </label>
                     <br /><br />
-                    <button class="btn btn-light" type="submit">Confirm Booking</button>
+                    <button class="btn btn-light" type="submit" disabled=@IsSubmitting>Confirm Booking</button>
                 </div>
             </div>
         }
@@ -224,6 +243,8 @@
     private List<BarberDto>? barbers;
     private List<TimeslotDto>? timeslots;
     private TimeslotDto? selectedSlot;
+
+    private bool IsSubmitting { get; set; } = false;
 
     private Guid _selectedBarberId;
 
@@ -261,6 +282,8 @@
     private DateTime weekEnd => weekStart.AddDays(7);
 
     private List<DateTime> timeRanges = new();
+
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -333,6 +356,8 @@
     {
         Console.WriteLine($"Booking: {appointment.BarberId} at {appointment.AppointmentDateTime}");
 
+        IsSubmitting = true;
+
         if (selectedSlot == null)
             return;
 
@@ -342,8 +367,8 @@
 
         selectedSlot = null;
         appointment = new AppointmentDto();
+        IsSubmitting = false;
 
         await LoadSlots();
-
     }
 }

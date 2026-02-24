@@ -24,15 +24,7 @@
     }
 </header>
 
-<!--<div class="arrows-container">
-@if (carousel != null)
-{
 
-                                <a class="prev" onclick="carousel.changeSlide(-1)">❮</a>
-                                <a class="next" onclick="carousel.changeSlide(1)">❯</a>
-
-}
-</div> -->
 
 <div class="button-container">
     <div class="button-container-item">
@@ -45,11 +37,12 @@
 
     @if (offerings != null)
     {
-        @foreach (var offering in offerings)
+        @foreach (var o in offerings)
         {
-            <OfferingsCard Name="@offering.Name"
-                           Description="@offering.Description"
-                           TraineePrice="@offering.TraineePrice" />
+            <OfferingsCard Name=@o.Name
+                           Icon=@o.Icon
+                           Description=@o.Description
+                           TraineePrice=@o.TraineePrice />
         }
     }
 </div>
@@ -57,24 +50,28 @@
 <footer>
     <div class="footer-container">
         <div class="footer-container-item">
-            <h2>Golden Barbers</h2>
+            <h3>Golden Barbers</h3>
             <br />
-            <h3>Address</h3>
+            <h4>Address</h4>
             <p>
                 128 King’s Avenue
                 Suite 4
+                <br />
                 Westbridge, WB2 7LT
                 United Kingdom
             </p>
-            <h3>Contact</h3>
+            <h4>Contact</h4>
             <p>
                 📞 +44 20 7946 0823
+                <br />
                 ✉ info@goldenbarbers.co.uk
             </p>
-            <h3>Opening hours</h3>
+            <h4>Opening hours</h4>
             <p>
                 Mon – Fri: 9:00 AM – 7:00 PM
+                <br />
                 Saturday: 9:00 AM – 5:00 PM
+                <br />
                 Sunday: Closed
             </p>
         </div>

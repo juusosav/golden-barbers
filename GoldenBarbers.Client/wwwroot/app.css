@@ -111,6 +111,7 @@ h1:focus {
 
 .carousel-container {
     display: flex;
+    flex-shrink: inherit;
     max-width: 800px;
     height: 82vh;
     margin: auto;
@@ -119,17 +120,6 @@ h1:focus {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-}
-
-
-.arrows-container {
-    display: flex;
-    max-width: 25px;
-    height: 25px;
-    margin: auto;
-    padding: 25px;
-    justify-content: center;
-    align-items: center;
 }
 
 .slide {
@@ -147,7 +137,7 @@ h1:focus {
         position: relative;
         width: 100%;
         height: 80vh;
-        object-fit: fill;
+        object-fit: contain;
         border-radius: 5px;
         z-index: 0;
     }
@@ -164,26 +154,6 @@ h1:focus {
     z-index: 1;
 }
 
-
-.prev, .next {
-    position: relative;
-    top: 50%;
-    margin: 10rem;
-    padding: 8px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    cursor: pointer;
-    text-decoration: none;
-}
-
-.prev {
-    left: 0;
-}
-
-.next {
-    right: 0;
-}
 
 .fade {
     animation: fadeInOut 4s ease-in-out infinite;
@@ -217,7 +187,7 @@ h1:focus {
 }
 
 .button-container-item {
-    color: white;
+    color: whitesmoke;
     padding: 20px;
     margin: 10px;
     border-radius: 2px;
@@ -229,24 +199,25 @@ h1:focus {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: #191919;
+    background-color: #414040;
 }
 
 .homepage-container-item {
-    color: white;
+    color: whitesmoke;
     padding: 20px;
     margin: 10px;
     border-radius: 2px;
 }
 
 .homepage-container-item-box {
-    background-color: rgba(0, 0, 0, 0.2);
-    padding: 16px;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 500px;
     border-radius: 4px;
 }
 
     .homepage-container-item-box:hover {
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.2);
         transition: ease-in-out 0.3s;
     }
 
@@ -258,13 +229,19 @@ h1:focus {
     justify-content: center;
     text-align: center;
     background-color: #191919;
+    margin: 20px;
 }
 
 .footer-container-item {
-    color: white;
-    padding: 20px;
+    color: whitesmoke;
+    padding: 50px;
     margin: 10px;
     border-radius: 2px;
+}
+
+.footer-container-item p {
+    padding-bottom: 20px;
+    padding-top: 8px;
 }
 
 .barber-container {
@@ -289,12 +266,12 @@ h1:focus {
 }
 
     .barber-card:hover {
-        box-shadow: 4px 8px 8px rgba(200, 200, 200, 0.4);
+        box-shadow: 4px 8px 8px rgba(200, 200, 200, 0.2);
     }
 
 .barber-card-item {
     padding-bottom: 10px;
-    color: white;
+    color: whitesmoke;
 }
 
 
@@ -334,13 +311,13 @@ h1:focus {
 }
 
     .gold-button:hover {
-        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 8px 12px rgba(183, 179, 140, 0.2)
     }
 
 
 .calendar-table {
     border-collapse: collapse;
-    width: 100%;
+    width: 60%;
     background-color: white;
 }
 
@@ -386,15 +363,18 @@ h1:focus {
 .booking-container {
     display: flex;
     flex-direction: column;
+    margin: 10px;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .booking-text {
     color: white;
+    font-weight: bold;
 }
 
-.barber-selection {
+.selection {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
@@ -403,7 +383,7 @@ h1:focus {
     text-align: center;
 }
 
-.barber-selection-item {
+.selection-item {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
@@ -412,12 +392,18 @@ h1:focus {
     height: 240px;
 }
 
-    .barber-selection-item:active {
+.selection-item img {
+    width: 100px;
+    max-height: 160px;
+    object-fit: contain;
+}
+
+    .selection-item:active {
         background-color: white;
     }
 
 
-.barber-selected {
+.selected {
     border: 1px solid #ccc;
     padding: 10px;
     margin: 10px;
@@ -427,3 +413,9 @@ h1:focus {
     color: black;
     background-color: white;
 }
+
+    .selected img {
+        width: 100px;
+        max-height: 160px;
+        object-fit: contain;
+    }
