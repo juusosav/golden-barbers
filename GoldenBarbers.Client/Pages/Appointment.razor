@@ -8,6 +8,8 @@
 @inject TimeslotService TimeslotService
 @inject AppointmentsService AppointmentsService
 
+@inject NavigationManager Navigation
+
 @page "/book-appointment"
 
 <div class="booking-container">
@@ -370,5 +372,7 @@
         IsSubmitting = false;
 
         await LoadSlots();
+
+        //Navigation.NavigateTo($"/booking-confirmed/{appointment.Id");
     }
 }

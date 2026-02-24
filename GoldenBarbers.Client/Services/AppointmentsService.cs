@@ -24,5 +24,10 @@ namespace GoldenBarbers.Client.Services
         {
             await _http.PostAsJsonAsync("api/appointments", dto);
         }
+
+        public async Task<AppointmentDto?> GetByIdAsync(Guid id)
+        {
+            return await _http.GetFromJsonAsync<AppointmentDto>($"api/appointments/{id}");
+        }
     }
 }

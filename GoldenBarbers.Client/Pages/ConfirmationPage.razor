@@ -1,0 +1,15 @@
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs
+@using GoldenBarbers.Client.Helpers
+
+@inject AppointmentsService AppointmentsService
+
+@page "/booking-confirmed/{id:guid}"
+
+
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+}

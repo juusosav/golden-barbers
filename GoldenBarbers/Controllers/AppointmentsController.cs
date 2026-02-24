@@ -86,8 +86,30 @@ namespace GoldenBarbers.Controllers
 
         }
 
+        [HttpGet("{id}")]
+        public async Task<ActionResult<AppointmentDto>> GetByIdAsync(Guid id)
+        {
+            
+            var appointment = await _context.Appointments
+                .Where(a => a.Id == id)
+                .Select(a => new AppointmentDto
+                {
+                    Id = a.Id,
+                    BarberId = a.BarberId,
+                    OfferingId = a.OfferingId,
+                    BarberPositionId = a.BarberPositionId,
+                    AppointmentDateTime = a.AppointmentDateTime,
+                    DurationMinutes = a.DurationMinutes,
+                    CustomerName = a.CustomerName,
+                    CustomerEmail = a.CustomerEmail,
+                })
+                .FirstOrDefaultAsync();
+
+            return Ok(appointment);
+        }
+
         [HttpPost]
-        public async Task<ActionResult> CreateAppointment([FromBody] AppointmentDto dto)
+        public async Task<ActionResult> CreateAppointmentAsync([FromBody] AppointmentDto dto)
         {
             if (dto == null)
             {

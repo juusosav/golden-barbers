@@ -9,6 +9,7 @@ namespace Shared.DTOs
 {
     public class AppointmentDto
     {
+        public Guid Id { get; set; }
         public Guid BarberId { get; set; }
 
         public Guid OfferingId { get; set; }
