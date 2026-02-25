@@ -23,6 +23,7 @@ namespace Shared.DTOs
         [Required(ErrorMessage = "Name is required")]
         [StringLength(100, ErrorMessage = "Name cannot exceed 100 characters")]
         public string CustomerName { get; set; } = "";
+
         [Required(ErrorMessage = "Email is required")]
         [RegularExpression(
         @"^[^@\s]+@[^@\s]+\.[^@\s]+$",

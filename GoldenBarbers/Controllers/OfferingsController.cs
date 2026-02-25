@@ -38,6 +38,7 @@ namespace Server.Controllers
             return Ok(offerings);
         }
 
+        [HttpGet("{id}")]
         public async Task<ActionResult<Offering>> GetOfferingById(Guid id)
         {
             var offering = await _context.Offerings
@@ -46,7 +47,11 @@ namespace Server.Controllers
                 {
                     Id = o.Id,
                     Name = o.Name,
-                    Description = o.Description
+                    Description = o.Description,
+                    Icon = o.Icon,
+                    TraineePrice = o.TraineePrice,
+                    JuniorPrice = o.JuniorPrice,
+                    SeniorPrice = o.SeniorPrice
                 })
                 .FirstOrDefaultAsync();
 

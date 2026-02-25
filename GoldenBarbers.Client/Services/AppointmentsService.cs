@@ -20,9 +20,10 @@ namespace GoldenBarbers.Client.Services
                 ?? new List<TimeslotDto>();
         }
 
-        public async Task CreateAppointmentAsync(AppointmentDto dto)
+        public async Task<AppointmentDto?> CreateAppointmentAsync(AppointmentDto dto)
         {
-            await _http.PostAsJsonAsync("api/appointments", dto);
+            var response = await _http.PostAsJsonAsync("api/appointments", dto);
+            return await response.Content.ReadFromJsonAsync<AppointmentDto>();
         }
 
         public async Task<AppointmentDto?> GetByIdAsync(Guid id)

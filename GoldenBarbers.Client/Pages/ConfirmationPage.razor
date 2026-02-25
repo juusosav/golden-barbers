@@ -4,12 +4,58 @@
 @using GoldenBarbers.Client.Helpers
 
 @inject AppointmentsService AppointmentsService
+@inject BarberService BarberService
+@inject OfferingService OfferingService
 
 @page "/booking-confirmed/{id:guid}"
 
+@if (appointment == null)
+{
+    <p class="custom-loader">Loading...</p>
+}
+else
+{
+    <div class="booking-container">
+        <div class="booking-text">
+            <h3>Appointment Confirmed!</h3>
+            <br />
+            <p>Name: @appointment.CustomerName</p>
+            <p>Date: @appointment.AppointmentDateTime</p>
+
+            @if (appointment.BarberId == barber?.Id)
+            {
+                <p>Barber: @barber.Name</p>
+            }
+
+            @if (appointment.OfferingId == offering?.Id)
+            {
+                <p>Service: @offering.Name</p>
+            }
+        </div>
+    </div>
+}
 
 
 @code {
+
     [Parameter]
     public Guid Id { get; set; }
+
+    private AppointmentDto? appointment;
+
+    private BarberDto? barber;
+
+    private OfferingDto? offering;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        appointment = await AppointmentsService.GetByIdAsync(Id);
+
+        if (appointment != null)
+        {
+            barber = await BarberService.GetBarberById(appointment.BarberId);
+            offering = await OfferingService.GetOfferingById(appointment.OfferingId);
+        }
+    }
 }

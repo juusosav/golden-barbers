@@ -20,6 +20,7 @@
 
 <EditForm Model="@appointment" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
+
     <div class="booking-container">
         <label class="booking-text">Select Service: </label>
         <br />
@@ -35,6 +36,7 @@
                         <div>
                             <div class="selected" @onclick="() => SelectOffering(o.Id)">
                                 <img src="@o.Icon" alt="Offering" />
+                                <br />
                                 <p>@o.Name</p>
                             </div>
                         </div>
@@ -44,6 +46,7 @@
                         <div>
                             <div class="selection-item" @onclick="() => SelectOffering(o.Id)">
                                 <img src="@o.Icon" alt="Offering" />
+                                <br />
                                 <p>@o.Name</p>
                             </div>
                         </div>
@@ -153,7 +156,7 @@
                                                 <button class="timeslot" type="button"
                                                         @onclick="() => SelectSlot(slot)">
 
-                                                    @(selectedSlot?.Id == slot.Id ? "Selected!" : "Select")
+                                                    @(selectedSlot?.Id == slot.Id ? "- Selected -" : "Select")
                                                 </button>
                                                 <br />
                                             }
@@ -365,14 +368,15 @@
 
         appointment.DurationMinutes = selectedSlot.Duration;
 
-        await AppointmentsService.CreateAppointmentAsync(appointment);
+        var savedAppointment = await AppointmentsService.CreateAppointmentAsync(appointment);
 
-        selectedSlot = null;
-        appointment = new AppointmentDto();
+        Navigation.NavigateTo($"/booking-confirmed/{savedAppointment?.Id}");
+
         IsSubmitting = false;
+        selectedSlot = null;
+
+        appointment = new AppointmentDto();
 
         await LoadSlots();
-
-        //Navigation.NavigateTo($"/booking-confirmed/{appointment.Id");
     }
 }

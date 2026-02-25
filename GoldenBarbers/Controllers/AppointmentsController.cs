@@ -105,6 +105,11 @@ namespace GoldenBarbers.Controllers
                 })
                 .FirstOrDefaultAsync();
 
+            if (appointment == null)
+            {
+                return NotFound();
+            }
+
             return Ok(appointment);
         }
 
@@ -129,6 +134,7 @@ namespace GoldenBarbers.Controllers
             };
 
             _context.Appointments.Add(appointment);
+
             await _context.SaveChangesAsync();
 
             return Ok(appointment);
