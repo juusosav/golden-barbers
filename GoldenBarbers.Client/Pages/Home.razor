@@ -10,10 +10,12 @@
 
 <header class="carousel-container">
 
-    @if (carousel != null)
+    @if (carousel == null)
     {
-
-
+        <p></p>
+    }
+    else
+    {
         @for (int i = 0; i < carousel.Count; i++)
         {
             <CarouselCard Icon="@carousel[i].Image"
@@ -35,7 +37,12 @@
 <div class="homepage-container">
     <h2 class="homepage-container-item"><strong>Our Services</strong></h2>
 
-    @if (offerings != null)
+    @if (offerings == null)
+    {
+        <p class="custom-loader">Loading...</p>
+    }
+
+    else
     {
         @foreach (var o in offerings)
         {
@@ -81,9 +88,7 @@
 
 @code {
     private List<CarouselDto>? carousel;
-
     private List<OfferingDto>? offerings;
-
     private bool _initialized;
 
     private void GoToBooking()

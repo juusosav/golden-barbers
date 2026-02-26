@@ -2,12 +2,14 @@
 
 <Router AppAssembly="@typeof(App).Assembly">
     <Found Context="routeData">
+        <!--Add AuthorizeRouteView and wrap in 
+            CascadingAuthenticationService when implementing Identity!-->
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
     <NotFound>
         <LayoutView Layout="@typeof(MainLayout)">
-            <p>Sorry, there's nothing at this address.</p>
+            <p class="booking-text">Sorry, there's nothing at this address.</p>
         </LayoutView>
     </NotFound>
 </Router>
