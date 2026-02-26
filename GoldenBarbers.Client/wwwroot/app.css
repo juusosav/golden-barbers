@@ -105,7 +105,7 @@ h1:focus {
 
     .custom-nav-link:hover {
         color: black;
-        transition: all 0,2s ease;
+        transition: all 0.2s ease;
     }
 
 .carousel-container {
@@ -260,12 +260,13 @@ h1:focus {
     min-width: 25rem;
     max-width: 25rem;
     max-height: 31rem;
-    background-color: rgb(3, 3, 2, 0.8);
+    background-color: rgba(3, 3, 2, 0.8);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
     .barber-card:hover {
         box-shadow: 4px 8px 8px rgba(200, 200, 200, 0.2);
+        transform: translateY(-4px);
     }
 
 .barber-card-item {
@@ -310,14 +311,18 @@ h1:focus {
 }
 
     .gold-button:hover {
-        box-shadow: 0 8px 12px rgba(183, 179, 140, 0.2)
+        box-shadow: 0 8px 12px rgba(183, 179, 140, 0.2);
+        transform: translateY(-4px);
+        
     }
 
 
 .calendar-table {
     border-collapse: collapse;
-    width: 60%;
+    max-width: 800px;
+    width: 100%;
     background-color: white;
+    overflow: scroll;
 }
 
     .calendar-table th, .calendar-table td {
