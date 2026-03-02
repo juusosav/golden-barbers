@@ -1,15 +1,15 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Models.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace GoldenBarbers.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
-        public DbSet<User> Users { get; set; }
 
         public DbSet<Barber> Barbers { get; set; }
 
@@ -21,6 +21,9 @@ namespace GoldenBarbers.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Barber>(b =>
             {
                 b.Property(x => x.Name).IsRequired();
