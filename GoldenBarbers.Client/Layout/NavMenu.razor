@@ -1,23 +1,19 @@
-﻿@implements IDisposable
-
-@inject NavigationManager NavigationManager
-
-<nav class="custom-nav">
+﻿<nav class="custom-nav">
 
     <a href="">
-        <img style="padding: 4px;"class="main-logo" src="/images/golden_barbers_logo.png" alt="Golden Barbers Logo"/>
+        <img class="main-logo" src="/images/golden_barbers_logo.png" alt="Golden Barbers Logo" />
     </a>
-    <div>
+
+    <input type="checkbox" id="nav-toggle" class="navbar-toggler" />
+    <label for="nav-toggle" class="hamburger">☰</label>
+
+    <div class="nav-links">
         <NavLink class="custom-nav-item" href="" Match="NavLinkMatch.All">
             <span class="custom-nav-link" aria-hidden="true">Home</span>
         </NavLink>
-    </div>
-    <div>
         <NavLink class="custom-nav-item" href="our-team" Match="NavLinkMatch.All">
             <span class="custom-nav-link" aria-hidden="true">Our Team</span>
         </NavLink>
-    </div>
-    <div>
         <NavLink class="custom-nav-item" href="book-appointment" Match="NavLinkMatch.All">
             <span class="custom-nav-link" aria-hidden="true">Book Appointment</span>
         </NavLink>
@@ -25,23 +21,6 @@
 </nav>
 
 @code {
-    private string? currentUrl;
 
-    protected override void OnInitialized()
-    {
-        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
-        NavigationManager.LocationChanged += OnLocationChanged;
-    }
-
-    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
-    {
-        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
-        StateHasChanged();
-    }
-
-    public void Dispose()
-    {
-        NavigationManager.LocationChanged -= OnLocationChanged;
-    }
 }
 

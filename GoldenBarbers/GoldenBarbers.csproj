@@ -10,6 +10,7 @@
 	<ItemGroup>
 		<ProjectReference Include="C:\Users\jurox\source\repos\GoldenBarbers\GoldenBarbers.Client\GoldenBarbers.Client.csproj" />
 		<ProjectReference Include="C:\Users\jurox\source\repos\GoldenBarbers\Shared\Shared.csproj" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.24" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.24" />
 		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.24" />
 		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.24" />
