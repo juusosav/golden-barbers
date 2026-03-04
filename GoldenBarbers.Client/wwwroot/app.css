@@ -6,6 +6,10 @@ html, body {
     margin: 0;
 }
 
+.page {
+    display: flex;
+}
+
 a, .btn-link {
     color: #006bb7;
 }
@@ -481,3 +485,28 @@ h1:focus {
         height: 100px;
         object-fit: contain;
     }
+
+
+    /* Admin */
+
+.admin-page {
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: 250px;
+    background-color: #111; /* dark sidebar */
+    color: white;
+    border-right: 1px solid #333; /* separator line */
+    padding: 1rem;
+}
+
+.main-content {
+    flex: 1;
+    background-color: #f8f9fa; /* light content area */
+}
+
+.content {
+    padding-top: 1rem;
+}
