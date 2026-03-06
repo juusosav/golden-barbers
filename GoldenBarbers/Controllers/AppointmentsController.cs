@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs;
 using Microsoft.EntityFrameworkCore;
+using GoldenBarbers.Services;
 
 namespace GoldenBarbers.Controllers
 {
@@ -14,96 +15,30 @@ namespace GoldenBarbers.Controllers
     [ApiController]
     public class AppointmentsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AppointmentsService _appointmentsService;
 
-        public AppointmentsController(ApplicationDbContext context)
+        public AppointmentsController(AppointmentsService appointmentsService)
         {
-            _context = context;
+            _appointmentsService = appointmentsService;
         }
 
         [HttpGet("available-slots")]
         public async Task<ActionResult<List<TimeslotDto>>> GetAvailableSlotsAsync([FromQuery] DateTime weekStart)
         {
-            weekStart = DateTime.SpecifyKind(weekStart.Date, DateTimeKind.Utc);
-
-            if (weekStart == default)
+           if (weekStart == default)
             {
-                return BadRequest("weekStart query parameter is required");
+                return BadRequest("weekStart query parameter is required.");
             }
 
-            var weekEnd = weekStart.AddDays(7);
+            var slots = await _appointmentsService.GetAvailableSlotsAsync(weekStart);
 
-            var barbers = await _context.Barbers
-                .Select(b => new BarberDto
-                {
-                    Id = b.Id,
-                    Name = b.Name
-                })
-                .ToListAsync();
-
-            var appointments = await _context.Appointments
-                .Where(a => a.AppointmentDateTime >= weekStart && a.AppointmentDateTime < weekEnd)
-                .Select(a => new AppointmentDto
-                {
-                    BarberId = a.BarberId,
-                    AppointmentDateTime = a.AppointmentDateTime,
-                    DurationMinutes = a.DurationMinutes
-                })
-                .ToListAsync();
-
-            var slots = new List<TimeslotDto>();
-
-            foreach (var b in barbers)
-            {
-                for (int day = 0; day < 7; day++)
-                {
-                    var currentDate = weekStart.Date.AddDays(day);
-                    var dayStart = currentDate.AddHours(9);
-                    var dayEnd = currentDate.AddHours(17);
-
-                    for (var current = dayStart; current < dayEnd; current = current.AddMinutes(30))
-                    {
-                        var occupied = appointments.Any(a =>
-                        a.BarberId == b.Id &&
-                        a.AppointmentDateTime <= current &&
-                        current < a.AppointmentDateTime.AddMinutes(a.DurationMinutes)
-                    );
-
-                        slots.Add(new TimeslotDto
-                        {
-                            Id = Guid.NewGuid(),
-                            BarberId = b.Id,
-                            BarberName = b.Name,
-                            Start = current,
-                            Duration = 30,
-                            IsAvailable = !occupied
-                        });
-                    }
-                }
-            }
-
-            return slots;
-
+            return Ok(slots);
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<AppointmentDto>> GetByIdAsync(Guid id)
         {
-            
-            var appointment = await _context.Appointments
-                .Where(a => a.Id == id)
-                .Select(a => new AppointmentDto
-                {
-                    Id = a.Id,
-                    BarberId = a.BarberId,
-                    OfferingId = a.OfferingId,
-                    BarberPositionId = a.BarberPositionId,
-                    AppointmentDateTime = a.AppointmentDateTime,
-                    DurationMinutes = a.DurationMinutes,
-                    CustomerName = a.CustomerName,
-                    CustomerEmail = a.CustomerEmail,
-                })
-                .FirstOrDefaultAsync();
+            var appointment = await _appointmentsService.GetByIdAsync(id);
 
             if (appointment == null)
             {
@@ -121,21 +56,7 @@ namespace GoldenBarbers.Controllers
                 return BadRequest();
             }
 
-            var appointment = new Appointment
-            {
-                Id = Guid.NewGuid(),
-                BarberId = dto.BarberId,
-                BarberPositionId = dto.BarberPositionId,
-                OfferingId = dto.OfferingId,
-                AppointmentDateTime = dto.AppointmentDateTime,
-                DurationMinutes = dto.DurationMinutes,
-                CustomerName = dto.CustomerName,
-                CustomerEmail = dto.CustomerEmail
-            };
-
-            _context.Appointments.Add(appointment);
-
-            await _context.SaveChangesAsync();
+            var appointment = await _appointmentsService.CreateAppointmentAsync(dto);
 
             return Ok(appointment);
         }

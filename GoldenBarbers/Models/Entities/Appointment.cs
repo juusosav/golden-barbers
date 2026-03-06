@@ -18,6 +18,8 @@
 
         public string CustomerEmail { get; set; } = "";
 
+        public decimal FinalPrice { get; set; }
+
         public List<Offering> Offerings { get; set; } = [];
 
     }
