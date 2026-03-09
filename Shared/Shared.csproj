@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Admin\Barbers\" />
+    <Folder Include="DTOs\Admin\Appointments\" />
+    <Folder Include="DTOs\Admin\Offerings\" />
+  </ItemGroup>
+
 </Project>

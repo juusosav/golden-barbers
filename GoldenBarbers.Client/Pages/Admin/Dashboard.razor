@@ -1,15 +1,29 @@
 ﻿@page "/admin"
 
-<h1>Dashboard</h1>
+@inject DashboardService DashboardService
 
-<div class="flex-row">
-    <div class="d-flex mb-5">
-        <h2>Earnings</h2>
-        <h2 class="px-4">Appointments Today</h2>
-        <h2 class="px-4">Other</h2>
-    </div>
+<div class="d-flex justify-content-center">
+    <h1>Dashboard</h1>
+</div>
+
+<br />
+
+<div class="d-flex justify-content-around">
+
+    @if (dashboard != null)
+    {
+        <DashboardCard RevenueToday="@dashboard.RevenueToday"
+                       AppointmentsToday="@dashboard.AppointmentsToday"
+                       UpcomingWeek="@dashboard.UpcomingWeek" />
+    }
 </div>
 
 @code {
 
+    private DashboardDto? dashboard;
+
+    protected override async Task OnInitializedAsync()
+    {
+        dashboard = await DashboardService.GetDashboard();
+    }
 }

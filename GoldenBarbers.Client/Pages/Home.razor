@@ -80,6 +80,8 @@
                 <br />
                 Sunday: Closed
             </p>
+            <br />
+            <button @onclick="GoToAdminLogin">Admin Login</button>
         </div>
     </div>
 </footer>
@@ -93,6 +95,11 @@
     private void GoToBooking()
     {
         Navigation.NavigateTo("/book-appointment");
+    }
+
+    private void GoToAdminLogin()
+    {
+        Navigation.NavigateTo("/Identity/Account/Login", forceLoad: true);
     }
 
     [Inject] IJSRuntime JS { get; set; } = default!;

@@ -183,20 +183,16 @@
 
                     }
 
-                    @if (offerings != null && barbers != null)
+                    @if (offerings != null && barbers != null && _selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
                     {
-                        var selectedBarber = barbers.First(b => b.Id == selectedSlot.BarberId);
-                        var selectedOffering = offerings.First(o => o.Id == appointment.OfferingId);
+                        var selectedBarber = barbers.FirstOrDefault(b => b.Id == _selectedBarberId);
+                        var selectedOffering = offerings.FirstOrDefault(o => o.Id == _selectedOfferingId);
 
-                        int price = selectedBarber.PositionId switch
-                        {
-                            1 => selectedOffering.SeniorPrice,
-                            2 => selectedOffering.JuniorPrice,
-                            3 => selectedOffering.TraineePrice,
-                            _ => 0
-                        };
+                        int pricePreview = (selectedBarber == null || selectedOffering == null)
+                        ? 0
+                        : PricingService.CalculatePrice(selectedOffering, selectedBarber.PositionId);
 
-                        <p>Price: @price €</p>
+                        <p>Price: @(appointment.FinalPrice > 0 ? appointment.FinalPrice : pricePreview) €</p>
                     }
 
 
@@ -241,7 +237,7 @@
     }
 </EditForm>
 
-@code {
+    @code {
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;
@@ -347,6 +343,9 @@
         appointment.BarberId = timeslot.BarberId;
         appointment.AppointmentDateTime = timeslot.Start;
         appointment.DurationMinutes = timeslot.Duration;
+
+        var barber = barbers?.FirstOrDefault(b => b.Id == timeslot.BarberId);
+        appointment.BarberPositionId = barber?.PositionId ?? 0;
     }
 
     private void OnBarberChanged(ChangeEventArgs e)

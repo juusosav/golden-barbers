@@ -1,0 +1,21 @@
+﻿@using GoldenBarbers.Client.Services.Admin;
+@using Shared.DTOs.Admin.Dashboard;
+
+@inject DashboardService DashboardService
+
+<div>
+    <button class="btn btn-lg btn-outline-info m-2">Your Revenue For Today: <br /> @RevenueToday €</button>
+    <button class="btn btn-lg btn-outline-info m-2">Today's Appointments: <br /> @AppointmentsToday</button>
+    <button class="btn btn-lg btn-outline-info m-2">Appointments for the upcoming week: <br /> @UpcomingWeek</button>
+</div>
+
+@code {
+    [Parameter]
+    public int AppointmentsToday { get; set; }
+    [Parameter]
+    public int UpcomingWeek { get; set; }
+    [Parameter]
+    public decimal RevenueToday { get; set; }
+    [Parameter]
+    public int ActiveBarbers { get; set; }
+}

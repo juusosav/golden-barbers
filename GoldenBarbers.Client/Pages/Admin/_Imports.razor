@@ -1,3 +1,8 @@
 ﻿@using GoldenBarbers.Client.Layout;
+@using Microsoft.AspNetCore.Authorization;
+@using GoldenBarbers.Client.Services.Admin;
+@using Shared.DTOs.Admin.Dashboard;
+
+@attribute [Authorize(Policy = "AdminOnly")]
 
 @layout AdminLayout

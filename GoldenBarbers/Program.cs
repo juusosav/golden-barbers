@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using GoldenBarbers.Services;
+using GoldenBarbers.Services.Admin;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddScoped<AppointmentsService>();
 builder.Services.AddScoped<PricingService>();
+builder.Services.AddScoped<DashboardService>();
 
 builder.Services.AddCors(options =>
 {

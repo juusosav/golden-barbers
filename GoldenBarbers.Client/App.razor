@@ -1,16 +1,24 @@
 ﻿@using GoldenBarbers.Client.Layout;
+@using Microsoft.AspNetCore.Authorization;
 
 <CascadingAuthenticationState>
     <Router AppAssembly="@typeof(App).Assembly">
         <Found Context="routeData">
-            <AuthorizeRouteView RouteData="routeData">
-                <NotAuthorized>
-                    <p class="booking-text">You are not authorized to access this page.</p>
-                </NotAuthorized>
-                <Authorizing>
-                    <p class="custom-loader">Checking authorization...</p>
-                </Authorizing>
-            </AuthorizeRouteView>
+            @if (routeData.PageType.GetCustomAttributes(typeof(AuthorizeAttribute), true).Any())
+            {
+                <AuthorizeRouteView RouteData="routeData" DefaultLayout="@typeof(AdminLayout)">
+                    <NotAuthorized>
+                        <p class="booking-text">You are not authorized to access this page.</p>
+                    </NotAuthorized>
+                    <Authorizing>
+                        <p class="custom-loader">Checking authorization...</p>
+                    </Authorizing>
+                </AuthorizeRouteView>
+            }
+            else
+            {
+                <RouteView RouteData="routeData" DefaultLayout="@typeof(MainLayout)" />
+            }
         </Found>
         <NotFound>
             <LayoutView Layout="@typeof(MainLayout)">

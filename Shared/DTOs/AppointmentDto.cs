@@ -29,5 +29,7 @@ namespace Shared.DTOs
         @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
         ErrorMessage = "Invalid email format.")]
         public string CustomerEmail { get; set; } = "";
+
+        public decimal FinalPrice { get; set; }
     }
 }
