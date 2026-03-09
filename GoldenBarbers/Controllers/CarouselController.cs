@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs;
+using GoldenBarbers.Services.Public;
 
 namespace GoldenBarbers.Controllers
 {
@@ -11,24 +12,22 @@ namespace GoldenBarbers.Controllers
     [ApiController]
     public class CarouselController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly CarouselService _carouselService;
 
-        public CarouselController(ApplicationDbContext context)
+        public CarouselController(CarouselService carouselService)
         {
-            _context = context; 
+            _carouselService = carouselService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CarouselDto>>> GetCarouselItems()
         {
-            var allItems = await _context.CarouselItems
-                .Select(c => new CarouselDto()
-                {
-                    Id = c.Id,
-                    Image = c.Image,
-                    Name = c.Name
-                })
-                .ToListAsync();
+            var allItems = await _carouselService.GetCarouselItems();
+
+            if (allItems == null)
+            {
+                return NotFound(); 
+            }
 
             return Ok(allItems);
         }

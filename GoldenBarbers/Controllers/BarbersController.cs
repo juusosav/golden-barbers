@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs;
+using GoldenBarbers.Services.Public;
 
 namespace GoldenBarbers.Controllers
 {
@@ -11,46 +12,30 @@ namespace GoldenBarbers.Controllers
     [ApiController]
     public class BarbersController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly BarbersService _barbersService;
 
-        public BarbersController(ApplicationDbContext context)
+        public BarbersController(BarbersService barbersService)
         {
-            _context = context;
+            _barbersService = barbersService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<BarberDto>>> GetAllBarbers()
         {
-            var allBarbers = await _context.Barbers
-                .Select(b => new BarberDto
-                {
-                    Id = b.Id,
-                    Name = b.Name,
-                    PositionId = b.PositionId,
-                    PositionName = b.PositionName,
-                    Description = b.Description,
-                    Portrait = b.Portrait
-                })
-                .ToListAsync();
+            var barbers = await _barbersService.GetAllBarbers();
 
-            return Ok(allBarbers);
+            if (barbers == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(barbers);
         }
 
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Barber>> GetBarberById(Guid id)
+        public async Task<ActionResult<BarberDto>> GetBarberById(Guid id)
         {
-            var barber = await _context.Barbers
-                .Where(b => b.Id == id)
-                .Select(b => new BarberDto
-                {
-                    Id = b.Id,
-                    Name = b.Name,
-                    PositionId = b.PositionId,
-                    PositionName = b.PositionName,
-                    Description = b.Description,
-                    Portrait = b.Portrait
-                })
-                .FirstOrDefaultAsync();
+            var barber = await _barbersService.GetBarberById(id);
 
             if (barber == null)
             {

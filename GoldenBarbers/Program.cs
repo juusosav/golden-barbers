@@ -4,8 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using GoldenBarbers.Services;
 using GoldenBarbers.Services.Admin;
+using GoldenBarbers.Services.Public;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +15,10 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<AppointmentsService>();
 builder.Services.AddScoped<PricingService>();
 builder.Services.AddScoped<DashboardService>();
+builder.Services.AddScoped<GoldenBarbers.Services.Admin.BarbersService>();
+builder.Services.AddScoped<GoldenBarbers.Services.Public.BarbersService>();
+builder.Services.AddScoped<GoldenBarbers.Services.Admin.CarouselService>();
+builder.Services.AddScoped<GoldenBarbers.Services.Public.CarouselService>();
 
 builder.Services.AddCors(options =>
 {

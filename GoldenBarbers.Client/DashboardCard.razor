@@ -3,10 +3,10 @@
 
 @inject DashboardService DashboardService
 
-<div>
-    <button class="btn btn-lg btn-outline-info m-2">Your Revenue For Today: <br /> @RevenueToday €</button>
-    <button class="btn btn-lg btn-outline-info m-2">Today's Appointments: <br /> @AppointmentsToday</button>
-    <button class="btn btn-lg btn-outline-info m-2">Appointments for the upcoming week: <br /> @UpcomingWeek</button>
+<div class="dashboard-items">
+    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Your Revenue For Today: <br /> @RevenueToday €</button>
+    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Today's Appointments: <br /> @AppointmentsToday</button>
+    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Appointments for the upcoming week: <br /> @UpcomingWeek</button>
 </div>
 
 @code {
@@ -18,4 +18,6 @@
     public decimal RevenueToday { get; set; }
     [Parameter]
     public int ActiveBarbers { get; set; }
+
+
 }

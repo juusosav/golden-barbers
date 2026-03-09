@@ -1,6 +1,6 @@
 ﻿using GoldenBarbers.Models.Entities;
 
-namespace GoldenBarbers.Services
+namespace GoldenBarbers.Services.Public
 {
     public class PricingService
     {

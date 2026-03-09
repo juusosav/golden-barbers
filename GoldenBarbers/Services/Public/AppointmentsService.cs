@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs;
 
-namespace GoldenBarbers.Services
+namespace GoldenBarbers.Services.Public
 {
     public class AppointmentsService
     {

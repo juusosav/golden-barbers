@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs;
 using Microsoft.EntityFrameworkCore;
-using GoldenBarbers.Services;
+using GoldenBarbers.Services.Public;
 
 namespace GoldenBarbers.Controllers
 {
