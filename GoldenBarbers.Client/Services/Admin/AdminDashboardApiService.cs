@@ -3,18 +3,19 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Admin
 {
-    public class DashboardService
+    public class AdminDashboardApiService
     {
         private readonly HttpClient _http;
 
-        public DashboardService(HttpClient http)
+        public AdminDashboardApiService(HttpClient http)
         {
             _http = http; 
         }
 
         public async Task<DashboardDto?> GetDashboard()
         {
-            return await _http.GetFromJsonAsync<DashboardDto>($"api/admin/dashboard");
+            return await _http.GetFromJsonAsync<DashboardDto>($"api/admin/dashboard") ??
+                new DashboardDto();
         }
     }
 }

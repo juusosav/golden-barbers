@@ -25,13 +25,17 @@ builder.Services.AddScoped(sp =>
     new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Domain services
-builder.Services.AddScoped<BarberService>();
-builder.Services.AddScoped<OfferingService>();
-builder.Services.AddScoped<TimeslotService>();
-builder.Services.AddScoped<AppointmentsService>();
-builder.Services.AddScoped<DashboardService>();
+// Public
+builder.Services.AddScoped<BarberApiService>();
+builder.Services.AddScoped<OfferingApiService>();
+builder.Services.AddScoped<TimeslotApiService>();
+builder.Services.AddScoped<AppointmentsApiService>();
+
+// Admin
+builder.Services.AddScoped<AdminDashboardApiService>();
+builder.Services.AddScoped<AdminAppointmentsApiService>();
 
 // UI helpers
-builder.Services.AddScoped<CarouselService>();
+builder.Services.AddScoped<CarouselApiService>();
 
 await builder.Build().RunAsync();

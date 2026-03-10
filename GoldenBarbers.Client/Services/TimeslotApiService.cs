@@ -3,11 +3,11 @@ using Shared.DTOs;
 
 namespace GoldenBarbers.Client.Services
 {
-    public class TimeslotService
+    public class TimeslotApiService
     {
         private readonly HttpClient _http;
 
-        public TimeslotService(HttpClient http)
+        public TimeslotApiService(HttpClient http)
         {
             _http = http;
         }

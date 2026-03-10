@@ -3,11 +3,11 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services
 {
-    public class CarouselService
+    public class CarouselApiService
     {
         private readonly HttpClient _http;
 
-        public CarouselService(HttpClient http)
+        public CarouselApiService(HttpClient http)
         {
             _http = http;
         }

@@ -12,11 +12,11 @@ namespace GoldenBarbers.Controllers.Admin
     [Route("api/admin")]
     [ApiController]
     [Authorize(Roles = "Admin")]
-    public class AdminController : ControllerBase
+    public class AdminDashboardController : ControllerBase
     {
-        private readonly DashboardService _dashboardService;
+        private readonly AdminDashboardService _dashboardService;
 
-        public AdminController(DashboardService dashboardService)
+        public AdminDashboardController(AdminDashboardService dashboardService)
         {
             _dashboardService = dashboardService;
         }

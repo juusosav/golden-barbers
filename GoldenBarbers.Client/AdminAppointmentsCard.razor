@@ -1,0 +1,25 @@
+﻿@using GoldenBarbers.Client.Services.Admin;
+@using Shared.DTOs.Admin.Dashboard;
+
+@inject AdminAppointmentsApiService AppointmentsService
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Appointments</th>
+        </tr>
+    </thead>
+</table>
+
+@code {
+    [Parameter]
+    public DateTime AppointmentDateTime { get; set; }
+    [Parameter]
+    public int DurationMinutes { get; set; }
+    [Parameter]
+    public string? CustomerName { get; set; }
+    [Parameter]
+    public string? CustomerEmail { get; set; }
+
+}

@@ -1,7 +1,19 @@
-﻿@page "/admin/manage-appointments"
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs
+
+@page "/admin/manage-appointments"
+
+@inject AdminAppointmentsApiService AdminAppointmentsApiService
 
 <h1>Manage Appointments</h1>
 
-@code {
 
+@code {
+    private List<AppointmentDto?>? appointments;
+
+    protected override async Task OnInitializedAsync()
+    {
+        appointments = await AdminAppointmentsApiService.GetAllAppointments();
+    }
 }

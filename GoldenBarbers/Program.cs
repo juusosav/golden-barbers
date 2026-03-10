@@ -12,13 +12,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services
 builder.Services.AddControllers();
 
+// Public services
 builder.Services.AddScoped<AppointmentsService>();
 builder.Services.AddScoped<PricingService>();
-builder.Services.AddScoped<DashboardService>();
-builder.Services.AddScoped<GoldenBarbers.Services.Admin.BarbersService>();
-builder.Services.AddScoped<GoldenBarbers.Services.Public.BarbersService>();
-builder.Services.AddScoped<GoldenBarbers.Services.Admin.CarouselService>();
-builder.Services.AddScoped<GoldenBarbers.Services.Public.CarouselService>();
+builder.Services.AddScoped<BarbersService>();
+builder.Services.AddScoped<CarouselService>();
+
+// Admin services
+builder.Services.AddScoped<AdminDashboardService>();
+builder.Services.AddScoped<AdminBarbersService>();
 
 builder.Services.AddCors(options =>
 {

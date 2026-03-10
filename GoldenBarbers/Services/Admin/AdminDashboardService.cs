@@ -5,11 +5,11 @@ using Shared.DTOs.Admin.Dashboard;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class DashboardService
+    public class AdminDashboardService
     {
         private readonly ApplicationDbContext _context;
         
-        public DashboardService(ApplicationDbContext context)
+        public AdminDashboardService(ApplicationDbContext context)
         {
             _context = context; 
         }

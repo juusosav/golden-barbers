@@ -1,6 +1,6 @@
 ﻿namespace GoldenBarbers.Client.Services
 {
-    public class UserService
+    public class UserApiService
     {
     }
 }

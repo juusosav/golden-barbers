@@ -3,11 +3,11 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services
 {
-    public class AppointmentsService
+    public class AppointmentsApiService
     {
         private readonly HttpClient _http;
 
-        public AppointmentsService(HttpClient http)
+        public AppointmentsApiService(HttpClient http)
         {
             _http = http;
         }

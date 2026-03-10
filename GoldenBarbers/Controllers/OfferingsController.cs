@@ -5,6 +5,7 @@ using Shared.DTOs;
 using GoldenBarbers.Models.Entities;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
+using GoldenBarbers.Services.Admin;
 
 namespace Server.Controllers
 {
@@ -12,48 +13,35 @@ namespace Server.Controllers
     [ApiController]
     public class OfferingsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        private readonly AdminOfferingsService _offeringsService;
 
-        public OfferingsController(ApplicationDbContext context)
+        public OfferingsController(AdminOfferingsService offeringsService)
         {
-            _context = context;
+            _offeringsService = offeringsService;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OfferingDto>>> GetAllOfferings()
         {
-            var offerings = await _context.Offerings
-                .Select(o => new OfferingDto()
-                {
-                    Id = o.Id,
-                    Name = o.Name,
-                    Icon = o.Icon,
-                    Description = o.Description,
-                    SeniorPrice = o.SeniorPrice,
-                    JuniorPrice = o.JuniorPrice,
-                    TraineePrice = o.TraineePrice
-                })
-                .ToListAsync();
+            var offerings = await _offeringsService.GetAllOfferings();
+
+            if (offerings == null)
+            {
+                return NotFound(); 
+            }
 
             return Ok(offerings);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Offering>> GetOfferingById(Guid id)
+        public async Task<ActionResult<OfferingDto>> GetOfferingById(Guid id)
         {
-            var offering = await _context.Offerings
-                .Where(o => o.Id == id)
-                .Select(o => new OfferingDto
-                {
-                    Id = o.Id,
-                    Name = o.Name,
-                    Description = o.Description,
-                    Icon = o.Icon,
-                    TraineePrice = o.TraineePrice,
-                    JuniorPrice = o.JuniorPrice,
-                    SeniorPrice = o.SeniorPrice
-                })
-                .FirstOrDefaultAsync();
+            var offering = await _offeringsService.GetOfferingById(id);
+
+            if (offering == null)
+            {
+                return NotFound(); 
+            }
 
             return Ok(offering);
         }
