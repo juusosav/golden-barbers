@@ -5,17 +5,17 @@ using Shared.DTOs;
 using GoldenBarbers.Models.Entities;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
-using GoldenBarbers.Services.Admin;
+using GoldenBarbers.Services.Public;
 
-namespace Server.Controllers
+namespace GoldenBarbers.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class OfferingsController : ControllerBase
     {
-        private readonly AdminOfferingsService _offeringsService;
+        private readonly OfferingsService _offeringsService;
 
-        public OfferingsController(AdminOfferingsService offeringsService)
+        public OfferingsController(OfferingsService offeringsService)
         {
             _offeringsService = offeringsService;
         }

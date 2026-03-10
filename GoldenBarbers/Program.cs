@@ -17,6 +17,7 @@ builder.Services.AddScoped<AppointmentsService>();
 builder.Services.AddScoped<PricingService>();
 builder.Services.AddScoped<BarbersService>();
 builder.Services.AddScoped<CarouselService>();
+builder.Services.AddScoped<OfferingsService>();
 
 // Admin services
 builder.Services.AddScoped<AdminDashboardService>();
