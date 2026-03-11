@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace GoldenBarbers.Controllers.Admin
 {
-    [Route("api/[controller]")]
+    [Route("api/admin/appointments")]
     [ApiController]
     [Authorize(Roles = "Admin")]
     public class AdminAppointmentsController : ControllerBase
@@ -35,6 +35,17 @@ namespace GoldenBarbers.Controllers.Admin
             }
 
             return Ok(appointments);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteAppointmentAsync(Guid id)
+        {
+            var deleted = await _adminAppointmentsService.DeleteAppointmentAsync(id);
+
+            if (!deleted)
+                return NotFound(); 
+
+            return NoContent();
         }
     }
 }

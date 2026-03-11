@@ -1,25 +1,41 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs.Admin.Dashboard;
+@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs
+@using GoldenBarbers.Client.Helpers
 
-@inject AdminAppointmentsApiService AppointmentsService
 
-
-<table>
-    <thead>
-        <tr>
-            <th>Appointments</th>
-        </tr>
-    </thead>
-</table>
+<tr>
+    <td>@AppointmentDateTime.ToString("dddd, MMM dd yyyy HH:mm")</td>
+    <td>@DurationMinutes</td>
+    <td>@CustomerName</td>
+    <td>@CustomerEmail</td>
+    <td>@BarberName</td>
+    <td>@OfferingName</td>
+    <td>@FinalPrice €</td>
+</tr>
 
 @code {
     [Parameter]
     public DateTime AppointmentDateTime { get; set; }
+
     [Parameter]
-    public int DurationMinutes { get; set; }
+    public int DurationMinutes { get; set; } = 0;
+
     [Parameter]
-    public string? CustomerName { get; set; }
+    public string CustomerName { get; set; } = "";
+
     [Parameter]
-    public string? CustomerEmail { get; set; }
+    public string CustomerEmail { get; set; } = "";
+
+    [Parameter]
+    public string BarberName { get; set; } = "";
+
+    [Parameter]
+    public string OfferingName { get; set; } = "";
+
+    [Parameter]
+    public decimal FinalPrice { get; set; }
 
 }

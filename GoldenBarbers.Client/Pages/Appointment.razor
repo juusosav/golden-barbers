@@ -366,6 +366,12 @@
 
         appointment.DurationMinutes = selectedSlot.Duration;
 
+        var barber = barbers?.FirstOrDefault(b => b.Id == appointment.BarberId);
+        var offering = offerings?.FirstOrDefault(o => o.Id == appointment.OfferingId);
+
+        appointment.BarberName = barber?.Name ?? "";
+        appointment.OfferingName = offering?.Name ?? "";
+
         var savedAppointment = await AppointmentsService.CreateAppointmentAsync(appointment);
 
         Navigation.NavigateTo($"/booking-confirmed/{savedAppointment?.Id}");

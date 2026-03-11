@@ -1,12 +1,12 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs.Admin.Dashboard;
 
-@inject AdminDashboardApiService DashboardService
+@inject NavigationManager Navigation;
 
 <div class="dashboard-items">
-    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Your Revenue For Today: <br /> @RevenueToday €</button>
-    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Today's Appointments: <br /> @AppointmentsToday</button>
-    <button class="custom-dashboard-button btn btn-lg btn-outline-info m-2">Appointments for the upcoming week: <br /> @UpcomingWeek</button>
+    <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Your Revenue for today: <br /> @RevenueToday €</button>
+    <button onclick="@GoToAdminAppointments" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Today's Appointments: <br /> @AppointmentsToday</button>
+    <button onclick="@GoToAdminAppointments" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointments for upcoming week: <br /> @UpcomingWeek</button>
 </div>
 
 @code {
@@ -19,5 +19,8 @@
     [Parameter]
     public int ActiveBarbers { get; set; }
 
-
+    private void GoToAdminAppointments()
+    {
+        Navigation.NavigateTo("admin/manage-appointments");
+    }
 }

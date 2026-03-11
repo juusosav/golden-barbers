@@ -519,12 +519,12 @@ h1:focus {
 }
 
 .dashboard-items {
-    min-width: 100px;
+    min-width: 80px;
     align-self: center;
 }
 
 .custom-dashboard-button {
-    font-size: 28px;
-    width: 250px;
-    height: 200px;
+    font-size: 22px;
+    width: 200px;
+    height: 150px;
 }

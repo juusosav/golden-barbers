@@ -1,4 +1,5 @@
 ﻿using GoldenBarbers.Data;
+using GoldenBarbers.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs;
 
@@ -10,7 +11,7 @@ namespace GoldenBarbers.Services.Admin
 
         public AdminAppointmentsService(ApplicationDbContext context)
         {
-            _context = context; 
+            _context = context;
         }
 
         public async Task<IEnumerable<AppointmentDto?>> GetAllAppointments()
@@ -30,6 +31,21 @@ namespace GoldenBarbers.Services.Admin
                 .ToListAsync();
 
             return appointments;
+        }
+
+        public async Task<bool> DeleteAppointmentAsync(Guid id)
+        {
+            var appointmentToDelete = await _context.Appointments
+                .FindAsync(id);
+
+            if (appointmentToDelete == null)
+                return false;
+
+            _context.Appointments.Remove(appointmentToDelete);
+
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }
