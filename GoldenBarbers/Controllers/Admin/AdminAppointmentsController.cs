@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using GoldenBarbers.Data;
+﻿using GoldenBarbers.Data;
+using GoldenBarbers.Models.Entities;
+using GoldenBarbers.Services.Admin;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using GoldenBarbers.Models.Entities;
-using Shared.DTOs;
 using Microsoft.EntityFrameworkCore;
-using GoldenBarbers.Services.Admin;
+using Shared.DTOs;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace GoldenBarbers.Controllers.Admin
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "Admin")]
     public class AdminAppointmentsController : ControllerBase
     {
         private readonly AdminAppointmentsService _adminAppointmentsService;

@@ -37,7 +37,8 @@ namespace GoldenBarbers.Services.Public
                 {
                     BarberId = a.BarberId,
                     AppointmentDateTime = a.AppointmentDateTime,
-                    DurationMinutes = a.DurationMinutes
+                    DurationMinutes = a.DurationMinutes,
+                    OfferingName = a.OfferingName
                 })
                 .ToListAsync();
 
@@ -93,7 +94,9 @@ namespace GoldenBarbers.Services.Public
                 {
                     Id = a.Id,
                     BarberId = a.BarberId,
+                    BarberName = a.BarberName,
                     OfferingId = a.OfferingId,
+                    OfferingName = a.OfferingName,
                     BarberPositionId = a.BarberPositionId,
                     AppointmentDateTime = a.AppointmentDateTime,
                     DurationMinutes = a.DurationMinutes,
@@ -114,8 +117,10 @@ namespace GoldenBarbers.Services.Public
             {
                 Id = Guid.NewGuid(),
                 BarberId = dto.BarberId,
+                BarberName = dto.BarberName,
                 BarberPositionId = dto.BarberPositionId,
                 OfferingId = dto.OfferingId,
+                OfferingName = dto.OfferingName,
                 AppointmentDateTime = dto.AppointmentDateTime,
                 DurationMinutes = dto.DurationMinutes,
                 CustomerName = dto.CustomerName,

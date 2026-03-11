@@ -23,6 +23,8 @@ namespace GoldenBarbers.Services.Admin
                     DurationMinutes = o.DurationMinutes,
                     CustomerName = o.CustomerName,
                     CustomerEmail = o.CustomerEmail,
+                    BarberName = o.BarberName,
+                    OfferingName = o.OfferingName,
                     FinalPrice = o.FinalPrice
                 })
                 .ToListAsync();

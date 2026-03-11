@@ -13,6 +13,8 @@
 
         public string BarberName { get; set; } = "";
 
+        public string OfferingName { get; set; } = "";
+
         public bool IsAvailable { get; set; }
 
 

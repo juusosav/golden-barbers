@@ -10,7 +10,11 @@
 
         public Guid BarberId { get; set; }
 
+        public string BarberName { get; set; } = "";
+
         public Guid OfferingId { get; set; }
+
+        public string OfferingName { get; set; } = "";
 
         public int BarberPositionId { get; set; }
 
