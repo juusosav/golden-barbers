@@ -1,3 +1,5 @@
+/* General Site */
+
 html, body {
     font-family: Georgia, Garamond, 'Times New Roman', serif;
     background-color: #272323;
@@ -74,6 +76,8 @@ h1:focus {
     font-size: 1.2rem;
     color: #aaa;
 }
+
+/* Navigation bar */
 
 .main-logo {
     height: 145px;
@@ -163,6 +167,9 @@ h1:focus {
         color: black;
         transition: all 0.2s ease;
     }
+
+
+/* Pages */
 
 .carousel-container {
     display: flex;
@@ -272,32 +279,9 @@ h1:focus {
 }
 
     .homepage-container-item-box:hover {
-        background-color: rgba(128, 128, 47, 0.1);
+        background-color: rgba(95, 95, 95, 0.3);
         transition: all 0.3s ease-in-out;
     }
-
-.footer-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: #191919;
-    margin-top: 20px;
-}
-
-.footer-container-item {
-    color: whitesmoke;
-    padding: 50px;
-    margin: 10px;
-    border-radius: 2px;
-}
-
-.footer-container-item p {
-    padding-bottom: 20px;
-    padding-top: 8px;
-}
 
 .barber-container {
     display: flex;
@@ -417,7 +401,7 @@ h1:focus {
 
 .booking-summary {
     margin-top: 20px;
-    padding: 10px;
+    padding: 50px;
     background-color: rgba(0,0,0,0.1);
     border-radius: 5px;
     color: white;
@@ -486,8 +470,33 @@ h1:focus {
         object-fit: contain;
     }
 
+/* Footer */
 
-    /* Admin */
+.footer-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: #191919;
+    margin-top: 20px;
+}
+
+.footer-container-item {
+    color: whitesmoke;
+    padding: 50px;
+    margin: 10px;
+    border-radius: 2px;
+}
+
+    .footer-container-item p {
+        padding-bottom: 20px;
+        padding-top: 8px;
+    }
+
+
+/* Admin */
 
 .admin-page {
     display: flex;
