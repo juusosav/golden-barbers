@@ -14,9 +14,14 @@
     <td>@BarberName</td>
     <td>@OfferingName</td>
     <td>@FinalPrice €</td>
+    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">Delete</button>
 </tr>
 
+
 @code {
+    [Parameter]
+    public Guid Id { get; set; }
+
     [Parameter]
     public DateTime AppointmentDateTime { get; set; }
 
@@ -38,4 +43,7 @@
     [Parameter]
     public decimal FinalPrice { get; set; }
 
+
+    [Parameter]
+    public EventCallback<Guid> OnDelete { get; set; }
 }

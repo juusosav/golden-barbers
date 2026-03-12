@@ -7,6 +7,7 @@
 @inject AdminAppointmentsApiService AdminAppointmentsApiService
 
 <h1>Manage Appointments</h1>
+<br />
 
 <table style="max-width: 50vw;" class="table table-striped">
     <thead>
@@ -25,29 +26,46 @@
         {
             @foreach (var a in appointments)
             {
-                <AdminAppointmentsCard AppointmentDateTime="@a.AppointmentDateTime"
+                <AdminAppointmentsCard Id="@a.Id"
+                                       AppointmentDateTime="@a.AppointmentDateTime"
                                        DurationMinutes="@a.DurationMinutes"
                                        CustomerName="@a.CustomerName"
                                        CustomerEmail="@a.CustomerEmail"
                                        BarberName="@a.BarberName"
                                        OfferingName="@a.OfferingName"
-                                       FinalPrice="@a.FinalPrice" />
+                                       FinalPrice="@a.FinalPrice"
+                                       OnDelete="DeleteAppointment" />
             }
         }
     </tbody>
 </table>
-
-
-
+<div>
+    <ConfirmDialog @ref="ConfirmDialog" />
+</div>
 
 
 @code {
     private List<AppointmentDto>? appointments;
+
+    private ConfirmDialog? ConfirmDialog;
 
     protected override async Task OnInitializedAsync()
     {
         appointments = await AdminAppointmentsApiService.GetAllAppointments();
     }
 
-    // Implement DeleteAppointment here!
+    private async Task DeleteAppointment(Guid id)
+    {
+        if (await ConfirmDialog!.Show("Delete selected appointment?", "Confirm deletion?"))
+        {
+            var success = await AdminAppointmentsApiService.DeleteAppointmentAsync(id);
+
+            if (success)
+            {
+                appointments = appointments?.Where(a => a.Id != id).ToList();
+            }
+        }
+
+
+    }
 }
