@@ -14,7 +14,7 @@ namespace GoldenBarbers.Services.Admin
             _context = context;
         }
 
-        public async Task<IEnumerable<AppointmentDto?>> GetAllAppointments()
+        public async Task<IEnumerable<AppointmentDto>> GetAllAppointments()
         {
             var appointments = await _context.Appointments
                 .Select(o => new AppointmentDto

@@ -40,7 +40,12 @@ namespace GoldenBarbers.Data
                             "His attention to detail and calm approach make every appointment feel relaxed and professional. " +
                             "Whether you’re after a sharp modern style or a timeless look, " +
                             "John ensures you leave feeling confident.",
-                        Portrait = "/images/John_headshot.jpg"
+                        Portrait = "/images/John_headshot.jpg",
+                        Salary = 2670.9m,
+                        PersonalPhone = "079 4318 8088",
+                        PersonalEmail = "john.s3@gmail.com",
+                        PersonalAddress = "51 Church Lane, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2024, 4, 12), DateTimeKind.Utc)
                     },
                     new Barber
                     {
@@ -53,7 +58,12 @@ namespace GoldenBarbers.Data
                             "face shape and personality. She specializes in modern cuts, textured styles, " +
                             "and detailed finishing work. Her warm and welcoming approach ensures every visit " +
                             "feels comfortable and personalized.",
-                        Portrait = "/images/Rebecca_headshot.jpg"
+                        Portrait = "/images/Rebecca_headshot.jpg",
+                        Salary = 2530.7m,
+                        PersonalPhone = "078 1834 6640",
+                        PersonalEmail = "rebeccaa12@gmail.com",
+                        PersonalAddress = "66 Station Road, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2024, 4, 12), DateTimeKind.Utc)
                     },
                     new Barber
                     {
@@ -65,7 +75,12 @@ namespace GoldenBarbers.Data
                         "With a passion for traditional barbering techniques and modern trends, " +
                         "he blends the best of both worlds. Clients appreciate his friendly personality and dedication " +
                         "to getting every detail right.",
-                        Portrait = "/images/Charles_headshot.jpg"
+                        Portrait = "/images/Charles_headshot.jpg",
+                        Salary = 2450.4m,
+                        PersonalPhone = "070 4871 9510",
+                        PersonalEmail = "charliejack@gmail.com",
+                        PersonalAddress = "24 Lionsdale Ave, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2025, 1, 20), DateTimeKind.Utc)
                     },
                     new Barber
                     {
@@ -77,7 +92,12 @@ namespace GoldenBarbers.Data
                         "From sharp skin fades to perfectly shaped beards, she approaches every cut with focus and care. " +
                         "Clients value her professionalism and ability to bring their vision to life. " +
                         "She believes great grooming is all about precision and consistency.",
-                        Portrait = "/images/Sarah_headshot.jpg"
+                        Portrait = "/images/Sarah_headshot.jpg",
+                        Salary = 2350.8m,
+                        PersonalPhone = "078 7592 3593",
+                        PersonalEmail = "sarahlee@hotmail.com",
+                        PersonalAddress = "52 Cassland Road, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2025, 8, 12), DateTimeKind.Utc)
                     },
                     new Barber
                     {
@@ -89,7 +109,12 @@ namespace GoldenBarbers.Data
                         "She enjoys working with both classic styles and bold, modern looks, always tailoring each cut " +
                         "to the individual. Her friendly attitude and attention to " +
                         "detail make her a favorite among clients.",
-                        Portrait = "/images/Hannah_headshot.jpg"
+                        Portrait = "/images/Hannah_headshot.jpg",
+                        Salary = 2290.5m,
+                        PersonalPhone = "070 6859 4772",
+                        PersonalEmail = "hannah.law@gmail.com",
+                        PersonalAddress = "21 Manor Road, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2025, 11, 2),DateTimeKind.Utc)
                     },
                     new Barber
                     {
@@ -101,7 +126,12 @@ namespace GoldenBarbers.Data
                         "master the craft. He is currently refining his skills under the guidance of our senior team, " +
                         "focusing on clean cuts and precise styling. Steve is detail-oriented, patient, and " +
                         "committed to continuous improvement.",
-                        Portrait = "/images/Steve_headshot.jpg"
+                        Portrait = "/images/Steve_headshot.jpg",
+                        Salary = 2020.3m,
+                        PersonalPhone = "077 5627 5582",
+                        PersonalEmail = "stevie_robs@gmail.com",
+                        PersonalAddress = "52 Victoria Road, London",
+                        StartDate = DateTime.SpecifyKind(new DateTime(2026, 1, 20), DateTimeKind.Utc)
                     });
             });
 

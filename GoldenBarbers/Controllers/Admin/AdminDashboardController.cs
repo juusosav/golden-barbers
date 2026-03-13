@@ -1,8 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using GoldenBarbers.Data;
-using Shared.DTOs;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Admin.Dashboard;
 using GoldenBarbers.Services.Admin;
 
