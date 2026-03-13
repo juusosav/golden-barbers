@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Data;
-using GoldenBarbers.Models.Entities;
 using Shared.DTOs;
 
 namespace GoldenBarbers.Services.Public

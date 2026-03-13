@@ -42,7 +42,6 @@ namespace GoldenBarbers.Services.Admin
                 return false;
 
             _context.Appointments.Remove(appointmentToDelete);
-
             await _context.SaveChangesAsync();
 
             return true;
