@@ -1,0 +1,52 @@
+﻿@using GoldenBarbers.Client.Services.Admin;
+@using Shared.DTOs;
+
+@inject AdminBarbersApiService BarbersApiService
+
+<tr>
+    <td><img style="max-height: 60px;"src=@Portrait /></td>
+    <td>@Name</td>
+    <td>@PositionName</td>
+    <td>@Salary €</td>
+    <td>@StartDate.ToString("MMM dd, yyyy")</td>
+    <td>@PersonalPhone</td>
+    <td>@PersonalEmail</td>
+    <td>@PersonalAddress</td>
+    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">Delete</button>
+    <button class="btn btn-sm btn-outline-warning" @onclick="() => OnEdit.InvokeAsync(Id)">Edit</button>
+</tr>
+
+@code {
+    [Parameter]
+    public Guid Id { get; set; }
+
+    [Parameter]
+    public string Name { get; set; } = "";
+
+    [Parameter]
+    public string PositionName { get; set; } = "";
+
+    [Parameter]
+    public string Portrait { get; set; } = "";
+
+    [Parameter]
+    public decimal Salary { get; set; }
+
+    [Parameter]
+    public DateTime StartDate { get; set; }
+
+    [Parameter]
+    public string PersonalEmail { get; set; } = "";
+
+    [Parameter]
+    public string PersonalPhone { get; set; } = "";
+
+    [Parameter]
+    public string PersonalAddress { get; set; } = "";
+
+    [Parameter]
+    public EventCallback<Guid> OnDelete { get; set; }
+
+    [Parameter]
+    public EventCallback<Guid> OnEdit { get; set; }
+}

@@ -1,7 +1,75 @@
-﻿@page "/admin/manage-barbers"
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs.Admin.Barbers
+
+@inject AdminBarbersApiService BarbersApiService
+@inject NavigationManager Navigation
+
+@page "/admin/manage-barbers"
 
 <h1>Manage Barbers</h1>
+<br />
+
+<table style="max-width: 75vw;" class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>Salary</th>
+            <th>Starting date</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (barbers != null)
+        {
+            @foreach (var b in barbers)
+            {
+                <AdminBarberCard Id="@b.Id"
+                                 Portrait="@b.Portrait"
+                                 Name="@b.Name"
+                                 PositionName="@b.PositionName"
+                                 Salary="@b.Salary"
+                                 StartDate="@b.StartDate"
+                                 PersonalPhone="@b.PersonalPhone"
+                                 PersonalEmail="@b.PersonalEmail"
+                                 PersonalAddress="@b.PersonalAddress"
+                                 OnDelete="DeleteBarber"
+                                 OnEdit="EditBarber" />
+            }
+        
+        }
+    </tbody>
+</table>
+<div>
+    <ConfirmDialog @ref="ConfirmDialog" />
+</div>
 
 @code {
+    private List<AdminBarberDto>? barbers;
 
+    private ConfirmDialog? ConfirmDialog;
+
+    protected override async Task OnInitializedAsync()
+    {
+        barbers = await BarbersApiService.GetAllBarbers();
+    }
+
+    private async Task DeleteBarber(Guid id)
+    {
+        if (await ConfirmDialog!.Show("Delete selected barber?", "Confirm deletion?"))
+        {
+            var success = await BarbersApiService.DeleteBarberAsync(id);
+
+            if (success)
+            {
+                barbers = barbers?.Where(b => b.Id != id).ToList();
+            }
+        }
+    }
+
+    private void EditBarber(Guid id) => Navigation.NavigateTo($"/admin/manage-barbers/edit-barber/{id}");
 }

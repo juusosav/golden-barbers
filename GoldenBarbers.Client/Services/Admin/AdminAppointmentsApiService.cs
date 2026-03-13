@@ -12,9 +12,9 @@ namespace GoldenBarbers.Client.Services.Admin
             _http = http; 
         }
 
-        public async Task<List<AppointmentDto>?> GetAllAppointments()
+        public async Task<List<AppointmentDto>> GetAllAppointments()
         {
-            return await _http.GetFromJsonAsync<List<AppointmentDto>?>("api/admin/appointments") ??
+            return await _http.GetFromJsonAsync<List<AppointmentDto>>("api/admin/appointments") ??
                 new List<AppointmentDto>();
         }
 

@@ -557,3 +557,14 @@ h1:focus {
     border-radius: 8px;
     min-width: 300px;
 }
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.admin-form-item {
+    margin-top: 10px;
+}
