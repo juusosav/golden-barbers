@@ -1,12 +1,39 @@
 ﻿@using GoldenBarbers.Client.Services;
 @using System.Threading.Tasks
 @using Shared.DTOs
+@using Shared.DTOs.Admin.Appointments;
 
 @page "/admin/manage-appointments"
 
 @inject AdminAppointmentsApiService AdminAppointmentsApiService
 
 <h1>Manage Appointments</h1>
+<br />
+
+<div class="mb-3 d-flex gap-2">
+    <InputText style="max-width: 600px;" class="form-control"
+               placeholder="Search..."
+               @bind-Value="filter.SearchTerm" />
+
+    <button class="btn btn-primary" @onclick="ApplyFilters">
+        Search
+    </button>
+
+    <button class="btn btn-secondary"
+            @onclick="ResetFilters">
+        Reset
+    </button>
+
+</div>
+
+<InputSelect style="max-width: 200px;" class="form-select"
+             @bind-Value="filter.SearchBy">
+
+    <option value="customer">Customer</option>
+    <option value="barber">Barber</option>
+    <option value="service">Service</option>
+
+</InputSelect>
 <br />
 
 <table style="max-width: 65vw;" class="table table-striped">
@@ -39,6 +66,25 @@
         }
     </tbody>
 </table>
+
+<div class="mt-3">
+    <button class="btn btn-outline-primary"
+            @onclick="PreviousPage"
+            disabled="@(filter.Page == 1)">
+        Previous
+    </button>
+
+    <span class="mx-2">
+        Page @filter.Page
+    </span>
+
+    <button class="btn btn-outline-primary"
+            @onclick="NextPage"
+            disabled="@(filter.PageItems < 21)">
+        Next
+    </button>
+</div>
+
 <div>
     <ConfirmDialog @ref="ConfirmDialog" />
 </div>
@@ -47,11 +93,21 @@
 @code {
     private List<AppointmentDto>? appointments;
 
+    private FilterDto filter = new()
+    {
+        Page = 1,
+        PageSize = 20,
+        PageItems = 0,
+        SortBy = "date",
+        SortByDescending = false
+    };
+
     private ConfirmDialog? ConfirmDialog;
 
     protected override async Task OnInitializedAsync()
     {
-        appointments = await AdminAppointmentsApiService.GetAllAppointments();
+
+        await LoadAppointments();
     }
 
     private async Task DeleteAppointment(Guid id)
@@ -62,10 +118,51 @@
 
             if (success)
             {
-                appointments = appointments?.Where(a => a?.Id != id).ToList();
+                await LoadAppointments();
             }
         }
+    }
 
+    private async Task LoadAppointments()
+    {
+        appointments = await AdminAppointmentsApiService.GetAppointments(filter);
 
+        if (appointments != null)
+        {
+            filter.PageItems = appointments.Count();
+        }
+    }
+
+    private async Task ApplyFilters()
+    {
+        filter.Page = 1;
+        await LoadAppointments();
+    }
+
+    private async Task ResetFilters()
+    {
+        filter = new FilterDto
+        {
+            Page = 1,
+            PageSize = 20,
+            SortBy = "date"
+        };
+
+        await LoadAppointments();
+    }
+
+    private async Task NextPage()
+    {
+        filter.Page++;
+        await LoadAppointments();
+    }
+
+    private async Task PreviousPage()
+    {
+        if (filter.Page > 1)
+        {
+            filter.Page--;
+            await LoadAppointments();
+        }
     }
 }

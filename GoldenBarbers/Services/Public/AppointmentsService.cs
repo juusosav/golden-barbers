@@ -1,6 +1,5 @@
 ﻿using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs;
 
@@ -110,7 +109,6 @@ namespace GoldenBarbers.Services.Public
         public async Task<Appointment> CreateAppointmentAsync(AppointmentDto dto)
         {
             var offering = await _context.Offerings.FirstAsync(o => o.Id == dto.OfferingId);
-
             var price = _pricing.CalculatePrice(offering, dto.BarberPositionId);
 
             var appointment = new Appointment

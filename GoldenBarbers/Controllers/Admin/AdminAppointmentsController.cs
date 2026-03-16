@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs;
+using Shared.DTOs.Admin.Appointments;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -24,10 +25,12 @@ namespace GoldenBarbers.Controllers.Admin
             _adminAppointmentsService = adminAppointmentsService;
         }
 
+
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<AppointmentDto?>>> GetAllAppointments()
+        public async Task<ActionResult<List<AppointmentDto>>> GetAppointments(
+            [FromQuery] FilterDto filter)
         {
-            var appointments = await _adminAppointmentsService.GetAllAppointments();
+            var appointments = await _adminAppointmentsService.GetFilteredAppointments(filter);
 
             if (appointments == null)
             {
