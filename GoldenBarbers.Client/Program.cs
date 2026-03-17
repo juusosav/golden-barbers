@@ -20,7 +20,6 @@ builder.Services.AddScoped<AuthenticationStateProvider, CustomAuthStateProvider>
 builder.RootComponents.Add<App>("#app");
 builder.RootComponents.Add<HeadOutlet>("head::after");
 
-// Http
 builder.Services.AddScoped(sp =>
     new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
@@ -36,6 +35,7 @@ builder.Services.AddScoped<AppointmentsApiService>();
 builder.Services.AddScoped<AdminDashboardApiService>();
 builder.Services.AddScoped<AdminAppointmentsApiService>();
 builder.Services.AddScoped<AdminBarbersApiService>();
+builder.Services.AddScoped<AdminOfferingsApiService>();
 
 // UI helpers
 builder.Services.AddScoped<CarouselApiService>();

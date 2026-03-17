@@ -1,7 +1,44 @@
-﻿@page "/admin/manage-offerings"
+﻿@using GoldenBarbers.Client.Services;
+@using System.Threading.Tasks
+@using Shared.DTOs.Admin.Offerings
+
+@inject AdminOfferingsApiService OfferingsApiService
+
+@page "/admin/manage-offerings"
 
 <h1>Manage Offerings</h1>
 
+<table style="max-width: 75vw;" class="table table-striped">
+    <thead>
+        <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Senior Price</th>
+            <th>Junior Price</th>
+            <th>Trainee Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (offerings != null)
+        {
+            @foreach (var o in offerings)
+            {
+                <AdminOfferingsCard Id="@o.Id"
+                                    Name="@o.Name"
+                                    Description="@o.Description"
+                                    SeniorPrice="@o.SeniorPrice"
+                                    JuniorPrice="@o.JuniorPrice"
+                                    TraineePrice="@o.TraineePrice" />
+            }
+        }
+    </tbody>
+</table>
 @code {
+    private List<AdminOfferingDto>? offerings;
 
+    protected override async Task OnInitializedAsync()
+    {
+        offerings = await OfferingsApiService.GetOfferings();
+    }
 }

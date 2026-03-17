@@ -2,7 +2,7 @@
 using GoldenBarbers.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Shared.DTOs;
+using Shared.DTOs.Admin.Offerings;
 
 namespace GoldenBarbers.Services.Admin
 {
@@ -15,10 +15,10 @@ namespace GoldenBarbers.Services.Admin
             _context = context;
         }
 
-        public async Task<IEnumerable<OfferingDto>> GetAllOfferings()
+        public async Task<List<AdminOfferingDto>> GetOfferings()
         {
             var offerings = await _context.Offerings
-                .Select(o => new OfferingDto()
+                .Select(o => new AdminOfferingDto()
                 {
                     Id = o.Id,
                     Name = o.Name,
@@ -33,23 +33,5 @@ namespace GoldenBarbers.Services.Admin
             return offerings;
         }
 
-        public async Task<OfferingDto?> GetOfferingById(Guid id)
-        {
-            var offering = await _context.Offerings
-                .Where(o => o.Id == id)
-                .Select(o => new OfferingDto
-                {
-                    Id = o.Id,
-                    Name = o.Name,
-                    Description = o.Description,
-                    Icon = o.Icon,
-                    TraineePrice = o.TraineePrice,
-                    JuniorPrice = o.JuniorPrice,
-                    SeniorPrice = o.SeniorPrice
-                })
-                .FirstOrDefaultAsync();
-
-            return offering;
-        }
     }
 }
