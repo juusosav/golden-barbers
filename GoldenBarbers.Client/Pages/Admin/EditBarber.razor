@@ -80,8 +80,6 @@ else
     {
         barber = await BarbersApiService.GetBarberById(Id);
 
-        Console.WriteLine($"Route Id: {Id}");
-
         if (barber == null)
         {
             await Task.Delay(1000);

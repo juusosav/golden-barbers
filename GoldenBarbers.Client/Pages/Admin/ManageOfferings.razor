@@ -3,6 +3,7 @@
 @using Shared.DTOs.Admin.Offerings
 
 @inject AdminOfferingsApiService OfferingsApiService
+@inject NavigationManager Navigation
 
 @page "/admin/manage-offerings"
 
@@ -25,19 +26,48 @@
             @foreach (var o in offerings)
             {
                 <AdminOfferingsCard Id="@o.Id"
+                                    Icon="@o.Icon"
                                     Name="@o.Name"
                                     Description="@o.Description"
                                     SeniorPrice="@o.SeniorPrice"
                                     JuniorPrice="@o.JuniorPrice"
-                                    TraineePrice="@o.TraineePrice" />
+                                    TraineePrice="@o.TraineePrice"
+                                    OnDelete="DeleteOfferings"
+                                    OnEdit="EditOffering"/>
             }
         }
     </tbody>
 </table>
+<div>
+    <ConfirmDialog @ref="ConfirmDialog" />
+</div>
+
 @code {
     private List<AdminOfferingDto>? offerings;
 
+    private ConfirmDialog? ConfirmDialog;
+
     protected override async Task OnInitializedAsync()
+    {
+        await LoadOfferings();
+    }
+
+    private async Task DeleteOfferings(Guid id)
+    {
+        if (await ConfirmDialog!.Show("Delete selected offering?", "Confirm deletion?"))
+        {
+            var success = await OfferingsApiService.DeleteOffering(id);
+
+            if (success)
+            {
+                await LoadOfferings();
+            }
+        }
+    }
+
+    private void EditOffering(Guid id) => Navigation.NavigateTo($"/admin/manage-offerings/edit-offering/{id}");
+
+    private async Task LoadOfferings()
     {
         offerings = await OfferingsApiService.GetOfferings();
     }
