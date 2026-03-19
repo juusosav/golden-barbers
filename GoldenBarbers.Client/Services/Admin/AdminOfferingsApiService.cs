@@ -1,4 +1,5 @@
-﻿using Shared.DTOs.Admin.Offerings;
+﻿using Microsoft.AspNetCore.Components.Forms;
+using Shared.DTOs.Admin.Offerings;
 using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Admin
@@ -29,10 +30,54 @@ namespace GoldenBarbers.Client.Services.Admin
             return response.IsSuccessStatusCode;
         }
 
-        public async Task<bool> EditOffering(Guid id, AdminOfferingDto dto)
+        public async Task<bool> EditOffering(Guid id, AdminOfferingDto dto, IBrowserFile? file)
         {
-            var response = await _http.PutAsJsonAsync($"api/admin/offerings/{id}", dto);
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.SeniorPrice.ToString()), "SeniorPrice");
+            content.Add(new StringContent(dto.JuniorPrice.ToString()), "JuniorPrice");
+            content.Add(new StringContent(dto.TraineePrice.ToString()), "TraineePrice");
+
+            if (file != null)
+            {
+                var stream = file.OpenReadStream(5 * 1024 * 1024);
+                var fileContent = new StreamContent(stream);
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+                content.Add(fileContent, "file", file.Name);
+            }
+
+            var response = await _http.PutAsync($"api/admin/offerings/{id}", content);
             return response.IsSuccessStatusCode;
+        }
+
+        public async Task<AdminOfferingDto?> CreateOffering(AdminOfferingDto dto, IBrowserFile? file)
+        {
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.SeniorPrice.ToString()), "SeniorPrice");
+            content.Add(new StringContent(dto.JuniorPrice.ToString()), "JuniorPrice");
+            content.Add(new StringContent(dto.TraineePrice.ToString()), "TraineePrice");
+
+            if (file != null)
+            {
+                var stream = file.OpenReadStream(5 * 1024 * 1024);
+                var fileContent = new StreamContent(stream);
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+                content.Add(fileContent, "file", file.Name);
+            }
+
+            var response = await _http.PostAsync($"api/admin/offerings", content);
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            return await response.Content.ReadFromJsonAsync<AdminOfferingDto>();
         }
     }
 }

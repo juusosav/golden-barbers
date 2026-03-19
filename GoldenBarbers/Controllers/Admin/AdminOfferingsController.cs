@@ -53,10 +53,18 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditOffering(Guid id, [FromBody] AdminOfferingDto dto)
+        public async Task<IActionResult> EditOffering(Guid id, [FromForm] AdminOfferingDto dto, [FromForm] IFormFile file)
         {
-            if (!ModelState.IsValid)
-                return BadRequest();
+            if (file != null)
+            {
+                var fileName = $"{Guid.NewGuid()}_{file.FileName}";
+                var filePath = Path.Combine("wwwroot/images", fileName);
+
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+                dto.Icon = $"images/{fileName}";
+            }
 
             var updated = await _adminOfferingsService.EditOffering(id, dto);
 
@@ -64,6 +72,32 @@ namespace GoldenBarbers.Controllers.Admin
                 return NotFound();
 
             return NoContent();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateOffering([FromForm] AdminOfferingDto dto, [FromForm] IFormFile file)
+        {
+            if (file != null)
+            {
+                var fileName = $"{Guid.NewGuid()}_{file.FileName}";
+                var filePath = Path.Combine("wwwroot/images", fileName);
+
+                using var stream = new FileStream(filePath, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+                dto.Icon = $"images/{fileName}";
+            }
+
+            var created = await _adminOfferingsService.CreateOffering(dto);
+
+            if (created == null)
+                return BadRequest();
+
+            return CreatedAtAction(
+                nameof(GetOfferingById),
+                new { id = created.Id },
+                created
+                );
         }
     }
 }

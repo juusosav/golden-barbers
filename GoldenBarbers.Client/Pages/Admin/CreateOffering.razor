@@ -1,0 +1,84 @@
+﻿@using GoldenBarbers.Client.Services
+@using System.Threading.Tasks
+@using Shared.DTOs.Admin.Offerings
+
+@inject AdminOfferingsApiService OfferingsApiService
+@inject NavigationManager Navigation
+
+@page "/admin/manage-offerings/create-offering"
+
+<h3>Create New Offering</h3>
+<br />
+
+<EditForm Model="offering" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="admin-form">
+        <div class="admin-form-item">
+            <label>Name: </label>
+            <br />
+            <InputText @bind-Value="@offering.Name" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>Description: </label>
+            <br />
+            <InputTextArea @bind-Value="@offering.Description" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>Icon: </label>
+            <br />
+            <InputFile OnChange="HandleFileSelected" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>Senior Price: </label>
+            <br />
+            <InputNumber @bind-Value="@offering.SeniorPrice" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>Junior Price: </label>
+            <br />
+            <InputNumber @bind-Value="@offering.JuniorPrice" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>Trainee Price: </label>
+            <br />
+            <InputNumber @bind-Value="@offering.TraineePrice" />
+        </div>
+
+        <br />
+        <button class="btn btn-outline-dark" type="submit" disabled=@IsSubmitting>Confirm</button>
+    </div>
+</EditForm>
+
+
+@code {
+    private AdminOfferingDto offering { get; set; } = new AdminOfferingDto();
+
+    private IBrowserFile? selectedFile;
+
+    private bool IsSubmitting { get; set; } = false;
+
+    public async Task HandleValidSubmit()
+    {
+        IsSubmitting = true;
+
+        var created = await OfferingsApiService.CreateOffering(offering, selectedFile);
+
+        if (created != null)
+        {
+            Navigation.NavigateTo("admin/manage-offerings");
+        }
+
+        IsSubmitting = false;
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
+    }
+}

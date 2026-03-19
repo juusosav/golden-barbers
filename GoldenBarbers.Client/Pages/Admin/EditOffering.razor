@@ -88,7 +88,7 @@ else
         IsSubmitting = true;
         if (offering != null)
         {
-            var success = await OfferingsApiService.EditOffering(offering.Id, offering);
+            var success = await OfferingsApiService.EditOffering(offering.Id, offering, selectedFile);
 
             if (success)
             {

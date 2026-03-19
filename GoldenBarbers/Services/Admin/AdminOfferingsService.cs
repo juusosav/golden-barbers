@@ -59,6 +59,20 @@ namespace GoldenBarbers.Services.Admin
             if (offeringToDelete == null)
                 return false;
 
+            if (!string.IsNullOrEmpty(offeringToDelete.Icon))
+            {
+                var filePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    offeringToDelete.Icon.TrimStart('/')
+                    );
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
+
             _context.Offerings.Remove(offeringToDelete);
             await _context.SaveChangesAsync();
 
@@ -72,6 +86,20 @@ namespace GoldenBarbers.Services.Admin
             if (offeringToEdit == null)
                 return false;
 
+            if (!string.IsNullOrEmpty(offeringToEdit.Icon))
+            {
+                var filePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    offeringToEdit.Icon.TrimStart('/')
+                    );
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
+
             offeringToEdit.Name = dto.Name;
             offeringToEdit.Icon = dto.Icon;
             offeringToEdit.Description = dto.Description;
@@ -81,6 +109,25 @@ namespace GoldenBarbers.Services.Admin
 
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Offering> CreateOffering(AdminOfferingDto dto)
+        {
+            var offering = new Offering
+            {
+                Id = Guid.NewGuid(),
+                Name = dto.Name,
+                Icon = dto.Icon,
+                Description = dto.Description,
+                SeniorPrice = dto.SeniorPrice,
+                JuniorPrice = dto.JuniorPrice,
+                TraineePrice = dto.TraineePrice
+            };
+
+            _context.Offerings.Add(offering);
+            await _context.SaveChangesAsync();
+
+            return offering;
         }
     }
 }
