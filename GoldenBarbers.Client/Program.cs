@@ -1,4 +1,5 @@
 using GoldenBarbers.Client;
+using GoldenBarbers.Client.Helpers;
 using GoldenBarbers.Client.Pages;
 using GoldenBarbers.Client.Services;
 using GoldenBarbers.Client.Services.Admin;
@@ -30,6 +31,7 @@ builder.Services.AddScoped<BarberApiService>();
 builder.Services.AddScoped<OfferingApiService>();
 builder.Services.AddScoped<TimeslotApiService>();
 builder.Services.AddScoped<AppointmentsApiService>();
+builder.Services.AddScoped<ScrollService>();
 
 // Admin
 builder.Services.AddScoped<AdminDashboardApiService>();

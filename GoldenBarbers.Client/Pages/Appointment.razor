@@ -7,6 +7,7 @@
 @inject OfferingApiService OfferingService
 @inject TimeslotApiService TimeslotService
 @inject AppointmentsApiService AppointmentsService
+@inject ScrollService ScrollService
 
 @inject NavigationManager Navigation
 
@@ -18,7 +19,7 @@
 </div>
 
 
-<EditForm Model="@appointment" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="appointment" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
 
     <div class="booking-container">
@@ -97,7 +98,7 @@
 
     @if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
     {
-        <div class="booking-container">
+        <div class="booking-container" id="calendar-table">
             <div class="booking-text">
                 <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
                 <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
@@ -126,7 +127,6 @@
                     <tbody>
                         @foreach (var time in timeRanges)
                         {
-
                             <tr>
                                 <td>@time.ToString("HH:mm")</td>
 
@@ -172,7 +172,7 @@
 
         @if (selectedSlot != null)
         {
-            <div class="booking-container">
+            <div style="margin-top: 100px;" class="booking-container" id="booking-summary">
                 <div class="booking-summary">
                     <h3>Appointment Information</h3>
                     <br />
@@ -254,6 +254,7 @@
         get => _selectedBarberId;
         set
         {
+
             if (_selectedBarberId != value)
             {
                 _selectedBarberId = value;
@@ -270,6 +271,7 @@
         get => _selectedOfferingId;
         set
         {
+
             if (_selectedOfferingId != value)
             {
                 _selectedOfferingId = value;
@@ -294,14 +296,36 @@
         await LoadSlots();
     }
 
-    private void SelectOffering(Guid offeringId)
+    private async void SelectOffering(Guid offeringId)
     {
         SelectedOfferingId = offeringId;
+        await TryScrollToCalendar();
     }
 
-    private void SelectBarber(Guid barberId)
+    private async void SelectBarber(Guid barberId)
     {
         SelectedBarberId = barberId;
+        await TryScrollToCalendar();
+    }
+
+    private async Task TryScrollToCalendar()
+    {
+        await Task.Delay(50);
+
+        if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+        {
+            await ScrollService.ScrollToElement("calendar-table");
+        }
+    }
+
+    private async Task TryScrollToSummary()
+    {
+        await Task.Delay(50);
+
+        if (selectedSlot != null)
+        {
+            await ScrollService.ScrollToElement("booking-summary");
+        }
     }
 
     private async Task LoadSlots()
@@ -337,7 +361,7 @@
         await LoadSlots();
     }
 
-    private void SelectSlot(TimeslotDto timeslot)
+    private async void SelectSlot(TimeslotDto timeslot)
     {
         selectedSlot = timeslot;
         appointment.BarberId = timeslot.BarberId;
@@ -346,6 +370,8 @@
 
         var barber = barbers?.FirstOrDefault(b => b.Id == timeslot.BarberId);
         appointment.BarberPositionId = barber?.PositionId ?? 0;
+
+        await TryScrollToSummary();
     }
 
     private void OnBarberChanged(ChangeEventArgs e)

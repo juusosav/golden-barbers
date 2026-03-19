@@ -8,6 +8,10 @@ html, body {
     margin: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 .page {
     display: flex;
 }
@@ -407,6 +411,10 @@ h1:focus {
     color: white;
 }
 
+.booking-summary p {
+    font-size: 18px;
+}
+
 .booking-container {
     display: flex;
     flex-direction: column;
@@ -419,6 +427,12 @@ h1:focus {
 .booking-text {
     color: white;
     font-weight: bold;
+}
+
+.booking-image {
+    width: 325px;
+    border: double;
+    margin-bottom: 25px;
 }
 
 .selection {
