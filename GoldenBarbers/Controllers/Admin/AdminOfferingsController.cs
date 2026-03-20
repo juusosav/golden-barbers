@@ -53,7 +53,7 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditOffering(Guid id, [FromForm] AdminOfferingDto dto, [FromForm] IFormFile file)
+        public async Task<IActionResult> EditOffering(Guid id, [FromForm] AdminOfferingDto dto, [FromForm] IFormFile? file)
         {
             if (file != null)
             {
@@ -66,7 +66,7 @@ namespace GoldenBarbers.Controllers.Admin
                 dto.Icon = $"images/{fileName}";
             }
 
-            var updated = await _adminOfferingsService.EditOffering(id, dto);
+            var updated = await _adminOfferingsService.EditOffering(id, dto, file);
 
             if (!updated)
                 return NotFound();

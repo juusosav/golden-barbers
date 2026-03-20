@@ -35,7 +35,14 @@ else
             <div class="admin-form-item">
                 <label>Icon: </label>
                 <br />
+
+                @if (!string.IsNullOrEmpty(offering.Icon))
+                {
+                    <img src="@offering.Icon" style="max-width: 150px;" />
+                    <br />
+                }
                 <InputFile OnChange="HandleFileSelected" />
+                
             </div>
 
             <div class="admin-form-item">

@@ -79,33 +79,46 @@ namespace GoldenBarbers.Services.Admin
             return true;
         }
 
-        public async Task<bool> EditOffering(Guid id, AdminOfferingDto dto)
+        public async Task<bool> EditOffering(Guid id, AdminOfferingDto dto, IFormFile? file)
         {
             var offeringToEdit = await _context.Offerings.FirstOrDefaultAsync(o => o.Id == id);
 
             if (offeringToEdit == null)
                 return false;
 
-            if (!string.IsNullOrEmpty(offeringToEdit.Icon))
-            {
-                var filePath = Path.Combine(
-                    Directory.GetCurrentDirectory(),
-                    "wwwroot",
-                    offeringToEdit.Icon.TrimStart('/')
-                    );
-
-                if (File.Exists(filePath))
-                {
-                    File.Delete(filePath);
-                }
-            }
-
             offeringToEdit.Name = dto.Name;
-            offeringToEdit.Icon = dto.Icon;
             offeringToEdit.Description = dto.Description;
             offeringToEdit.SeniorPrice = dto.SeniorPrice;
             offeringToEdit.JuniorPrice = dto.JuniorPrice;
             offeringToEdit.TraineePrice = dto.TraineePrice;
+
+
+            if (file != null)
+            {
+                if (!string.IsNullOrEmpty(offeringToEdit.Icon))
+                {
+                    var oldPath = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        offeringToEdit.Icon.TrimStart('/')
+                        );
+
+                    if (File.Exists(oldPath))
+                    {
+                        File.Delete(oldPath);
+                    }
+                }
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
+                var newPath = Path.Combine("wwwroot/images", fileName);
+
+                using (var stream = new FileStream(newPath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+
+                offeringToEdit.Icon = $"images/{fileName}";
+            }
 
             await _context.SaveChangesAsync();
             return true;
