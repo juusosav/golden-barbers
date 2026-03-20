@@ -79,9 +79,13 @@ namespace GoldenBarbers.Services.Admin
             return true;
         }
 
-        public async Task<bool> EditOffering(Guid id, AdminOfferingDto dto, IFormFile? file)
+        public async Task<bool> EditOffering(
+            Guid id, 
+            AdminOfferingDto dto, 
+            IFormFile? file)
         {
-            var offeringToEdit = await _context.Offerings.FirstOrDefaultAsync(o => o.Id == id);
+            var offeringToEdit = await _context.Offerings
+                .FirstOrDefaultAsync(o => o.Id == id);
 
             if (offeringToEdit == null)
                 return false;

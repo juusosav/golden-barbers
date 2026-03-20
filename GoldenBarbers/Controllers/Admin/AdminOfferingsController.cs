@@ -53,19 +53,11 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> EditOffering(Guid id, [FromForm] AdminOfferingDto dto, [FromForm] IFormFile? file)
+        public async Task<IActionResult> EditOffering(
+            Guid id, 
+            [FromForm] AdminOfferingDto dto, 
+            [FromForm] IFormFile? file)
         {
-            if (file != null)
-            {
-                var fileName = $"{Guid.NewGuid()}_{file.FileName}";
-                var filePath = Path.Combine("wwwroot/images", fileName);
-
-                using var stream = new FileStream(filePath, FileMode.Create);
-                await file.CopyToAsync(stream);
-
-                dto.Icon = $"images/{fileName}";
-            }
-
             var updated = await _adminOfferingsService.EditOffering(id, dto, file);
 
             if (!updated)
