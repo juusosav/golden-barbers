@@ -4,9 +4,9 @@
 
         if (element) {
             element.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
+                behavior: "smooth"
             });
         }
+        else setTimeout(() => scrollService.scrollToElement(elementId), 50);
     }
 };

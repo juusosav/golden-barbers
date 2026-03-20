@@ -81,6 +81,23 @@ h1:focus {
     color: #aaa;
 }
 
+.policy-footer-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    color: whitesmoke;
+}
+
+.policy-footer-container-item {
+    margin: 0 50px;
+}
+
+.policy-footer-container a {
+    text-decoration: none;
+}
+
 /* Navigation bar */
 
 .main-logo {
@@ -115,10 +132,10 @@ h1:focus {
     cursor: pointer;
 }
 
-.hamburger:hover {
-    color: gold;
-    transition: all 0.3s ease;
-}
+    .hamburger:hover {
+        color: gold;
+        transition: all 0.3s ease;
+    }
 
 @media (max-width: 768px) {
 
@@ -172,6 +189,10 @@ h1:focus {
         transition: all 0.2s ease;
     }
 
+
+.policy-text {
+    color: white;
+}
 
 /* Pages */
 
@@ -359,7 +380,6 @@ h1:focus {
     .gold-button:hover {
         box-shadow: 0 8px 12px rgba(183, 179, 140, 0.2);
         transform: translateY(-4px);
-        
     }
 
 
@@ -411,9 +431,9 @@ h1:focus {
     color: white;
 }
 
-.booking-summary p {
-    font-size: 18px;
-}
+    .booking-summary p {
+        font-size: 18px;
+    }
 
 .booking-container {
     display: flex;
@@ -450,11 +470,11 @@ h1:focus {
     height: 180px;
 }
 
-.selection-item img {
-    width: 100px;
-    height: 100px;
-    object-fit: contain;
-}
+    .selection-item img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+    }
 
     .selection-item:active {
         background-color: white;

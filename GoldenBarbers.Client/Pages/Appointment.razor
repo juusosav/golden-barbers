@@ -202,7 +202,7 @@
                         <p>Service: @selectedOffering?.Name</p>
                     }
 
-                    <p>Time: @selectedSlot.Start.ToString("dddd, MMM dd yyyy HH:mm")</p>
+                    <p>Time: @selectedSlot.Start.ToString("dd.MM.yyyy, 'at' HH:mm")</p>
                 </div>
             </div>
         }
@@ -310,20 +310,18 @@
 
     private async Task TryScrollToCalendar()
     {
-        await Task.Delay(50);
-
         if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
         {
+            await InvokeAsync(StateHasChanged);
             await ScrollService.ScrollToElement("calendar-table");
         }
     }
 
     private async Task TryScrollToSummary()
     {
-        await Task.Delay(50);
-
         if (selectedSlot != null)
         {
+            await InvokeAsync(StateHasChanged);
             await ScrollService.ScrollToElement("booking-summary");
         }
     }

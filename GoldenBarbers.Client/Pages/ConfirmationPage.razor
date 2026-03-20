@@ -22,7 +22,7 @@ else
             <h3>Appointment Confirmed!</h3>
             <br />
             <p>Name: @appointment.CustomerName</p>
-            <p>Date: @appointment.AppointmentDateTime</p>
+            <p>Date: @appointment.AppointmentDateTime.ToString("dd.MM.yyyy, HH:mm")</p>
 
             @if (appointment.BarberId == barber?.Id)
             {
