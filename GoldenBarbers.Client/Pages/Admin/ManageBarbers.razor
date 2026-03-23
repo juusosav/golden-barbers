@@ -45,6 +45,9 @@
     </tbody>
 </table>
 <div>
+    <button class="btn btn-sm btn-outline-info" @onclick="CreateBarber">Create New Barber</button>
+</div>
+<div>
     <ConfirmDialog @ref="ConfirmDialog" />
 </div>
 
@@ -72,4 +75,6 @@
     }
 
     private void EditBarber(Guid id) => Navigation.NavigateTo($"/admin/manage-barbers/edit-barber/{id}");
+
+    private void CreateBarber() => Navigation.NavigateTo("/admin/manage-barbers/create-barber");
 }

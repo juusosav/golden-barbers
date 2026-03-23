@@ -18,6 +18,7 @@ else
 {
     <EditForm Model="offering" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
+        <ValidationSummary />
 
         <div class="admin-form">
             <div class="admin-form-item">
@@ -96,8 +97,8 @@ else
         if (offering != null)
         {
             var success = await OfferingsApiService.EditOfferingAsync(
-                offering.Id, 
-                offering, 
+                offering.Id,
+                offering,
                 selectedFile);
 
             if (success)

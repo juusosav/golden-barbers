@@ -18,22 +18,29 @@ else
 {
     <EditForm Model="barber" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
+        <ValidationSummary />
 
         <div class="admin-form">
             <div class="admin-form-item">
-                <label>Name: </label>
+                <label>Barber Name: </label>
                 <br />
                 <InputText @bind-Value="barber.Name" />
             </div>
 
             <div class="admin-form-item">
-                <label>Position: </label>
+                <label>Position Name: </label>
                 <br />
                 <InputText @bind-Value="barber.PositionName" />
             </div>
 
             <div class="admin-form-item">
-                <label>Icon: </label>
+                <label>Position Identifier (1: Senior, 2: Junior, 3: Trainee): </label>
+                <br />
+                <InputNumber @bind-Value="barber.PositionId" />
+            </div>
+
+            <div class="admin-form-item">
+                <label>Portrait: </label>
                 <br />
 
                 @if (!string.IsNullOrEmpty(barber.Portrait))

@@ -1,6 +1,7 @@
 ﻿using GoldenBarbers.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using GoldenBarbers.Models.Entities;
 using Shared.DTOs.Admin.Barbers;
 
 namespace GoldenBarbers.Services.Admin
@@ -92,6 +93,27 @@ namespace GoldenBarbers.Services.Admin
 
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        public async Task<Barber> CreateBarberAsync(AdminBarberDto dto)
+        {
+            var barber = new Barber
+            {
+                Name = dto.Name,
+                PositionId = dto.PositionId,
+                PositionName = dto.PositionName,
+                PersonalPhone = dto.PersonalPhone,
+                PersonalEmail = dto.PersonalEmail,
+                PersonalAddress = dto.PersonalAddress,
+                Salary = dto.Salary,
+                StartDate = dto.StartDate,
+                Portrait = dto.Portrait
+            };
+
+            _context.Barbers.Add(barber);
+            await _context.SaveChangesAsync();
+
+            return barber;
         }
     }
 }

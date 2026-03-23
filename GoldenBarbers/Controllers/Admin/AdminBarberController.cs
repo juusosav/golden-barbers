@@ -71,6 +71,8 @@ namespace GoldenBarbers.Controllers.Admin
                     DateTimeStyles.None, out var startDate))
                 return BadRequest("Invalid date format");
 
+            var startDateUtc = startDate.ToUniversalTime();
+
             var dto = new AdminBarberDto
             {
                 Name = form.Name,
@@ -80,13 +82,12 @@ namespace GoldenBarbers.Controllers.Admin
                 PositionId = form.PositionId,
                 PositionName = form.PositionName,
                 Salary = salary,
-                StartDate = startDate
+                StartDate = startDateUtc
             };
 
             var existing = await _adminBarberService.GetBarberByIdAsync(id);
             if (existing == null) return NotFound();
 
-            // Handle file upload
             if (form.File != null)
             {
                 if (existing != null && !string.IsNullOrEmpty(existing.Portrait))
@@ -114,6 +115,54 @@ namespace GoldenBarbers.Controllers.Admin
 
             var success = await _adminBarberService.EditBarberAsync(id, dto);
             return success ? NoContent() : BadRequest();
+        }
+
+        [HttpPost]
+        [Consumes("multipart/form-data")]
+        public async Task<ActionResult> CreateBarberAsync(
+        [FromForm] BarberFormModel form)
+        {
+            if (!decimal.TryParse(form.Salary, NumberStyles.Any,
+                    CultureInfo.InvariantCulture, out var salary))
+                return BadRequest("Invalid salary format");
+
+            if (!DateTime.TryParse(form.StartDate, CultureInfo.InvariantCulture,
+                    DateTimeStyles.None, out var startDate))
+                return BadRequest("Invalid date format");
+
+            var startDateUtc = startDate.ToUniversalTime();
+
+            var dto = new AdminBarberDto
+            {
+                Name = form.Name,
+                PersonalEmail = form.PersonalEmail,
+                PersonalPhone = form.PersonalPhone,
+                PersonalAddress = form.PersonalAddress,
+                PositionId = form.PositionId,
+                PositionName = form.PositionName,
+                Salary = salary,
+                StartDate = startDateUtc,
+            };
+
+            if (form.File != null)
+            {
+                var fileName = $"{Guid.NewGuid()}_{form.File.FileName}";
+                var filePath = Path.Combine("wwwroot/images", fileName);
+                await using var stream = new FileStream(filePath, FileMode.Create);
+                await form.File.CopyToAsync(stream);
+                dto.Portrait = $"images/{fileName}";
+            }
+
+            var created = await _adminBarberService.CreateBarberAsync(dto);
+
+            if (created == null)
+                return BadRequest();
+
+            return CreatedAtAction(
+                nameof(GetBarberByIdAsync),
+                new { id = created.Id },
+                created
+                );
         }
     }
 }

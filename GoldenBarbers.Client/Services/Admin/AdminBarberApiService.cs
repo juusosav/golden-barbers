@@ -59,5 +59,37 @@ namespace GoldenBarbers.Client.Services.Admin
             var response = await _http.PutAsync($"api/admin/barbers/{id}", content);
             return response.IsSuccessStatusCode;
         }
+
+        public async Task<AdminBarberDto?> CreateBarberAsync(
+    AdminBarberDto dto,
+    IBrowserFile? file)
+        {
+            var content = new MultipartFormDataContent();
+
+            content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.PositionId.ToString()), "PositionId");
+            content.Add(new StringContent(dto.PositionName), "PositionName");
+            content.Add(new StringContent(dto.PersonalPhone), "PersonalPhone");
+            content.Add(new StringContent(dto.PersonalEmail), "PersonalEmail");
+            content.Add(new StringContent(dto.PersonalAddress), "PersonalAddress");
+            content.Add(new StringContent(dto.Salary.ToString()), "Salary");
+            content.Add(new StringContent(dto.StartDate.ToString("o", CultureInfo.InvariantCulture)), "StartDate");
+
+            if (file != null)
+            {
+                var stream = file.OpenReadStream(5 * 1024 * 1024);
+                var fileContent = new StreamContent(stream);
+                fileContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(file.ContentType);
+
+                content.Add(fileContent, "file", file.Name);
+            }
+
+            var response = await _http.PostAsync($"api/admin/barbers", content);
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            return await response.Content.ReadFromJsonAsync<AdminBarberDto>();
+        }
     }
 }
