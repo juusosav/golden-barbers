@@ -41,7 +41,7 @@ namespace GoldenBarbers.Data
                             "Whether you’re after a sharp modern style or a timeless look, " +
                             "John ensures you leave feeling confident.",
                         Portrait = "/images/John_headshot.jpg",
-                        Salary = "2670.9",
+                        Salary = 2670.9m,
                         PersonalPhone = "079 4318 8088",
                         PersonalEmail = "john.s3@gmail.com",
                         PersonalAddress = "51 Church Lane, London",
@@ -59,7 +59,7 @@ namespace GoldenBarbers.Data
                             "and detailed finishing work. Her warm and welcoming approach ensures every visit " +
                             "feels comfortable and personalized.",
                         Portrait = "/images/Rebecca_headshot.jpg",
-                        Salary = "2530.7",
+                        Salary = 2530.7m,
                         PersonalPhone = "078 1834 6640",
                         PersonalEmail = "rebeccaa12@gmail.com",
                         PersonalAddress = "66 Station Road, London",
@@ -76,7 +76,7 @@ namespace GoldenBarbers.Data
                         "he blends the best of both worlds. Clients appreciate his friendly personality and dedication " +
                         "to getting every detail right.",
                         Portrait = "/images/Charles_headshot.jpg",
-                        Salary = "2450.4",
+                        Salary = 2450.4m,
                         PersonalPhone = "070 4871 9510",
                         PersonalEmail = "charliejack@gmail.com",
                         PersonalAddress = "24 Lionsdale Ave, London",
@@ -93,7 +93,7 @@ namespace GoldenBarbers.Data
                         "Clients value her professionalism and ability to bring their vision to life. " +
                         "She believes great grooming is all about precision and consistency.",
                         Portrait = "/images/Sarah_headshot.jpg",
-                        Salary = "2350.8",
+                        Salary = 2350.8m,
                         PersonalPhone = "078 7592 3593",
                         PersonalEmail = "sarahlee@hotmail.com",
                         PersonalAddress = "52 Cassland Road, London",
@@ -110,7 +110,7 @@ namespace GoldenBarbers.Data
                         "to the individual. Her friendly attitude and attention to " +
                         "detail make her a favorite among clients.",
                         Portrait = "/images/Hannah_headshot.jpg",
-                        Salary = "2290.5",
+                        Salary = 2290.5m,
                         PersonalPhone = "070 6859 4772",
                         PersonalEmail = "hannah.law@gmail.com",
                         PersonalAddress = "21 Manor Road, London",
@@ -127,7 +127,7 @@ namespace GoldenBarbers.Data
                         "focusing on clean cuts and precise styling. Steve is detail-oriented, patient, and " +
                         "committed to continuous improvement.",
                         Portrait = "/images/Steve_headshot.jpg",
-                        Salary = "2020.3",
+                        Salary = 2020.3m,
                         PersonalPhone = "077 5627 5582",
                         PersonalEmail = "stevie_robs@gmail.com",
                         PersonalAddress = "52 Victoria Road, London",

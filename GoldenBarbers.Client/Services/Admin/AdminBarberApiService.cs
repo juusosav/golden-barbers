@@ -44,7 +44,7 @@ namespace GoldenBarbers.Client.Services.Admin
             content.Add(new StringContent(dto.PersonalPhone), "PersonalPhone");
             content.Add(new StringContent(dto.PersonalEmail), "PersonalEmail");
             content.Add(new StringContent(dto.PersonalAddress), "PersonalAddress");
-            content.Add(new StringContent(dto.Salary), "Salary");
+            content.Add(new StringContent(dto.Salary.ToString()), "Salary");
             content.Add(new StringContent(dto.StartDate.ToString("o", CultureInfo.InvariantCulture)), "StartDate");
 
             if (file != null)

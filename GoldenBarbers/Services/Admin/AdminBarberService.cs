@@ -72,8 +72,7 @@ namespace GoldenBarbers.Services.Admin
 
         public async Task<bool> EditBarberAsync(
             Guid id,
-            AdminBarberDto dto,
-            IFormFile? file)
+            AdminBarberDto dto)
         {
             var barberToEdit = await _context.Barbers
                 .FirstOrDefaultAsync(b => b.Id == id);
@@ -89,33 +88,7 @@ namespace GoldenBarbers.Services.Admin
             barberToEdit.PersonalAddress = dto.PersonalAddress;
             barberToEdit.Salary = dto.Salary;
             barberToEdit.StartDate = dto.StartDate;
-
-            if (file != null)
-            {
-                if (!string.IsNullOrEmpty(barberToEdit.Portrait))
-                {
-                    var oldPath = Path.Combine(
-                    Directory.GetCurrentDirectory(),
-                    "wwwroot",
-                    barberToEdit.Portrait.TrimStart('/')
-                    );
-
-                    if (File.Exists(oldPath))
-                    {
-                        File.Delete(oldPath);
-                    }
-                }
-
-                var fileName = Guid.NewGuid() + Path.GetExtension(file.FileName);
-                var newPath = Path.Combine("wwwroot/images", fileName);
-
-                using (var stream = new FileStream(newPath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-
-                barberToEdit.Portrait = $"images/{fileName}";
-            }
+            barberToEdit.Portrait = dto.Portrait;
 
             await _context.SaveChangesAsync();
             return true;
