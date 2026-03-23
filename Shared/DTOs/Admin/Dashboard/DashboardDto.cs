@@ -11,7 +11,6 @@ namespace Shared.DTOs.Admin.Dashboard
         public int AppointmentsToday { get; set; }
         public int UpcomingWeek { get; set; }
         public decimal RevenueToday { get; set; }
-        public int ActiveBarbers { get; set; }
 
         public List<DashboardAppointmentDto> TodaySchedule { get; set; } = [];
     }

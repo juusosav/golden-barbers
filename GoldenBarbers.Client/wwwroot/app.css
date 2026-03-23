@@ -192,6 +192,7 @@ h1:focus {
 
 .policy-text {
     color: white;
+    line-height: 32px;
 }
 
 /* Pages */
