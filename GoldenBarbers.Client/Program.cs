@@ -1,8 +1,8 @@
 using GoldenBarbers.Client;
 using GoldenBarbers.Client.Helpers;
 using GoldenBarbers.Client.Pages;
-using GoldenBarbers.Client.Services;
 using GoldenBarbers.Client.Services.Admin;
+using GoldenBarbers.Client.Services.Public;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -30,14 +30,14 @@ builder.Services.AddScoped(sp =>
 builder.Services.AddScoped<BarberApiService>();
 builder.Services.AddScoped<OfferingApiService>();
 builder.Services.AddScoped<TimeslotApiService>();
-builder.Services.AddScoped<AppointmentsApiService>();
+builder.Services.AddScoped<AppointmentApiService>();
 builder.Services.AddScoped<ScrollService>();
 
 // Admin
 builder.Services.AddScoped<AdminDashboardApiService>();
-builder.Services.AddScoped<AdminAppointmentsApiService>();
-builder.Services.AddScoped<AdminBarbersApiService>();
-builder.Services.AddScoped<AdminOfferingsApiService>();
+builder.Services.AddScoped<AdminAppointmentApiService>();
+builder.Services.AddScoped<AdminBarberApiService>();
+builder.Services.AddScoped<AdminOfferingApiService>();
 
 // UI helpers
 builder.Services.AddScoped<CarouselApiService>();

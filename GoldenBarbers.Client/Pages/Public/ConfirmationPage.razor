@@ -1,0 +1,64 @@
+﻿@using GoldenBarbers.Client.Services.Public;
+@using System.Threading.Tasks
+@using Shared.DTOs.Public
+@using GoldenBarbers.Client.Helpers
+
+@inject AppointmentApiService AppointmentsService
+@inject BarberApiService BarberService
+@inject OfferingApiService OfferingService
+
+@page "/booking-confirmed/{id:guid}"
+
+@if (appointment == null)
+{
+    <p class="custom-loader">Loading...</p>
+}
+else
+{
+    <div class="booking-container">
+        <div class="booking-text">
+            <img class="booking-image" src="images/confirmation_picture.png" />
+            <br />
+            <h3>Appointment Confirmed!</h3>
+            <br />
+            <p>Name: @appointment.CustomerName</p>
+            <p>Date: @appointment.AppointmentDateTime.ToString("dd.MM.yyyy, HH:mm")</p>
+
+            @if (appointment.BarberId == barber?.Id)
+            {
+                <p>Barber: @barber.Name</p>
+            }
+
+            @if (appointment.OfferingId == offering?.Id)
+            {
+                <p>Service: @offering.Name</p>
+            }
+            <p>Price: @appointment.FinalPrice €</p>
+        </div>
+    </div>
+}
+
+
+@code {
+
+    [Parameter]
+    public Guid Id { get; set; }
+
+    private AppointmentDto? appointment;
+
+    private BarberDto? barber;
+
+    private OfferingDto? offering;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        appointment = await AppointmentsService.GetByIdAsync(Id);
+
+        if (appointment != null)
+        {
+            barber = await BarberService.GetBarberByIdAsync(appointment.BarberId);
+            offering = await OfferingService.GetOfferingByIdAsync(appointment.OfferingId);
+        }
+    }
+}

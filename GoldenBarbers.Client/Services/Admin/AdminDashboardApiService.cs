@@ -12,7 +12,7 @@ namespace GoldenBarbers.Client.Services.Admin
             _http = http; 
         }
 
-        public async Task<DashboardDto?> GetDashboard()
+        public async Task<DashboardDto?> GetDashboardAsync()
         {
             return await _http.GetFromJsonAsync<DashboardDto>($"api/admin/dashboard") ??
                 new DashboardDto();

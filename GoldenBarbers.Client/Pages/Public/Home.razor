@@ -1,0 +1,122 @@
+﻿@using GoldenBarbers.Client.Services.Public;
+@using System.Threading.Tasks
+@using Shared.DTOs.Public;
+
+@page "/" 
+
+@inject CarouselApiService CarouselService
+@inject OfferingApiService OfferingService
+@inject NavigationManager Navigation
+
+<header class="carousel-container">
+
+    @if (carousel == null)
+    {
+        <p></p>
+    }
+    else
+    {
+        @for (int i = 0; i < carousel.Count; i++)
+        {
+            <CarouselCard Icon="@carousel[i].Image"
+                          Name="@carousel[i].Name"
+                          IsActive="@(i == 0)" />
+        }
+
+    }
+</header>
+
+<div class="button-container">
+    <div class="button-container-item">
+        <button class="gold-button" @onclick="GoToBooking">Book Appointment</button>
+    </div>
+</div>
+
+<div class="homepage-container">
+    <h2 class="homepage-container-item"><strong>Our Services</strong></h2>
+
+    @if (offerings == null)
+    {
+        <p class="custom-loader">Loading...</p>
+    }
+
+    else
+    {
+        @foreach (var o in offerings)
+        {
+            <OfferingCard Name=@o.Name
+                          Icon=@o.Icon
+                          Description=@o.Description
+                          TraineePrice=@o.TraineePrice />
+        }
+    }
+</div>
+
+<div>
+    <div class="footer-container">
+        <div class="footer-container-item">
+            <h3>Golden Barbers</h3>
+            <br />
+            <h4>Address</h4>
+            <p>
+                Arkadiankatu 3
+                <br />
+                00100 Helsinki
+                Finland
+            </p>
+            <h4>Contact</h4>
+            <p>
+                📞 +44 20 7946 0823
+                <br />
+                ✉
+                <a href="mailto:info@goldenbarbers.fi">info@goldenbarbers.fi (mock email)</a>
+            </p>
+            <h4>Opening hours</h4>
+            <p>
+                Mon – Fri: 9:00 AM – 7:00 PM
+                <br />
+                Saturday: 9:00 AM – 5:00 PM
+                <br />
+                Sunday: Closed
+            </p>
+            <br />
+            <button @onclick="GoToAdminLogin">Admin Login</button>
+        </div>
+    </div>
+</div>
+
+<FooterInfo />
+
+
+@code {
+    private List<CarouselDto>? carousel;
+    private List<OfferingDto>? offerings;
+    private bool _initialized;
+
+    private void GoToBooking()
+    {
+        Navigation.NavigateTo("/book-appointment");
+    }
+
+    private void GoToAdminLogin()
+    {
+        Navigation.NavigateTo("/Identity/Account/Login", forceLoad: true);
+    }
+
+    [Inject] IJSRuntime JS { get; set; } = default!;
+
+    protected override async Task OnInitializedAsync()
+    {
+        carousel = await CarouselService.GetCarouselItemsAsync();
+        offerings = await OfferingService.GetAllOfferingsAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (!_initialized && carousel != null)
+        {
+            _initialized = true;
+            await JS.InvokeVoidAsync("carousel.init");
+        }
+    }
+}

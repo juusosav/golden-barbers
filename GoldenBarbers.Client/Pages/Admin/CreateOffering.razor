@@ -2,7 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Admin.Offerings
 
-@inject AdminOfferingsApiService OfferingsApiService
+@inject AdminOfferingApiService OfferingsApiService
 @inject NavigationManager Navigation
 
 @page "/admin/manage-offerings/create-offering"
@@ -67,7 +67,7 @@
     {
         IsSubmitting = true;
 
-        var created = await OfferingsApiService.CreateOffering(offering, selectedFile);
+        var created = await OfferingsApiService.CreateOfferingAsync(offering, selectedFile);
 
         if (created != null)
         {

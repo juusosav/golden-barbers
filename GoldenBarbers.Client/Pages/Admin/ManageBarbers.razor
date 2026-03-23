@@ -2,7 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Admin.Barbers
 
-@inject AdminBarbersApiService BarbersApiService
+@inject AdminBarberApiService BarbersApiService
 @inject NavigationManager Navigation
 
 @page "/admin/manage-barbers"
@@ -55,7 +55,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        barbers = await BarbersApiService.GetAllBarbers();
+        barbers = await BarbersApiService.GetAllBarbersAsync();
     }
 
     private async Task DeleteBarber(Guid id)

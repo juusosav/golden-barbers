@@ -11,7 +11,7 @@ namespace GoldenBarbers.Client.Helpers
             _js = js;
         }
 
-        public async Task ScrollToElement(string elementId)
+        public async Task ScrollToElementAsync(string elementId)
         {
             await _js.InvokeVoidAsync("scrollService.scrollToElement", elementId);
         }

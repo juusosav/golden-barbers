@@ -19,9 +19,9 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpGet("dashboard")]
-        public async Task<ActionResult<DashboardDto?>> GetDashboard()
+        public async Task<ActionResult<DashboardDto?>> GetDashboardAsync()
         {
-            var dashboard = await _dashboardService.GetDashboard();
+            var dashboard = await _dashboardService.GetDashboardAsync();
 
             if (dashboard == null)
             {

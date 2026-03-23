@@ -2,6 +2,7 @@ using GoldenBarbers.Data;
 using Microsoft.AspNetCore.Components.WebAssembly.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using GoldenBarbers.Services.Admin;
@@ -13,17 +14,17 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 
 // Public services
-builder.Services.AddScoped<AppointmentsService>();
+builder.Services.AddScoped<AppointmentService>();
 builder.Services.AddScoped<PricingService>();
-builder.Services.AddScoped<BarbersService>();
+builder.Services.AddScoped<BarberService>();
 builder.Services.AddScoped<CarouselService>();
-builder.Services.AddScoped<OfferingsService>();
+builder.Services.AddScoped<OfferingService>();
 
 // Admin services
 builder.Services.AddScoped<AdminDashboardService>();
-builder.Services.AddScoped<AdminBarbersService>();
-builder.Services.AddScoped<AdminAppointmentsService>();
-builder.Services.AddScoped<AdminOfferingsService>();
+builder.Services.AddScoped<AdminBarberService>();
+builder.Services.AddScoped<AdminAppointmentService>();
+builder.Services.AddScoped<AdminOfferingService>();
 
 builder.Services.AddCors(options =>
 {
@@ -48,8 +49,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -131,6 +132,6 @@ app.MapControllers();
 
 app.MapRazorPages();
 
-app.MapFallbackToFile("index.html");
+app.MapFallbackToFile("/{**path:nonfile}", "index.html");
 
 app.Run();

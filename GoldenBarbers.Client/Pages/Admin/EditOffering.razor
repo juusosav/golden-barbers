@@ -2,7 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Admin.Offerings
 
-@inject AdminOfferingsApiService OfferingsApiService
+@inject AdminOfferingApiService OfferingsApiService
 @inject NavigationManager Navigation
 
 @page "/admin/manage-offerings/edit-offering/{Id:guid}"
@@ -81,7 +81,7 @@ else
 
     protected override async Task OnParametersSetAsync()
     {
-        offering = await OfferingsApiService.GetOfferingById(Id);
+        offering = await OfferingsApiService.GetOfferingByIdAsync(Id);
 
         if (offering == null)
         {
@@ -95,7 +95,10 @@ else
         IsSubmitting = true;
         if (offering != null)
         {
-            var success = await OfferingsApiService.EditOffering(offering.Id, offering, selectedFile);
+            var success = await OfferingsApiService.EditOfferingAsync(
+                offering.Id, 
+                offering, 
+                selectedFile);
 
             if (success)
             {

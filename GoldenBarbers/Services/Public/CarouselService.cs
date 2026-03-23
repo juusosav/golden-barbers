@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Models.Entities;
-using Shared.DTOs;
+using Shared.DTOs.Public;
 
 namespace GoldenBarbers.Services.Public
 {
@@ -15,7 +15,7 @@ namespace GoldenBarbers.Services.Public
         {
             _context = context;
         }
-        public async Task<IEnumerable<CarouselDto>> GetCarouselItems()
+        public async Task<IEnumerable<CarouselDto>> GetCarouselItemsAsync()
         {
             var allItems = await _context.CarouselItems
                 .Select(c => new CarouselDto()

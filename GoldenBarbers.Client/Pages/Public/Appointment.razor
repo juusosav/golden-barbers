@@ -1,0 +1,410 @@
+﻿@using GoldenBarbers.Client.Services.Public;
+@using System.Threading.Tasks
+@using Shared.DTOs.Public
+@using GoldenBarbers.Client.Helpers
+
+@inject BarberApiService BarberService
+@inject OfferingApiService OfferingService
+@inject TimeslotApiService TimeslotService
+@inject AppointmentApiService AppointmentsService
+@inject ScrollService ScrollService
+
+@inject NavigationManager Navigation
+
+@page "/book-appointment"
+
+<div class="booking-container">
+    <h2 class="booking-text">Book an Appointment</h2>
+    <br />
+</div>
+
+
+<EditForm Model="appointment" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+
+    <div class="booking-container">
+        <label class="booking-text">Select Service: </label>
+        <br />
+
+        <div class="selection">
+
+            @if (offerings != null)
+            {
+                foreach (var o in offerings)
+                {
+                    @if (_selectedOfferingId == o.Id)
+                    {
+                        <div>
+                            <div class="selected" @onclick="() => SelectOffering(o.Id)">
+                                <img src="@o.Icon" alt="Offering" />
+                                <br />
+                                <p>@o.Name</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div class="selection-item" @onclick="() => SelectOffering(o.Id)">
+                                <img src="@o.Icon" alt="Offering" />
+                                <br />
+                                <p>@o.Name</p>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+        <br /><br />
+
+        <label class="booking-text">Select Barber: </label>
+        <br />
+
+        <div class="selection">
+
+            @if (barbers != null)
+            {
+                @foreach (var b in barbers)
+                {
+                    @if (_selectedBarberId == b.Id)
+                    {
+                        <div>
+                            <div class="selected" @onclick="() => SelectBarber(b.Id)">
+
+                                <img src="@b.Portrait" alt="Barber" />
+                                <p>@b.Name</p>
+                                <p>@b.PositionName</p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <div class="selection-item" @onclick="() => SelectBarber(b.Id)">
+
+                                <img src="@b.Portrait" alt="Barber" />
+                                <p>@b.Name</p>
+                                <p>@b.PositionName</p>
+                            </div>
+                        </div>
+                    }
+                }
+            }
+        </div>
+    </div>
+    <br />
+    <br />
+
+    @if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+    {
+        <div class="booking-container" id="calendar-table">
+            <div class="booking-text">
+                <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
+                <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
+                <button type="button" @onclick="NextWeek">Next Week ➡</button>
+            </div>
+        </div>
+
+        @if (timeslots == null || barbers == null)
+        {
+            <p class="custom-loader">Loading calendar...</p>
+        }
+        else
+        {
+            <div class="booking-container">
+                <table class="calendar-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            @foreach (var day in Enumerable.Range(0, 7))
+                            {
+                                var currentDay = weekStart.AddDays(day);
+                                <th>@currentDay.ToString("ddd dd")</th>
+                            }
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var time in timeRanges)
+                        {
+                            <tr>
+                                <td>@time.ToString("HH:mm")</td>
+
+                                @foreach (var day in Enumerable.Range(0, 7))
+                                {
+                                    var currentDate = weekStart.AddDays(day);
+                                    var currentDateTime = currentDate.Date.Add(time.TimeOfDay);
+
+                                    var daySlots = timeslots
+                                    .Where(s =>
+                                    s.Start.Date == currentDate.Date &&
+                                    s.Start.TimeOfDay == time.TimeOfDay &&
+                                    s.BarberId == appointment.BarberId &&
+                                    s.IsAvailable)
+                                    .ToList();
+
+                                    <td>
+                                        @if (!daySlots.Any())
+                                        {
+                                            <span class="unavailable">Reserved</span>
+                                        }
+
+                                        else
+                                        {
+                                            @foreach (var slot in daySlots)
+                                            {
+                                                <button class="timeslot" type="button"
+                                                        @onclick="() => SelectSlot(slot)">
+
+                                                    @(selectedSlot?.Id == slot.Id ? "- Selected -" : "Select")
+                                                </button>
+                                                <br />
+                                            }
+                                        }
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        }
+
+        @if (selectedSlot != null)
+        {
+            <div style="margin-top: 100px;" class="booking-container" id="booking-summary">
+                <div class="booking-summary">
+                    <h3>Appointment Information</h3>
+                    <br />
+
+                    @if (barbers != null)
+                    {
+                        <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
+
+                    }
+
+                    @if (offerings != null && barbers != null && _selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+                    {
+                        var selectedBarber = barbers.FirstOrDefault(b => b.Id == _selectedBarberId);
+                        var selectedOffering = offerings.FirstOrDefault(o => o.Id == _selectedOfferingId);
+
+                        int pricePreview = (selectedBarber == null || selectedOffering == null)
+                        ? 0
+                        : PricingService.CalculatePrice(selectedOffering, selectedBarber.PositionId);
+
+                        <p>Price: @(appointment.FinalPrice > 0 ? appointment.FinalPrice : pricePreview) €</p>
+                    }
+
+
+                    @if (offerings != null && appointment.OfferingId != Guid.Empty)
+                    {
+                        var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
+                        <p>Service: @selectedOffering?.Name</p>
+                    }
+
+                    <p>Time: @selectedSlot.Start.ToString("dd.MM.yyyy, 'at' HH:mm")</p>
+                </div>
+            </div>
+        }
+        <br />
+
+        @if (selectedSlot != null)
+        {
+            <div class="booking-container">
+                <div class="booking-text">
+                    <h3>Contact information: </h3>
+                    <br />
+                    <p>Please enter your contact information <br />for appointment confirmation.</p>
+
+                    <br />
+                    <label>
+                        Your name:
+                        <InputText @bind-Value="appointment.CustomerName"></InputText>
+                        <ValidationMessage For="@(() => appointment.CustomerName)" />
+                    </label>
+                    <br /><br />
+                    <label>
+                        Your email:
+                        <InputText @bind-Value="appointment.CustomerEmail"></InputText>
+                        <ValidationMessage For="@(() => appointment.CustomerEmail)" />
+
+                    </label>
+                    <br /><br /><br />
+                    <button class="btn btn-light" type="submit" disabled=@IsSubmitting>Confirm Booking</button>
+                </div>
+            </div>
+        }
+    }
+</EditForm>
+
+    @code {
+    AppointmentDto appointment = new();
+
+    private List<OfferingDto>? offerings;
+    private List<BarberDto>? barbers;
+    private List<TimeslotDto>? timeslots;
+    private TimeslotDto? selectedSlot;
+
+    private bool IsSubmitting { get; set; } = false;
+
+    private Guid _selectedBarberId;
+
+    private Guid SelectedBarberId
+    {
+        get => _selectedBarberId;
+        set
+        {
+
+            if (_selectedBarberId != value)
+            {
+                _selectedBarberId = value;
+                appointment.BarberId = value;
+                selectedSlot = null;
+            }
+        }
+    }
+
+    private Guid _selectedOfferingId;
+
+    private Guid SelectedOfferingId
+    {
+        get => _selectedOfferingId;
+        set
+        {
+
+            if (_selectedOfferingId != value)
+            {
+                _selectedOfferingId = value;
+                appointment.OfferingId = value;
+                selectedSlot = null;
+            }
+        }
+    }
+
+    private DateTime weekStart = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+    private DateTime weekEnd => weekStart.AddDays(7);
+
+    private List<DateTime> timeRanges = new();
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        offerings = await OfferingService.GetAllOfferingsAsync();
+        barbers = await BarberService.GetBarbersAsync();
+
+        GenerateTimeRanges();
+        await LoadSlots();
+    }
+
+    private async void SelectOffering(Guid offeringId)
+    {
+        SelectedOfferingId = offeringId;
+        await TryScrollToCalendar();
+    }
+
+    private async void SelectBarber(Guid barberId)
+    {
+        SelectedBarberId = barberId;
+        await TryScrollToCalendar();
+    }
+
+    private async Task TryScrollToCalendar()
+    {
+        if (_selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+        {
+            await InvokeAsync(StateHasChanged);
+            await ScrollService.ScrollToElementAsync("calendar-table");
+        }
+    }
+
+    private async Task TryScrollToSummary()
+    {
+        if (selectedSlot != null)
+        {
+            await InvokeAsync(StateHasChanged);
+            await ScrollService.ScrollToElementAsync("booking-summary");
+        }
+    }
+
+    private async Task LoadSlots()
+    {
+        timeslots = await TimeslotService.GetWeeklySlotsAsync(weekStart);
+        selectedSlot = null;
+        StateHasChanged();
+
+    }
+
+    private void GenerateTimeRanges()
+    {
+        timeRanges.Clear();
+        var startTime = weekStart.Date.AddHours(9);
+        var endTime = weekStart.Date.AddHours(17);
+
+        while (startTime < endTime)
+        {
+            timeRanges.Add(startTime);
+            startTime = startTime.AddMinutes(30);
+        }
+    }
+
+    private async Task PrevWeek()
+    {
+        weekStart = weekStart.AddDays(-7);
+        await LoadSlots();
+    }
+
+    private async Task NextWeek()
+    {
+        weekStart = weekStart.AddDays(7);
+        await LoadSlots();
+    }
+
+    private async void SelectSlot(TimeslotDto timeslot)
+    {
+        selectedSlot = timeslot;
+        appointment.BarberId = timeslot.BarberId;
+        appointment.AppointmentDateTime = timeslot.Start;
+        appointment.DurationMinutes = timeslot.Duration;
+
+        var barber = barbers?.FirstOrDefault(b => b.Id == timeslot.BarberId);
+        appointment.BarberPositionId = barber?.PositionId ?? 0;
+
+        await TryScrollToSummary();
+    }
+
+    private void OnBarberChanged(ChangeEventArgs e)
+    {
+        appointment.BarberId = Guid.Parse(e.Value?.ToString() ?? Guid.Empty.ToString());
+        selectedSlot = null;
+    }
+
+
+    public async Task HandleValidSubmit()
+    {
+        Console.WriteLine($"Booking: {appointment.BarberId} at {appointment.AppointmentDateTime}");
+
+        IsSubmitting = true;
+
+        if (selectedSlot == null)
+            return;
+
+        appointment.DurationMinutes = selectedSlot.Duration;
+
+        var barber = barbers?.FirstOrDefault(b => b.Id == appointment.BarberId);
+        var offering = offerings?.FirstOrDefault(o => o.Id == appointment.OfferingId);
+
+        appointment.BarberName = barber?.Name ?? "";
+        appointment.OfferingName = offering?.Name ?? "";
+
+        var savedAppointment = await AppointmentsService.CreateAppointmentAsync(appointment);
+
+        Navigation.NavigateTo($"/booking-confirmed/{savedAppointment?.Id}");
+
+        IsSubmitting = false;
+        selectedSlot = null;
+
+        appointment = new AppointmentDto();
+
+        await LoadSlots();
+    }
+}

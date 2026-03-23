@@ -1,31 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Shared.DTOs.Admin.Offerings
+namespace Shared.DTOs.Public
 {
-    public class AdminOfferingDto
+    public class OfferingDto
     {
+
         public Guid Id { get; set; }
 
-        [Required]
         public string Name { get; set; } = "";
 
-        [Required]
         public string Description { get; set; } = "";
 
         public string Icon { get; set; } = "";
 
-        [Required]
         public int SeniorPrice { get; set; }
 
-        [Required]
         public int JuniorPrice { get; set; }
 
-        [Required]
         public int TraineePrice { get; set; }
+
     }
 }

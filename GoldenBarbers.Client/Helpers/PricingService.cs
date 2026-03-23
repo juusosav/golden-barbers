@@ -1,4 +1,4 @@
-﻿using Shared.DTOs;
+﻿using Shared.DTOs.Public;
 
 namespace GoldenBarbers.Client.Helpers
 {

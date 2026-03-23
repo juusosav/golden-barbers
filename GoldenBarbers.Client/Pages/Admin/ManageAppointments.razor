@@ -1,11 +1,11 @@
 ﻿@using GoldenBarbers.Client.Services;
 @using System.Threading.Tasks
-@using Shared.DTOs
-@using Shared.DTOs.Admin.Appointments;
+@using Shared.DTOs.Public
+@using Shared.DTOs.Admin.Appointments
 
 @page "/admin/manage-appointments"
 
-@inject AdminAppointmentsApiService AdminAppointmentsApiService
+@inject AdminAppointmentApiService AdminAppointmentsApiService
 
 <h1>Manage Appointments</h1>
 <br />
@@ -53,7 +53,7 @@
         {
             @foreach (var a in appointments)
             {
-                <AdminAppointmentsCard Id="@a.Id"
+                <AdminAppointmentCard Id="@a.Id"
                                        AppointmentDateTime="@a.AppointmentDateTime"
                                        DurationMinutes="@a.DurationMinutes"
                                        CustomerName="@a.CustomerName"
@@ -125,7 +125,7 @@
 
     private async Task LoadAppointments()
     {
-        appointments = await AdminAppointmentsApiService.GetAppointments(filter);
+        appointments = await AdminAppointmentsApiService.GetAppointmentsAsync(filter);
 
         if (appointments != null)
         {

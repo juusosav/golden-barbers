@@ -2,7 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Admin.Barbers
 
-@inject AdminBarbersApiService BarbersApiService
+@inject AdminBarberApiService BarbersApiService
 @inject NavigationManager Navigation
 
 @page "/admin/manage-barbers/edit-barber/{Id:guid}"
@@ -33,9 +33,22 @@ else
             </div>
 
             <div class="admin-form-item">
+                <label>Icon: </label>
+                <br />
+
+                @if (!string.IsNullOrEmpty(barber.Portrait))
+                {
+                    <img src="@barber.Portrait" style="max-height: 100px;" />
+                    <br />
+                }
+                <InputFile OnChange="HandleFileSelected" />
+                
+            </div>
+
+            <div class="admin-form-item">
                 <label>Salary: </label>
                 <br />
-                <InputNumber @bind-Value="barber.Salary" />
+                <InputText @bind-Value="barber.Salary" />
             </div>
 
             <div class="admin-form-item">
@@ -74,11 +87,13 @@ else
 
     private AdminBarberDto? barber;
 
+    private IBrowserFile? selectedFile;
+
     private bool IsSubmitting { get; set; } = false;
 
     protected override async Task OnParametersSetAsync()
     {
-        barber = await BarbersApiService.GetBarberById(Id);
+        barber = await BarbersApiService.GetBarberByIdAsync(Id);
 
         if (barber == null)
         {
@@ -92,7 +107,10 @@ else
         IsSubmitting = true;
         if (barber != null)
         {
-            var success = await BarbersApiService.EditBarberAsync(barber.Id, barber);
+            var success = await BarbersApiService.EditBarberAsync(
+                barber.Id,
+                barber,
+                selectedFile);
 
             if (success)
             {
@@ -102,5 +120,10 @@ else
             IsSubmitting = false;
         }
         
+    }
+
+    private void HandleFileSelected(InputFileChangeEventArgs e)
+    {
+        selectedFile = e.File;
     }
 }

@@ -14,7 +14,7 @@ namespace GoldenBarbers.Services.Admin
             _context = context; 
         }
 
-        public async Task<DashboardDto?> GetDashboard()
+        public async Task<DashboardDto?> GetDashboardAsync()
         {
             var today = DateTime.UtcNow.Date;
             var nextWeek = today.AddDays(7);

@@ -1,7 +1,7 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs;
 
-@inject AdminBarbersApiService BarbersApiService
+@inject AdminBarberApiService BarbersApiService
 
 <tr>
     <td><img style="max-height: 60px;"src=@Portrait /></td>
@@ -30,7 +30,7 @@
     public string Portrait { get; set; } = "";
 
     [Parameter]
-    public decimal Salary { get; set; }
+    public string Salary { get; set; } = "";
 
     [Parameter]
     public DateTime StartDate { get; set; }

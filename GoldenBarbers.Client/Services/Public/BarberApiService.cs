@@ -1,0 +1,26 @@
+﻿using Shared.DTOs.Public;
+using System.Net.Http.Json;
+
+namespace GoldenBarbers.Client.Services.Public
+{
+    public class BarberApiService
+    {
+        private readonly HttpClient _http;
+
+        public BarberApiService(HttpClient http)
+        {
+            _http = http;
+        }
+
+        public async Task<List<BarberDto>> GetBarbersAsync()
+        {
+                return await _http.GetFromJsonAsync<List<BarberDto>>("api/barbers")
+                    ?? new List<BarberDto>();
+        }
+
+        public async Task<BarberDto?> GetBarberByIdAsync(Guid id)
+        {
+            return await _http.GetFromJsonAsync<BarberDto>($"api/barbers/{id}");
+        }
+    }
+}
