@@ -14,7 +14,7 @@ namespace GoldenBarbers.Services.Admin
             _context = context; 
         }
 
-        public async Task<DashboardDto?> GetDashboardAsync()
+        public async Task<AdminDashboardDto?> GetDashboardAsync()
         {
             var today = DateTime.UtcNow.Date;
             var nextWeek = today.AddDays(7);
@@ -32,7 +32,7 @@ namespace GoldenBarbers.Services.Admin
             var todaySchedule = await _context.Appointments
                 .Where(a => a.AppointmentDateTime.Date == today)
                 .OrderBy(a => a.AppointmentDateTime)
-                .Select(a => new DashboardAppointmentDto
+                .Select(a => new AdminDashboardAppointmentDto
                 {
                     Time = a.AppointmentDateTime,
                     CustomerName = a.CustomerName
@@ -41,7 +41,7 @@ namespace GoldenBarbers.Services.Admin
                 })
                 .ToListAsync();
 
-            var dto = new DashboardDto
+            var dto = new AdminDashboardDto
             {
                 AppointmentsToday = appointmentsToday,
                 UpcomingWeek = upcomingWeek,

@@ -1,5 +1,39 @@
-﻿<h3>Metrics</h3>
+﻿@using GoldenBarbers.Client.Services.Admin;
+@using Shared.DTOs.Admin.Metrics;
+
+<div class="dashboard-items">
+    @if (RevenueChangeCount == null)
+    {
+        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Data Not Yet Available</button>
+    }
+    else
+    {
+        @if (AppointmentsChangeCount > 0)
+        {
+            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month <br /> + @AppointmentsChangeCount</button>
+        }
+        else
+        {
+            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month <br /> - <br />@AppointmentsChangeCount</button>
+        }
+
+        @if (RevenueChangeCount > 0)
+        {
+            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br /> + <br />@RevenueChangeCount</button>
+        }
+        else
+        {
+            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br /> - <br />@RevenueChangeCount</button>
+        }
+
+    }
+</div>
+
 
 @code {
+    [Parameter]
+    public decimal? AppointmentsChangeCount { get; set; }
+    [Parameter]
+    public decimal? RevenueChangeCount { get; set; }
 
 }

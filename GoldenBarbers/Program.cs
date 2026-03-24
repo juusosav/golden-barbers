@@ -25,6 +25,7 @@ builder.Services.AddScoped<AdminDashboardService>();
 builder.Services.AddScoped<AdminBarberService>();
 builder.Services.AddScoped<AdminAppointmentService>();
 builder.Services.AddScoped<AdminOfferingService>();
+builder.Services.AddScoped<AdminMetricService>();
 
 builder.Services.AddCors(options =>
 {

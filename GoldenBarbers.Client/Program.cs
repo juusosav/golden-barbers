@@ -38,6 +38,7 @@ builder.Services.AddScoped<AdminDashboardApiService>();
 builder.Services.AddScoped<AdminAppointmentApiService>();
 builder.Services.AddScoped<AdminBarberApiService>();
 builder.Services.AddScoped<AdminOfferingApiService>();
+builder.Services.AddScoped<AdminMetricApiService>();
 
 // UI helpers
 builder.Services.AddScoped<CarouselApiService>();

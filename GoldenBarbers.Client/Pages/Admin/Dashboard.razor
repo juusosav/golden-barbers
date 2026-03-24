@@ -1,6 +1,7 @@
 ﻿@page "/admin"
 
 @inject AdminDashboardApiService DashboardService
+@inject AdminMetricApiService MetricService
 
 <div class="d-flex justify-content-center">
     <h1>Dashboard</h1>
@@ -20,14 +21,24 @@
 <div class="d-flex justify-content-center">
     <h1>Metrics</h1>
 </div>
+<br />
+<div class="dashboard-container">
+    @if (metrics != null)
+    {
+        <MetricsCard AppointmentsChangeCount="@metrics.AppointmentsChangeCount"
+                     RevenueChangeCount="@metrics.RevenueChangeCount" />
+    }
+</div>
 
 
 @code {
 
-    private DashboardDto? dashboard;
+    private AdminDashboardDto? dashboard;
+    private AdminMetricDto? metrics;
 
     protected override async Task OnInitializedAsync()
     {
         dashboard = await DashboardService.GetDashboardAsync();
+        metrics = await MetricService.GetMetricsAsync();
     }
 }

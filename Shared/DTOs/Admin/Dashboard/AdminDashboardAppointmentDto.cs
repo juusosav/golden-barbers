@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Shared.DTOs.Admin.Dashboard
 {
-    public class DashboardAppointmentDto
+    public class AdminDashboardAppointmentDto
     {
         public DateTime Time { get; set; }
         public string CustomerName { get; set; } = string.Empty;

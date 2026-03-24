@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Shared.DTOs.Admin.Dashboard
 {
-    public class DashboardDto
+    public class AdminDashboardDto
     {
         public int AppointmentsToday { get; set; }
         public int UpcomingWeek { get; set; }
         public decimal RevenueToday { get; set; }
 
-        public List<DashboardAppointmentDto> TodaySchedule { get; set; } = [];
+        public List<AdminDashboardAppointmentDto> TodaySchedule { get; set; } = [];
     }
 }
