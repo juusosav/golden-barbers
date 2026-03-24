@@ -8,22 +8,23 @@
     }
     else
     {
-        @if (AppointmentsChangeCount > 0)
+        @if (AppointmentsChangeCount >= 0)
         {
-            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month <br /> + @AppointmentsChangeCount</button>
+            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month: <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
         }
-        else
+        else if (AppointmentsChangeCount < 0)
         {
-            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month <br /> - <br />@AppointmentsChangeCount</button>
+            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month: <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
         }
 
-        @if (RevenueChangeCount > 0)
+
+        @if (RevenueChangeCount >= 0)
         {
-            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br /> + <br />@RevenueChangeCount</button>
+            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br />@RevenueChangeCount.Value.ToString("F1") %</button>
         }
-        else
+        else if (RevenueChangeCount < 0)
         {
-            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br /> - <br />@RevenueChangeCount</button>
+            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br />@RevenueChangeCount.Value.ToString("F1") %</button>
         }
 
     }
