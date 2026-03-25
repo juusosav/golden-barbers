@@ -117,7 +117,100 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Appointment_AppointmentInformation" xml:space="preserve">
+    <value>Appointment Information</value>
+  </data>
+  <data name="Appointment_BarberPreview" xml:space="preserve">
+    <value>Barber: </value>
+  </data>
+  <data name="Appointment_BookAppointment" xml:space="preserve">
+    <value>Appointment Booking</value>
+  </data>
+  <data name="Appointment_ConfirmBookingButton" xml:space="preserve">
+    <value>Confirm Booking</value>
+  </data>
+  <data name="Appointment_ContactInfo" xml:space="preserve">
+    <value>Contact information:</value>
+  </data>
+  <data name="Appointment_CustomerEmail" xml:space="preserve">
+    <value>Your email:</value>
+  </data>
+  <data name="Appointment_CustomerName" xml:space="preserve">
+    <value>Your name:</value>
+  </data>
+  <data name="Appointment_LoadingCalendar" xml:space="preserve">
+    <value>Loading calendar...</value>
+  </data>
+  <data name="Appointment_NextWeek" xml:space="preserve">
+    <value>Next Week</value>
+  </data>
+  <data name="Appointment_PrevWeek" xml:space="preserve">
+    <value>Previous Week</value>
+  </data>
+  <data name="Appointment_PricePreview" xml:space="preserve">
+    <value>Price: </value>
+  </data>
+  <data name="Appointment_ProvideContactInfo1" xml:space="preserve">
+    <value>Please enter your contact information</value>
+  </data>
+  <data name="Appointment_ProvideContactInfo2" xml:space="preserve">
+    <value>for appointment confirmation.</value>
+  </data>
+  <data name="Appointment_Reserved" xml:space="preserve">
+    <value>Reserved</value>
+  </data>
+  <data name="Appointment_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Appointment_SelectBarber" xml:space="preserve">
+    <value>Select Barber:</value>
+  </data>
+  <data name="Appointment_Selected" xml:space="preserve">
+    <value>- Selected -</value>
+  </data>
+  <data name="Appointment_SelectService" xml:space="preserve">
+    <value>Select Service:</value>
+  </data>
+  <data name="Appointment_ServicePreview" xml:space="preserve">
+    <value>Service: </value>
+  </data>
+  <data name="Appointment_TimeHeading" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Appointment_TimePreview" xml:space="preserve">
+    <value>Time: </value>
+  </data>
+  <data name="Barbers_GeneralDescription1" xml:space="preserve">
+    <value>At Golden Barbers, our team is the heart of everything we do. Each member of our staff is dedicated to delivering exceptional service, combining skill, creativity, and attention to detail to ensure every client leaves looking sharp and feeling confident.</value>
+  </data>
+  <data name="Barbers_GeneralDescription2" xml:space="preserve">
+    <value>We pride ourselves on maintaining a welcoming, professional environment where quality and consistency always come first. Whether you’re visiting for a classic cut, a modern style, or expert grooming advice, you’re in capable hands with our talented team.</value>
+  </data>
+  <data name="Home_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Home_AdminLoginButton" xml:space="preserve">
+    <value>Admin Login</value>
+  </data>
   <data name="Home_BookAppointment" xml:space="preserve">
     <value>Book Appointment</value>
+  </data>
+  <data name="Home_Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="Home_MondayToFriday" xml:space="preserve">
+    <value>Mon – Fri: 9:00 AM – 5:00 PM</value>
+  </data>
+  <data name="Home_OpeningHours" xml:space="preserve">
+    <value>Opening Hours</value>
+  </data>
+  <data name="Home_OurServices" xml:space="preserve">
+    <value>Our Services</value>
+  </data>
+  <data name="Home_Saturday" xml:space="preserve">
+    <value>Saturday: 9:00 AM – 5:00 PM</value>
+  </data>
+  <data name="Home_Sunday" xml:space="preserve">
+    <value>Sunday: Closed</value>
   </data>
 </root>

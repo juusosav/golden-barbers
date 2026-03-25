@@ -4,18 +4,13 @@
 
 @page "/our-team"
 @inject BarberApiService BarberService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <div class="barberpage-title-container">
     <p class="barberpage-title-text">
-        <strong>
-            At Golden Barbers, our team is the heart of everything we do.
-            Each member of our staff is dedicated to delivering exceptional service,
-            combining skill, creativity, and attention to detail to ensure every client
-            leaves looking sharp and feeling confident.
+        <strong>@L["Barbers_GeneralDescription1"]
             <br /><br />
-            We pride ourselves on maintaining a welcoming, professional environment where quality and
-            consistency always come first. Whether you’re visiting for a classic cut, a modern style,
-            or expert grooming advice, you’re in capable hands with our talented team.
+            @L["Barbers_GeneralDescription2"]
         </strong>
     </p>
 </div>

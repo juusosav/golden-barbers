@@ -14,7 +14,7 @@
 
     @if (carousel == null)
     {
-        <p></p>
+        <p class="custom-loader">Loading...</p>
     }
     else
     {
@@ -31,18 +31,15 @@
 <div class="button-container">
     <div class="button-container-item">
         <button class="gold-button" @onclick="GoToBooking">@L["Home_BookAppointment"]</button>
-        <p>Culture: @System.Globalization.CultureInfo.CurrentUICulture.Name</p>
-        <p>Key test: @L["Home_BookAppointment"]</p>
-        <p>Resource found: @(L["Home_BookAppointment"].ResourceNotFound ? "NOT FOUND" : "FOUND")</p>
     </div>
 </div>
 
 <div class="homepage-container">
-    <h2 class="homepage-container-item"><strong>Our Services</strong></h2>
+    <h2 class="homepage-container-item"><strong>@L["Home_OurServices"]</strong></h2>
 
     @if (offerings == null)
     {
-        <p class="custom-loader">Loading...</p>
+        <p class="custom-loader">@L["General_Loading"]</p>
     }
 
     else
@@ -62,30 +59,30 @@
         <div class="footer-container-item">
             <h3>Golden Barbers</h3>
             <br />
-            <h4>Address</h4>
+            <h4>@L["Home_Address"]</h4>
             <p>
                 Arkadiankatu 3
                 <br />
                 00100 Helsinki
                 Finland
             </p>
-            <h4>Contact</h4>
+            <h4>@L["Home_Contact"]</h4>
             <p>
-                📞 +44 20 7946 0823
+                📞 +358 452224502
                 <br />
                 ✉
-                <a href="mailto:info@goldenbarbers.fi">info@goldenbarbers.fi (mock email)</a>
+                <a href="mailto:info@goldenbarbers.fi">info@goldenbarbers.fi</a>
             </p>
-            <h4>Opening hours</h4>
+            <h4>@L["Home_OpeningHours"]</h4>
             <p>
-                Mon – Fri: 9:00 AM – 7:00 PM
+                @L["Home_MondayToFriday"]
                 <br />
-                Saturday: 9:00 AM – 5:00 PM
+                @L["Home_Saturday"]
                 <br />
-                Sunday: Closed
+                @L["Home_Sunday"]
             </p>
             <br />
-            <button @onclick="GoToAdminLogin">Admin Login</button>
+            <button @onclick="GoToAdminLogin">@L["Home_AdminLoginButton"]</button>
         </div>
     </div>
 </div>

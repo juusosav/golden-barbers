@@ -8,13 +8,14 @@
 @inject TimeslotApiService TimeslotService
 @inject AppointmentApiService AppointmentsService
 @inject ScrollService ScrollService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @inject NavigationManager Navigation
 
 @page "/book-appointment"
 
 <div class="booking-container">
-    <h2 class="booking-text">Book an Appointment</h2>
+    <h2 class="booking-text">@L["Appointment_BookAppointment"]</h2>
     <br />
 </div>
 
@@ -23,7 +24,7 @@
     <DataAnnotationsValidator />
 
     <div class="booking-container">
-        <label class="booking-text">Select Service: </label>
+        <label class="booking-text">@L["Appointment_SelectService"] </label>
         <br />
 
         <div class="selection">
@@ -58,7 +59,7 @@
 
         <br /><br />
 
-        <label class="booking-text">Select Barber: </label>
+        <label class="booking-text">@L["Appointment_SelectBarber"] </label>
         <br />
 
         <div class="selection">
@@ -100,15 +101,15 @@
     {
         <div class="booking-container" id="calendar-table">
             <div class="booking-text">
-                <button type="button" @onclick="PrevWeek">⬅ Previous Week</button>
+                <button type="button" @onclick="PrevWeek">⬅ @L["Appointment_PrevWeek"]</button>
                 <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
-                <button type="button" @onclick="NextWeek">Next Week ➡</button>
+                <button type="button" @onclick="NextWeek">@L["Appointment_NextWeek"] ➡</button>
             </div>
         </div>
 
         @if (timeslots == null || barbers == null)
         {
-            <p class="custom-loader">Loading calendar...</p>
+            <p class="custom-loader">@L["Appointment_LoadingCalendar"]</p>
         }
         else
         {
@@ -116,7 +117,7 @@
                 <table class="calendar-table">
                     <thead>
                         <tr>
-                            <th>Time</th>
+                            <th>@L["Appointment_TimeHeading"]</th>
                             @foreach (var day in Enumerable.Range(0, 7))
                             {
                                 var currentDay = weekStart.AddDays(day);
@@ -146,7 +147,7 @@
                                     <td>
                                         @if (!daySlots.Any())
                                         {
-                                            <span class="unavailable">Reserved</span>
+                                            <span class="unavailable">@L["Appointment_Reserved"]</span>
                                         }
 
                                         else
@@ -156,7 +157,7 @@
                                                 <button class="timeslot" type="button"
                                                         @onclick="() => SelectSlot(slot)">
 
-                                                    @(selectedSlot?.Id == slot.Id ? "- Selected -" : "Select")
+                                                    @(selectedSlot?.Id == slot.Id ? L["Appointment_Selected"] : L["Appointment_Select"])
                                                 </button>
                                                 <br />
                                             }
@@ -174,12 +175,12 @@
         {
             <div style="margin-top: 100px;" class="booking-container" id="booking-summary">
                 <div class="booking-summary">
-                    <h3>Appointment Information</h3>
+                    <h3>@L["Appointment_AppointmentInformation"]</h3>
                     <br />
 
                     @if (barbers != null)
                     {
-                        <p>Barber: @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
+                        <p>@L["Appointment_BarberPreview"] @barbers.First(b => b.Id == selectedSlot.BarberId).Name</p>
 
                     }
 
@@ -192,17 +193,17 @@
                         ? 0
                         : PricingService.CalculatePrice(selectedOffering, selectedBarber.PositionId);
 
-                        <p>Price: @(appointment.FinalPrice > 0 ? appointment.FinalPrice : pricePreview) €</p>
+                        <p>@L["Appointment_PricePreview"] @(appointment.FinalPrice > 0 ? appointment.FinalPrice : pricePreview) €</p>
                     }
 
 
                     @if (offerings != null && appointment.OfferingId != Guid.Empty)
                     {
                         var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
-                        <p>Service: @selectedOffering?.Name</p>
+                        <p>@L["Appointment_ServicePreview"] @selectedOffering?.Name</p>
                     }
 
-                    <p>Time: @selectedSlot.Start.ToString("dd.MM.yyyy, 'at' HH:mm")</p>
+                    <p>@L["Appointment_TimePreview"] @selectedSlot.Start.ToString("dd.MM.yyyy, 'at' HH:mm")</p>
                 </div>
             </div>
         }
@@ -212,32 +213,32 @@
         {
             <div class="booking-container">
                 <div class="booking-text">
-                    <h3>Contact information: </h3>
+                    <h3>@L["Appointment_ContactInfo"] </h3>
                     <br />
-                    <p>Please enter your contact information <br />for appointment confirmation.</p>
+                    <p>@L["Appointment_ProvideContactInfo1"] <br />@L["Appointment_ProvideContactInfo2"]</p>
 
                     <br />
                     <label>
-                        Your name:
+                        @L["Appointment_CustomerName"]
                         <InputText @bind-Value="appointment.CustomerName"></InputText>
                         <ValidationMessage For="@(() => appointment.CustomerName)" />
                     </label>
                     <br /><br />
                     <label>
-                        Your email:
+                        @L["Appointment_CustomerEmail"]
                         <InputText @bind-Value="appointment.CustomerEmail"></InputText>
                         <ValidationMessage For="@(() => appointment.CustomerEmail)" />
 
                     </label>
                     <br /><br /><br />
-                    <button class="btn btn-light" type="submit" disabled=@IsSubmitting>Confirm Booking</button>
+                    <button class="btn btn-light" type="submit" disabled=@IsSubmitting>@L["Appointment_ConfirmBookingButton"]</button>
                 </div>
             </div>
         }
     }
 </EditForm>
 
-    @code {
+@code {
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;

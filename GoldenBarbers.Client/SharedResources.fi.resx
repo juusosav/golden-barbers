@@ -117,7 +117,102 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Appointment_AppointmentInformation" xml:space="preserve">
+    <value>Ajanvarauksen tiedot</value>
+  </data>
+  <data name="Appointment_BarberPreview" xml:space="preserve">
+    <value>Parturi: </value>
+  </data>
+  <data name="Appointment_BookAppointment" xml:space="preserve">
+    <value>Käynnin Varaaminen</value>
+  </data>
+  <data name="Appointment_ConfirmBookingButton" xml:space="preserve">
+    <value>Lähetä</value>
+  </data>
+  <data name="Appointment_ContactInfo" xml:space="preserve">
+    <value>Yhteystiedot:</value>
+  </data>
+  <data name="Appointment_CustomerEmail" xml:space="preserve">
+    <value>Sähköposti:</value>
+  </data>
+  <data name="Appointment_CustomerName" xml:space="preserve">
+    <value>Nimi:</value>
+  </data>
+  <data name="Appointment_LoadingCalendar" xml:space="preserve">
+    <value>Ladataan kalenteria...</value>
+  </data>
+  <data name="Appointment_NextWeek" xml:space="preserve">
+    <value>Seuraava</value>
+  </data>
+  <data name="Appointment_PrevWeek" xml:space="preserve">
+    <value>Edellinen</value>
+  </data>
+  <data name="Appointment_PricePreview" xml:space="preserve">
+    <value>Hinta: </value>
+  </data>
+  <data name="Appointment_ProvideContactInfo1" xml:space="preserve">
+    <value>Ole hyvä ja anna yhteystietosi</value>
+  </data>
+  <data name="Appointment_ProvideContactInfo2" xml:space="preserve">
+    <value>ajanvarauksen vahvistamiseksi.</value>
+  </data>
+  <data name="Appointment_Reserved" xml:space="preserve">
+    <value>Varattu</value>
+  </data>
+  <data name="Appointment_Select" xml:space="preserve">
+    <value>Valitse</value>
+  </data>
+  <data name="Appointment_SelectBarber" xml:space="preserve">
+    <value>Valitse Parturi:</value>
+  </data>
+  <data name="Appointment_Selected" xml:space="preserve">
+    <value>- Valittu -</value>
+  </data>
+  <data name="Appointment_SelectService" xml:space="preserve">
+    <value>Valitse Palvelu:</value>
+  </data>
+  <data name="Appointment_ServicePreview" xml:space="preserve">
+    <value>Palvelu: </value>
+  </data>
+  <data name="Appointment_TimeHeading" xml:space="preserve">
+    <value>Aika</value>
+  </data>
+  <data name="Appointment_TimePreview" xml:space="preserve">
+    <value>Ajankohta:</value>
+  </data>
+  <data name="Barbers_GeneralDescription1" xml:space="preserve">
+    <value>Golden Barbersilla tiimimme on kaiken toimintamme ydin.  
+Jokainen henkilökuntamme jäsen on sitoutunut tarjoamaan ensiluokkaista palvelua, yhdistäen ammattitaidon, luovuuden ja tarkkuuden varmistaakseen, että jokainen asiakas poistuu tyylikkäänä ja itsevarmana. </value>
+  </data>
+  <data name="Barbers_GeneralDescription2" xml:space="preserve">
+    <value>Olemme ylpeitä siitä, että ylläpidämme viihtyisää ja ammattimaista ympäristöä, jossa laatu ja tasaisuus ovat aina etusijalla.  
+Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantuntevaan grooming-neuvontaan, olet osaavan ja lahjakkaan tiimimme käsissä.</value>
+  </data>
+  <data name="Home_Address" xml:space="preserve">
+    <value>Osoite</value>
+  </data>
+  <data name="Home_AdminLoginButton" xml:space="preserve">
+    <value>Admin-kirjautuminen</value>
+  </data>
   <data name="Home_BookAppointment" xml:space="preserve">
     <value>Varaa Käynti</value>
+  </data>
+  <data name="Home_Contact" xml:space="preserve">
+    <value>Yhteystiedot</value>
+  </data>
+  <data name="Home_MondayToFriday" xml:space="preserve">
+    <value>Ma - Pe: klo 09.00 - 17.00</value>
+  </data>
+  <data name="Home_OpeningHours" xml:space="preserve">
+    <value>Aukioloajat</value>
+  </data>
+  <data name="Home_OurServices" xml:space="preserve">
+    <value>Palvelumme</value>
+  </data>
+  <data name="Home_Saturday" xml:space="preserve">
+    <value>Lauantai: 09.00 - 16.00</value>
+  </data>
+  <data name="Home_Sunday" xml:space="preserve">
+    <value>Sunnuntai: Suljettu</value>
   </data>
 </root>
