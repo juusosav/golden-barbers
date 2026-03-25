@@ -14,16 +14,7 @@ var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.Services.AddLocalization();
 
-var host = builder.Build();
-var js = host.Services.GetRequiredService<IJSRuntime>();
-
-var browserCulture = await js.InvokeAsync<string>("getBrowserCulture");
-var cultureCode = browserCulture.StartsWith("fi") ? "fi" : "en";
-
-var culture = new CultureInfo(cultureCode);
-
-CultureInfo.DefaultThreadCurrentCulture = culture;
-CultureInfo.DefaultThreadCurrentUICulture = culture;
+var defaultCulture = new CultureInfo("fi-FI");
 
 builder.Services.AddAuthorizationCore(options =>
 {
@@ -57,4 +48,31 @@ builder.Services.AddScoped<AdminMetricApiService>();
 // UI helpers
 builder.Services.AddScoped<CarouselApiService>();
 
-await builder.Build().RunAsync();
+var host = builder.Build();
+
+var js = host.Services.GetRequiredService<IJSRuntime>();
+
+var storedCulture = await js.InvokeAsync<string>(
+    "cultureManager.get"
+    );
+
+CultureInfo culture;
+
+// If localStorage contains garbage
+try
+{
+    culture = !string.IsNullOrWhiteSpace(storedCulture)
+        ? new CultureInfo(storedCulture)
+        : new CultureInfo("en-US");
+}
+
+catch (CultureNotFoundException)
+{
+    culture = new CultureInfo("en-US");
+}
+
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+
+await host.RunAsync();

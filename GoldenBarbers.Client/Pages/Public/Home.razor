@@ -1,12 +1,14 @@
-﻿@using GoldenBarbers.Client.Services.Public;
+﻿@using GoldenBarbers.Client.Services.Public
 @using System.Threading.Tasks
-@using Shared.DTOs.Public;
+@using Shared.DTOs.Public
+@using GoldenBarbers.Client
 
 @page "/" 
 
 @inject CarouselApiService CarouselService
 @inject OfferingApiService OfferingService
 @inject NavigationManager Navigation
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <header class="carousel-container">
 
@@ -28,7 +30,10 @@
 
 <div class="button-container">
     <div class="button-container-item">
-        <button class="gold-button" @onclick="GoToBooking">Book Appointment</button>
+        <button class="gold-button" @onclick="GoToBooking">@L["Home_BookAppointment"]</button>
+        <p>Culture: @System.Globalization.CultureInfo.CurrentUICulture.Name</p>
+        <p>Key test: @L["Home_BookAppointment"]</p>
+        <p>Resource found: @(L["Home_BookAppointment"].ResourceNotFound ? "NOT FOUND" : "FOUND")</p>
     </div>
 </div>
 

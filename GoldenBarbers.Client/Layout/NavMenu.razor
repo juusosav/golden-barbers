@@ -31,12 +31,12 @@
 
             <ul class="dropdown-menu">
                 <li>
-                    <button class="dropdown-item" @onclick='() => SetCulture("en")'>
+                    <button class="dropdown-item" @onclick='() => ChangeLanguage("en")'>
                         🇬🇧 English
                     </button>
                 </li>
                 <li>
-                    <button class="dropdown-item" @onclick='() => SetCulture("fi")'>
+                    <button class="dropdown-item" @onclick='() => ChangeLanguage("fi")'>
                         🇫🇮 Suomi
                     </button>
                 </li>
@@ -46,16 +46,9 @@
 </nav>
 
 @code {
-    private async Task SetCulture(string cultureCode)
+    async Task ChangeLanguage(string culture)
     {
-        await JS.InvokeVoidAsync("setCulture", cultureCode);
-
-        var culture = new CultureInfo(cultureCode);
-
-        CultureInfo.DefaultThreadCurrentCulture = culture;
-        CultureInfo.DefaultThreadCurrentUICulture = culture;
-
-        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+        await JS.InvokeVoidAsync("cultureManager.set", culture);
     }
 }
 
