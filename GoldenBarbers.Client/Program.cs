@@ -4,12 +4,27 @@ using GoldenBarbers.Client.Pages;
 using GoldenBarbers.Client.Services.Admin;
 using GoldenBarbers.Client.Services.Public;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
+using System.Globalization;
+using Microsoft.JSInterop;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
-// Core
+builder.Services.AddLocalization();
+
+var host = builder.Build();
+var js = host.Services.GetRequiredService<IJSRuntime>();
+
+var browserCulture = await js.InvokeAsync<string>("getBrowserCulture");
+var cultureCode = browserCulture.StartsWith("fi") ? "fi" : "en";
+
+var culture = new CultureInfo(cultureCode);
+
+CultureInfo.DefaultThreadCurrentCulture = culture;
+CultureInfo.DefaultThreadCurrentUICulture = culture;
+
 builder.Services.AddAuthorizationCore(options =>
 {
     options.AddPolicy("AdminOnly", policy =>
@@ -25,7 +40,6 @@ builder.Services.AddScoped(sp =>
     new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
 
 // Domain services
-
 // Public
 builder.Services.AddScoped<BarberApiService>();
 builder.Services.AddScoped<OfferingApiService>();

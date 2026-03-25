@@ -1,4 +1,11 @@
-﻿<nav class="custom-nav">
+﻿@using Microsoft.Extensions.Localization
+@using System.Globalization
+
+@inject IStringLocalizer<NavMenu> L
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+
+<nav class="custom-nav">
 
     <a href="">
         <img class="main-logo" src="/images/golden_barbers_logo.png" alt="Golden Barbers Logo" />
@@ -17,10 +24,38 @@
         <NavLink class="custom-nav-item" href="book-appointment" Match="NavLinkMatch.All">
             <span class="custom-nav-link" aria-hidden="true">Book Appointment</span>
         </NavLink>
+        <div class="dropdown">
+            <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                🌐 Language
+            </button>
+
+            <ul class="dropdown-menu">
+                <li>
+                    <button class="dropdown-item" @onclick='() => SetCulture("en")'>
+                        🇬🇧 English
+                    </button>
+                </li>
+                <li>
+                    <button class="dropdown-item" @onclick='() => SetCulture("fi")'>
+                        🇫🇮 Suomi
+                    </button>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
 @code {
+    private async Task SetCulture(string cultureCode)
+    {
+        await JS.InvokeVoidAsync("setCulture", cultureCode);
 
+        var culture = new CultureInfo(cultureCode);
+
+        CultureInfo.DefaultThreadCurrentCulture = culture;
+        CultureInfo.DefaultThreadCurrentUICulture = culture;
+
+        Navigation.NavigateTo(Navigation.Uri, forceLoad: true);
+    }
 }
 
