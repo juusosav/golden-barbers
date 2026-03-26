@@ -2,9 +2,10 @@
 
 @inject AdminDashboardApiService DashboardService
 @inject AdminMetricApiService MetricService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <div class="d-flex justify-content-center">
-    <h1>Hello, Admin!</h1>
+    <h1>@L["Dashboard_HelloAdmin"]</h1>
 </div>
 <br />
 <div>

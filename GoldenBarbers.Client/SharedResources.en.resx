@@ -279,4 +279,61 @@
   <data name="DashboardCard_UpcomingWeekAppointments" xml:space="preserve">
     <value>Appointments for upcoming week:</value>
   </data>
+  <data name="AdminNavMenu_Dashboard" xml:space="preserve">
+    <value>Dashboard</value>
+  </data>
+  <data name="AdminNavMenu_ManageOfferings" xml:space="preserve">
+    <value>Manage Offerings</value>
+  </data>
+  <data name="AdminNavMenu_ManageBarbers" xml:space="preserve">
+    <value>Manage Barbers</value>
+  </data>
+  <data name="AdminNavMenu_ManageAppointments" xml:space="preserve">
+    <value>Manage Appointmens</value>
+  </data>
+  <data name="Dashboard_HelloAdmin" xml:space="preserve">
+    <value>Hello, Admin!</value>
+  </data>
+  <data name="ManageAppointments_Title" xml:space="preserve">
+    <value>Manage Appointments</value>
+  </data>
+  <data name="ManageAppointments_SearchPlaceholder" xml:space="preserve">
+    <value>Search...</value>
+  </data>
+  <data name="ManageAppointments_SearchButton" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ManageAppointments_ResetButton" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="ManageAppointments_CustomerSearchValue" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="ManageAppointments_BarberSearchValue" xml:space="preserve">
+    <value>Barber</value>
+  </data>
+  <data name="ManageAppointments_ServiceSearchValue" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="ManageAppointments_TableReservationTime" xml:space="preserve">
+    <value>Reservation time</value>
+  </data>
+  <data name="ManageAppointments_TableDuration" xml:space="preserve">
+    <value>Duration (minutes)</value>
+  </data>
+  <data name="ManageAppointments_TableCustomerName" xml:space="preserve">
+    <value>Customer Name</value>
+  </data>
+  <data name="ManageAppointments_TableCustomerEmail" xml:space="preserve">
+    <value>Customer Email</value>
+  </data>
+  <data name="ManageAppointments_TableBarberName" xml:space="preserve">
+    <value>Barber</value>
+  </data>
+  <data name="ManageAppointments_TableServiceName" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="ManageAppointments_TablePrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
 </root>
