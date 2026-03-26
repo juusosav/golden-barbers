@@ -1,33 +1,38 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs.Admin.Metrics;
 
-<div class="dashboard-items">
-    @if (RevenueChangeCount == null)
-    {
-        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Data Not Yet Available</button>
-    }
-    else
-    {
-        @if (AppointmentsChangeCount >= 0)
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+<h2>@L["MetricsCard_Metrics"]</h2>
+<div class="dashboard-container">
+    <div class="dashboard-items">
+        @if (RevenueChangeCount == null)
         {
-            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month: <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
+            <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_DataNotAvailable"]</button>
         }
-        else if (AppointmentsChangeCount < 0)
+        else
         {
-            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointment Count Change From Last Month: <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
-        }
+            @if (AppointmentsChangeCount >= 0)
+            {
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
+            }
+            else if (AppointmentsChangeCount < 0)
+            {
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
+            }
 
 
-        @if (RevenueChangeCount >= 0)
-        {
-            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br />@RevenueChangeCount.Value.ToString("F1") %</button>
-        }
-        else if (RevenueChangeCount < 0)
-        {
-            <button style="font-size: 20px;" class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Revenue Change From Last Month: <br />@RevenueChangeCount.Value.ToString("F1") %</button>
-        }
+            @if (RevenueChangeCount >= 0)
+            {
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
+            }
+            else if (RevenueChangeCount < 0)
+            {
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
+            }
 
-    }
+        }
+    </div>
 </div>
 
 

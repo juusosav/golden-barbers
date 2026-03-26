@@ -557,7 +557,7 @@ h1:focus {
 .dashboard-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -568,7 +568,7 @@ h1:focus {
 
 .custom-dashboard-button {
     font-size: 22px;
-    width: 200px;
+    width: 175px;
     height: 150px;
 }
 

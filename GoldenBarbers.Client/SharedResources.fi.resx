@@ -254,4 +254,31 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="NavMenu_BookAppointment" xml:space="preserve">
     <value>Varaa Käynti</value>
   </data>
+  <data name="DashboardCard_Today" xml:space="preserve">
+    <value>Tänään</value>
+  </data>
+  <data name="DashboardCard_ThisWeek" xml:space="preserve">
+    <value>Tällä viikolla</value>
+  </data>
+  <data name="MetricsCard_Metrics" xml:space="preserve">
+    <value>Mittarit</value>
+  </data>
+  <data name="MetricsCard_AppointmentChange" xml:space="preserve">
+    <value>Muutos varauksiin viime kuusta:</value>
+  </data>
+  <data name="MetricsCard_RevenueChange" xml:space="preserve">
+    <value>Muutos liikevaihtoon viime kuusta:</value>
+  </data>
+  <data name="MetricsCard_DataNotAvailable" xml:space="preserve">
+    <value>Dataa ei vielä saatavilla</value>
+  </data>
+  <data name="DashboardCard_RevenueToday" xml:space="preserve">
+    <value>Liikevaihto:</value>
+  </data>
+  <data name="DashboardCard_TodayAppointments" xml:space="preserve">
+    <value>Varaukset:</value>
+  </data>
+  <data name="DashboardCard_UpcomingWeekAppointments" xml:space="preserve">
+    <value>Tulevat varaukset:</value>
+  </data>
 </root>

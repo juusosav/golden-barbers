@@ -4,10 +4,10 @@
 @inject AdminMetricApiService MetricService
 
 <div class="d-flex justify-content-center">
-    <h1>Dashboard</h1>
+    <h1>Hello, Admin!</h1>
 </div>
 <br />
-<div class="dashboard-container">
+<div>
     @if (dashboard != null)
     {
         <DashboardCard RevenueToday="@dashboard.RevenueToday"
@@ -16,18 +16,13 @@
     }
 </div>
 <br />
-<div class="d-flex justify-content-center">
-    <h1>Metrics</h1>
-</div>
-<br />
-<div class="dashboard-container">
+<div>
     @if (metrics != null)
     {
         <MetricsCard AppointmentsChangeCount="@metrics.AppointmentsChangeCount"
                      RevenueChangeCount="@metrics.RevenueChangeCount" />
     }
 </div>
-
 
 @code {
 

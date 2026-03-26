@@ -1,10 +1,19 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs.Admin.Dashboard;
 
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+<h2>@L["DashboardCard_Today"]</h2>
+<div class="dashboard-container">
+    <div class="dashboard-items">
+        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["DashboardCard_RevenueToday"] <br /> @RevenueToday €</button>
+        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["DashboardCard_TodayAppointments"] <br /> @AppointmentsToday</button>
+    </div>
+</div>
+<br />
 <div class="dashboard-items">
-    <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Your Revenue for today: <br /> @RevenueToday €</button>
-    <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Today's Appointments: <br /> @AppointmentsToday</button>
-    <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">Appointments for upcoming week: <br /> @UpcomingWeek</button>
+    <h2>@L["DashboardCard_ThisWeek"]</h2>
+    <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["DashboardCard_UpcomingWeekAppointments"] <br /> @UpcomingWeek</button>
 </div>
 
 @code {
@@ -14,6 +23,4 @@
     public int UpcomingWeek { get; set; }
     [Parameter]
     public decimal RevenueToday { get; set; }
-    [Parameter]
-    public int ActiveBarbers { get; set; }
 }
