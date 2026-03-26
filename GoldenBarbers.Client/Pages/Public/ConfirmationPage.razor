@@ -6,6 +6,7 @@
 @inject AppointmentApiService AppointmentsService
 @inject BarberApiService BarberService
 @inject OfferingApiService OfferingService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/booking-confirmed/{id:guid}"
 
@@ -19,21 +20,21 @@ else
         <div class="booking-text">
             <img class="booking-image" src="images/confirmation_picture.png" />
             <br />
-            <h3>Appointment Confirmed!</h3>
+            <h3>@L["ConfirmationPage_AppointmentConfirmed"]</h3>
             <br />
-            <p>Name: @appointment.CustomerName</p>
-            <p>Date: @appointment.AppointmentDateTime.ToString("dd.MM.yyyy, HH:mm")</p>
+            <p>@L["ConfirmationPage_CustomerName"] @appointment.CustomerName</p>
+            <p>@L["ConfirmationPage_Date"] @appointment.AppointmentDateTime.ToString("dd.MM.yyyy, HH:mm")</p>
 
             @if (appointment.BarberId == barber?.Id)
             {
-                <p>Barber: @barber.Name</p>
+                <p>@L["ConfirmationPage_BarberName"] @barber.Name</p>
             }
 
             @if (appointment.OfferingId == offering?.Id)
             {
-                <p>Service: @offering.Name</p>
+                <p>@L["ConfirmationPage_ServiceName"] @offering.Name</p>
             }
-            <p>Price: @appointment.FinalPrice €</p>
+            <p>@L["ConfirmationPage_Price"] @appointment.FinalPrice €</p>
         </div>
     </div>
 }

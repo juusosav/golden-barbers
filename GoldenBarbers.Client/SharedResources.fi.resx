@@ -124,7 +124,7 @@
     <value>Parturi: </value>
   </data>
   <data name="Appointment_BookAppointment" xml:space="preserve">
-    <value>Käynnin Varaaminen</value>
+    <value>Käynnin varaaminen</value>
   </data>
   <data name="Appointment_ConfirmBookingButton" xml:space="preserve">
     <value>Lähetä</value>
@@ -188,6 +188,33 @@ Jokainen henkilökuntamme jäsen on sitoutunut tarjoamaan ensiluokkaista palvelu
     <value>Olemme ylpeitä siitä, että ylläpidämme viihtyisää ja ammattimaista ympäristöä, jossa laatu ja tasaisuus ovat aina etusijalla.  
 Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantuntevaan grooming-neuvontaan, olet osaavan ja lahjakkaan tiimimme käsissä.</value>
   </data>
+  <data name="Carousel_BeardStyling" xml:space="preserve">
+    <value>Parran stailaus &amp; Hoito</value>
+  </data>
+  <data name="Carousel_BeardTrimming" xml:space="preserve">
+    <value>Ammattitaitoinen parran trimmaus</value>
+  </data>
+  <data name="Carousel_Haircuts" xml:space="preserve">
+    <value>Hiustenleikkuu &amp; Stailaus</value>
+  </data>
+  <data name="ConfirmationPage_AppointmentConfirmed" xml:space="preserve">
+    <value>Varaus vahvistettu!</value>
+  </data>
+  <data name="ConfirmationPage_BarberName" xml:space="preserve">
+    <value>Parturi:</value>
+  </data>
+  <data name="ConfirmationPage_Date" xml:space="preserve">
+    <value>Ajankohta:</value>
+  </data>
+  <data name="ConfirmationPage_CustomerName" xml:space="preserve">
+    <value>Nimi:</value>
+  </data>
+  <data name="ConfirmationPage_Price" xml:space="preserve">
+    <value>Hinta:</value>
+  </data>
+  <data name="ConfirmationPage_ServiceName" xml:space="preserve">
+    <value>Palvelu:</value>
+  </data>
   <data name="Home_Address" xml:space="preserve">
     <value>Osoite</value>
   </data>
@@ -214,5 +241,17 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   </data>
   <data name="Home_Sunday" xml:space="preserve">
     <value>Sunnuntai: Suljettu</value>
+  </data>
+  <data name="NavMenu_Language" xml:space="preserve">
+    <value>Kieli</value>
+  </data>
+  <data name="NavMenu_Home" xml:space="preserve">
+    <value>Etusivu</value>
+  </data>
+  <data name="NavMenu_OurTeam" xml:space="preserve">
+    <value>Tiimimme</value>
+  </data>
+  <data name="NavMenu_BookAppointment" xml:space="preserve">
+    <value>Varaa Käynti</value>
   </data>
 </root>

@@ -186,6 +186,33 @@
   <data name="Barbers_GeneralDescription2" xml:space="preserve">
     <value>We pride ourselves on maintaining a welcoming, professional environment where quality and consistency always come first. Whether you’re visiting for a classic cut, a modern style, or expert grooming advice, you’re in capable hands with our talented team.</value>
   </data>
+  <data name="Carousel_BeardStyling" xml:space="preserve">
+    <value>Beard Styling &amp; Treatment</value>
+  </data>
+  <data name="Carousel_BeardTrimming" xml:space="preserve">
+    <value>Professional Beard Trimming</value>
+  </data>
+  <data name="Carousel_Haircuts" xml:space="preserve">
+    <value>Haircuts &amp; Styling</value>
+  </data>
+  <data name="ConfirmationPage_AppointmentConfirmed" xml:space="preserve">
+    <value>Appointment Confirmed!</value>
+  </data>
+  <data name="ConfirmationPage_BarberName" xml:space="preserve">
+    <value>Barber:</value>
+  </data>
+  <data name="ConfirmationPage_Date" xml:space="preserve">
+    <value>Date:</value>
+  </data>
+  <data name="ConfirmationPage_CustomerName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="ConfirmationPage_Price" xml:space="preserve">
+    <value>Price:</value>
+  </data>
+  <data name="ConfirmationPage_ServiceName" xml:space="preserve">
+    <value>Service:</value>
+  </data>
   <data name="Home_Address" xml:space="preserve">
     <value>Address</value>
   </data>
@@ -212,5 +239,17 @@
   </data>
   <data name="Home_Sunday" xml:space="preserve">
     <value>Sunday: Closed</value>
+  </data>
+  <data name="NavMenu_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="NavMenu_Home" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="NavMenu_OurTeam" xml:space="preserve">
+    <value>Our Team</value>
+  </data>
+  <data name="NavMenu_BookAppointment" xml:space="preserve">
+    <value>Book Appointment</value>
   </data>
 </root>

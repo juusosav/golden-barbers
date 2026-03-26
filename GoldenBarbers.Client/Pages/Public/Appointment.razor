@@ -101,7 +101,7 @@
     {
         <div class="booking-container" id="calendar-table">
             <div class="booking-text">
-                <button type="button" @onclick="PrevWeek">⬅ @L["Appointment_PrevWeek"]</button>
+                <button type="button" disabled="@IsDisabled" @onclick="PrevWeek">⬅ @L["Appointment_PrevWeek"]</button>
                 <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
                 <button type="button" @onclick="NextWeek">@L["Appointment_NextWeek"] ➡</button>
             </div>
@@ -148,6 +148,10 @@
                                         @if (!daySlots.Any())
                                         {
                                             <span class="unavailable">@L["Appointment_Reserved"]</span>
+                                        }
+                                        else if (DateTime.UtcNow > currentDateTime)
+                                        {
+                                            <span class="unavailable">-</span>
                                         }
 
                                         else
@@ -203,7 +207,7 @@
                         <p>@L["Appointment_ServicePreview"] @selectedOffering?.Name</p>
                     }
 
-                    <p>@L["Appointment_TimePreview"] @selectedSlot.Start.ToString("dd.MM.yyyy, 'at' HH:mm")</p>
+                    <p>@L["Appointment_TimePreview"] @selectedSlot.Start.ToString($"dd.MM.yyyy, HH:mm")</p>
                 </div>
             </div>
         }
@@ -238,7 +242,7 @@
     }
 </EditForm>
 
-@code {
+    @code {
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;
@@ -247,6 +251,7 @@
     private TimeslotDto? selectedSlot;
 
     private bool IsSubmitting { get; set; } = false;
+    private bool IsDisabled { get; set; } = false;
 
     private Guid _selectedBarberId;
 
@@ -326,13 +331,18 @@
             await ScrollService.ScrollToElementAsync("booking-summary");
         }
     }
+    private void UpdateDisabledState()
+    {
+        var thisWeekStart = DateTime.Today.StartOfWeek(DayOfWeek.Monday);
+        IsDisabled = weekStart <= thisWeekStart;
+    }
 
     private async Task LoadSlots()
     {
         timeslots = await TimeslotService.GetWeeklySlotsAsync(weekStart);
         selectedSlot = null;
+        UpdateDisabledState();
         StateHasChanged();
-
     }
 
     private void GenerateTimeRanges()

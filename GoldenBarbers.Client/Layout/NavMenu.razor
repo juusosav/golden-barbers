@@ -1,7 +1,7 @@
 ﻿@using Microsoft.Extensions.Localization
 @using System.Globalization
 
-@inject IStringLocalizer<NavMenu> L
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
 
@@ -16,17 +16,17 @@
 
     <div class="nav-links">
         <NavLink class="custom-nav-item" href="" Match="NavLinkMatch.All">
-            <span class="custom-nav-link" aria-hidden="true">Home</span>
+            <span class="custom-nav-link" aria-hidden="true">@L["NavMenu_Home"]</span>
         </NavLink>
         <NavLink class="custom-nav-item" href="our-team" Match="NavLinkMatch.All">
-            <span class="custom-nav-link" aria-hidden="true">Our Team</span>
+            <span class="custom-nav-link" aria-hidden="true">@L["NavMenu_OurTeam"]</span>
         </NavLink>
         <NavLink class="custom-nav-item" href="book-appointment" Match="NavLinkMatch.All">
-            <span class="custom-nav-link" aria-hidden="true">Book Appointment</span>
+            <span class="custom-nav-link" aria-hidden="true">@L["NavMenu_BookAppointment"]</span>
         </NavLink>
         <div class="dropdown">
             <button class="btn btn-outline-light dropdown-toggle" type="button" data-bs-toggle="dropdown">
-                🌐 Language
+                🌐 @L["NavMenu_Language"]
             </button>
 
             <ul class="dropdown-menu">
