@@ -4,20 +4,21 @@
 
 @inject AdminOfferingApiService OfferingsApiService
 @inject NavigationManager Navigation
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/admin/manage-offerings"
 
-<h1>Manage Offerings</h1>
+<h1>@L["ManageOfferings_Title"]</h1>
 
 <table style="max-width: 75vw;" class="table table-striped">
     <thead>
         <tr>
             <th></th>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Senior Price</th>
-            <th>Junior Price</th>
-            <th>Trainee Price</th>
+            <th>@L["ManageOfferings_TableName"]</th>
+            <th>@L["ManageOfferings_TableDescription"]</th>
+            <th>@L["ManageOfferings_TableSeniorPrice"]</th>
+            <th>@L["ManageOfferings_TableJuniorPrice"]</th>
+            <th>@L["ManageOfferings_TableTraineePrice"]</th>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +40,7 @@
     </tbody>
 </table>
 <div>
-    <button class="btn btn-sm btn-outline-info" @onclick="CreateOffering">Create New Offering</button>
+    <button class="btn btn-sm btn-outline-info" @onclick="CreateOffering">@L["ManageOfferings_CreateOfferingButton"]</button>
 </div>
 <div>
     <ConfirmDialog @ref="ConfirmDialog" />

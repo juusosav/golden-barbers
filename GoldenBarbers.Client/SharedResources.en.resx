@@ -369,4 +369,25 @@
   <data name="ManageBarber_CreateBarberButton" xml:space="preserve">
     <value>Create New Barber</value>
   </data>
+  <data name="ManageOfferings_Title" xml:space="preserve">
+    <value>Manage Offerings</value>
+  </data>
+  <data name="ManageOfferings_TableName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ManageOfferings_TableDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ManageOfferings_TableSeniorPrice" xml:space="preserve">
+    <value>Senior Price</value>
+  </data>
+  <data name="ManageOfferings_TableJuniorPrice" xml:space="preserve">
+    <value>Junior Price</value>
+  </data>
+  <data name="ManageOfferings_TableTraineePrice" xml:space="preserve">
+    <value>Trainee Price</value>
+  </data>
+  <data name="ManageOfferings_CreateOfferingButton" xml:space="preserve">
+    <value>Create New Offering</value>
+  </data>
 </root>

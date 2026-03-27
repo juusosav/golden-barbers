@@ -371,4 +371,25 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="ManageBarber_CreateBarberButton" xml:space="preserve">
     <value>Luo uusi parturi</value>
   </data>
+  <data name="ManageOfferings_Title" xml:space="preserve">
+    <value>Hallitse palveluita</value>
+  </data>
+  <data name="ManageOfferings_TableName" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="ManageOfferings_TableDescription" xml:space="preserve">
+    <value>Kuvaus</value>
+  </data>
+  <data name="ManageOfferings_TableSeniorPrice" xml:space="preserve">
+    <value>Seniorihinta</value>
+  </data>
+  <data name="ManageOfferings_TableJuniorPrice" xml:space="preserve">
+    <value>Juniorihinta</value>
+  </data>
+  <data name="ManageOfferings_TableTraineePrice" xml:space="preserve">
+    <value>Traineehinta</value>
+  </data>
+  <data name="ManageOfferings_CreateOfferingButton" xml:space="preserve">
+    <value>Luo uusi palvelu</value>
+  </data>
 </root>
