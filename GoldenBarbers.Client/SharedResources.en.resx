@@ -390,4 +390,73 @@
   <data name="ManageOfferings_CreateOfferingButton" xml:space="preserve">
     <value>Create New Offering</value>
   </data>
+  <data name="EditOffering_Title" xml:space="preserve">
+    <value>Edit Offering Information</value>
+  </data>
+  <data name="EditOffering_NotFoundInfo" xml:space="preserve">
+    <value>Sorry, the offering does not exit.</value>
+  </data>
+  <data name="Create_EditOffering_FormSeniorPrice" xml:space="preserve">
+    <value>Senior Price:</value>
+  </data>
+  <data name="Create_EditOffering_FormTraineePrice" xml:space="preserve">
+    <value>Trainee Price:</value>
+  </data>
+  <data name="Create_EditOffering_FormName" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="Create_EditOffering_FormJuniorPrice" xml:space="preserve">
+    <value>Junior Price:</value>
+  </data>
+  <data name="Create_EditOffering_FormIcon" xml:space="preserve">
+    <value>Icon:</value>
+  </data>
+  <data name="Create_EditOffering_FormDescription" xml:space="preserve">
+    <value>Description:</value>
+  </data>
+  <data name="Create_EditOffering_ConfirmButton" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="EditBarber_Title" xml:space="preserve">
+    <value>Edit Barber Information</value>
+  </data>
+  <data name="EditBarber_NotFoundInfo" xml:space="preserve">
+    <value>Sorry, the barber does not exit.</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberName" xml:space="preserve">
+    <value>Barber Name:</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberPositionName" xml:space="preserve">
+    <value>Position Name:</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberPositionIdentifier" xml:space="preserve">
+    <value>Position Identifier (1: Senior, 2: Junior, 3: Trainee):</value>
+  </data>
+  <data name="Create_EditBarber_FormPortrait" xml:space="preserve">
+    <value>Portrait:</value>
+  </data>
+  <data name="Create_EditBarber_FormSalary" xml:space="preserve">
+    <value>Salary:</value>
+  </data>
+  <data name="Create_EditBarber_FormStartingDate" xml:space="preserve">
+    <value>Starting Date:</value>
+  </data>
+  <data name="Create_EditBarber_FormPhone" xml:space="preserve">
+    <value>Phone number:</value>
+  </data>
+  <data name="Create_EditBarber_FormEmail" xml:space="preserve">
+    <value>Email:</value>
+  </data>
+  <data name="Create_EditBarber_FormAddress" xml:space="preserve">
+    <value>Address:</value>
+  </data>
+  <data name="Create_EditBarber_ConfirmButton" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="CreateBarber_Title" xml:space="preserve">
+    <value>Create New Barber</value>
+  </data>
+  <data name="CreateOffering_Title" xml:space="preserve">
+    <value>Create New Offering</value>
+  </data>
 </root>

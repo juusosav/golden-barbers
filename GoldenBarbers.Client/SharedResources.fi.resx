@@ -392,4 +392,76 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="ManageOfferings_CreateOfferingButton" xml:space="preserve">
     <value>Luo uusi palvelu</value>
   </data>
+  <data name="EditOffering_Title" xml:space="preserve">
+    <value>Muokkaa palvelun tietoja</value>
+  </data>
+  <data name="EditOffering_NotFoundInfo" xml:space="preserve">
+    <value>Pahoittelut, palvelua ei löytynyt.</value>
+  </data>
+  <data name="Create_EditOffering_FormSeniorPrice" xml:space="preserve">
+    <value>Seniorihinta:</value>
+  </data>
+  <data name="Create_EditOffering_FormTraineePrice" xml:space="preserve">
+    <value>Traineehinta:</value>
+  </data>
+  <data name="Create_EditOffering_FormName" xml:space="preserve">
+    <value>Nimi:</value>
+  </data>
+  <data name="Create_EditOffering_FormJuniorPrice" xml:space="preserve">
+    <value>Juniorihinta:</value>
+  </data>
+  <data name="Create_EditOffering_FormIcon" xml:space="preserve">
+    <value>Ikoni:</value>
+  </data>
+  <data name="Create_EditOffering_FormDescription" xml:space="preserve">
+    <value>Kuvaus:</value>
+  </data>
+  <data name="Create_EditOffering_ConfirmButton" xml:space="preserve">
+    <value>Tallenna</value>
+  </data>
+  <data name="EditBarber_Title" xml:space="preserve">
+    <value>Muokkaa parturin tietoja</value>
+  </data>
+  <data name="EditBarber_NotFoundInfo" xml:space="preserve">
+    <value>Pahoittelut, parturia ei löytynyt.</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberName" xml:space="preserve">
+    <value>Parturin nimi:</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberPositionName" xml:space="preserve">
+    <value>Aseman nimi:</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberPositionIdentifier" xml:space="preserve">
+    <value>Aseman tunnus: (1: Seniori, 2: Juniori, 3: Trainee)</value>
+  </data>
+  <data name="Create_EditBarber_FormPortrait" xml:space="preserve">
+    <value>Kasvokuva:</value>
+  </data>
+  <data name="Create_EditBarber_FormSalary" xml:space="preserve">
+    <value>Palkka:</value>
+  </data>
+  <data name="Create_EditBarber_FormStartingDate" xml:space="preserve">
+    <value>Aloituspäivä:</value>
+  </data>
+  <data name="Create_EditBarber_FormPhone" xml:space="preserve">
+    <value>Puhelin:</value>
+  </data>
+  <data name="Create_EditBarber_FormEmail" xml:space="preserve">
+    <value>Sähköposti:</value>
+  </data>
+  <data name="&#xD;&#xA;_EditBarber_FormAddress" xml:space="preserve">
+    <value>Osoite:</value>
+  </data>
+  <data name="Create_EditBarber_FormAddress" xml:space="preserve">
+    <value>Osoite:</value>
+  </data>
+  <data name="Create_EditBarber_ConfirmButton" xml:space="preserve">
+    <value>Tallenna</value>
+  </data>
+  <data name="CreateBarber_Title" xml:space="preserve">
+    <value>Luo uusi parturi</value>
+  </data>
+  <data name="CreateOffering_Title" xml:space="preserve">
+    <value>Luo uusi palvelu</value>
+  </data>
 </root>

@@ -4,10 +4,11 @@
 
 @inject AdminOfferingApiService OfferingsApiService
 @inject NavigationManager Navigation
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/admin/manage-offerings/create-offering"
 
-<h3>Create New Offering</h3>
+<h3>@L["CreateOffering_Title"]</h3>
 <br />
 
 <EditForm Model="offering" OnValidSubmit="HandleValidSubmit">
@@ -16,19 +17,19 @@
 
     <div class="admin-form">
         <div class="admin-form-item">
-            <label>Name: </label>
+            <label>@L["Create_EditOffering_FormName"] </label>
             <br />
             <InputText @bind-Value="@offering.Name" />
         </div>
 
         <div class="admin-form-item">
-            <label>Description: </label>
+            <label>@L["Create_EditOffering_FormDescription"] </label>
             <br />
             <InputTextArea @bind-Value="@offering.Description" />
         </div>
 
         <div class="admin-form-item">
-            <label>Icon: </label>
+            <label>@L["Create_EditOffering_FormIcon"] </label>
             <br />
 
             @if (imagePreviewSrc != null)
@@ -40,25 +41,25 @@
         </div>
 
         <div class="admin-form-item">
-            <label>Senior Price: </label>
+            <label>@L["Create_EditOffering_FormSeniorPrice"] </label>
             <br />
             <InputNumber @bind-Value="@offering.SeniorPrice" />
         </div>
 
         <div class="admin-form-item">
-            <label>Junior Price: </label>
+            <label>@L["Create_EditOffering_FormJuniorPrice"] </label>
             <br />
             <InputNumber @bind-Value="@offering.JuniorPrice" />
         </div>
 
         <div class="admin-form-item">
-            <label>Trainee Price: </label>
+            <label>@L["Create_EditOffering_FormTraineePrice"] </label>
             <br />
             <InputNumber @bind-Value="@offering.TraineePrice" />
         </div>
 
         <br />
-        <button class="btn btn-outline-dark" type="submit" disabled=@IsSubmitting>Confirm</button>
+        <button class="btn btn-outline-dark" type="submit" disabled=@IsSubmitting>@L["Create_EditOffering_ConfirmButton"]</button>
     </div>
 </EditForm>
 

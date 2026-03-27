@@ -4,10 +4,11 @@
 
 @inject AdminBarberApiService BarberApiService
 @inject NavigationManager Navigation
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/admin/manage-barbers/create-barber"
 
-<h3>Create New Barber</h3>
+<h3>@L["CreateBarber_Title"]</h3>
 <br />
 
 <EditForm Model="barber" OnValidSubmit="HandleValidSubmit">
@@ -16,25 +17,25 @@
 
     <div class="admin-form">
         <div class="admin-form-item">
-            <label>Barber Name: </label>
+            <label>@L["Create_EditBarber_FormBarberName"] </label>
             <br />
             <InputText @bind-Value="@barber.Name" />
         </div>
 
         <div class="admin-form-item">
-            <label>Position Name: </label>
+            <label>@L["Create_EditBarber_FormBarberPositionName"] </label>
             <br />
             <InputText @bind-Value="barber.PositionName" />
         </div>
 
         <div class="admin-form-item">
-            <label>Position Identifier (1: Senior, 2: Junior, 3: Trainee): </label>
+            <label>@L["Create_EditBarber_FormBarberPositionIdentifier"] </label>
             <br />
             <InputNumber @bind-Value="@barber.PositionId" />
         </div>
 
         <div class="admin-form-item">
-            <label>Portrait: </label>
+            <label>@L["Create_EditBarber_FormPortrait"] </label>
             <br />
             @if (imagePreviewSrc != null)
             {
@@ -46,37 +47,37 @@
         </div>
 
         <div class="admin-form-item">
-            <label>Salary: </label>
+            <label>@L["Create_EditBarber_FormSalary"] </label>
             <br />
             <InputNumber @bind-Value="barber.Salary" />
         </div>
 
         <div class="admin-form-item">
-            <label>Starting date: </label>
+            <label>@L["Create_EditBarber_FormStartingDate"] </label>
             <br />
             <InputDate @bind-Value="barber.StartDate" />
         </div>
 
         <div class="admin-form-item">
-            <label>Personal Email: </label>
+            <label>@L["Create_EditBarber_FormEmail"] </label>
             <br />
             <InputText @bind-Value="@barber.PersonalEmail" />
         </div>
 
         <div class="admin-form-item">
-            <label>Personal Phone: </label>
+            <label>@L["Create_EditBarber_FormPhone"] </label>
             <br />
             <InputText @bind-Value="@barber.PersonalPhone" />
         </div>
 
         <div class="admin-form-item">
-            <label>Personal Address: </label>
+            <label>@L["Create_EditBarber_FormAddress"] </label>
             <br />
             <InputText @bind-Value="@barber.PersonalAddress" />
         </div>
 
         <br />
-        <button class="btn btn-outline-dark" type="submit" disabled=@IsSubmitting>Confirm</button>
+        <button class="btn btn-outline-dark" type="submit" disabled=@IsSubmitting>@L["Create_EditBarber_ConfirmButton"]</button>
     </div>
 </EditForm>
 
