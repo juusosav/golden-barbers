@@ -131,7 +131,7 @@
                             <tr>
                                 <td>@time.ToString("HH:mm")</td>
 
-                                @foreach (var day in Enumerable.Range(0, 7))
+                                @foreach (var day in Enumerable.Range(0, 6))
                                 {
                                     var currentDate = weekStart.AddDays(day);
                                     var currentDateTime = currentDate.Date.Add(time.TimeOfDay);

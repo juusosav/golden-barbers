@@ -72,17 +72,17 @@
     <button class="btn btn-outline-primary"
             @onclick="PreviousPage"
             disabled="@(filter.Page == 1)">
-        Previous
+        @L["ManageAppointments_Previous"]
     </button>
 
     <span class="mx-2">
-        Page @filter.Page
+        @L["ManageAppointments_Page"] @filter.Page
     </span>
 
     <button class="btn btn-outline-primary"
             @onclick="NextPage"
             disabled="@(filter.PageItems < 21)">
-        Next
+        @L["ManageAppointments_Next"]
     </button>
 </div>
 

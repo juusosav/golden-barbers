@@ -2,13 +2,26 @@
 
 <div class="admin-page">
 
+    <div class="mobile-topbar">
+        <div class="mobile-topbar-row">
+            <span class="mobile-brand">Golden Barbers</span>
+            <button class="admin-hamburger" type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mobileNav">
+                ☰
+            </button>
+        </div>
+        <div id="mobileNav" class="collapse">
+            <AdminNavMenu />
+        </div>
+    </div>
+
+    <!-- Desktop sidebar -->
     <div class="sidebar">
         <AdminNavMenu />
     </div>
 
     <div class="main-content">
-        <div class="top-row px-4">
-        </div>
 
         <article class="content px-4">
             @Body

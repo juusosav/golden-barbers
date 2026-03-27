@@ -1,41 +1,20 @@
 ﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
-<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="admin">Golden Barbers</a>
-    </div>
-</div>
 
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <input type="checkbox" title="Navigation menu" class="navbar-toggler" />
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="admin" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> @L["AdminNavMenu_Dashboard"]
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/manage-appointments" Match="NavLinkMatch.All">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> @L["AdminNavMenu_ManageAppointments"]
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/manage-barbers" Match="NavLinkMatch.All">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> @L["AdminNavMenu_ManageBarbers"]
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="admin/manage-offerings" Match="NavLinkMatch.All">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> @L["AdminNavMenu_ManageOfferings"]
-            </NavLink>
-        </div>
-    </nav>
-</div>
-
-
+<nav style="align-items: end;"class="navbar-nav p-4">
+    <NavLink class="custom-nav-item" href="admin" Match="NavLinkMatch.All">
+        <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> @L["AdminNavMenu_Dashboard"]
+    </NavLink>
+    <NavLink class="custom-nav-item" href="admin/manage-appointments" Match="NavLinkMatch.All">
+        <span class="custom-nav-link" aria-hidden="true"></span> @L["AdminNavMenu_ManageAppointments"]
+    </NavLink>
+    <NavLink class="custom-nav-item" href="admin/manage-barbers" Match="NavLinkMatch.All">
+        <span class="custom-nav-link" aria-hidden="true"></span> @L["AdminNavMenu_ManageBarbers"]
+    </NavLink>
+    <NavLink class="custom-nav-item" href="admin/manage-offerings" Match="NavLinkMatch.All">
+        <span class="custom-nav-link" aria-hidden="true"></span> @L["AdminNavMenu_ManageOfferings"]
+    </NavLink>
+</nav>
 
 @code {
 

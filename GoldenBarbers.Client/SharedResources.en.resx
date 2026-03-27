@@ -225,17 +225,14 @@
   <data name="Home_Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
-  <data name="Home_MondayToFriday" xml:space="preserve">
-    <value>Mon – Fri: 9:00 AM – 5:00 PM</value>
+  <data name="Home_MondayToSaturday" xml:space="preserve">
+    <value>Mon – Sat: 9:00 AM – 5:00 PM</value>
   </data>
   <data name="Home_OpeningHours" xml:space="preserve">
     <value>Opening Hours</value>
   </data>
   <data name="Home_OurServices" xml:space="preserve">
     <value>Our Services</value>
-  </data>
-  <data name="Home_Saturday" xml:space="preserve">
-    <value>Saturday: 9:00 AM – 5:00 PM</value>
   </data>
   <data name="Home_Sunday" xml:space="preserve">
     <value>Sunday: Closed</value>
@@ -335,5 +332,41 @@
   </data>
   <data name="ManageAppointments_TablePrice" xml:space="preserve">
     <value>Price</value>
+  </data>
+  <data name="ManageAppointments_Next" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="ManageAppointments_Previous" xml:space="preserve">
+    <value>Previous</value>
+  </data>
+  <data name="ManageAppointments_Page" xml:space="preserve">
+    <value>Sivu</value>
+  </data>
+  <data name="ManageBarbers_Title" xml:space="preserve">
+    <value>Manage Barbers</value>
+  </data>
+  <data name="ManageBarbers_TableName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ManageBarbers_TablePosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="ManageBarbers_TableSalary" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="ManageBarbers_TableStartingDate" xml:space="preserve">
+    <value>Starting date</value>
+  </data>
+  <data name="ManageBarbers_TablePhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ManageBarbers_TableEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="ManageBarbers_TableAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ManageBarber_CreateBarberButton" xml:space="preserve">
+    <value>Create New Barber</value>
   </data>
 </root>

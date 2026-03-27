@@ -4,23 +4,24 @@
 
 @inject AdminBarberApiService BarbersApiService
 @inject NavigationManager Navigation
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/admin/manage-barbers"
 
-<h1>Manage Barbers</h1>
+<h1>@L["ManageBarbers_Title"]</h1>
 <br />
 
 <table style="max-width: 75vw;" class="table table-striped">
     <thead>
         <tr>
             <th></th>
-            <th>Name</th>
-            <th>Position</th>
-            <th>Salary</th>
-            <th>Starting date</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Address</th>
+            <th>@L["ManageBarbers_TableName"]</th>
+            <th>@L["ManageBarbers_TablePosition"]</th>
+            <th>@L["ManageBarbers_TableSalary"]</th>
+            <th>@L["ManageBarbers_TableStartingDate"]</th>
+            <th>@L["ManageBarbers_TablePhone"]</th>
+            <th>@L["ManageBarbers_TableEmail"]</th>
+            <th>@L["ManageBarbers_TableAddress"]</th>
         </tr>
     </thead>
     <tbody>
@@ -45,7 +46,7 @@
     </tbody>
 </table>
 <div>
-    <button class="btn btn-sm btn-outline-info" @onclick="CreateBarber">Create New Barber</button>
+    <button class="btn btn-sm btn-outline-info" @onclick="CreateBarber">@L["ManageBarber_CreateBarberButton"]</button>
 </div>
 <div>
     <ConfirmDialog @ref="ConfirmDialog" />

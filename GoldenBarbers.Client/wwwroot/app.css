@@ -141,7 +141,6 @@ h1:focus {
     .custom-nav {
         position: relative;
         flex-wrap: wrap;
-        z-index: 1000;
     }
 
     .nav-links {
@@ -151,6 +150,7 @@ h1:focus {
         flex-direction: column;
         background-color: black;
         text-align: center;
+        overflow: hidden;
     }
 
     .navbar-toggler:checked ~ .nav-links {
@@ -539,10 +539,59 @@ h1:focus {
 
 .sidebar {
     width: 250px;
-    background-color: #111; /* dark sidebar */
+    background-color: #111;
     color: white;
-    border-right: 1px solid #333; /* separator line */
+    border-right: 1px solid #333;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-topbar {
+    display: none;
+    width: 100%;
+    background-color: #111;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    flex-direction: column; /* stack row and collapse vertically */
+}
+
+.mobile-topbar-row {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    height: 56px;
+}
+
+@media (max-width: 767px) {
+    .admin-page {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .mobile-topbar {
+        display: flex;
+    }
+}
+
+.admin-hamburger {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-left: auto;
+}
+
+.mobile-brand {
+    color: white;
+    font-weight: bold;
 }
 
 .main-content {
