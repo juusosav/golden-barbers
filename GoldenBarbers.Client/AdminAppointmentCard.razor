@@ -5,6 +5,7 @@
 @using Shared.DTOs
 @using GoldenBarbers.Client.Helpers
 
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <tr>
     <td>@AppointmentDateTime.ToString("dd.MM.-yy, HH:mm")</td>
@@ -14,7 +15,7 @@
     <td>@BarberName</td>
     <td>@OfferingName</td>
     <td>@FinalPrice €</td>
-    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">Delete</button>
+    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">@L["GeneralAdmin_DeleteButton"]</button>
 </tr>
 
 

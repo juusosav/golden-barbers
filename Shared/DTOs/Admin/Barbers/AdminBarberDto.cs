@@ -48,8 +48,8 @@ namespace Shared.DTOs.Admin.Barbers
 
         public string Portrait { get; set; } = "";
 
-        [Required(ErrorMessage = "Salary must be within 1 and 10000 range")]
-        [Range(1, 10000)]
+        [Required]
+        [Range(1, 10000, ErrorMessage = "Salary must be within 1 and 10000 range")]
         public decimal Salary { get; set; }
 
         [Required(ErrorMessage = "Starting date is required")]

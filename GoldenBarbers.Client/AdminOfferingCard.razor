@@ -2,6 +2,7 @@
 @using Shared.DTOs.Admin.Offerings;
 
 @inject AdminOfferingApiService OfferingsApiService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <tr>
     <td><img style="max-height: 35px; object-fit: contain;" src=@Icon /></td>
@@ -10,8 +11,8 @@
     <td>@SeniorPrice €</td>
     <td>@JuniorPrice €</td>
     <td>@TraineePrice €</td>
-    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">Delete</button>
-    <button class="btn btn-sm btn-outline-warning" @onclick="() => OnEdit.InvokeAsync(Id)">Edit</button>
+    <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">@L["GeneralAdmin_DeleteButton"]</button>
+    <button class="btn btn-sm btn-outline-warning" @onclick="() => OnEdit.InvokeAsync(Id)">@L["GeneralAdmin_EditButton"]</button>
 </tr>
 
 @code {

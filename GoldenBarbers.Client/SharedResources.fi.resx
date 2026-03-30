@@ -449,9 +449,6 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="Create_EditBarber_FormEmail" xml:space="preserve">
     <value>Sähköposti:</value>
   </data>
-  <data name="&#xD;&#xA;_EditBarber_FormAddress" xml:space="preserve">
-    <value>Osoite:</value>
-  </data>
   <data name="Create_EditBarber_FormAddress" xml:space="preserve">
     <value>Osoite:</value>
   </data>
@@ -463,5 +460,11 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   </data>
   <data name="CreateOffering_Title" xml:space="preserve">
     <value>Luo uusi palvelu</value>
+  </data>
+  <data name="GeneralAdmin_EditButton" xml:space="preserve">
+    <value>Muokkaa</value>
+  </data>
+  <data name="GeneralAdmin_DeleteButton" xml:space="preserve">
+    <value>Poista</value>
   </data>
 </root>

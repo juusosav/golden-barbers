@@ -459,4 +459,10 @@
   <data name="CreateOffering_Title" xml:space="preserve">
     <value>Create New Offering</value>
   </data>
+  <data name="GeneralAdmin_EditButton" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="GeneralAdmin_DeleteButton" xml:space="preserve">
+    <value>Delete</value>
+  </data>
 </root>
