@@ -134,7 +134,10 @@
                                 @foreach (var day in Enumerable.Range(0, 6))
                                 {
                                     var currentDate = weekStart.AddDays(day);
-                                    var currentDateTime = currentDate.Date.Add(time.TimeOfDay);
+                                    var currentDateTime = DateTime.SpecifyKind(currentDate.Date.Add(time.TimeOfDay), DateTimeKind.Utc);
+
+                                    var helsinkiZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
+                                    var nowInHelsinki = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, helsinkiZone);
 
                                     var daySlots = timeslots
                                     .Where(s =>
@@ -145,13 +148,14 @@
                                     .ToList();
 
                                     <td>
-                                        @if (!daySlots.Any())
-                                        {
-                                            <span class="unavailable">@L["Appointment_Reserved"]</span>
-                                        }
-                                        else if (DateTime.UtcNow > currentDateTime)
+                                        
+                                        @if (nowInHelsinki > currentDateTime)
                                         {
                                             <span class="unavailable">-</span>
+                                        }
+                                        else if (!daySlots.Any())
+                                        {
+                                            <span class="unavailable">@L["Appointment_Reserved"]</span>
                                         }
 
                                         else
@@ -242,7 +246,7 @@
     }
 </EditForm>
 
-    @code {
+@code {
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;

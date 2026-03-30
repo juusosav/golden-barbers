@@ -106,9 +106,13 @@ namespace GoldenBarbers.Services.Public
                 .FirstOrDefaultAsync();
         }
 
-        public async Task<Appointment> CreateAppointmentAsync(AppointmentDto dto)
+        public async Task<AppointmentDto?> CreateAppointmentAsync(AppointmentDto dto)
         {
-            var offering = await _context.Offerings.FirstAsync(o => o.Id == dto.OfferingId);
+            var offering = await _context.Offerings.FirstOrDefaultAsync(o => o.Id == dto.OfferingId);
+
+            if (offering == null)
+                return null;
+
             var price = _pricing.CalculatePrice(offering, dto.BarberPositionId);
 
             var appointment = new Appointment
@@ -127,11 +131,22 @@ namespace GoldenBarbers.Services.Public
             };
 
             _context.Appointments.Add(appointment);
-
             await _context.SaveChangesAsync();
 
-            return appointment;
+            return new AppointmentDto
+            {
+                Id = appointment.Id,
+                BarberId = appointment.BarberId,
+                BarberName = appointment.BarberName,
+                BarberPositionId = appointment.BarberPositionId,
+                OfferingId = appointment.OfferingId,
+                OfferingName = appointment.OfferingName,
+                AppointmentDateTime = appointment.AppointmentDateTime,
+                DurationMinutes = appointment.DurationMinutes,
+                CustomerName = appointment.CustomerName,
+                CustomerEmail = appointment.CustomerEmail,
+                FinalPrice = appointment.FinalPrice
+            };
         }
-
     }
 }

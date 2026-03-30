@@ -4,7 +4,7 @@ namespace GoldenBarbers.Services.Public
 {
     public class PricingService
     {
-        public int CalculatePrice(Offering offering, int barberPositionId)
+        public int CalculatePrice(Offering offering, int? barberPositionId)
         {
             return barberPositionId switch
             {

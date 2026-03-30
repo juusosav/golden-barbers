@@ -1,12 +1,9 @@
 using GoldenBarbers.Data;
-using Microsoft.AspNetCore.Components.WebAssembly.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using GoldenBarbers.Services.Admin;
 using GoldenBarbers.Services.Public;
+using GoldenBarbers.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,7 +28,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowClient",
         policy => policy
-            .WithOrigins("https://localhost:7123") // Change after publish to prod
+            .WithOrigins(builder.Configuration["AllowedOrigins"]!)
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials());
@@ -57,61 +54,20 @@ builder.Services.ConfigureApplicationCookie(options =>
 {
     options.Events.OnRedirectToLogin = context =>
     {
-        context.Response.StatusCode = 401; // return Unauthorized for API calls
+        context.Response.StatusCode = 401;
         return Task.CompletedTask;
     };
 
     options.Events.OnRedirectToAccessDenied = context =>
     {
-        context.Response.StatusCode = 403; // Forbidden
+        context.Response.StatusCode = 403;
         return Task.CompletedTask;
     };
 });
 
 var app = builder.Build();
 
-// Identity Admin User Seeding
-using (var scope = app.Services.CreateScope())
-{
-    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
-    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-    const string adminEmail = "admin@goldenbarbers.com";
-    const string adminPassword = "Admin123!";
-
-    if (!await roleManager.RoleExistsAsync("Admin"))
-    {
-        await roleManager.CreateAsync(new IdentityRole("Admin"));
-    }
-
-    var adminUser = await userManager.FindByEmailAsync(adminEmail);
-
-    if (adminUser == null)
-    {
-        adminUser = new IdentityUser
-        {
-            UserName = adminEmail,
-            Email = adminEmail,
-            EmailConfirmed = true
-        };
-
-        var result = await userManager.CreateAsync(adminUser, adminPassword);
-
-        if (!result.Succeeded)
-        {
-            foreach (var error in result.Errors)
-            {
-                Console.WriteLine(error.Description);
-            }
-            return;
-        }
-    }
-
-    if (!await userManager.IsInRoleAsync(adminUser, "Admin"))
-    {
-        await userManager.AddToRoleAsync(adminUser, "Admin");
-    }
-}
+await app.SeedAdminUserAsync();
 
 if (app.Environment.IsDevelopment())
 {
