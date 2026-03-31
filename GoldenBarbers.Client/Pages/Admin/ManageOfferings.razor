@@ -10,35 +10,38 @@
 
 <h1>@L["ManageOfferings_Title"]</h1>
 
-<table style="max-width: 75vw;" class="table table-striped">
-    <thead>
-        <tr>
-            <th></th>
-            <th>@L["ManageOfferings_TableName"]</th>
-            <th>@L["ManageOfferings_TableDescription"]</th>
-            <th>@L["ManageOfferings_TableSeniorPrice"]</th>
-            <th>@L["ManageOfferings_TableJuniorPrice"]</th>
-            <th>@L["ManageOfferings_TableTraineePrice"]</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (offerings != null)
-        {
-            @foreach (var o in offerings)
+<div class="table-responsive">
+    <table style="max-width: 75vw;" class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>@L["ManageOfferings_TableName"]</th>
+                <th>@L["ManageOfferings_TableDescription"]</th>
+                <th>@L["ManageOfferings_TableSeniorPrice"]</th>
+                <th>@L["ManageOfferings_TableJuniorPrice"]</th>
+                <th>@L["ManageOfferings_TableTraineePrice"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (offerings != null)
             {
-                <AdminOfferingCard Id="@o.Id"
-                                    Icon="@o.Icon"
-                                    Name="@o.Name"
-                                    Description="@o.Description"
-                                    SeniorPrice="@o.SeniorPrice"
-                                    JuniorPrice="@o.JuniorPrice"
-                                    TraineePrice="@o.TraineePrice"
-                                    OnDelete="DeleteOfferings"
-                                    OnEdit="EditOffering"/>
+                @foreach (var o in offerings)
+                {
+                    <AdminOfferingCard Id="@o.Id"
+                                       Icon="@o.Icon"
+                                       Name="@o.Name"
+                                       Description="@o.Description"
+                                       SeniorPrice="@o.SeniorPrice"
+                                       JuniorPrice="@o.JuniorPrice"
+                                       TraineePrice="@o.TraineePrice"
+                                       OnDelete="DeleteOfferings"
+                                       OnEdit="EditOffering" />
+                }
             }
-        }
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
+
 <div>
     <button class="btn btn-sm btn-outline-info" @onclick="CreateOffering">@L["ManageOfferings_CreateOfferingButton"]</button>
 </div>

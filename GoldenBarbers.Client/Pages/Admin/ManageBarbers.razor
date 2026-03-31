@@ -11,40 +11,43 @@
 <h1>@L["ManageBarbers_Title"]</h1>
 <br />
 
-<table style="max-width: 75vw;" class="table table-striped">
-    <thead>
-        <tr>
-            <th></th>
-            <th>@L["ManageBarbers_TableName"]</th>
-            <th>@L["ManageBarbers_TablePosition"]</th>
-            <th>@L["ManageBarbers_TableSalary"]</th>
-            <th>@L["ManageBarbers_TableStartingDate"]</th>
-            <th>@L["ManageBarbers_TablePhone"]</th>
-            <th>@L["ManageBarbers_TableEmail"]</th>
-            <th>@L["ManageBarbers_TableAddress"]</th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (barbers != null)
-        {
-            @foreach (var b in barbers)
+<div class="table-responsive">
+    <table style="max-width: 75vw;" class="table table-striped">
+        <thead>
+            <tr>
+                <th></th>
+                <th>@L["ManageBarbers_TableName"]</th>
+                <th>@L["ManageBarbers_TablePosition"]</th>
+                <th>@L["ManageBarbers_TableSalary"]</th>
+                <th>@L["ManageBarbers_TableStartingDate"]</th>
+                <th>@L["ManageBarbers_TablePhone"]</th>
+                <th>@L["ManageBarbers_TableEmail"]</th>
+                <th>@L["ManageBarbers_TableAddress"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (barbers != null)
             {
-                <AdminBarberCard Id="@b.Id"
-                                 Portrait="@b.Portrait"
-                                 Name="@b.Name"
-                                 PositionName="@b.PositionName"
-                                 Salary="@b.Salary"
-                                 StartDate="@b.StartDate"
-                                 PersonalPhone="@b.PersonalPhone"
-                                 PersonalEmail="@b.PersonalEmail"
-                                 PersonalAddress="@b.PersonalAddress"
-                                 OnDelete="DeleteBarber"
-                                 OnEdit="EditBarber" />
-            }
+                @foreach (var b in barbers)
+                {
+                    <AdminBarberCard Id="@b.Id"
+                                     Portrait="@b.Portrait"
+                                     Name="@b.Name"
+                                     PositionName="@b.PositionName"
+                                     Salary="@b.Salary"
+                                     StartDate="@b.StartDate"
+                                     PersonalPhone="@b.PersonalPhone"
+                                     PersonalEmail="@b.PersonalEmail"
+                                     PersonalAddress="@b.PersonalAddress"
+                                     OnDelete="DeleteBarber"
+                                     OnEdit="EditBarber" />
+                }
         
-        }
-    </tbody>
-</table>
+            }
+        </tbody>
+    </table>
+</div>
+
 <div>
     <button class="btn btn-sm btn-outline-info" @onclick="CreateBarber">@L["ManageBarber_CreateBarberButton"]</button>
 </div>

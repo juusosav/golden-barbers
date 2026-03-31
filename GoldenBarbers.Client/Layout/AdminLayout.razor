@@ -1,5 +1,9 @@
 ﻿@inherits LayoutComponentBase
 
+@inject NavigationManager Navigation
+@inject IJSRuntime JS
+@implements IDisposable
+
 <div class="admin-page">
 
     <div class="mobile-topbar">
@@ -7,11 +11,11 @@
             <span class="admin-brand">Golden Barbers</span>
             <button class="admin-hamburger" type="button"
                     data-bs-toggle="collapse"
-                    data-bs-target="#mobileNav">
+                    data-bs-target="#nav-toggle">
                 ☰
             </button>
         </div>
-        <div id="mobileNav" class="collapse">
+        <div id="nav-toggle" class="collapse">
             <AdminNavMenu />
         </div>
     </div>
@@ -30,3 +34,20 @@
     </div>
 
 </div>
+
+@code {
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private async void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        await JS.InvokeVoidAsync("navHelper.closeMenu");
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+}

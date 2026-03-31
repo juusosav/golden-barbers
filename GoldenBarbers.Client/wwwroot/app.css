@@ -199,8 +199,8 @@ h1:focus {
 .carousel-container {
     display: flex;
     flex-shrink: inherit;
-    max-width: 800px;
-    height: 82vh;
+    max-width: 700px;
+    min-height: 70vh;
     margin: auto;
     position: relative;
     text-align: center;
@@ -231,9 +231,9 @@ h1:focus {
 
 .caption-text {
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -55%);
     color: #e8e9d2;
     background-color: rgba(90, 87, 87, 0.7);
     border-radius: 2px;
@@ -323,7 +323,7 @@ h1:focus {
     margin: 50px;
     min-width: 15rem;
     max-width: 25rem;
-    max-height: 31rem;
+    max-height: 40rem;
     background-color: rgba(3, 3, 2, 0.8);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -437,7 +437,6 @@ h1:focus {
 .booking-container {
     display: flex;
     flex-direction: column;
-    margin: 10px;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -595,7 +594,7 @@ h1:focus {
 
 .main-content {
     width: 100%;
-    background-color: #f8f9fa; /* light content area */
+    background-color: #f8f9fa;
 }
 
 .content {
@@ -604,6 +603,7 @@ h1:focus {
 
 .dashboard-container {
     display: flex;
+    flex-shrink: 1;
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
@@ -640,11 +640,18 @@ h1:focus {
     min-width: 300px;
 }
 
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .admin-form {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    overflow-x: auto;
 }
 
 .admin-form-item {

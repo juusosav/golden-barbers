@@ -4,6 +4,7 @@
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 @inject NavigationManager Navigation
 @inject IJSRuntime JS
+@implements IDisposable
 
 <nav class="custom-nav">
 
@@ -46,6 +47,21 @@
 </nav>
 
 @code {
+    protected override void OnInitialized()
+    {
+        Navigation.LocationChanged += OnLocationChanged;
+    }
+
+    private async void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        await JS.InvokeVoidAsync("navHelper.closeMenu");
+    }
+
+    public void Dispose()
+    {
+        Navigation.LocationChanged -= OnLocationChanged;
+    }
+
     async Task ChangeLanguage(string culture)
     {
         await JS.InvokeVoidAsync("cultureManager.set", culture);
