@@ -31,6 +31,7 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpGet("{id}")]
+        [ActionName("GetOfferingById")]
         public async Task<ActionResult<AdminOfferingDto?>> GetOfferingByIdAsync(Guid id)
         {
             var offering = await _adminOfferingService.GetOfferingByIdAsync(id);
@@ -88,7 +89,7 @@ namespace GoldenBarbers.Controllers.Admin
                 return BadRequest();
 
             return CreatedAtAction(
-                nameof(GetOfferingByIdAsync),
+                "GetOfferingById",
                 new { id = created.Id },
                 created
                 );

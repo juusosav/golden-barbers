@@ -286,7 +286,7 @@
     <value>Manage Barbers</value>
   </data>
   <data name="AdminNavMenu_ManageAppointments" xml:space="preserve">
-    <value>Manage Appointmens</value>
+    <value>Manage Appointments</value>
   </data>
   <data name="Dashboard_HelloAdmin" xml:space="preserve">
     <value>Hello, Admin!</value>
