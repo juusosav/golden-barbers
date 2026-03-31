@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using GoldenBarbers.Data;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using GoldenBarbers.Models.Entities;
+﻿using Microsoft.AspNetCore.Mvc;
 using Shared.DTOs.Public;
-using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Services.Public;
 
 namespace GoldenBarbers.Controllers.Public
@@ -23,9 +16,10 @@ namespace GoldenBarbers.Controllers.Public
         }
 
         [HttpGet("available-slots")]
-        public async Task<ActionResult<List<TimeslotDto>>> GetAvailableSlotsAsync([FromQuery] DateTime weekStart)
+        public async Task<ActionResult<List<TimeslotDto>>> GetAvailableSlotsAsync(
+            [FromQuery] DateTime weekStart)
         {
-           if (weekStart == default)
+            if (weekStart == default)
             {
                 return BadRequest("weekStart query parameter is required.");
             }
@@ -36,6 +30,7 @@ namespace GoldenBarbers.Controllers.Public
         }
 
         [HttpGet("{id}")]
+        [ActionName("GetById")]
         public async Task<ActionResult<AppointmentDto>> GetByIdAsync(Guid id)
         {
             var appointment = await _appointmentService.GetByIdAsync(id);
@@ -49,16 +44,18 @@ namespace GoldenBarbers.Controllers.Public
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAppointmentAsync([FromBody] AppointmentDto dto)
+        public async Task<ActionResult> CreateAppointmentAsync(
+            [FromBody] AppointmentDto dto)
         {
-            if (dto == null)
-            {
-                return BadRequest();
-            }
-
             var appointment = await _appointmentService.CreateAppointmentAsync(dto);
 
-            return Ok(appointment);
+            if (appointment == null)
+                return NotFound();
+
+            return CreatedAtAction
+                ("GetById",
+                new { id = appointment.Id },
+                appointment);
         }
     }
 }

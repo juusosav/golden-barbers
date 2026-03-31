@@ -467,4 +467,7 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="GeneralAdmin_DeleteButton" xml:space="preserve">
     <value>Poista</value>
   </data>
+  <data name="Dashboard_NoContent" xml:space="preserve">
+    <value>Statistiikkaa ei löytynyt. Data on saatavilla kun käyntejä on tallennettu järjestelmään.</value>
+  </data>
 </root>

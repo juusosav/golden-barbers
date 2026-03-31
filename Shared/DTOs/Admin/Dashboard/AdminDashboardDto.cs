@@ -10,7 +10,7 @@ namespace Shared.DTOs.Admin.Dashboard
     {
         public int AppointmentsToday { get; set; }
         public int UpcomingWeek { get; set; }
-        public decimal RevenueToday { get; set; }
+        public decimal? RevenueToday { get; set; }
 
         public List<AdminDashboardAppointmentDto> TodaySchedule { get; set; } = [];
     }

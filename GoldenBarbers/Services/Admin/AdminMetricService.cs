@@ -17,42 +17,29 @@ namespace GoldenBarbers.Services.Admin
         {
             var today = DateTime.UtcNow.Date;
 
-            Console.WriteLine($"{today} found.");
-
             var prevMonthStart = new DateTime(today.Year, today.Month, 1, 0, 0, 0, DateTimeKind.Utc).AddMonths(-1);
             var prevMonthEnd = new DateTime(today.Year, today.Month, 1, 0, 0, 0, DateTimeKind.Utc).AddDays(-1);
 
             var thisMonthStart = new DateTime(today.Year, today.Month, 1, 0, 0, 0, DateTimeKind.Utc);
             var thisMonthEnd = thisMonthStart.AddMonths(1);
 
-            Console.WriteLine("Start of previous month: " + prevMonthStart.ToString("yyyy-MM-dd"));
-            Console.WriteLine("End of previous month: " + prevMonthEnd.ToString("yyyy-MM-dd"));
-
             var lastMonthAppointments = await _context.Appointments
                 .CountAsync(a => a.AppointmentDateTime >= prevMonthStart
                 && a.AppointmentDateTime <= prevMonthEnd);
 
-            Console.WriteLine($"Amount of appointments last month: {lastMonthAppointments}");
-
-            var lastMonthRevenue = await _context.Appointments
+            var lastMonthRevenue = (decimal?)(await _context.Appointments
                 .Where(a => a.AppointmentDateTime >= prevMonthStart
                 && a.AppointmentDateTime <= prevMonthEnd)
-                .SumAsync(a => a.FinalPrice);
-
-            Console.WriteLine($"Revenue last month: {lastMonthRevenue}");
+                .SumAsync(a => (double?)a.FinalPrice) ?? 0);
 
             var thisMonthAppointments = await _context.Appointments
                 .CountAsync(a => a.AppointmentDateTime >= thisMonthStart
                 && a.AppointmentDateTime <= thisMonthEnd);
 
-            Console.WriteLine($"Amount of appointments this month: {thisMonthAppointments}");
-
-            var thisMonthRevenue = await _context.Appointments
+            var thisMonthRevenue = (decimal?)(await _context.Appointments
                 .Where(a => a.AppointmentDateTime >= thisMonthStart
                 && a.AppointmentDateTime <= thisMonthEnd)
-                .SumAsync(a => a.FinalPrice);
-
-            Console.WriteLine($"Revenue this month: {thisMonthRevenue}");
+                .SumAsync(a => (double?)a.FinalPrice) ?? 0);
 
             var revenueChangeCount = lastMonthRevenue == 0 ? (decimal?)null 
                 : (thisMonthRevenue - lastMonthRevenue) / lastMonthRevenue * 100;

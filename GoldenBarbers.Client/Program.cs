@@ -1,10 +1,8 @@
 using GoldenBarbers.Client;
 using GoldenBarbers.Client.Helpers;
-using GoldenBarbers.Client.Pages;
 using GoldenBarbers.Client.Services.Admin;
 using GoldenBarbers.Client.Services.Public;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.Extensions.Localization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Globalization;
@@ -13,8 +11,6 @@ using Microsoft.JSInterop;
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
 
 builder.Services.AddLocalization();
-
-var defaultCulture = new CultureInfo("fi-FI");
 
 builder.Services.AddAuthorizationCore(options =>
 {
@@ -36,7 +32,6 @@ builder.Services.AddScoped<BarberApiService>();
 builder.Services.AddScoped<OfferingApiService>();
 builder.Services.AddScoped<TimeslotApiService>();
 builder.Services.AddScoped<AppointmentApiService>();
-builder.Services.AddScoped<ScrollService>();
 
 // Admin
 builder.Services.AddScoped<AdminDashboardApiService>();
@@ -47,6 +42,7 @@ builder.Services.AddScoped<AdminMetricApiService>();
 
 // UI helpers
 builder.Services.AddScoped<CarouselApiService>();
+builder.Services.AddScoped<ScrollService>();
 
 var host = builder.Build();
 
@@ -61,9 +57,11 @@ CultureInfo culture;
 // If localStorage contains garbage
 try
 {
+    const string defaultCulture = "en-US";
+
     culture = !string.IsNullOrWhiteSpace(storedCulture)
         ? new CultureInfo(storedCulture)
-        : new CultureInfo("en-US");
+        : new CultureInfo(defaultCulture);
 }
 
 catch (CultureNotFoundException)

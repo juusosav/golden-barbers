@@ -118,7 +118,7 @@
                     <thead>
                         <tr>
                             <th>@L["Appointment_TimeHeading"]</th>
-                            @foreach (var day in Enumerable.Range(0, 7))
+                            @foreach (var day in Enumerable.Range(0, 6))
                             {
                                 var currentDay = weekStart.AddDays(day);
                                 <th>@currentDay.ToString("ddd dd")</th>
@@ -134,14 +134,13 @@
                                 @foreach (var day in Enumerable.Range(0, 6))
                                 {
                                     var currentDate = weekStart.AddDays(day);
-                                    var currentDateTime = DateTime.SpecifyKind(currentDate.Date.Add(time.TimeOfDay), DateTimeKind.Utc);
+                                    var currentDateTime = DateTime.SpecifyKind(currentDate.Add(time.TimeOfDay), DateTimeKind.Utc);
 
-                                    var helsinkiZone = TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
-                                    var nowInHelsinki = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, helsinkiZone);
+                                    var nowInHelsinki = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _helsinkiZone);
 
                                     var daySlots = timeslots
                                     .Where(s =>
-                                    s.Start.Date == currentDate.Date &&
+                                    s.Start.Date == currentDate &&
                                     s.Start.TimeOfDay == time.TimeOfDay &&
                                     s.BarberId == appointment.BarberId &&
                                     s.IsAvailable)
@@ -246,7 +245,9 @@
     }
 </EditForm>
 
-@code {
+    @code {
+
+    // TODO: Exctract calendar to separate component
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;
@@ -256,6 +257,9 @@
 
     private bool IsSubmitting { get; set; } = false;
     private bool IsDisabled { get; set; } = false;
+
+    private static readonly TimeZoneInfo _helsinkiZone =
+    TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
 
     private Guid _selectedBarberId;
 
@@ -306,13 +310,13 @@
         await LoadSlots();
     }
 
-    private async void SelectOffering(Guid offeringId)
+    private async Task SelectOffering(Guid offeringId)
     {
         SelectedOfferingId = offeringId;
         await TryScrollToCalendar();
     }
 
-    private async void SelectBarber(Guid barberId)
+    private async Task SelectBarber(Guid barberId)
     {
         SelectedBarberId = barberId;
         await TryScrollToCalendar();
@@ -352,8 +356,8 @@
     private void GenerateTimeRanges()
     {
         timeRanges.Clear();
-        var startTime = weekStart.Date.AddHours(9);
-        var endTime = weekStart.Date.AddHours(17);
+        var startTime = weekStart.AddHours(9);
+        var endTime = weekStart.AddHours(17);
 
         while (startTime < endTime)
         {
@@ -374,7 +378,7 @@
         await LoadSlots();
     }
 
-    private async void SelectSlot(TimeslotDto timeslot)
+    private async Task SelectSlot(TimeslotDto timeslot)
     {
         selectedSlot = timeslot;
         appointment.BarberId = timeslot.BarberId;
@@ -387,17 +391,8 @@
         await TryScrollToSummary();
     }
 
-    private void OnBarberChanged(ChangeEventArgs e)
-    {
-        appointment.BarberId = Guid.Parse(e.Value?.ToString() ?? Guid.Empty.ToString());
-        selectedSlot = null;
-    }
-
-
     public async Task HandleValidSubmit()
     {
-        Console.WriteLine($"Booking: {appointment.BarberId} at {appointment.AppointmentDateTime}");
-
         IsSubmitting = true;
 
         if (selectedSlot == null)
@@ -413,13 +408,12 @@
 
         var savedAppointment = await AppointmentsService.CreateAppointmentAsync(appointment);
 
+        if (savedAppointment == null)
+        {
+            IsSubmitting = false;
+            return;
+        }
+
         Navigation.NavigateTo($"/booking-confirmed/{savedAppointment?.Id}");
-
-        IsSubmitting = false;
-        selectedSlot = null;
-
-        appointment = new AppointmentDto();
-
-        await LoadSlots();
     }
 }

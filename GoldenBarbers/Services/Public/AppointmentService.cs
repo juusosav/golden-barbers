@@ -18,7 +18,7 @@ namespace GoldenBarbers.Services.Public
 
         public async Task<List<TimeslotDto>> GetAvailableSlotsAsync(DateTime weekStart)
         {
-            weekStart = DateTime.SpecifyKind(weekStart.Date, DateTimeKind.Utc);
+            weekStart = DateTime.SpecifyKind(weekStart, DateTimeKind.Utc);
 
             var weekEnd = weekStart.AddDays(7);
 
@@ -47,7 +47,7 @@ namespace GoldenBarbers.Services.Public
             {
                 for (int day = 0; day < 7; day++)
                 {
-                    var currentDate = weekStart.Date.AddDays(day);
+                    var currentDate = weekStart.AddDays(day);
                     var dayStart = currentDate.AddHours(9);
                     var dayEnd = currentDate.AddHours(17);
 
@@ -108,7 +108,8 @@ namespace GoldenBarbers.Services.Public
 
         public async Task<AppointmentDto?> CreateAppointmentAsync(AppointmentDto dto)
         {
-            var offering = await _context.Offerings.FirstOrDefaultAsync(o => o.Id == dto.OfferingId);
+            var offering = await _context.Offerings.FirstOrDefaultAsync(
+                o => o.Id == dto.OfferingId);
 
             if (offering == null)
                 return null;

@@ -12,9 +12,11 @@ namespace GoldenBarbers.Client.Services.Public
             _http = http;
         }
 
+        private const string BaseRoute = "api/appointments";
+
         public async Task<List<TimeslotDto>> GetAvailableSlotsAsync(DateTime weekStart)
         {
-            var query = $"api/appointments/available-slots?weekStart={weekStart:yyyy-MM-dd}";
+            var query = $"{BaseRoute}/available-slots?weekStart={weekStart:yyyy-MM-dd}";
 
             return await _http.GetFromJsonAsync<List<TimeslotDto>>(query)
                 ?? new List<TimeslotDto>();
@@ -22,13 +24,24 @@ namespace GoldenBarbers.Client.Services.Public
 
         public async Task<AppointmentDto?> CreateAppointmentAsync(AppointmentDto dto)
         {
-            var response = await _http.PostAsJsonAsync("api/appointments", dto);
+            var response = await _http.PostAsJsonAsync(BaseRoute, dto);
+
+            if (!response.IsSuccessStatusCode)
+                return null;
+
             return await response.Content.ReadFromJsonAsync<AppointmentDto>();
         }
 
         public async Task<AppointmentDto?> GetByIdAsync(Guid id)
         {
-            return await _http.GetFromJsonAsync<AppointmentDto>($"api/appointments/{id}");
+            try
+            {
+                return await _http.GetFromJsonAsync<AppointmentDto>($"{BaseRoute}/{id}");
+            }
+            catch (HttpRequestException)
+            {
+                return null;
+            }
         }
     }
 }

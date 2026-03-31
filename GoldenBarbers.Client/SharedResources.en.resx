@@ -465,4 +465,7 @@
   <data name="GeneralAdmin_DeleteButton" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="Dashboard_NoContent" xml:space="preserve">
+    <value>No statistics found. Metrics will appear when there are appointments saved to the system.</value>
+  </data>
 </root>
