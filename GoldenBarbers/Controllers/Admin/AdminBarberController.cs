@@ -34,6 +34,7 @@ namespace GoldenBarbers.Controllers.Admin
         }
 
         [HttpGet("{id}")]
+        [ActionName("GetBarberById")]
         public async Task<ActionResult<AdminBarberDto>> GetBarberByIdAsync(Guid id)
         {
             var barber = await _adminBarberService.GetBarberByIdAsync(id);
@@ -159,7 +160,7 @@ namespace GoldenBarbers.Controllers.Admin
                 return BadRequest();
 
             return CreatedAtAction(
-                nameof(GetBarberByIdAsync),
+                "GetBarberById",
                 new { id = created.Id },
                 created
                 );

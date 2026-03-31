@@ -95,7 +95,7 @@ namespace GoldenBarbers.Services.Admin
             return true;
         }
 
-        public async Task<Barber> CreateBarberAsync(AdminBarberDto dto)
+        public async Task<AdminBarberDto> CreateBarberAsync(AdminBarberDto dto)
         {
             var barber = new Barber
             {
@@ -113,7 +113,18 @@ namespace GoldenBarbers.Services.Admin
             _context.Barbers.Add(barber);
             await _context.SaveChangesAsync();
 
-            return barber;
+            return new AdminBarberDto
+            {
+                Name = barber.Name,
+                PositionId = barber.PositionId,
+                PositionName = barber.PositionName,
+                PersonalPhone = barber.PersonalPhone,
+                PersonalEmail = barber.PersonalEmail,
+                PersonalAddress = barber.PersonalAddress,
+                Salary = barber.Salary,
+                StartDate = barber.StartDate,
+                Portrait = barber.Portrait
+            };
         }
     }
 }
