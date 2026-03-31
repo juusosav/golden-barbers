@@ -274,7 +274,7 @@
     <value>Appointments:</value>
   </data>
   <data name="DashboardCard_UpcomingWeekAppointments" xml:space="preserve">
-    <value>Appointments for upcoming week:</value>
+    <value>Upcoming appointments:</value>
   </data>
   <data name="AdminNavMenu_Dashboard" xml:space="preserve">
     <value>Dashboard</value>
@@ -340,7 +340,7 @@
     <value>Previous</value>
   </data>
   <data name="ManageAppointments_Page" xml:space="preserve">
-    <value>Sivu</value>
+    <value>Page</value>
   </data>
   <data name="ManageBarbers_Title" xml:space="preserve">
     <value>Manage Barbers</value>
