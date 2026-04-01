@@ -6,7 +6,7 @@
 @inject BarberApiService BarberService
 @inject OfferingApiService OfferingService
 @inject TimeslotApiService TimeslotService
-@inject AppointmentApiService AppointmentsService
+@inject AppointmentApiService AppointmentService
 @inject ScrollService ScrollService
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
@@ -155,7 +155,7 @@
                                         }
                                         else if (!daySlots.Any())
                                         {
-                                            <span class="unavailable">@L["Appointment_Reserved"]</span>
+                                            <span class="unavailable">-</span>
                                         }
 
                                         else
@@ -407,7 +407,7 @@
         appointment.BarberName = barber?.Name ?? "";
         appointment.OfferingName = offering?.Name ?? "";
 
-        var savedAppointment = await AppointmentsService.CreateAppointmentAsync(appointment);
+        var savedAppointment = await AppointmentService.CreateAppointmentAsync(appointment);
 
         if (savedAppointment == null)
         {

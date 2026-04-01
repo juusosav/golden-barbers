@@ -40,6 +40,7 @@ namespace GoldenBarbers.Data
                 b.Property(x => x.StartDate).IsRequired();
             });
 
+            // TODO: Add constraints
             BarberSeed.Seed(modelBuilder);
             OfferingSeed.Seed(modelBuilder);
             CarouselSeed.Seed(modelBuilder);
