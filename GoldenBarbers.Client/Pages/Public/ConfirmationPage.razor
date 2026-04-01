@@ -54,7 +54,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        appointment = await AppointmentsService.GetByIdAsync(Id);
+        appointment = await AppointmentService.GetByIdAsync(Id);
 
         if (appointment != null)
         {
