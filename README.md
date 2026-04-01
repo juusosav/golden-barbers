@@ -3,7 +3,7 @@
 Golden Barbers is a full-stack appointment booking web application built with **Blazor WebAssembly + ASP.NET Core**.
 It allows customers to book barber appointments online while providing an admin panel for managing barbers, services, and appointments.
 
-
+Live demo: [Golden Barbers](https://golden-barbers-bmfqbabta6haa2fv.westeurope-01.azurewebsites.net/)
 ---
 
 ## Features
