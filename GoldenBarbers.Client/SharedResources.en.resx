@@ -465,4 +465,7 @@
   <data name="GeneralAdmin_DeleteButton" xml:space="preserve">
     <value>Delete</value>
   </data>
+  <data name="AdminNavMenu_BackToSite" xml:space="preserve">
+    <value>Back to site</value>
+  </data>
 </root>
