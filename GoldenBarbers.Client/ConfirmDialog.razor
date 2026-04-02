@@ -1,12 +1,14 @@
-﻿@if (IsVisible)
+﻿@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+@if (IsVisible)
 {
     <div class="dialog-overlay">
         <div class="dialog-box">
             <h4>@Title</h4>
             <p>@Message</p>
 
-            <button class="btn btn-danger" @onclick="Confirm">Confirm</button>
-            <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+            <button class="btn btn-danger" @onclick="Confirm">@L["ConfirmDialog_Confirm"]</button>
+            <button class="btn btn-secondary" @onclick="Cancel">@L["ConfirmDialog_Cancel"]</button>
         </div>
     </div>
 }

@@ -61,7 +61,7 @@
 
     private async Task DeleteOfferings(Guid id)
     {
-        if (await ConfirmDialog!.Show("Delete selected offering?", "Confirm deletion"))
+        if (await ConfirmDialog!.Show(L["ManageOfferings_ConfirmDelete"], L["ManagePages_Confirm"]))
         {
             var success = await OfferingsApiService.DeleteOfferingAsync(id);
 

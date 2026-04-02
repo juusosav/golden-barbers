@@ -470,4 +470,22 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="AdminNavMenu_BackToSite" xml:space="preserve">
     <value>Takaisin sivustolle</value>
   </data>
+  <data name="ConfirmDialog_Confirm" xml:space="preserve">
+    <value>Hyväksy</value>
+  </data>
+  <data name="ConfirmDialog_Cancel" xml:space="preserve">
+    <value>Hylkää</value>
+  </data>
+  <data name="ManageAppointments_ConfirmDelete" xml:space="preserve">
+    <value>Poista valittu varaus?</value>
+  </data>
+  <data name="ManagePages_Confirm" xml:space="preserve">
+    <value>Vahvista poisto</value>
+  </data>
+  <data name="ManageBarbers_ConfirmDelete" xml:space="preserve">
+    <value>Poista valittu parturi?</value>
+  </data>
+  <data name="ManageOfferings_ConfirmDelete" xml:space="preserve">
+    <value>Poista valittu palvelu?</value>
+  </data>
 </root>

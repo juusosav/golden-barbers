@@ -115,7 +115,7 @@
 
     private async Task DeleteAppointment(Guid id)
     {
-        if (await ConfirmDialog!.Show("Delete selected appointment?", "Confirm deletion?"))
+        if (await ConfirmDialog!.Show(L["ManageAppointments_ConfirmDelete"], L["ManagePages_Confirm"]))
         {
             var success = await AdminAppointmentsApiService.DeleteAppointmentAsync(id);
 

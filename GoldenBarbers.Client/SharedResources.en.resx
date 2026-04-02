@@ -468,4 +468,22 @@
   <data name="AdminNavMenu_BackToSite" xml:space="preserve">
     <value>Back to site</value>
   </data>
+  <data name="ConfirmDialog_Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmDialog_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ManageAppointments_ConfirmDelete" xml:space="preserve">
+    <value>Delete selected appointment?</value>
+  </data>
+  <data name="ManagePages_Confirm" xml:space="preserve">
+    <value>Confirm deletion</value>
+  </data>
+  <data name="ManageBarbers_ConfirmDelete" xml:space="preserve">
+    <value>Delete selected barber?</value>
+  </data>
+  <data name="ManageOfferings_ConfirmDelete" xml:space="preserve">
+    <value>Delete selected offering?</value>
+  </data>
 </root>

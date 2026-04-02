@@ -67,7 +67,7 @@
 
     private async Task DeleteBarber(Guid id)
     {
-        if (await ConfirmDialog!.Show("Delete selected barber?", "Confirm deletion"))
+        if (await ConfirmDialog!.Show(L["ManageBarbers_ConfirmDelete"], L["ManagePages_Confirm"]))
         {
             var success = await BarbersApiService.DeleteBarberAsync(id);
 
