@@ -17,16 +17,16 @@ namespace GoldenBarbers.Data.Seeds
                         PositionId = 1,
                         PositionName = "Senior Barber",
                         Description =
-                            "John brings over a decade of experience to the chair, " +
-                            "specializing in precision fades and classic gentleman’s cuts. " +
-                            "His attention to detail and calm approach make every appointment feel relaxed and professional. " +
-                            "Whether you’re after a sharp modern style or a timeless look, " +
-                            "John ensures you leave feeling confident.",
+                            "Johnilla on yli vuosikymmenen kokemus parturituolilla, " +
+                            "ja hän on erikoistunut tarkkoihin häivytyksiin sekä klassisiin herrasmiesleikauksiin. " +
+                            "Hänen huolellisuutensa ja rauhallinen työskentelytapansa tekevät jokaisesta käynnistä " +
+                            "rennon ja ammattimaisen. Halusitpa sitten terävän modernin tyylin tai ajattoman ilmeen, " +
+                            "John varmistaa, että lähdet liikkeestä itsevarmana.",
                         Portrait = "/images/John_headshot.jpg",
                         Salary = 2670.9m,
-                        PersonalPhone = "079 4318 8088",
+                        PersonalPhone = "045 4318 8088",
                         PersonalEmail = "john.s3@gmail.com",
-                        PersonalAddress = "51 Church Lane, London",
+                        PersonalAddress = "Mechelininkatu 23, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2024, 4, 12), DateTimeKind.Utc)
                     },
                     new Barber
@@ -36,15 +36,15 @@ namespace GoldenBarbers.Data.Seeds
                         PositionId = 1,
                         PositionName = "Senior Barber",
                         Description =
-                            "Rebecca has a natural talent for understanding what suits each client’s " +
-                            "face shape and personality. She specializes in modern cuts, textured styles, " +
-                            "and detailed finishing work. Her warm and welcoming approach ensures every visit " +
-                            "feels comfortable and personalized.",
+                            "Rebeccalla on luontainen kyky ymmärtää, mikä sopii kunkin asiakkaan " +
+                            "kasvojen muotoon ja persoonallisuuteen. Hän on erikoistunut moderneihin leikkauksiin, " +
+                            "teksturoituihin tyyleihin ja huolelliseen viimeistelyyn. Hänen lämmin ja " +
+                            "vastaanottavainen otteensa tekee jokaisesta käynnistä mukavan ja yksilöllisen.",
                         Portrait = "/images/Rebecca_headshot.jpg",
                         Salary = 2530.7m,
-                        PersonalPhone = "078 1834 6640",
+                        PersonalPhone = "044 1834 6640",
                         PersonalEmail = "rebeccaa12@gmail.com",
-                        PersonalAddress = "66 Station Road, London",
+                        PersonalAddress = "Hämeentie 47, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2024, 4, 12), DateTimeKind.Utc)
                     },
                     new Barber
@@ -53,15 +53,15 @@ namespace GoldenBarbers.Data.Seeds
                         Name = "Charles Jackson",
                         PositionId = 1,
                         PositionName = "Senior Barber",
-                        Description = "Charles is known for his sharp eye for style and perfectly sculpted beard work. " +
-                        "With a passion for traditional barbering techniques and modern trends, " +
-                        "he blends the best of both worlds. Clients appreciate his friendly personality and dedication " +
-                        "to getting every detail right.",
+                        Description = "Charles tunnetaan tarkasta tyylisilmästään ja huolellisesti muotoilemistaan parroista. " +
+                        "Intohimollaan perinteisiä parturitekniikoita ja moderneja trendejä kohtaan " +
+                        "hän yhdistää näiden parhaat puolet. Asiakkaat arvostavat hänen " +
+                        "ystävällistä luonnettaan ja omistautumistaan jokaisen yksityiskohdan viimeistelyyn.",
                         Portrait = "/images/Charles_headshot.jpg",
                         Salary = 2450.4m,
-                        PersonalPhone = "070 4871 9510",
+                        PersonalPhone = "050 4871 9510",
                         PersonalEmail = "charliejack@gmail.com",
-                        PersonalAddress = "24 Lionsdale Ave, London",
+                        PersonalAddress = "Lauttasaarentie 12, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2025, 1, 20), DateTimeKind.Utc)
                     },
                     new Barber
@@ -70,15 +70,16 @@ namespace GoldenBarbers.Data.Seeds
                         Name = "Sarah Jones",
                         PositionId = 2,
                         PositionName = "Junior Barber",
-                        Description = "Sarah is known for her steady hand and flawless finishing touches. " +
-                        "From sharp skin fades to perfectly shaped beards, she approaches every cut with focus and care. " +
-                        "Clients value her professionalism and ability to bring their vision to life. " +
-                        "She believes great grooming is all about precision and consistency.",
+                        Description = "Sarah tunnetaan vakaasta kädestään ja virheettömästä viimeistelytyöstään. " +
+                        "Terävistä skin fade -häivytyksistä täydellisesti muotoiltuihin partoihin – hän lähestyy " +
+                        "jokaista leikkausta keskittyneesti ja huolella. Asiakkaat arvostavat hänen ammattimaisuuttaan " +
+                        "ja kykyään toteuttaa heidän visionsa. Hän uskoo, että erinomainen grooming perustuu " +
+                        "tarkkuuteen ja johdonmukaisuuteen.",
                         Portrait = "/images/Sarah_headshot.jpg",
                         Salary = 2350.8m,
-                        PersonalPhone = "078 7592 3593",
+                        PersonalPhone = "045 7592 3593",
                         PersonalEmail = "sarahlee@hotmail.com",
-                        PersonalAddress = "52 Cassland Road, London",
+                        PersonalAddress = "Fredrikinkatu 38, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2025, 8, 12), DateTimeKind.Utc)
                     },
                     new Barber
@@ -87,15 +88,15 @@ namespace GoldenBarbers.Data.Seeds
                         Name = "Hannah Lawson",
                         PositionId = 2,
                         PositionName = "Junior Barber",
-                        Description = "Hannah combines creativity with technical skill to deliver standout results. " +
-                        "She enjoys working with both classic styles and bold, modern looks, always tailoring each cut " +
-                        "to the individual. Her friendly attitude and attention to " +
-                        "detail make her a favorite among clients.",
+                        Description = "Hannah yhdistää luovuuden ja teknisen taidon tuottaakseen erinomaisia tuloksia. " +
+                        "Hän nauttii työskentelystä sekä klassisten tyylien että rohkeiden modernien ilmeiden parissa, " +
+                        "räätälöiden jokaisen leikkauksen yksilöllisesti. Hänen ystävällinen asenteensa ja " +
+                        "tarkkuutensa tekevät hänestä asiakkaiden suosikin.",
                         Portrait = "/images/Hannah_headshot.jpg",
                         Salary = 2290.5m,
-                        PersonalPhone = "070 6859 4772",
+                        PersonalPhone = "050 6859 4772",
                         PersonalEmail = "hannah.law@gmail.com",
-                        PersonalAddress = "21 Manor Road, London",
+                        PersonalAddress = "Sturenkatu 61, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2025, 11, 2), DateTimeKind.Utc)
                     },
                     new Barber
@@ -104,15 +105,15 @@ namespace GoldenBarbers.Data.Seeds
                         Name = "Steve Robertson",
                         PositionId = 3,
                         PositionName = "Trainee Barber",
-                        Description = "Steve is our talented trainee, bringing fresh energy and a strong desire to " +
-                        "master the craft. He is currently refining his skills under the guidance of our senior team, " +
-                        "focusing on clean cuts and precise styling. Steve is detail-oriented, patient, and " +
-                        "committed to continuous improvement.",
+                        Description = "Steve on lahjakas harjoittelijamme, joka tuo mukanaan tuoretta energiaa ja " +
+                        "vahvan halun kehittyä alan ammattilaiseksi. Hän hioo taitojaan parhaillaan " +
+                        "senioritiimimme ohjauksessa keskittyen siisteihin leikkauksiin ja tarkkoihin tyyleihin. " +
+                        "Steve on yksityiskohtiin paneutuva, kärsivällinen ja sitoutunut jatkuvaan kehittymiseen.",
                         Portrait = "/images/Steve_headshot.jpg",
                         Salary = 2020.3m,
-                        PersonalPhone = "077 5627 5582",
+                        PersonalPhone = "045 5627 5582",
                         PersonalEmail = "stevie_robs@gmail.com",
-                        PersonalAddress = "52 Victoria Road, London",
+                        PersonalAddress = "Itämerenkatu 5, Helsinki",
                         StartDate = DateTime.SpecifyKind(new DateTime(2026, 1, 20), DateTimeKind.Utc)
                     });
             });

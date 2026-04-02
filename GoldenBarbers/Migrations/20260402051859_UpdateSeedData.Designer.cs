@@ -3,6 +3,7 @@ using System;
 using GoldenBarbers.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoldenBarbers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260402051859_UpdateSeedData")]
+    partial class UpdateSeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
@@ -132,7 +135,7 @@ namespace GoldenBarbers.Migrations
                             Name = "John Smith",
                             PersonalAddress = "Mechelininkatu 23, Helsinki",
                             PersonalEmail = "john.s3@gmail.com",
-                            PersonalPhone = "045 4318 8088",
+                            PersonalPhone = "079 4318 8088",
                             Portrait = "/images/John_headshot.jpg",
                             PositionId = 1,
                             PositionName = "Senior Barber",
@@ -146,7 +149,7 @@ namespace GoldenBarbers.Migrations
                             Name = "Rebecca Anderson",
                             PersonalAddress = "Hämeentie 47, Helsinki",
                             PersonalEmail = "rebeccaa12@gmail.com",
-                            PersonalPhone = "044 1834 6640",
+                            PersonalPhone = "078 1834 6640",
                             Portrait = "/images/Rebecca_headshot.jpg",
                             PositionId = 1,
                             PositionName = "Senior Barber",
@@ -160,7 +163,7 @@ namespace GoldenBarbers.Migrations
                             Name = "Charles Jackson",
                             PersonalAddress = "Lauttasaarentie 12, Helsinki",
                             PersonalEmail = "charliejack@gmail.com",
-                            PersonalPhone = "050 4871 9510",
+                            PersonalPhone = "070 4871 9510",
                             Portrait = "/images/Charles_headshot.jpg",
                             PositionId = 1,
                             PositionName = "Senior Barber",
@@ -174,7 +177,7 @@ namespace GoldenBarbers.Migrations
                             Name = "Sarah Jones",
                             PersonalAddress = "Fredrikinkatu 38, Helsinki",
                             PersonalEmail = "sarahlee@hotmail.com",
-                            PersonalPhone = "045 7592 3593",
+                            PersonalPhone = "078 7592 3593",
                             Portrait = "/images/Sarah_headshot.jpg",
                             PositionId = 2,
                             PositionName = "Junior Barber",
@@ -188,7 +191,7 @@ namespace GoldenBarbers.Migrations
                             Name = "Hannah Lawson",
                             PersonalAddress = "Sturenkatu 61, Helsinki",
                             PersonalEmail = "hannah.law@gmail.com",
-                            PersonalPhone = "050 6859 4772",
+                            PersonalPhone = "070 6859 4772",
                             Portrait = "/images/Hannah_headshot.jpg",
                             PositionId = 2,
                             PositionName = "Junior Barber",
@@ -202,7 +205,7 @@ namespace GoldenBarbers.Migrations
                             Name = "Steve Robertson",
                             PersonalAddress = "Itämerenkatu 5, Helsinki",
                             PersonalEmail = "stevie_robs@gmail.com",
-                            PersonalPhone = "045 5627 5582",
+                            PersonalPhone = "077 5627 5582",
                             Portrait = "/images/Steve_headshot.jpg",
                             PositionId = 3,
                             PositionName = "Trainee Barber",
@@ -246,7 +249,7 @@ namespace GoldenBarbers.Migrations
                         {
                             Id = new Guid("88f713d6-b493-4e7c-8df2-a9bbe28ef472"),
                             Image = "/images/barbershop_photo3.png",
-                            Name = "Parran stailaus & Hoito"
+                            Name = "Parran Stailaus & Hoito"
                         });
                 });
 
@@ -298,7 +301,7 @@ namespace GoldenBarbers.Migrations
                             Description = "Hiustenleikkaus täydellisellä parran hoitopaketilla, sisältää höyrytyksen ja siistimisen",
                             Icon = "/images/haircut_beard_treatment.png",
                             JuniorPrice = 45,
-                            Name = "Hiustenleikkaus & Parran hoito",
+                            Name = "Hiustenleikkaus & Parran Hoito",
                             SeniorPrice = 50,
                             TraineePrice = 37
                         },
@@ -308,7 +311,7 @@ namespace GoldenBarbers.Migrations
                             Description = "Vanhan koulun hoitopaketti hollantilaisen partatyylin mukaan sisältäen hoitoviimeistelyn öljyillä",
                             Icon = "/images/dutch_beard_treatment.png",
                             JuniorPrice = 30,
-                            Name = "Hollantilainen partahoito",
+                            Name = "Dutch Beard Treatment",
                             SeniorPrice = 35,
                             TraineePrice = 25
                         },
@@ -318,7 +321,7 @@ namespace GoldenBarbers.Migrations
                             Description = "Klassinen amerikkalainen parran trimmaus partaterällä ja vaahdotuksella",
                             Icon = "/images/american_beard_trim.png",
                             JuniorPrice = 25,
-                            Name = "Amerikkalainen parran trimmaus",
+                            Name = "American Beard Trim",
                             SeniorPrice = 28,
                             TraineePrice = 23
                         });
