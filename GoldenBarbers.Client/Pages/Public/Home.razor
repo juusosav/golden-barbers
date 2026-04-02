@@ -2,6 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using GoldenBarbers.Client
+@using System.Globalization
 
 @page "/" 
 
@@ -28,6 +29,8 @@
     }
 </header>
 
+
+
 <div class="button-container">
     <div class="button-container-item">
         <button class="gold-button" @onclick="GoToBooking">@L["Home_BookAppointment"]</button>
@@ -35,6 +38,14 @@
 </div>
 
 <div class="homepage-container">
+    @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en")
+    {
+        <br />
+        <div class="booking-text">
+            <p>--English localization is currently incomplete. Some content may appear in Finnish.--</p>
+        </div>
+    }
+
     <h2 class="homepage-container-item"><strong>@L["Home_OurServices"]</strong></h2>
 
     @if (offerings == null)
