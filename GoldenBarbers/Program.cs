@@ -10,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services
 builder.Services.AddControllers();
 
+builder.Services.AddResponseCompression(options =>
+{
+    options.EnableForHttps = true;
+});
+
 // Public services
 builder.Services.AddScoped<AppointmentService>();
 builder.Services.AddScoped<PricingService>();
@@ -64,6 +69,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
+app.UseResponseCompression();
+
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -71,7 +78,6 @@ using (var scope = app.Services.CreateScope())
 }
 
 await app.SeedAdminUserAsync();
-
 
 app.UseHttpsRedirection();
 
