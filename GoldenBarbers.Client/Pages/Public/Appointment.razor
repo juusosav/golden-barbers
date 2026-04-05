@@ -114,68 +114,67 @@
         }
         else
         {
-            <div class="booking-container table-responsive">
-                <table class="calendar-table">
-                    <thead>
-                        <tr>
-                            <th>@L["Appointment_TimeHeading"]</th>
-                            @foreach (var day in Enumerable.Range(0, 6))
-                            {
-                                var currentDay = weekStart.AddDays(day);
-                                <th>@currentDay.ToString("ddd dd")</th>
-                            }
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var time in timeRanges)
+            <div class="calendar-mobile container">
+
+                <!-- DAY SELECTOR -->
+                <div class="d-flex day-selector">
+                    @foreach (var day in Enumerable.Range(0, 6))
+                    {
+                        var currentDay = weekStart.AddDays(day);
+
+                        <button class="day-chip @(selectedDay.Date == currentDay.Date ? "active" : "")"
+                                @onclick="() => SelectDay(currentDay)">
+
+                            <span>@currentDay.ToString("ddd")</span>
+                            <strong>@currentDay.ToString("dd")</strong>
+                        </button>
+                    }
+                </div>
+
+                <!-- TIMESLOTS -->
+                <div class="timeslot-grid">
+
+                    @foreach (var time in timeRanges)
+                    {
+                        var currentDateTime = DateTime.SpecifyKind(
+                            selectedDay.Add(time.TimeOfDay),
+                            DateTimeKind.Utc);
+
+                        var nowInHelsinki =
+                            TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _helsinkiZone);
+
+                        var slots = timeslots
+                            .Where(s =>
+                                s.Start.Date == selectedDay &&
+                                s.Start.TimeOfDay == time.TimeOfDay &&
+                                s.BarberId == appointment.BarberId &&
+                                s.IsAvailable)
+                            .ToList();
+
+                        if (nowInHelsinki > currentDateTime)
                         {
-                            <tr>
-                                <td>@time.ToString("HH:mm")</td>
-
-                                @foreach (var day in Enumerable.Range(0, 6))
-                                {
-                                    var currentDate = weekStart.AddDays(day);
-                                    var currentDateTime = DateTime.SpecifyKind(currentDate.Add(time.TimeOfDay), DateTimeKind.Utc);
-
-                                    var nowInHelsinki = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, _helsinkiZone);
-
-                                    var daySlots = timeslots
-                                    .Where(s =>
-                                    s.Start.Date == currentDate &&
-                                    s.Start.TimeOfDay == time.TimeOfDay &&
-                                    s.BarberId == appointment.BarberId &&
-                                    s.IsAvailable)
-                                    .ToList();
-
-                                    <td>
-                                        
-                                        @if (nowInHelsinki > currentDateTime)
-                                        {
-                                            <span class="unavailable">-</span>
-                                        }
-                                        else if (!daySlots.Any())
-                                        {
-                                            <span class="unavailable">@L["Appointment_Reserved"]</span>
-                                        }
-
-                                        else
-                                        {
-                                            @foreach (var slot in daySlots)
-                                            {
-                                                <button class="timeslot" type="button"
-                                                        @onclick="() => SelectSlot(slot)">
-
-                                                    @(selectedSlot?.Id == slot.Id ? L["Appointment_Selected"] : L["Appointment_Select"])
-                                                </button>
-                                                <br />
-                                            }
-                                        }
-                                    </td>
-                                }
-                            </tr>
+                            <button class="time-pill disabled">-</button>
                         }
-                    </tbody>
-                </table>
+                        else if (!slots.Any())
+                        {
+                            <button class="time-pill disabled">
+                                @L["Appointment_Reserved"]
+                            </button>
+                        }
+                        else
+                        {
+                            foreach (var slot in slots)
+                            {
+                                <button class="time-pill @(selectedSlot?.Id == slot.Id ? "selected" : "")"
+                                        @onclick="() => SelectSlot(slot)">
+
+                                    @slot.Start.ToString("HH:mm")
+                                </button>
+                            }
+                        }
+                    }
+
+                </div>
             </div>
         }
 
@@ -258,6 +257,7 @@
 
     private bool IsSubmitting { get; set; } = false;
     private bool IsDisabled { get; set; } = false;
+    private DateTime selectedDay;
 
     private static readonly TimeZoneInfo _helsinkiZone =
     TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
@@ -304,11 +304,18 @@
 
     protected override async Task OnInitializedAsync()
     {
+        selectedDay = weekStart;
         offerings = await OfferingService.GetAllOfferingsAsync();
         barbers = await BarberService.GetBarbersAsync();
 
         GenerateTimeRanges();
         await LoadSlots();
+    }
+
+    private void SelectDay(DateTime day)
+    {
+        selectedDay = day;
+        selectedSlot = null;
     }
 
     private async Task SelectOffering(Guid offeringId)

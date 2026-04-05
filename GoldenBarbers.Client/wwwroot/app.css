@@ -197,7 +197,7 @@ h1:focus {
 
 .carousel-container {
     display: flex;
-    flex-shrink: inherit;
+    flex-shrink: 1;
     max-width: 700px;
     min-height: 70vh;
     margin: auto;
@@ -224,7 +224,6 @@ h1:focus {
         width: 100%;
         height: 80vh;
         object-fit: contain;
-        border-radius: 5px;
         z-index: 0;
     }
 
@@ -384,37 +383,74 @@ h1:focus {
     color: gray;
 }
 
-.calendar-table {
-    border-collapse: collapse;
-    max-width: 800px;
-    width: 100%;
-    background-color: white;
+.day-selector {
+    display: flex;
+    gap: 8px;
     overflow-x: auto;
+    margin-bottom: 16px;
 }
 
-    .calendar-table th, .calendar-table td {
-        border: 1px solid #ccc;
-        padding: 8px;
-        text-align: center;
-    }
-
-.timeslot {
-    background-color: #1b6ec2;
-    color: white;
-    padding: 4px 8px;
+.day-chip {
+    min-width: 60px;
+    padding: 10px;
+    border-radius: 10px;
     border: none;
-    cursor: pointer;
-    border-radius: 3px;
+    background: #2a2a2a;
+    color: white;
+    text-align: center;
 }
 
-    .timeslot:hover {
-        transition: all 0.2s ease;
-        background-color: #145a96;
+    .day-chip.active {
+        background: #1b6ec2;
     }
 
-    .timeslot:focus {
-        background-color: #26b050;
+.timeslot-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.time-pill {
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    background: #1b6ec2;
+    color: white;
+    font-size: 16px;
+}
+
+    .time-pill:active {
+        transform: scale(0.95);
     }
+
+    .time-pill.selected {
+        background: #26b050;
+    }
+
+    .time-pill.disabled {
+        background: gray;
+    }
+
+@media (min-width: 768px) {
+
+    .time-pill {
+        padding: 12px;
+        border-radius: 10px;
+        border: none;
+        background: #1b6ec2;
+        color: white;
+        font-size: 16px;
+    }
+
+        .time-pill:active {
+            transform: scale(0.95);
+        }
+
+        .time-pill.selected {
+            background: #26b050;
+            width: 500px;
+        }
+}
 
 .reserved {
     color: red;
@@ -463,6 +499,7 @@ h1:focus {
 
 .selection-item {
     border: 1px solid #ccc;
+    border-radius: 16px;
     padding: 10px;
     margin: 10px;
     color: white;
@@ -476,10 +513,6 @@ h1:focus {
         object-fit: contain;
     }
 
-    .selection-item:active {
-        background-color: white;
-    }
-
     .selection-item:hover {
         transition: all 0.2s ease;
         background-color: white;
@@ -489,6 +522,7 @@ h1:focus {
 
 .selected {
     border: 1px solid #ccc;
+    border-radius: 16px;
     padding: 10px;
     margin: 10px;
     color: white;
