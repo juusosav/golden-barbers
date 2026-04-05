@@ -14,7 +14,7 @@ namespace GoldenBarbers.Data.Seeds
                     {
                         Id = new Guid("14c09ff8-c38f-4d7e-9e27-7e498f4a446d"),
                         Image = "/images/barbershop_photo1.png",
-                        Name = "Hiustenleikkaukset & Stailaukset"
+                        Name = "Hiustenleikkaukset & stailaukset"
                     },
                     new Carousel
                     {
@@ -26,7 +26,7 @@ namespace GoldenBarbers.Data.Seeds
                     {
                         Id = new Guid("88f713d6-b493-4e7c-8df2-a9bbe28ef472"),
                         Image = "/images/barbershop_photo3.png",
-                        Name = "Parran stailaus & Hoito"
+                        Name = "Parran stailaus & hoito"
                     }
                     );
             });

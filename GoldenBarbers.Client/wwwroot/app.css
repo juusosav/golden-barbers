@@ -174,9 +174,8 @@ h1:focus {
 }
 
     .custom-nav-item:hover {
-        background-color: white;
+        color: gray;
         transition: all 0.2s ease;
-        color: black;
     }
 
 .custom-nav-link {
@@ -184,7 +183,7 @@ h1:focus {
 }
 
     .custom-nav-link:hover {
-        color: black;
+        color: gold;
         transition: all 0.2s ease;
     }
 
@@ -363,7 +362,7 @@ h1:focus {
 }
 
 .gold-button {
-    background: linear-gradient(150deg, #FFD700, #aeb26c);
+    background: gold;
     color: black;
     border: none;
     border-radius: 8px;
@@ -381,6 +380,9 @@ h1:focus {
         transform: translateY(-4px);
     }
 
+.admin-navigate-button {
+    color: gray;
+}
 
 .calendar-table {
     border-collapse: collapse;

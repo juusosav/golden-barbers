@@ -51,7 +51,6 @@
 
 @code {
     private List<AdminOfferingDto>? offerings;
-
     private ConfirmDialog? ConfirmDialog;
 
     protected override async Task OnInitializedAsync()
@@ -73,7 +72,6 @@
     }
 
     private void EditOffering(Guid id) => Navigation.NavigateTo($"/admin/manage-offerings/edit-offering/{id}");
-
     private void CreateOffering() => Navigation.NavigateTo($"/admin/manage-offerings/create-offering");
 
     private async Task LoadOfferings()

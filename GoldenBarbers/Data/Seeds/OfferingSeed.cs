@@ -23,7 +23,7 @@ namespace GoldenBarbers.Data.Seeds
                     new Offering
                     {
                         Id = new Guid("55583c0e-9d27-4af5-af9d-1508bd3e3e3f"),
-                        Name = "Hiustenleikkaus & Parran hoito",
+                        Name = "Hiustenleikkaus & parran hoito",
                         Icon = "/images/haircut_beard_treatment.png",
                         Description =
                             "Hiustenleikkaus täydellisellä parran hoitopaketilla, sisältää höyrytyksen ja siistimisen",
@@ -37,7 +37,8 @@ namespace GoldenBarbers.Data.Seeds
                         Name = "Hollantilainen partahoito",
                         Icon = "/images/dutch_beard_treatment.png",
                         Description =
-                            "Vanhan koulun hoitopaketti hollantilaisen partatyylin mukaan sisältäen hoitoviimeistelyn öljyillä",
+                            "Vanhan koulun hoitopaketti hollantilaisen partatyylin mukaan sisältäen " +
+                            "hoitoviimeistelyn öljyillä",
                         SeniorPrice = 35,
                         JuniorPrice = 30,
                         TraineePrice = 25
