@@ -115,9 +115,7 @@
         else
         {
             <div class="calendar-mobile container">
-
-                <!-- DAY SELECTOR -->
-                <div class="d-flex day-selector">
+                <div class="day-selector">
                     @foreach (var day in Enumerable.Range(0, 6))
                     {
                         var currentDay = weekStart.AddDays(day);
@@ -131,9 +129,7 @@
                     }
                 </div>
 
-                <!-- TIMESLOTS -->
                 <div class="timeslot-grid">
-
                     @foreach (var time in timeRanges)
                     {
                         var currentDateTime = DateTime.SpecifyKind(
