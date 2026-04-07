@@ -13,11 +13,8 @@ namespace GoldenBarbers.Data
         }
 
         public DbSet<Barber> Barbers { get; set; }
-
         public DbSet<Offering> Offerings { get; set; }
-
         public DbSet<Appointment> Appointments { get; set; }
-
         public DbSet<Carousel> CarouselItems { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -40,7 +37,35 @@ namespace GoldenBarbers.Data
                 b.Property(x => x.StartDate).IsRequired();
             });
 
-            // TODO: Add constraints
+            modelBuilder.Entity<Offering>(o =>
+            {
+                o.Property(o => o.Name).IsRequired();
+                o.Property(o => o.Description).IsRequired();
+                o.Property(o => o.Icon).IsRequired();
+                o.Property(o => o.SeniorPrice).IsRequired();
+                o.Property(o => o.JuniorPrice).IsRequired();
+                o.Property(o => o.TraineePrice).IsRequired();
+            });
+
+            modelBuilder.Entity<Carousel>(c =>
+            {
+                c.Property(c => c.Name).IsRequired();
+                c.Property(c => c.Image).IsRequired();
+            });
+
+            modelBuilder.Entity<Appointment>(a =>
+            {
+                a.Property(a => a.BarberId).IsRequired();
+                a.Property(a => a.BarberName).IsRequired();
+                a.Property(a => a.OfferingId).IsRequired();
+                a.Property(a => a.OfferingName).IsRequired();
+                a.Property(a => a.AppointmentDateTime).IsRequired();
+                a.Property(a => a.DurationMinutes).IsRequired();
+                a.Property(a => a.CustomerName).IsRequired();
+                a.Property(a => a.CustomerEmail).IsRequired();
+                a.Property(a => a.FinalPrice).IsRequired();
+            });
+
             BarberSeed.Seed(modelBuilder);
             OfferingSeed.Seed(modelBuilder);
             CarouselSeed.Seed(modelBuilder);
