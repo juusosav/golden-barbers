@@ -500,8 +500,8 @@ h1:focus {
 .selection-item {
     border: 1px solid #ccc;
     border-radius: 16px;
-    padding: 10px;
-    margin: 10px;
+    padding: 4px;
+    margin: 4px;
     color: white;
     width: 160px;
     height: 180px;
@@ -523,8 +523,8 @@ h1:focus {
 .selected {
     border: 1px solid #ccc;
     border-radius: 16px;
-    padding: 10px;
-    margin: 10px;
+    padding: 4px;
+    margin: 4px;
     color: white;
     width: 160px;
     height: 180px;

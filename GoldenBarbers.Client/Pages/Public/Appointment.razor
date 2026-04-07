@@ -169,7 +169,7 @@
                             }
                         }
                     }
-
+                    x
                 </div>
             </div>
         }
@@ -243,7 +243,7 @@
 
     @code {
 
-    // TODO: Exctract calendar to separate component
+    // TODO: Extract calendar to separate component
     AppointmentDto appointment = new();
 
     private List<OfferingDto>? offerings;
@@ -373,12 +373,14 @@
     private async Task PrevWeek()
     {
         weekStart = weekStart.AddDays(-7);
+        selectedDay = weekStart;
         await LoadSlots();
     }
 
     private async Task NextWeek()
     {
         weekStart = weekStart.AddDays(7);
+        selectedDay = weekStart;
         await LoadSlots();
     }
 
