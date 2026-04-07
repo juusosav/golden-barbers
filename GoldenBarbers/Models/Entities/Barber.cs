@@ -10,7 +10,9 @@
 
         public string PositionName { get; set; } = "";
 
-        public string Description { get; set; } = "";
+        public string DescriptionFi { get; set; } = "";
+
+        public string DescriptionEn { get; set; } = "";
 
         public string Portrait { get; set; } = "";
 

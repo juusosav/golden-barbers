@@ -22,9 +22,9 @@ namespace GoldenBarbers.Services.Admin
                 .Select(o => new AdminOfferingDto()
                 {
                     Id = o.Id,
-                    Name = o.Name,
+                    Name = o.NameFi,
                     Icon = o.Icon,
-                    Description = o.Description,
+                    Description = o.DescriptionFi,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
                     TraineePrice = o.TraineePrice
@@ -41,9 +41,9 @@ namespace GoldenBarbers.Services.Admin
                 .Select(o => new AdminOfferingDto
                 {
                     Id = o.Id,
-                    Name = o.Name,
+                    Name = o.NameFi,
                     Icon = o.Icon,
-                    Description = o.Description,
+                    Description = o.DescriptionFi,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
                     TraineePrice = o.TraineePrice
@@ -91,8 +91,8 @@ namespace GoldenBarbers.Services.Admin
             if (offeringToEdit == null)
                 return false;
 
-            offeringToEdit.Name = dto.Name;
-            offeringToEdit.Description = dto.Description;
+            offeringToEdit.NameFi = dto.Name;
+            offeringToEdit.DescriptionFi = dto.Description;
             offeringToEdit.SeniorPrice = dto.SeniorPrice;
             offeringToEdit.JuniorPrice = dto.JuniorPrice;
             offeringToEdit.TraineePrice = dto.TraineePrice;
@@ -134,9 +134,9 @@ namespace GoldenBarbers.Services.Admin
             var offering = new Offering
             {
                 Id = Guid.NewGuid(),
-                Name = dto.Name,
+                NameFi = dto.Name,
                 Icon = dto.Icon,
-                Description = dto.Description,
+                DescriptionFi = dto.Description,
                 SeniorPrice = dto.SeniorPrice,
                 JuniorPrice = dto.JuniorPrice,
                 TraineePrice = dto.TraineePrice
@@ -148,9 +148,9 @@ namespace GoldenBarbers.Services.Admin
             return new OfferingDto
             {
                 Id = offering.Id,
-                Name = offering.Name,
+                NameFi = offering.NameFi,
                 Icon = offering.Icon,
-                Description = offering.Description,
+                DescriptionFi = offering.DescriptionFi,
                 SeniorPrice = offering.SeniorPrice,
                 JuniorPrice = offering.JuniorPrice,
                 TraineePrice = offering.TraineePrice

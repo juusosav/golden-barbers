@@ -22,7 +22,8 @@ namespace GoldenBarbers.Services.Public
                 {
                     Id = c.Id,
                     Image = c.Image,
-                    Name = c.Name
+                    NameFi = c.NameFi,
+                    NameEn = c.NameEn
                 })
                 .ToListAsync();
 

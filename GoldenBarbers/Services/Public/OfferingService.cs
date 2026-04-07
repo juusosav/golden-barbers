@@ -21,9 +21,11 @@ namespace GoldenBarbers.Services.Public
                 .Select(o => new OfferingDto()
                 {
                     Id = o.Id,
-                    Name = o.Name,
+                    NameFi = o.NameFi,
+                    NameEn = o.NameEn,
                     Icon = o.Icon,
-                    Description = o.Description,
+                    DescriptionFi = o.DescriptionFi,
+                    DescriptionEn = o.DescriptionEn,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
                     TraineePrice = o.TraineePrice
@@ -40,8 +42,10 @@ namespace GoldenBarbers.Services.Public
                 .Select(o => new OfferingDto
                 {
                     Id = o.Id,
-                    Name = o.Name,
-                    Description = o.Description,
+                    NameFi = o.NameFi,
+                    NameEn = o.NameEn,
+                    DescriptionFi = o.DescriptionFi,
+                    DescriptionEn = o.DescriptionEn,
                     Icon = o.Icon,
                     TraineePrice = o.TraineePrice,
                     JuniorPrice = o.JuniorPrice,

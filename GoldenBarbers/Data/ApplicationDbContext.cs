@@ -39,8 +39,10 @@ namespace GoldenBarbers.Data
 
             modelBuilder.Entity<Offering>(o =>
             {
-                o.Property(o => o.Name).IsRequired();
-                o.Property(o => o.Description).IsRequired();
+                o.Property(o => o.NameFi).IsRequired();
+                o.Property(o => o.NameEn).IsRequired();
+                o.Property(o => o.DescriptionFi).IsRequired();
+                o.Property(o => o.DescriptionEn).IsRequired();
                 o.Property(o => o.Icon).IsRequired();
                 o.Property(o => o.SeniorPrice).IsRequired();
                 o.Property(o => o.JuniorPrice).IsRequired();
@@ -49,7 +51,8 @@ namespace GoldenBarbers.Data
 
             modelBuilder.Entity<Carousel>(c =>
             {
-                c.Property(c => c.Name).IsRequired();
+                c.Property(c => c.NameFi).IsRequired();
+                c.Property(c => c.NameEn).IsRequired();
                 c.Property(c => c.Image).IsRequired();
             });
 

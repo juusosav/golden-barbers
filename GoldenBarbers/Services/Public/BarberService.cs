@@ -22,7 +22,8 @@ namespace GoldenBarbers.Services.Public
                     Name = b.Name,
                     PositionId = b.PositionId,
                     PositionName = b.PositionName,
-                    Description = b.Description,
+                    DescriptionFi = b.DescriptionFi,
+                    DescriptionEn = b.DescriptionEn,
                     Portrait = b.Portrait
                 })
                 .ToListAsync();
@@ -40,7 +41,8 @@ namespace GoldenBarbers.Services.Public
                     Name = b.Name,
                     PositionId = b.PositionId,
                     PositionName = b.PositionName,
-                    Description = b.Description,
+                    DescriptionFi = b.DescriptionFi,
+                    DescriptionEn= b.DescriptionEn,
                     Portrait = b.Portrait
                 })
                 .FirstOrDefaultAsync();

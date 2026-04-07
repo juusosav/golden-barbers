@@ -3,6 +3,7 @@ using System;
 using GoldenBarbers.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoldenBarbers.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260407092934_AddLangSpecificPropertiesToEntities")]
+    partial class AddLangSpecificPropertiesToEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
@@ -231,11 +234,7 @@ namespace GoldenBarbers.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NameEn")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("NameFi")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -248,22 +247,19 @@ namespace GoldenBarbers.Migrations
                         {
                             Id = new Guid("14c09ff8-c38f-4d7e-9e27-7e498f4a446d"),
                             Image = "/images/barbershop_photo1.png",
-                            NameEn = "Haircuts & styling",
-                            NameFi = "Hiustenleikkaukset & stailaukset"
+                            Name = "Hiustenleikkaukset & stailaukset"
                         },
                         new
                         {
                             Id = new Guid("dad920d2-466b-4459-95ea-94a16693d66b"),
                             Image = "/images/barbershop_photo2.png",
-                            NameEn = "Professional beard trimming",
-                            NameFi = "Ammattimainen parran trimmaus"
+                            Name = "Ammattimainen parran trimmaus"
                         },
                         new
                         {
                             Id = new Guid("88f713d6-b493-4e7c-8df2-a9bbe28ef472"),
                             Image = "/images/barbershop_photo3.png",
-                            NameEn = "Beard styling & treatment",
-                            NameFi = "Parran stailaus & hoito"
+                            Name = "Parran stailaus & hoito"
                         });
                 });
 
