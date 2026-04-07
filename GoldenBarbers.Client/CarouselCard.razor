@@ -1,11 +1,19 @@
 ﻿@using GoldenBarbers.Client.Services.Public;
 @using Shared.DTOs.Public;
+@using System.Globalization
 
 @inject CarouselApiService CarouselService
 
 <div class="slide fade @(IsActive ? "active" : "")">
     <img src="@Icon" alt="Slide">
-    <h1 class="caption-text">@Name</h1>
+    @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+    {
+        <h1 class="caption-text">@NameFi</h1>
+    }
+    else
+    {
+        <h1 class="caption-text">@NameEn</h1>
+    }
 </div>
 
 
@@ -13,7 +21,9 @@
     [Parameter]
     public string Icon { get; set; } = "";
     [Parameter]
-    public string Name { get; set; } = "";
+    public string NameFi { get; set; } = "";
+    [Parameter]
+    public string NameEn { get; set; } = "";
     [Parameter]
     public bool IsActive { get; set; }
 }

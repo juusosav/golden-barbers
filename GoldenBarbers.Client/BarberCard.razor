@@ -1,14 +1,23 @@
 ﻿@using GoldenBarbers.Client.Services.Public
 @using Shared.DTOs.Public
+@using System.Globalization
 
 @inject BarberApiService BarberService
 
-    <div class="barber-card">
-        <img style="width: 200px" src=@Portrait />
-        <h1 class="barber-card-item">@Name</h1>
-        <h2 class="barber-card-item">@PositionName</h2>
-        <p class="barber-card-item">@Description</p>
-    </div>
+<div class="barber-card">
+    <img style="width: 200px" src=@Portrait />
+    <h1 class="barber-card-item">@Name</h1>
+    <h2 class="barber-card-item">@PositionName</h2>
+
+    @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+    {
+        <p class="barber-card-item">@DescriptionFi</p>
+    }
+    else
+    {
+        <p class="barber-card-item">@DescriptionEn</p>
+    }
+</div>
 
 
 @code {
@@ -19,6 +28,8 @@
     [Parameter]
     public string PositionName { get; set; } = "";
     [Parameter]
-    public string Description { get; set; } = "";
+    public string DescriptionFi { get; set; } = "";
+    [Parameter]
+    public string DescriptionEn { get; set; } = "";
 
 }

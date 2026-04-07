@@ -2,6 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using GoldenBarbers.Client.Helpers
+@using System.Globalization
 
 @inject AppointmentApiService AppointmentService
 @inject BarberApiService BarberService
@@ -32,7 +33,14 @@ else
 
             @if (appointment.OfferingId == offering?.Id)
             {
-                <p>@L["ConfirmationPage_ServiceName"] @offering.Name</p>
+                @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                {
+                    <p>@L["ConfirmationPage_ServiceName"] @offering.NameFi</p>
+                }
+                else
+                {
+                    <p>@L["ConfirmationPage_ServiceName"] @offering.NameEn</p>
+                }
             }
             <p>@L["ConfirmationPage_Price"] @appointment.FinalPrice €</p>
         </div>
@@ -46,9 +54,7 @@ else
     public Guid Id { get; set; }
 
     private AppointmentDto? appointment;
-
     private BarberDto? barber;
-
     private OfferingDto? offering;
 
 

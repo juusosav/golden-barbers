@@ -72,5 +72,4 @@ catch (CultureNotFoundException)
 CultureInfo.DefaultThreadCurrentCulture = culture;
 CultureInfo.DefaultThreadCurrentUICulture = culture;
 
-
 await host.RunAsync();

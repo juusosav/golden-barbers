@@ -22,7 +22,8 @@
         @for (int i = 0; i < carousel.Count; i++)
         {
             <CarouselCard Icon="@carousel[i].Image"
-                          Name="@carousel[i].Name"
+                          NameFi="@carousel[i].NameFi"
+                          NameEn="@carousel[i].NameEn"
                           IsActive="@(i == 0)" />
         }
 
@@ -38,14 +39,6 @@
 </div>
 
 <div class="homepage-container">
-    @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "en")
-    {
-        <br />
-        <div class="booking-text">
-            <p>--English localization is currently incomplete. Some content may appear in Finnish--</p>
-        </div>
-    }
-
     <h2 class="homepage-container-item"><strong>@L["Home_OurServices"]</strong></h2>
 
     @if (offerings == null)
@@ -57,9 +50,11 @@
     {
         @foreach (var o in offerings)
         {
-            <OfferingCard Name=@o.Name
+            <OfferingCard NameFi=@o.NameFi
+                          NameEn=@o.NameEn
                           Icon=@o.Icon
-                          Description=@o.Description
+                          DescriptionFi=@o.DescriptionFi
+                          DescriptionEn=@o.DescriptionEn
                           TraineePrice=@o.TraineePrice />
         }
     }

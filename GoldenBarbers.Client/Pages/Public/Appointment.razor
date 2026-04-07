@@ -2,6 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using GoldenBarbers.Client.Helpers
+@using System.Globalization
 
 @inject BarberApiService BarberService
 @inject OfferingApiService OfferingService
@@ -39,7 +40,14 @@
                             <div class="selected" @onclick="() => SelectOffering(o.Id)">
                                 <img src="@o.Icon" alt="Offering" />
                                 <br />
-                                <p>@o.Name</p>
+                                @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                                {
+                                    <p>@o.NameFi</p>
+                                }
+                                else
+                                {
+                                    <p>@o.NameEn</p>
+                                }
                             </div>
                         </div>
                     }
@@ -49,7 +57,14 @@
                             <div class="selection-item" @onclick="() => SelectOffering(o.Id)">
                                 <img src="@o.Icon" alt="Offering" />
                                 <br />
-                                <p>@o.Name</p>
+                                @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                                {
+                                    <p>@o.NameFi</p>
+                                }
+                                else
+                                {
+                                    <p>@o.NameEn</p>
+                                }
                             </div>
                         </div>
                     }
@@ -203,7 +218,14 @@
                     @if (offerings != null && appointment.OfferingId != Guid.Empty)
                     {
                         var selectedOffering = offerings.FirstOrDefault(o => o.Id == appointment.OfferingId);
-                        <p>@L["Appointment_ServicePreview"] @selectedOffering?.Name</p>
+                        @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                        {
+                            <p>@L["Appointment_ServicePreview"] @selectedOffering?.NameFi</p>
+                        }
+                        else
+                        {
+                            <p>@L["Appointment_ServicePreview"] @selectedOffering?.NameEn</p>
+                        }
                     }
 
                     <p>@L["Appointment_TimePreview"] @selectedSlot.Start.ToString($"dd.MM.yyyy, HH:mm")</p>
@@ -241,7 +263,7 @@
     }
 </EditForm>
 
-    @code {
+@code {
 
     // TODO: Extract calendar to separate component
     AppointmentDto appointment = new();
@@ -410,7 +432,7 @@
         var offering = offerings?.FirstOrDefault(o => o.Id == appointment.OfferingId);
 
         appointment.BarberName = barber?.Name ?? "";
-        appointment.OfferingName = offering?.Name ?? "";
+        appointment.OfferingName = offering?.NameFi ?? "";
 
         var savedAppointment = await AppointmentService.CreateAppointmentAsync(appointment);
 

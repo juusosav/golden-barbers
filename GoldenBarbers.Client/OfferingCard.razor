@@ -1,23 +1,39 @@
 ﻿@using GoldenBarbers.Client.Services.Public;
 @using Shared.DTOs.Public;
+@using System.Globalization
 
 @inject OfferingApiService OfferingService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 
 <div class="homepage-container-item">
     <div class="homepage-container-item-box">
         <img style="max-height: 120px; padding-bottom: 10px;" src=@Icon />
-        <h3>@Name</h3>
-        <p style="max-width: 500px; margin-top: 10px;">@Description</p>
-        <p>Alkaen @TraineePrice €</p>
+
+        @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+        {
+            <h3>@NameFi</h3>
+            <p style="max-width: 500px; margin-top: 10px;">@DescriptionFi</p>
+        }
+        else
+        {
+            <h3>@NameEn</h3>
+            <p style="max-width: 500px; margin-top: 10px;">@DescriptionEn</p>
+        }
+        
+        <p>@L["OfferingCard_Starting"] @TraineePrice €</p>
     </div>
 </div>
 
 @code {
     [Parameter]
-    public string Name { get; set; } = "";
+    public string NameFi { get; set; } = "";
     [Parameter]
-    public string Description { get; set; } = "";
+    public string DescriptionFi { get; set; } = "";
+    [Parameter]
+    public string NameEn { get; set; } = "";
+    [Parameter]
+    public string DescriptionEn { get; set; } = "";
     [Parameter]
     public string Icon { get; set; } = "";
     [Parameter]

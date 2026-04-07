@@ -486,4 +486,7 @@
   <data name="ManageOfferings_ConfirmDelete" xml:space="preserve">
     <value>Delete selected offering?</value>
   </data>
+  <data name="OfferingCard_Starting" xml:space="preserve">
+    <value>From</value>
+  </data>
 </root>

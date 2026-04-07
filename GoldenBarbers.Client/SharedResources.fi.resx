@@ -488,4 +488,7 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="ManageOfferings_ConfirmDelete" xml:space="preserve">
     <value>Poista valittu palvelu?</value>
   </data>
+  <data name="OfferingCard_Starting" xml:space="preserve">
+    <value>Alkaen</value>
+  </data>
 </root>
