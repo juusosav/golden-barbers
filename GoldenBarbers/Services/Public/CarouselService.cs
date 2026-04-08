@@ -18,6 +18,7 @@ namespace GoldenBarbers.Services.Public
         public async Task<IEnumerable<CarouselDto>> GetCarouselItemsAsync()
         {
             var allItems = await _context.CarouselItems
+                .AsNoTracking()
                 .Select(c => new CarouselDto()
                 {
                     Id = c.Id,

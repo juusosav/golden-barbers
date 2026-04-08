@@ -77,6 +77,8 @@ namespace GoldenBarbers.Controllers.Admin
             var dto = new AdminBarberDto
             {
                 Name = form.Name,
+                DescriptionFi = form.DescriptionFi,
+                DescriptionEn = form.DescriptionEn,
                 PersonalEmail = form.PersonalEmail,
                 PersonalPhone = form.PersonalPhone,
                 PersonalAddress = form.PersonalAddress,
@@ -136,6 +138,8 @@ namespace GoldenBarbers.Controllers.Admin
             var dto = new AdminBarberDto
             {
                 Name = form.Name,
+                DescriptionFi = form.DescriptionFi,
+                DescriptionEn = form.DescriptionEn,
                 PersonalEmail = form.PersonalEmail,
                 PersonalPhone = form.PersonalPhone,
                 PersonalAddress = form.PersonalAddress,

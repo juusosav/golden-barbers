@@ -3,6 +3,8 @@
     public class BarberFormModel
     {
         public string Name { get; set; } = "";
+        public string DescriptionFi { get; set; } = "";
+        public string DescriptionEn { get; set; } = "";
         public string PersonalEmail { get; set; } = "";
         public string PersonalPhone { get; set; } = "";
         public string PersonalAddress { get; set; } = "";

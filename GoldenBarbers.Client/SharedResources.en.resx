@@ -489,4 +489,16 @@
   <data name="OfferingCard_Starting" xml:space="preserve">
     <value>From</value>
   </data>
+  <data name="Create_EditBarber_FormDescriptionFin" xml:space="preserve">
+    <value>Description (Finnish)</value>
+  </data>
+  <data name="Create_EditBarber_FormDescriptionEng" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="ManageBarbers_TableDescriptionFin" xml:space="preserve">
+    <value>Description (Finnish)</value>
+  </data>
+  <data name="ManageBarbers_TableDescriptionEng" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
 </root>

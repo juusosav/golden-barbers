@@ -79,6 +79,7 @@ namespace GoldenBarbers.Services.Admin
 
             // Projection to DTO
             var appointments = await query
+                .AsNoTracking()
                 .Select(a => new AppointmentDto
                 {
                     Id = a.Id,

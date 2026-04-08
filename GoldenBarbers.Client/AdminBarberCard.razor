@@ -7,6 +7,8 @@
 <tr>
     <td><img style="max-height: 60px;"src=@Portrait /></td>
     <td>@Name</td>
+    <td>@DescriptionFi</td>
+    <td>@DescriptionEn</td>
     <td>@PositionName</td>
     <td>@Salary €</td>
     <td>@StartDate.ToString("dd.MM.yyyy")</td>
@@ -22,6 +24,10 @@
     public Guid Id { get; set; }
     [Parameter]
     public string Name { get; set; } = "";
+    [Parameter]
+    public string DescriptionFi { get; set; } = "";
+    [Parameter]
+    public string DescriptionEn { get; set; } = "";
     [Parameter]
     public string PositionName { get; set; } = "";
     [Parameter]

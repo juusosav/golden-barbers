@@ -18,6 +18,10 @@ namespace Shared.DTOs.Admin.Barbers
         [StringLength(50, MinimumLength = 2)]
         public string Name { get; set; } = "";
 
+        public string DescriptionFi { get; set; } = "";
+
+        public string DescriptionEn { get; set; } = "";
+
         [Required(ErrorMessage =
             "Email is required and must be between 2 and 50 characters")]
         [StringLength(50, MinimumLength = 2)]

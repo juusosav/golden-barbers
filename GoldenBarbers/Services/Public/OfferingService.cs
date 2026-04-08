@@ -18,6 +18,7 @@ namespace GoldenBarbers.Services.Public
         public async Task<IEnumerable<OfferingDto>> GetAllOfferingsAsync()
         {
             var offerings = await _context.Offerings
+                .AsNoTracking()
                 .Select(o => new OfferingDto()
                 {
                     Id = o.Id,
@@ -38,6 +39,7 @@ namespace GoldenBarbers.Services.Public
         public async Task<OfferingDto?> GetOfferingByIdAsync(Guid id)
         {
             var offering = await _context.Offerings
+                .AsNoTracking()
                 .Where(o => o.Id == id)
                 .Select(o => new OfferingDto
                 {

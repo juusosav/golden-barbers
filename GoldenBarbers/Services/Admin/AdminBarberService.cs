@@ -18,10 +18,13 @@ namespace GoldenBarbers.Services.Admin
         public async Task<IEnumerable<AdminBarberDto>> GetAllBarbersAsync()
         {
             var barbers = await _context.Barbers
+                .AsNoTracking()
                 .Select(b => new AdminBarberDto
                 {
                     Id = b.Id,
                     Name = b.Name,
+                    DescriptionFi = b.DescriptionFi,
+                    DescriptionEn = b.DescriptionEn,
                     PositionId = b.PositionId,
                     PositionName = b.PositionName,
                     Portrait = b.Portrait,
@@ -39,11 +42,14 @@ namespace GoldenBarbers.Services.Admin
         public async Task<AdminBarberDto?> GetBarberByIdAsync(Guid id)
         {
             var barber = await _context.Barbers
+                .AsNoTracking()
                 .Where(b => b.Id == id)
                 .Select(b => new AdminBarberDto
                 {
                     Id = b.Id,
                     Name = b.Name,
+                    DescriptionFi = b.DescriptionFi,
+                    DescriptionEn = b.DescriptionEn,
                     PositionId = b.PositionId,
                     PositionName = b.PositionName,
                     Portrait = b.Portrait,
@@ -82,6 +88,8 @@ namespace GoldenBarbers.Services.Admin
                 return false;
 
             barberToEdit.Name = dto.Name;
+            barberToEdit.DescriptionFi = dto.DescriptionFi;
+            barberToEdit.DescriptionFi = dto.DescriptionEn;
             barberToEdit.PositionId = dto.PositionId;
             barberToEdit.PositionName = dto.PositionName;
             barberToEdit.PersonalPhone = dto.PersonalPhone;
@@ -100,6 +108,8 @@ namespace GoldenBarbers.Services.Admin
             var barber = new Barber
             {
                 Name = dto.Name,
+                DescriptionFi = dto.DescriptionFi,
+                DescriptionEn = dto.DescriptionEn,
                 PositionId = dto.PositionId,
                 PositionName = dto.PositionName,
                 PersonalPhone = dto.PersonalPhone,
@@ -116,6 +126,8 @@ namespace GoldenBarbers.Services.Admin
             return new AdminBarberDto
             {
                 Name = barber.Name,
+                DescriptionFi = barber.DescriptionFi,
+                DescriptionEn = barber.DescriptionEn,
                 PositionId = barber.PositionId,
                 PositionName = barber.PositionName,
                 PersonalPhone = barber.PersonalPhone,

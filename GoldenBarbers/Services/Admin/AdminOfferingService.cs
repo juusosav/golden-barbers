@@ -19,6 +19,7 @@ namespace GoldenBarbers.Services.Admin
         public async Task<List<AdminOfferingDto>> GetOfferingsAsync()
         {
             var offerings = await _context.Offerings
+                .AsNoTracking()
                 .Select(o => new AdminOfferingDto()
                 {
                     Id = o.Id,
@@ -37,6 +38,7 @@ namespace GoldenBarbers.Services.Admin
         public async Task<AdminOfferingDto?> GetOfferingByIdAsync(Guid id)
         {
             var offering = await _context.Offerings
+                .AsNoTracking()
                 .Where(o => o.Id == id)
                 .Select(o => new AdminOfferingDto
                 {
@@ -60,6 +62,7 @@ namespace GoldenBarbers.Services.Admin
             if (offeringToDelete == null)
                 return false;
 
+            // TODO: Implement a FileService to delete files
             if (!string.IsNullOrEmpty(offeringToDelete.Icon))
             {
                 var filePath = Path.Combine(

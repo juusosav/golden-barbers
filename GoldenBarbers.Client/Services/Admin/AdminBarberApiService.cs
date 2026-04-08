@@ -39,6 +39,8 @@ namespace GoldenBarbers.Client.Services.Admin
             var content = new MultipartFormDataContent();
 
             content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.DescriptionFi), "DescriptionFi");
+            content.Add(new StringContent(dto.DescriptionEn), "DescriptionEn");
             content.Add(new StringContent(dto.PositionId.ToString()), "PositionId");
             content.Add(new StringContent(dto.PositionName), "PositionName");
             content.Add(new StringContent(dto.PersonalPhone), "PersonalPhone");
@@ -67,6 +69,8 @@ namespace GoldenBarbers.Client.Services.Admin
             var content = new MultipartFormDataContent();
 
             content.Add(new StringContent(dto.Name), "Name");
+            content.Add(new StringContent(dto.DescriptionFi), "DescriptionFi");
+            content.Add(new StringContent(dto.DescriptionEn), "DescriptionEn");
             content.Add(new StringContent(dto.PositionId.ToString()), "PositionId");
             content.Add(new StringContent(dto.PositionName), "PositionName");
             content.Add(new StringContent(dto.PersonalPhone), "PersonalPhone");

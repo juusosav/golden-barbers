@@ -27,6 +27,16 @@ else
                 <br />
                 <InputText @bind-Value="barber.Name" />
             </div>
+            <div class="admin-form-item">
+                <label>@L["Create_EditBarber_FormDescriptionFin"] </label>
+                <br />
+                <InputTextArea @bind-Value="barber.DescriptionFi" />
+            </div>
+            <div class="admin-form-item">
+                <label>@L["Create_EditBarber_FormDescriptionEng"] </label>
+                <br />
+                <InputTextArea @bind-Value="barber.DescriptionEn" />
+            </div>
 
             <div class="admin-form-item">
                 <label>@L["Create_EditBarber_FormBarberPositionName"] </label>

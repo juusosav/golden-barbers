@@ -19,7 +19,6 @@ namespace GoldenBarbers.Services.Public
         public async Task<List<TimeslotDto>> GetAvailableSlotsAsync(DateTime weekStart)
         {
             weekStart = DateTime.SpecifyKind(weekStart, DateTimeKind.Utc);
-
             var weekEnd = weekStart.AddDays(7);
 
             var barbers = await _context.Barbers
@@ -31,7 +30,8 @@ namespace GoldenBarbers.Services.Public
                 .ToListAsync();
 
             var appointments = await _context.Appointments
-                .Where(a => a.AppointmentDateTime >= weekStart && a.AppointmentDateTime < weekEnd)
+                .Where(a => a.AppointmentDateTime >= weekStart
+                    && a.AppointmentDateTime < weekEnd)
                 .Select(a => new AppointmentDto
                 {
                     BarberId = a.BarberId,
