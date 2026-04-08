@@ -22,29 +22,20 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-
     [Parameter]
     public DateTime AppointmentDateTime { get; set; }
-
     [Parameter]
     public int DurationMinutes { get; set; } = 0;
-
     [Parameter]
     public string CustomerName { get; set; } = "";
-
     [Parameter]
     public string CustomerEmail { get; set; } = "";
-
     [Parameter]
     public string BarberName { get; set; } = "";
-
     [Parameter]
     public string OfferingName { get; set; } = "";
-
     [Parameter]
     public decimal FinalPrice { get; set; }
-
-
     [Parameter]
     public EventCallback<Guid> OnDelete { get; set; }
 }

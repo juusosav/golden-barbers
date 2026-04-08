@@ -18,28 +18,20 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-
     [Parameter]
     public string Name { get; set; } = "";
-
     [Parameter]
     public string Description { get; set; } = "";
-
     [Parameter]
     public string Icon { get; set; } = "";
-
     [Parameter]
     public int SeniorPrice { get; set; }
-
     [Parameter]
     public int JuniorPrice { get; set; }
-
     [Parameter]
     public int TraineePrice { get; set; }
-
     [Parameter]
     public EventCallback<Guid> OnDelete { get; set; }
-
     [Parameter]
     public EventCallback<Guid> OnEdit { get; set; }
 }

@@ -20,7 +20,6 @@ namespace Shared.DTOs.Admin.Offerings
             "Service description is required and must be between 2 and 300 characters")]
         [StringLength(300, MinimumLength = 2)]
         public string Description { get; set; } = "";
-
         public string Icon { get; set; } = "";
 
         [Required]

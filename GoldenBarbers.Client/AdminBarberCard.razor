@@ -20,34 +20,24 @@
 @code {
     [Parameter]
     public Guid Id { get; set; }
-
     [Parameter]
     public string Name { get; set; } = "";
-
     [Parameter]
     public string PositionName { get; set; } = "";
-
     [Parameter]
     public string Portrait { get; set; } = "";
-
     [Parameter]
     public decimal Salary { get; set; }
-
     [Parameter]
     public DateTime StartDate { get; set; }
-
     [Parameter]
     public string PersonalEmail { get; set; } = "";
-
     [Parameter]
     public string PersonalPhone { get; set; } = "";
-
     [Parameter]
     public string PersonalAddress { get; set; } = "";
-
     [Parameter]
     public EventCallback<Guid> OnDelete { get; set; }
-
     [Parameter]
     public EventCallback<Guid> OnEdit { get; set; }
 }

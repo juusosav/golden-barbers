@@ -94,7 +94,6 @@ else
     public Guid Id { get; set; }
 
     private AdminBarberDto? barber;
-
     private IBrowserFile? selectedFile;
 
     private bool IsSubmitting { get; set; } = false;
@@ -102,7 +101,6 @@ else
     protected override async Task OnParametersSetAsync()
     {
         barber = await BarbersApiService.GetBarberByIdAsync(Id);
-
         if (barber == null)
         {
             await Task.Delay(1000);

@@ -45,7 +45,6 @@ namespace Shared.DTOs.Admin.Barbers
             "Position name is required and must be between 2 and 50 characters")]
         [StringLength(50, MinimumLength = 2)]
         public string PositionName { get; set; } = "";
-
         public string Portrait { get; set; } = "";
 
         [Required]

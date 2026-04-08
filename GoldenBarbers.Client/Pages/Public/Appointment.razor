@@ -29,7 +29,6 @@
         <br />
 
         <div class="selection">
-
             @if (offerings != null)
             {
                 foreach (var o in offerings)
@@ -73,12 +72,10 @@
         </div>
 
         <br /><br />
-
         <label class="booking-text">@L["Appointment_SelectBarber"] </label>
         <br />
 
         <div class="selection">
-
             @if (barbers != null)
             {
                 @foreach (var b in barbers)
@@ -116,9 +113,9 @@
     {
         <div class="booking-container" id="calendar-table">
             <div class="booking-text">
-                <button type="button" disabled="@IsDisabled" @onclick="PrevWeek">⬅ @L["Appointment_PrevWeek"]</button>
+                <button class="btn btn-light" type="button" disabled="@IsDisabled" @onclick="PrevWeek">⬅ @L["Appointment_PrevWeek"]</button>
                 <span>@weekStart.ToString("MMM dd, yyyy") - @weekEnd.ToString("MMM dd, yyyy")</span>
-                <button type="button" @onclick="NextWeek">@L["Appointment_NextWeek"] ➡</button>
+                <button class="btn btn-light" type="button" @onclick="NextWeek">@L["Appointment_NextWeek"] ➡</button>
             </div>
         </div>
         <br />
@@ -202,7 +199,9 @@
 
                     }
 
-                    @if (offerings != null && barbers != null && _selectedBarberId != Guid.Empty && _selectedOfferingId != Guid.Empty)
+                    @if (offerings != null && barbers != null 
+                        && _selectedBarberId != Guid.Empty 
+                        && _selectedOfferingId != Guid.Empty)
                     {
                         var selectedBarber = barbers.FirstOrDefault(b => b.Id == _selectedBarberId);
                         var selectedOffering = offerings.FirstOrDefault(o => o.Id == _selectedOfferingId);
@@ -263,7 +262,7 @@
     }
 </EditForm>
 
-@code {
+    @code {
 
     // TODO: Extract calendar to separate component
     AppointmentDto appointment = new();
@@ -281,7 +280,6 @@
     TimeZoneInfo.FindSystemTimeZoneById("Europe/Helsinki");
 
     private Guid _selectedBarberId;
-
     private Guid SelectedBarberId
     {
         get => _selectedBarberId;
@@ -298,7 +296,6 @@
     }
 
     private Guid _selectedOfferingId;
-
     private Guid SelectedOfferingId
     {
         get => _selectedOfferingId;
@@ -338,12 +335,14 @@
 
     private async Task SelectOffering(Guid offeringId)
     {
+        StateHasChanged();
         SelectedOfferingId = offeringId;
         await TryScrollToCalendar();
     }
 
     private async Task SelectBarber(Guid barberId)
     {
+        StateHasChanged();
         SelectedBarberId = barberId;
         await TryScrollToCalendar();
     }

@@ -11,17 +11,11 @@ namespace Shared.DTOs.Public
     {
         public Guid Id { get; set; }
         public Guid BarberId { get; set; }
-
         public string BarberName { get; set; } = "";
-
         public Guid OfferingId { get; set; }
-
         public string OfferingName { get; set; } = "";
-
         public int BarberPositionId { get; set; }
-
         public DateTime AppointmentDateTime { get; set; }
-
         public int DurationMinutes { get; set; }
 
         [Required(ErrorMessage = "Name is required")]
@@ -33,7 +27,6 @@ namespace Shared.DTOs.Public
         @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
         ErrorMessage = "Invalid email format.")]
         public string CustomerEmail { get; set; } = "";
-
         public decimal FinalPrice { get; set; }
     }
 }

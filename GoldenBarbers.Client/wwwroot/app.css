@@ -494,7 +494,12 @@ h1:focus {
 .selection {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+}
+
+@media (max-width: 767px) {
+    .selection {
+        margin: 0 50%;
+    }
 }
 
 .selection-item {
@@ -511,6 +516,7 @@ h1:focus {
         width: 100px;
         height: 100px;
         object-fit: contain;
+        border-radius: 8px;
     }
 
     .selection-item:hover {
@@ -536,6 +542,7 @@ h1:focus {
         width: 100px;
         height: 100px;
         object-fit: contain;
+        border-radius: 8px;
     }
 
 /* Footer */
