@@ -14,12 +14,22 @@ namespace Shared.DTOs.Admin.Offerings
         [Required(ErrorMessage =
             "Service name is required and must be between 2 and 80 characters")]
         [StringLength(80, MinimumLength = 2)]
-        public string Name { get; set; } = "";
+        public string NameFi { get; set; } = "";
+
+        [Required(ErrorMessage =
+    "Service name is required and must be between 2 and 80 characters")]
+        [StringLength(80, MinimumLength = 2)]
+        public string NameEn { get; set; } = "";
 
         [Required(ErrorMessage =
             "Service description is required and must be between 2 and 300 characters")]
         [StringLength(300, MinimumLength = 2)]
-        public string Description { get; set; } = "";
+        public string DescriptionFi { get; set; } = "";
+
+        [Required(ErrorMessage =
+            "Service description is required and must be between 2 and 300 characters")]
+        [StringLength(300, MinimumLength = 2)]
+        public string DescriptionEn { get; set; } = "";
         public string Icon { get; set; } = "";
 
         [Required]

@@ -23,15 +23,27 @@ else
 
         <div class="admin-form">
             <div class="admin-form-item">
-                <label>@L["Create_EditOffering_FormName"] </label>
+                <label>@L["Create_EditOffering_FormNameFi"] </label>
                 <br />
-                <InputText @bind-Value="offering.Name" />
+                <InputText @bind-Value="offering.NameFi" />
             </div>
 
             <div class="admin-form-item">
-                <label>@L["Create_EditOffering_FormDescription"] </label>
+                <label>@L["Create_EditOffering_FormNameEn"] </label>
                 <br />
-                <InputTextArea @bind-Value="offering.Description" />
+                <InputText @bind-Value="offering.NameEn" />
+            </div>
+
+            <div class="admin-form-item">
+                <label>@L["Create_EditOffering_FormDescriptionFi"] </label>
+                <br />
+                <InputTextArea @bind-Value="offering.DescriptionFi" />
+            </div>
+
+            <div class="admin-form-item">
+                <label>@L["Create_EditOffering_FormDescriptionEn"] </label>
+                <br />
+                <InputTextArea @bind-Value="offering.DescriptionEn" />
             </div>
 
             <div class="admin-form-item">
@@ -76,9 +88,7 @@ else
     public Guid Id { get; set; }
 
     private AdminOfferingDto? offering;
-
     private IBrowserFile? selectedFile;
-
     private bool IsSubmitting { get; set; } = false;
 
     protected override async Task OnParametersSetAsync()

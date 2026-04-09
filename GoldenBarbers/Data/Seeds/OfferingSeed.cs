@@ -44,7 +44,7 @@ namespace GoldenBarbers.Data.Seeds
                             "Vanhan koulukunnan hoitopaketti hollantilaisen partatyylin mukaan sisältäen " +
                             "hoitoviimeistelyn öljyillä",
                         DescriptionEn =
-                            "Old-school treatment package for a dutch beard style including" +
+                            "Old-school treatment package for a dutch beard style including " +
                             "finishing with oils",
                         SeniorPrice = 35,
                         JuniorPrice = 30,

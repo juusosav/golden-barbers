@@ -372,11 +372,11 @@
   <data name="ManageOfferings_Title" xml:space="preserve">
     <value>Manage Offerings</value>
   </data>
-  <data name="ManageOfferings_TableName" xml:space="preserve">
-    <value>Name</value>
+  <data name="ManageOfferings_TableNameFi" xml:space="preserve">
+    <value>Name (Finnish)</value>
   </data>
-  <data name="ManageOfferings_TableDescription" xml:space="preserve">
-    <value>Description</value>
+  <data name="ManageOfferings_TableDescriptionFi" xml:space="preserve">
+    <value>Description (Finnish)</value>
   </data>
   <data name="ManageOfferings_TableSeniorPrice" xml:space="preserve">
     <value>Senior Price</value>
@@ -402,8 +402,8 @@
   <data name="Create_EditOffering_FormTraineePrice" xml:space="preserve">
     <value>Trainee Price:</value>
   </data>
-  <data name="Create_EditOffering_FormName" xml:space="preserve">
-    <value>Name:</value>
+  <data name="Create_EditOffering_FormNameFi" xml:space="preserve">
+    <value>Name (Finnish):</value>
   </data>
   <data name="Create_EditOffering_FormJuniorPrice" xml:space="preserve">
     <value>Junior Price:</value>
@@ -411,8 +411,8 @@
   <data name="Create_EditOffering_FormIcon" xml:space="preserve">
     <value>Icon:</value>
   </data>
-  <data name="Create_EditOffering_FormDescription" xml:space="preserve">
-    <value>Description:</value>
+  <data name="Create_EditOffering_FormDescriptionFi" xml:space="preserve">
+    <value>Description (Finnish):</value>
   </data>
   <data name="Create_EditOffering_ConfirmButton" xml:space="preserve">
     <value>Confirm</value>
@@ -500,5 +500,17 @@
   </data>
   <data name="ManageBarbers_TableDescriptionEng" xml:space="preserve">
     <value>Description (English)</value>
+  </data>
+  <data name="ManageOfferings_TableNameEn" xml:space="preserve">
+    <value>Name (English</value>
+  </data>
+  <data name="ManageOfferings_TableDescriptionEn" xml:space="preserve">
+    <value>Description (English)</value>
+  </data>
+  <data name="Create_EditOffering_FormNameEn" xml:space="preserve">
+    <value>Name (English):</value>
+  </data>
+  <data name="Create_EditOffering_FormDescriptionEn" xml:space="preserve">
+    <value>Description (English):</value>
   </data>
 </root>

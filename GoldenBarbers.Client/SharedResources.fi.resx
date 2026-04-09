@@ -374,11 +374,11 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="ManageOfferings_Title" xml:space="preserve">
     <value>Hallitse palveluita</value>
   </data>
-  <data name="ManageOfferings_TableName" xml:space="preserve">
-    <value>Nimi</value>
+  <data name="ManageOfferings_TableNameFi" xml:space="preserve">
+    <value>Nimi (Suomi)</value>
   </data>
-  <data name="ManageOfferings_TableDescription" xml:space="preserve">
-    <value>Kuvaus</value>
+  <data name="ManageOfferings_TableDescriptionFi" xml:space="preserve">
+    <value>Kuvaus (Suomi)</value>
   </data>
   <data name="ManageOfferings_TableSeniorPrice" xml:space="preserve">
     <value>Seniorihinta</value>
@@ -404,8 +404,8 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="Create_EditOffering_FormTraineePrice" xml:space="preserve">
     <value>Traineehinta:</value>
   </data>
-  <data name="Create_EditOffering_FormName" xml:space="preserve">
-    <value>Nimi:</value>
+  <data name="Create_EditOffering_FormNameFi" xml:space="preserve">
+    <value>Nimi (Suomi):</value>
   </data>
   <data name="Create_EditOffering_FormJuniorPrice" xml:space="preserve">
     <value>Juniorihinta:</value>
@@ -413,8 +413,8 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="Create_EditOffering_FormIcon" xml:space="preserve">
     <value>Ikoni:</value>
   </data>
-  <data name="Create_EditOffering_FormDescription" xml:space="preserve">
-    <value>Kuvaus:</value>
+  <data name="Create_EditOffering_FormDescriptionFi" xml:space="preserve">
+    <value>Kuvaus (Suomi):</value>
   </data>
   <data name="Create_EditOffering_ConfirmButton" xml:space="preserve">
     <value>Tallenna</value>
@@ -502,5 +502,17 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   </data>
   <data name="ManageBarbers_TableDescriptionEng" xml:space="preserve">
     <value>Kuvaus (Englanti)</value>
+  </data>
+  <data name="ManageOfferings_TableNameEn" xml:space="preserve">
+    <value>Nimi (Englanti)</value>
+  </data>
+  <data name="ManageOfferings_TableDescriptionEn" xml:space="preserve">
+    <value>Kuvaus (Englanti)</value>
+  </data>
+  <data name="Create_EditOffering_FormNameEn" xml:space="preserve">
+    <value>Nimi (Englanti):</value>
+  </data>
+  <data name="Create_EditOffering_FormDescriptionEn" xml:space="preserve">
+    <value>Kuvaus (Englanti):</value>
   </data>
 </root>

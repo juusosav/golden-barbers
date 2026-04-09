@@ -37,8 +37,10 @@ namespace GoldenBarbers.Client.Services.Admin
         {
             var content = new MultipartFormDataContent();
 
-            content.Add(new StringContent(dto.Name), "Name");
-            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.NameFi), "NameFi");
+            content.Add(new StringContent(dto.NameEn), "NameEn");
+            content.Add(new StringContent(dto.DescriptionFi), "DescriptionFi");
+            content.Add(new StringContent(dto.DescriptionEn), "DescriptionEn");
             content.Add(new StringContent(dto.SeniorPrice.ToString()), "SeniorPrice");
             content.Add(new StringContent(dto.JuniorPrice.ToString()), "JuniorPrice");
             content.Add(new StringContent(dto.TraineePrice.ToString()), "TraineePrice");
@@ -62,8 +64,10 @@ namespace GoldenBarbers.Client.Services.Admin
         {
             var content = new MultipartFormDataContent();
 
-            content.Add(new StringContent(dto.Name), "Name");
-            content.Add(new StringContent(dto.Description), "Description");
+            content.Add(new StringContent(dto.NameFi), "NameFi");
+            content.Add(new StringContent(dto.NameEn), "NameEn");
+            content.Add(new StringContent(dto.DescriptionFi), "DescriptionFi");
+            content.Add(new StringContent(dto.DescriptionEn), "DescriptionEn");
             content.Add(new StringContent(dto.SeniorPrice.ToString()), "SeniorPrice");
             content.Add(new StringContent(dto.JuniorPrice.ToString()), "JuniorPrice");
             content.Add(new StringContent(dto.TraineePrice.ToString()), "TraineePrice");

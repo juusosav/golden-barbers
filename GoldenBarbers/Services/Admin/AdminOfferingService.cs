@@ -23,9 +23,11 @@ namespace GoldenBarbers.Services.Admin
                 .Select(o => new AdminOfferingDto()
                 {
                     Id = o.Id,
-                    Name = o.NameFi,
+                    NameFi = o.NameFi,
+                    NameEn = o.NameEn,
                     Icon = o.Icon,
-                    Description = o.DescriptionFi,
+                    DescriptionFi = o.DescriptionFi,
+                    DescriptionEn = o.DescriptionEn,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
                     TraineePrice = o.TraineePrice
@@ -43,9 +45,11 @@ namespace GoldenBarbers.Services.Admin
                 .Select(o => new AdminOfferingDto
                 {
                     Id = o.Id,
-                    Name = o.NameFi,
+                    NameFi = o.NameFi,
+                    NameEn = o.NameEn,
                     Icon = o.Icon,
-                    Description = o.DescriptionFi,
+                    DescriptionFi = o.DescriptionFi,
+                    DescriptionEn= o.DescriptionEn,
                     SeniorPrice = o.SeniorPrice,
                     JuniorPrice = o.JuniorPrice,
                     TraineePrice = o.TraineePrice
@@ -94,8 +98,10 @@ namespace GoldenBarbers.Services.Admin
             if (offeringToEdit == null)
                 return false;
 
-            offeringToEdit.NameFi = dto.Name;
-            offeringToEdit.DescriptionFi = dto.Description;
+            offeringToEdit.NameFi = dto.NameFi;
+            offeringToEdit.NameEn = dto.NameEn;
+            offeringToEdit.DescriptionFi = dto.DescriptionFi;
+            offeringToEdit.DescriptionEn = dto.DescriptionEn;
             offeringToEdit.SeniorPrice = dto.SeniorPrice;
             offeringToEdit.JuniorPrice = dto.JuniorPrice;
             offeringToEdit.TraineePrice = dto.TraineePrice;
@@ -137,9 +143,11 @@ namespace GoldenBarbers.Services.Admin
             var offering = new Offering
             {
                 Id = Guid.NewGuid(),
-                NameFi = dto.Name,
+                NameFi = dto.NameFi,
+                NameEn = dto.NameEn,
                 Icon = dto.Icon,
-                DescriptionFi = dto.Description,
+                DescriptionFi = dto.DescriptionFi,
+                DescriptionEn = dto.DescriptionEn,
                 SeniorPrice = dto.SeniorPrice,
                 JuniorPrice = dto.JuniorPrice,
                 TraineePrice = dto.TraineePrice
@@ -152,8 +160,10 @@ namespace GoldenBarbers.Services.Admin
             {
                 Id = offering.Id,
                 NameFi = offering.NameFi,
+                NameEn = offering.NameEn,
                 Icon = offering.Icon,
                 DescriptionFi = offering.DescriptionFi,
+                DescriptionEn = offering.DescriptionEn,
                 SeniorPrice = offering.SeniorPrice,
                 JuniorPrice = offering.JuniorPrice,
                 TraineePrice = offering.TraineePrice

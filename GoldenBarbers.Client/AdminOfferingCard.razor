@@ -6,8 +6,10 @@
 
 <tr>
     <td><img style="max-height: 35px; object-fit: contain;" src=@Icon /></td>
-    <td>@Name</td>
-    <td>@Description</td>
+    <td>@NameFi</td>
+    <td>@NameEn</td>
+    <td>@DescriptionFi</td>
+    <td>@DescriptionEn</td>
     <td>@SeniorPrice €</td>
     <td>@JuniorPrice €</td>
     <td>@TraineePrice €</td>
@@ -19,9 +21,13 @@
     [Parameter]
     public Guid Id { get; set; }
     [Parameter]
-    public string Name { get; set; } = "";
+    public string NameFi { get; set; } = "";
     [Parameter]
-    public string Description { get; set; } = "";
+    public string NameEn { get; set; } = "";
+    [Parameter]
+    public string DescriptionFi { get; set; } = "";
+    [Parameter]
+    public string DescriptionEn { get; set; } = "";
     [Parameter]
     public string Icon { get; set; } = "";
     [Parameter]

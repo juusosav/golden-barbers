@@ -15,8 +15,10 @@
         <thead>
             <tr>
                 <th></th>
-                <th>@L["ManageOfferings_TableName"]</th>
-                <th>@L["ManageOfferings_TableDescription"]</th>
+                <th>@L["ManageOfferings_TableNameFi"]</th>
+                <th>@L["ManageOfferings_TableNameEn"]</th>
+                <th>@L["ManageOfferings_TableDescriptionFi"]</th>
+                <th>@L["ManageOfferings_TableDescriptionEn"]</th>
                 <th>@L["ManageOfferings_TableSeniorPrice"]</th>
                 <th>@L["ManageOfferings_TableJuniorPrice"]</th>
                 <th>@L["ManageOfferings_TableTraineePrice"]</th>
@@ -29,8 +31,10 @@
                 {
                     <AdminOfferingCard Id="@o.Id"
                                        Icon="@o.Icon"
-                                       Name="@o.Name"
-                                       Description="@o.Description"
+                                       NameFi="@o.NameFi"
+                                       NameEn="@o.NameEn"
+                                       DescriptionFi="@o.DescriptionFi"
+                                       DescriptionEn="@o.DescriptionEn"
                                        SeniorPrice="@o.SeniorPrice"
                                        JuniorPrice="@o.JuniorPrice"
                                        TraineePrice="@o.TraineePrice"
