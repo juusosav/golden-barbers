@@ -71,6 +71,20 @@ namespace GoldenBarbers.Services.Admin
             if (barberToDelete == null)
                 return false;
 
+            if (!string.IsNullOrEmpty(barberToDelete.Portrait))
+            {
+                var filePath = Path.Combine(
+                    Directory.GetCurrentDirectory(),
+                    "wwwroot",
+                    barberToDelete.Portrait.TrimStart('/')
+                    );
+
+                if (File.Exists(filePath))
+                {
+                    File.Delete(filePath);
+                }
+            }
+
             _context.Barbers.Remove(barberToDelete);
             await _context.SaveChangesAsync();
 

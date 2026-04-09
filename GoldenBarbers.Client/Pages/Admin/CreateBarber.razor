@@ -29,6 +29,18 @@
         </div>
 
         <div class="admin-form-item">
+            <label>@L["Create_EditBarber_FormBarberDescriptionFi"] </label>
+            <br />
+            <InputTextArea @bind-Value="barber.DescriptionFi" />
+        </div>
+
+        <div class="admin-form-item">
+            <label>@L["Create_EditBarber_FormBarberDescriptionEn"] </label>
+            <br />
+            <InputTextArea @bind-Value="barber.DescriptionEn" />
+        </div>
+
+        <div class="admin-form-item">
             <label>@L["Create_EditBarber_FormBarberPositionIdentifier"] </label>
             <br />
             <InputNumber @bind-Value="@barber.PositionId" />

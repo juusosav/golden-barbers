@@ -515,4 +515,10 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="Create_EditOffering_FormDescriptionEn" xml:space="preserve">
     <value>Kuvaus (Englanti):</value>
   </data>
+  <data name="Create_EditBarber_FormBarberDescriptionFi" xml:space="preserve">
+    <value>Kuvaus (Suomi):</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberDescriptionEn" xml:space="preserve">
+    <value>Kuvaus (Englanti):</value>
+  </data>
 </root>

@@ -319,9 +319,8 @@ h1:focus {
     padding: 10px;
     border: 1px solid #ccc;
     margin: 50px;
-    min-width: 15rem;
-    max-width: 25rem;
-    max-height: 40rem;
+    width: 25rem;
+    min-height: 35rem;
     background-color: rgba(3, 3, 2, 0.8);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -338,7 +337,8 @@ h1:focus {
 
 
 .barber-card img {
-    border: groove 2px black;
+    border-radius: 4px;
+    object-fit: contain;
 }
 
 .barberpage-title-container {

@@ -513,4 +513,10 @@
   <data name="Create_EditOffering_FormDescriptionEn" xml:space="preserve">
     <value>Description (English):</value>
   </data>
+  <data name="Create_EditBarber_FormBarberDescriptionFi" xml:space="preserve">
+    <value>Description (Finnish):</value>
+  </data>
+  <data name="Create_EditBarber_FormBarberDescriptionEn" xml:space="preserve">
+    <value>Description (English):</value>
+  </data>
 </root>
