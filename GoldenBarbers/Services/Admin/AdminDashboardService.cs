@@ -14,20 +14,20 @@ namespace GoldenBarbers.Services.Admin
             _context = context;
         }
 
-        public async Task<AdminDashboardDto?> GetDashboardAsync()
+        public async Task<AdminDashboardDto> GetDashboardAsync()
         {
             var today = DateTime.UtcNow.Date;
             var tomorrow = today.AddDays(1);
             var nextWeek = today.AddDays(7);
 
             var appointmentsToday = await _context.Appointments
-                .CountAsync(a => a.AppointmentDateTime == today && a.AppointmentDateTime < tomorrow);
+                .CountAsync(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow);
 
             var upcomingWeek = await _context.Appointments
                 .CountAsync(a => a.AppointmentDateTime >= today && a.AppointmentDateTime <= nextWeek);
 
             var revenueToday = (decimal?)(await _context.Appointments
-                .Where(a => a.AppointmentDateTime == today && a.AppointmentDateTime < tomorrow)
+                .Where(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow)
                 .SumAsync(a => (double?)a.FinalPrice) ?? 0);
 
             // TODO: Implement schedule for today
