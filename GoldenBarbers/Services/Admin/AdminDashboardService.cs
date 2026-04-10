@@ -24,7 +24,7 @@ namespace GoldenBarbers.Services.Admin
                 .CountAsync(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow);
 
             var upcomingWeek = await _context.Appointments
-                .CountAsync(a => a.AppointmentDateTime >= today && a.AppointmentDateTime <= nextWeek);
+                .CountAsync(a => a.AppointmentDateTime > tomorrow && a.AppointmentDateTime <= nextWeek);
 
             var revenueToday = (decimal?)(await _context.Appointments
                 .Where(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow)
