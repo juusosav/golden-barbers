@@ -37,7 +37,8 @@ namespace GoldenBarbers.Services.Public
                     BarberId = a.BarberId,
                     AppointmentDateTime = a.AppointmentDateTime,
                     DurationMinutes = a.DurationMinutes,
-                    OfferingName = a.OfferingName
+                    OfferingNameFi = a.OfferingNameFi,
+                    OfferingNameEn = a.OfferingNameEn
                 })
                 .ToListAsync();
 
@@ -95,7 +96,8 @@ namespace GoldenBarbers.Services.Public
                     BarberId = a.BarberId,
                     BarberName = a.BarberName,
                     OfferingId = a.OfferingId,
-                    OfferingName = a.OfferingName,
+                    OfferingNameFi = a.OfferingNameFi,
+                    OfferingNameEn = a.OfferingNameEn,
                     BarberPositionId = a.BarberPositionId,
                     AppointmentDateTime = a.AppointmentDateTime,
                     DurationMinutes = a.DurationMinutes,
@@ -123,7 +125,8 @@ namespace GoldenBarbers.Services.Public
                 BarberName = dto.BarberName,
                 BarberPositionId = dto.BarberPositionId,
                 OfferingId = dto.OfferingId,
-                OfferingName = dto.OfferingName,
+                OfferingNameFi = dto.OfferingNameFi,
+                OfferingNameEn = dto.OfferingNameEn,
                 AppointmentDateTime = dto.AppointmentDateTime,
                 DurationMinutes = dto.DurationMinutes,
                 CustomerName = dto.CustomerName,
@@ -141,7 +144,8 @@ namespace GoldenBarbers.Services.Public
                 BarberName = appointment.BarberName,
                 BarberPositionId = appointment.BarberPositionId,
                 OfferingId = appointment.OfferingId,
-                OfferingName = appointment.OfferingName,
+                OfferingNameFi = appointment.OfferingNameFi,
+                OfferingNameEn= appointment.OfferingNameEn,
                 AppointmentDateTime = appointment.AppointmentDateTime,
                 DurationMinutes = appointment.DurationMinutes,
                 CustomerName = appointment.CustomerName,

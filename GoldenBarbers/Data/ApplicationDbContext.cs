@@ -61,7 +61,8 @@ namespace GoldenBarbers.Data
                 a.Property(a => a.BarberId).IsRequired();
                 a.Property(a => a.BarberName).IsRequired();
                 a.Property(a => a.OfferingId).IsRequired();
-                a.Property(a => a.OfferingName).IsRequired();
+                a.Property(a => a.OfferingNameFi).IsRequired();
+                a.Property(a => a.OfferingNameEn).IsRequired();
                 a.Property(a => a.AppointmentDateTime).IsRequired();
                 a.Property(a => a.DurationMinutes).IsRequired();
                 a.Property(a => a.CustomerName).IsRequired();

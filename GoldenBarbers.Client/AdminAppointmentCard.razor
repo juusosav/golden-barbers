@@ -4,6 +4,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs
 @using GoldenBarbers.Client.Helpers
+@using System.Globalization
 
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
@@ -13,7 +14,16 @@
     <td>@CustomerName</td>
     <td>@CustomerEmail</td>
     <td>@BarberName</td>
-    <td>@OfferingName</td>
+
+    @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+    {
+        <td>@OfferingNameFi</td>
+    }
+    else
+    {
+        <td>@OfferingNameEn</td>
+    }
+
     <td>@FinalPrice €</td>
     <button class="btn btn-sm btn-outline-danger" @onclick="() => OnDelete.InvokeAsync(Id)">@L["GeneralAdmin_DeleteButton"]</button>
 </tr>
@@ -33,7 +43,9 @@
     [Parameter]
     public string BarberName { get; set; } = "";
     [Parameter]
-    public string OfferingName { get; set; } = "";
+    public string OfferingNameFi { get; set; } = "";
+    [Parameter]
+    public string OfferingNameEn { get; set; } = "";
     [Parameter]
     public decimal FinalPrice { get; set; }
     [Parameter]

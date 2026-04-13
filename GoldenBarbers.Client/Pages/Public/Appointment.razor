@@ -199,9 +199,9 @@
 
                     }
 
-                    @if (offerings != null && barbers != null 
-                        && _selectedBarberId != Guid.Empty 
-                        && _selectedOfferingId != Guid.Empty)
+                    @if (offerings != null && barbers != null
+                                            && _selectedBarberId != Guid.Empty
+                                            && _selectedOfferingId != Guid.Empty)
                     {
                         var selectedBarber = barbers.FirstOrDefault(b => b.Id == _selectedBarberId);
                         var selectedOffering = offerings.FirstOrDefault(o => o.Id == _selectedOfferingId);
@@ -431,7 +431,8 @@
         var offering = offerings?.FirstOrDefault(o => o.Id == appointment.OfferingId);
 
         appointment.BarberName = barber?.Name ?? "";
-        appointment.OfferingName = offering?.NameFi ?? "";
+        appointment.OfferingNameFi = offering?.NameFi ?? "";
+        appointment.OfferingNameEn = offering?.NameEn ?? "";
 
         var savedAppointment = await AppointmentService.CreateAppointmentAsync(appointment);
 

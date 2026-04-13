@@ -13,7 +13,9 @@ namespace Shared.DTOs.Public
         public Guid BarberId { get; set; }
         public string BarberName { get; set; } = "";
         public Guid OfferingId { get; set; }
-        public string OfferingName { get; set; } = "";
+        public string OfferingNameFi { get; set; } = "";
+
+        public string OfferingNameEn { get; set; } = "";
         public int BarberPositionId { get; set; }
         public DateTime AppointmentDateTime { get; set; }
         public int DurationMinutes { get; set; }

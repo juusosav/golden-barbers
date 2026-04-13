@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.DTOs.Public;
 using Shared.DTOs.Admin.Appointments;
+using System.Globalization;
 
 namespace GoldenBarbers.Services.Admin
 {
@@ -52,8 +53,16 @@ namespace GoldenBarbers.Services.Admin
                         break;
 
                     case "service":
-                        query = query.Where(a =>
-                            a.OfferingName.Contains(filter.SearchTerm));
+                        if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                        {
+                            query = query.Where(a =>
+                                a.OfferingNameFi.Contains(filter.SearchTerm));
+                        }
+                        else
+                        {
+                            query = query.Where(a =>
+                                a.OfferingNameEn.Contains(filter.SearchTerm));
+                        }
                         break;
                 }
             }
@@ -88,7 +97,8 @@ namespace GoldenBarbers.Services.Admin
                     CustomerName = a.CustomerName,
                     CustomerEmail = a.CustomerEmail,
                     BarberName = a.BarberName,
-                    OfferingName = a.OfferingName,
+                    OfferingNameFi = a.OfferingNameFi,
+                    OfferingNameEn = a.OfferingNameEn,
                     FinalPrice = a.FinalPrice
                 })
                 .ToListAsync();
