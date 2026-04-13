@@ -53,7 +53,7 @@ namespace GoldenBarbers.Services.Admin
                         break;
 
                     case "service":
-                        if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                        if (filter.Culture == "fi")
                         {
                             query = query.Where(a =>
                                 a.OfferingNameFi.Contains(filter.SearchTerm));

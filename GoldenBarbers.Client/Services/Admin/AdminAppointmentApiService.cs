@@ -24,9 +24,14 @@ namespace GoldenBarbers.Client.Services.Admin
                 url += $"&BarberName={filter.BarberName}";
             }
 
-            if (!string.IsNullOrWhiteSpace(filter.OfferingName))
+            if (!string.IsNullOrWhiteSpace(filter.OfferingNameFi))
             {
-                url += $"&OfferingName={filter.OfferingName}";
+                url += $"&OfferingName={filter.OfferingNameFi}";
+            }
+
+            if (!string.IsNullOrWhiteSpace(filter.OfferingNameEn))
+            {
+                url += $"&OfferingName={filter.OfferingNameEn}";
             }
 
             if (filter.DateFrom != null)
@@ -43,6 +48,7 @@ namespace GoldenBarbers.Client.Services.Admin
             {
                 url += $"&SearchTerm={filter.SearchTerm}";
                 url += $"&SearchBy={filter.SearchBy}";
+                url += $"&Culture={filter.Culture}";
             }
 
             return await _http.GetFromJsonAsync<List<AppointmentDto>>(url) 

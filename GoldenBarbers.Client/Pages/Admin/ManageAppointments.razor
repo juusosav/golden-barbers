@@ -2,6 +2,7 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using Shared.DTOs.Admin.Appointments
+@using System.Globalization
 
 @page "/admin/manage-appointments"
 
@@ -140,6 +141,7 @@
     private async Task ApplyFilters()
     {
         filter.Page = 1;
+        filter.Culture = CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
         await LoadAppointments();
     }
 
