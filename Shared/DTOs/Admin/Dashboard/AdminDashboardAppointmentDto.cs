@@ -9,9 +9,9 @@ namespace Shared.DTOs.Admin.Dashboard
     public class AdminDashboardAppointmentDto
     {
         public DateTime Time { get; set; }
-        public string CustomerName { get; set; } = string.Empty;
-        public string OfferingName { get; set; } = string.Empty;
-        public string BarberName { get; set; } = string.Empty;
+        public string CustomerName { get; set; } = "";
+        public string OfferingName { get; set; } = "";
+        public string BarberName { get; set; } = "";
 
     }
 }

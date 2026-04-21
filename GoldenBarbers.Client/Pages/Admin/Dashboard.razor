@@ -8,25 +8,32 @@
     <h1>@L["Dashboard_HelloAdmin"]</h1>
 </div>
 <br />
-<div>
-    @if (dashboard != null)
-    {
-        <DashboardCard RevenueToday="@dashboard.RevenueToday"
-                       AppointmentsToday="@dashboard.AppointmentsToday"
-                       UpcomingWeek="@dashboard.UpcomingWeek" />
-    }
-    else
-    {
-        <p class="custom-loader">Loading data...</p>
-    }
-</div>
-<br />
-<div>
-    @if (metrics != null)
-    {
-        <MetricsCard AppointmentsChangeCount="@metrics.AppointmentsChangeCount"
-                     RevenueChangeCount="@metrics.RevenueChangeCount" />
-    }
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            @if (dashboard != null)
+            {
+                <DashboardCard RevenueToday="@dashboard.RevenueToday"
+                               AppointmentsToday="@dashboard.AppointmentsToday"
+                               UpcomingWeek="@dashboard.UpcomingWeek"
+                               TodaySchedule="@dashboard.TodaySchedule" />
+            }
+            else
+            {
+                <p class="custom-loader">Loading data...</p>
+            }
+        </div>
+        <br />
+        <div class="col-12 col-md-6">
+            @if (metrics != null)
+            {
+                <MetricsCard AppointmentsChangeCount="@metrics.AppointmentsChangeCount"
+                             RevenueChangeCount="@metrics.RevenueChangeCount" />
+            }
+        </div>
+    </div>
+
+
 </div>
 
 @code {

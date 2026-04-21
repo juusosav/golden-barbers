@@ -30,14 +30,15 @@ namespace GoldenBarbers.Services.Admin
                 .Where(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow)
                 .SumAsync(a => (double?)a.FinalPrice) ?? 0);
 
-            // TODO: Implement schedule for today
             var todaySchedule = await _context.Appointments
-                .Where(a => a.AppointmentDateTime == today && a.AppointmentDateTime < tomorrow)
+                .Where(a => a.AppointmentDateTime > today && a.AppointmentDateTime < tomorrow)
                 .OrderBy(a => a.AppointmentDateTime)
                 .Select(a => new AdminDashboardAppointmentDto
                 {
                     Time = a.AppointmentDateTime,
-                    CustomerName = a.CustomerName
+                    CustomerName = a.CustomerName,
+                    BarberName = a.BarberName,
+                    OfferingName = a.OfferingNameFi
                 })
                 .ToListAsync();
 

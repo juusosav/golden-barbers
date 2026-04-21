@@ -519,4 +519,19 @@
   <data name="Create_EditBarber_FormBarberDescriptionEn" xml:space="preserve">
     <value>Description (English):</value>
   </data>
+  <data name="DashboardCard_TodaySchedule" xml:space="preserve">
+    <value>Schedule for Today</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableTime" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableBarber" xml:space="preserve">
+    <value>Barber</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableCustomer" xml:space="preserve">
+    <value>Customer</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableOffering" xml:space="preserve">
+    <value>Service</value>
+  </data>
 </root>

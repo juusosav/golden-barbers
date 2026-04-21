@@ -521,4 +521,19 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="Create_EditBarber_FormBarberDescriptionEn" xml:space="preserve">
     <value>Kuvaus (Englanti):</value>
   </data>
+  <data name="DashboardCard_TodaySchedule" xml:space="preserve">
+    <value>Aikataulu tänään</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableTime" xml:space="preserve">
+    <value>Aika</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableBarber" xml:space="preserve">
+    <value>Parturi</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableCustomer" xml:space="preserve">
+    <value>Asiakas</value>
+  </data>
+  <data name="DashboardCard_ScheduleTableOffering" xml:space="preserve">
+    <value>Palvelu</value>
+  </data>
 </root>
