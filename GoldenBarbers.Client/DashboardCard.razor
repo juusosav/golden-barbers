@@ -16,17 +16,18 @@
     <h2>@L["DashboardCard_ThisWeek"]</h2>
     <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToAppointments">@L["DashboardCard_UpcomingWeekAppointments"] <br /> @UpcomingWeek</button>
 </div>
+<br />
 <h2>@L["DashboardCard_TodaySchedule"]</h2>
 <table class="table table-striped">
-    <tr>
-        <th>@L["DashboardCard_ScheduleTableTime"]</th>
-        <th>@L["DashboardCard_ScheduleTableCustomer"]</th>
-        <th>@L["DashboardCard_ScheduleTableOffering"]</th>
-        <th>@L["DashboardCard_ScheduleTableBarber"]</th>
-    </tr>
-    <tr>
-        @if (TodaySchedule != null)
-        {
+    @if (TodaySchedule != null && AppointmentsToday != 0)
+    {
+        <tr>
+            <th>@L["DashboardCard_ScheduleTableTime"]</th>
+            <th>@L["DashboardCard_ScheduleTableCustomer"]</th>
+            <th>@L["DashboardCard_ScheduleTableOffering"]</th>
+            <th>@L["DashboardCard_ScheduleTableBarber"]</th>
+        </tr>
+        <tr>
             @foreach (var a in TodaySchedule)
             {
                 <td>@a.Time.ToString("HH:mm")</td>
@@ -34,8 +35,12 @@
                 <td>@a.OfferingName</td>
                 <td>@a.BarberName</td>
             }
-        }
-    </tr>
+        </tr>
+    }
+    else
+    {
+        <tr>@L["DashboardCard_ScheduleTableEmpty"]</tr>
+    }
 </table>
 
 @code {
