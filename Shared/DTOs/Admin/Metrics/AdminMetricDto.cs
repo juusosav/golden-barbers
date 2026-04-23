@@ -11,5 +11,10 @@ namespace Shared.DTOs.Admin.Metrics
         public decimal? AppointmentsChangeCount { get; set; }
         public decimal? RevenueChangeCount { get; set; }
 
+        public List<string> MonthLabels { get; set; } = new();
+
+        public List<double> MonthlyRevenue { get; set; } = new();
+
+        public List<int> MonthlyAppointments { get; set; } = new();
     }
 }

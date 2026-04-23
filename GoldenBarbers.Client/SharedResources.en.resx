@@ -543,4 +543,13 @@
   <data name="ManageAppointments_EndingDate" xml:space="preserve">
     <value>Ending</value>
   </data>
+  <data name="AdminNavMenu_Metrics" xml:space="preserve">
+    <value>Metrics</value>
+  </data>
+  <data name="Metrics_Revenue" xml:space="preserve">
+    <value>Revenue</value>
+  </data>
+  <data name="Metrics_Appointments" xml:space="preserve">
+    <value>Appointments</value>
+  </data>
 </root>

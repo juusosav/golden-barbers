@@ -1,0 +1,20 @@
+﻿@inject IJSRuntime JS
+
+<canvas id="@CanvasId" width="400" height="200"></canvas>
+
+@code {
+    [Parameter] public string CanvasId { get; set; } = "myChart";
+    [Parameter] public string Type { get; set; } = "bar";
+    [Parameter] public List<string> Labels { get; set; } = new();
+    [Parameter] public List<double> Data { get; set; } = new();
+    [Parameter] public string Label { get; set; } = "";
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("chartHelper.create",
+                CanvasId, Type, Labels, Data, Label);
+        }
+    }
+}

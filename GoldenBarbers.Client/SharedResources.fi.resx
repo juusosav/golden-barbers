@@ -545,4 +545,13 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="ManageAppointments_EndingDate" xml:space="preserve">
     <value>Päättyen</value>
   </data>
+  <data name="AdminNavMenu_Metrics" xml:space="preserve">
+    <value>Tilastot</value>
+  </data>
+  <data name="Metrics_Revenue" xml:space="preserve">
+    <value>Liikevaihto</value>
+  </data>
+  <data name="Metrics_Appointments" xml:space="preserve">
+    <value>Varaukset</value>
+  </data>
 </root>

@@ -1,0 +1,41 @@
+﻿@page "/admin/metrics"
+@inject AdminMetricApiService MetricApiService
+@inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
+
+@if (revenueData != null && appointmentData != null)
+{
+    <ChartCard CanvasId="revenueChart"
+               Type="bar"
+               Labels="revenueLabels"
+               Data="revenueData"
+               Label=@L["Metrics_Revenue"] />
+
+    <ChartCard CanvasId="appointmentsChart"
+               Type="line"
+               Labels="appointmentLabels"
+               Data="appointmentData"
+               Label=@L["Metrics_Appointments"] />
+}
+
+
+@code {
+    private List<string>? revenueLabels;
+    private List<double>? revenueData;
+    private List<string>? appointmentLabels;
+    private List<double>? appointmentData;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var metrics = await MetricApiService.GetMetricsAsync();
+
+        if (metrics != null)
+        {
+            revenueLabels = metrics.MonthLabels;
+            revenueData = metrics.MonthlyRevenue;
+            appointmentLabels = metrics.MonthLabels;
+            appointmentData = metrics.MonthlyAppointments
+                .Select(x => (double)x)
+                .ToList();
+        }
+    }
+}
