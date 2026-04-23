@@ -34,9 +34,14 @@ namespace GoldenBarbers.Client.Services.Admin
                 url += $"&OfferingName={filter.OfferingNameEn}";
             }
 
-            if (filter.DateFrom != null)
+            if (filter.DateFrom.HasValue)
             {
-                url += $"&DateFrom={filter.DateFrom}";
+                url += $"&DateFrom={filter.DateFrom.Value:yyyy-MM-dd}";
+            }
+
+            if (filter.DateTo.HasValue)
+            {
+                url += $"&DateTo={filter.DateTo.Value:yyyy-MM-dd}";
             }
 
             if (!string.IsNullOrWhiteSpace(filter.CustomerName))

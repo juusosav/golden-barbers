@@ -36,6 +36,23 @@
     <option value="service">@L["ManageAppointments_ServiceSearchValue"]</option>
 
 </InputSelect>
+
+<br />
+<label> @L["ManageAppointments_StartingDate"]
+<InputDate @bind-Value="filter.DateFrom"
+           @bind-Value:after="ApplyFilters"
+           class="form-control"
+           style="max-width: 200px;" />
+</label>
+<br />
+
+<label> @L["ManageAppointments_EndingDate"]
+<InputDate @bind-Value="filter.DateTo"
+           @bind-Value:after="ApplyFilters"
+           class="form-control"
+           style="max-width: 200px;" />
+</label>
+
 <br />
 
 <div class="table-responsive">

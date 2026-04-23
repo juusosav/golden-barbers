@@ -539,4 +539,10 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
   <data name="DashboardCard_ScheduleTableEmpty" xml:space="preserve">
     <value>Ei varauksia.</value>
   </data>
+  <data name="ManageAppointments_StartingDate" xml:space="preserve">
+    <value>Alkaen</value>
+  </data>
+  <data name="ManageAppointments_EndingDate" xml:space="preserve">
+    <value>Päättyen</value>
+  </data>
 </root>

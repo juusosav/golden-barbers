@@ -67,6 +67,19 @@ namespace GoldenBarbers.Services.Admin
                 }
             }
 
+            // Date filtering
+            if (filter.DateFrom.HasValue)
+            {
+                var dateFrom = DateTime.SpecifyKind(filter.DateFrom.Value.Date, DateTimeKind.Utc);
+                query = query.Where(a => a.AppointmentDateTime >= dateFrom);
+            }
+
+            if (filter.DateTo.HasValue)
+            {
+                var dateTo = DateTime.SpecifyKind(filter.DateTo.Value.Date.AddDays(1), DateTimeKind.Utc);
+                query = query.Where(a => a.AppointmentDateTime < dateTo);
+            }
+
             // Sorting
             query = filter.SortBy?.ToLower() switch
             {

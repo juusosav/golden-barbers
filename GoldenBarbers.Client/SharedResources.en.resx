@@ -537,4 +537,10 @@
   <data name="DashboardCard_ScheduleTableEmpty" xml:space="preserve">
     <value>No appointments.</value>
   </data>
+  <data name="ManageAppointments_StartingDate" xml:space="preserve">
+    <value>Starting</value>
+  </data>
+  <data name="ManageAppointments_EndingDate" xml:space="preserve">
+    <value>Ending</value>
+  </data>
 </root>
