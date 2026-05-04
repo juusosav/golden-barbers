@@ -12,6 +12,5 @@
         public int SeniorPrice { get; set; }
         public int JuniorPrice { get; set; }
         public int TraineePrice { get; set; }
-        public List<Appointment> Appointments { get; set; } = [];
     }
 }

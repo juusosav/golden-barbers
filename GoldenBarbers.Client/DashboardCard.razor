@@ -7,7 +7,7 @@
 <h2>@L["DashboardCard_Today"]</h2>
 <div class="dashboard-container">
     <div class="dashboard-items">
-        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["DashboardCard_RevenueToday"] <br /> @RevenueToday €</button>
+        <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToMetrics">@L["DashboardCard_RevenueToday"] <br /> @RevenueToday €</button>
         <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToAppointments">@L["DashboardCard_TodayAppointments"] <br /> @AppointmentsToday</button>
     </div>
 </div>
@@ -54,4 +54,5 @@
     public List<AdminDashboardAppointmentDto>? TodaySchedule { get; set; }
 
     private void NavigateToAppointments() => Navigation.NavigateTo("admin/manage-appointments");
+    private void NavigateToMetrics() => Navigation.NavigateTo("admin/metrics");
 }

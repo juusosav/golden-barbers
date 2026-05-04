@@ -22,54 +22,6 @@ namespace GoldenBarbers.Data
 
             base.OnModelCreating(modelBuilder);
 
-
-            // TODO: Extract PositionId to a new entity, FK to Barber
-            modelBuilder.Entity<Barber>(b =>
-            {
-                b.Property(x => x.Name).IsRequired();
-                b.Property(x => x.PositionId).IsRequired();
-                b.Property(x => x.PositionName).IsRequired();
-                b.Property(x => x.Salary).IsRequired();
-                b.Property(x => x.Portrait).IsRequired();
-                b.Property(x => x.PersonalPhone).IsRequired();
-                b.Property(x => x.PersonalEmail).IsRequired();
-                b.Property(x => x.PersonalAddress).IsRequired();
-                b.Property(x => x.StartDate).IsRequired();
-            });
-
-            modelBuilder.Entity<Offering>(o =>
-            {
-                o.Property(o => o.NameFi).IsRequired();
-                o.Property(o => o.NameEn).IsRequired();
-                o.Property(o => o.DescriptionFi).IsRequired();
-                o.Property(o => o.DescriptionEn).IsRequired();
-                o.Property(o => o.Icon).IsRequired();
-                o.Property(o => o.SeniorPrice).IsRequired();
-                o.Property(o => o.JuniorPrice).IsRequired();
-                o.Property(o => o.TraineePrice).IsRequired();
-            });
-
-            modelBuilder.Entity<Carousel>(c =>
-            {
-                c.Property(c => c.NameFi).IsRequired();
-                c.Property(c => c.NameEn).IsRequired();
-                c.Property(c => c.Image).IsRequired();
-            });
-
-            modelBuilder.Entity<Appointment>(a =>
-            {
-                a.Property(a => a.BarberId).IsRequired();
-                a.Property(a => a.BarberName).IsRequired();
-                a.Property(a => a.OfferingId).IsRequired();
-                a.Property(a => a.OfferingNameFi).IsRequired();
-                a.Property(a => a.OfferingNameEn).IsRequired();
-                a.Property(a => a.AppointmentDateTime).IsRequired();
-                a.Property(a => a.DurationMinutes).IsRequired();
-                a.Property(a => a.CustomerName).IsRequired();
-                a.Property(a => a.CustomerEmail).IsRequired();
-                a.Property(a => a.FinalPrice).IsRequired();
-            });
-
             BarberSeed.Seed(modelBuilder);
             OfferingSeed.Seed(modelBuilder);
             CarouselSeed.Seed(modelBuilder);

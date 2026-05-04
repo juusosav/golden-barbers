@@ -1,6 +1,7 @@
 ﻿@using GoldenBarbers.Client.Services.Admin;
 @using Shared.DTOs.Admin.Metrics;
 
+@inject NavigationManager Navigation
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <h2>@L["MetricsCard_Metrics"]</h2>
@@ -14,21 +15,21 @@
         {
             @if (AppointmentsChangeCount >= 0)
             {
-                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToMetrics">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
             }
             else if (AppointmentsChangeCount < 0)
             {
-                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToMetrics">@L["MetricsCard_AppointmentChange"] <br />@AppointmentsChangeCount.Value.ToString("F1") %</button>
             }
 
 
             @if (RevenueChangeCount >= 0)
             {
-                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToMetrics">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
             }
             else if (RevenueChangeCount < 0)
             {
-                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
+                <button class="custom-dashboard-button btn btn-lg btn-outline-dark m-2" onclick="@NavigateToMetrics">@L["MetricsCard_RevenueChange"] <br />@RevenueChangeCount.Value.ToString("F1") %</button>
             }
 
         }
@@ -42,4 +43,5 @@
     [Parameter]
     public decimal? RevenueChangeCount { get; set; }
 
+    private void NavigateToMetrics() => Navigation.NavigateTo("admin/metrics");
 }
