@@ -1,4 +1,6 @@
 using GoldenBarbers.Data;
+using GoldenBarbers.Services.Admin.Interfaces;
+using GoldenBarbers.Services.Public.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using GoldenBarbers.Services.Admin;
@@ -16,18 +18,17 @@ builder.Services.AddResponseCompression(options =>
 });
 
 // Public services
-builder.Services.AddScoped<AppointmentService>();
-builder.Services.AddScoped<PricingService>();
-builder.Services.AddScoped<BarberService>();
-builder.Services.AddScoped<CarouselService>();
-builder.Services.AddScoped<OfferingService>();
-
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IPricingService, PricingService>();
+builder.Services.AddScoped<IBarberService, BarberService>();
+builder.Services.AddScoped<ICarouselService, CarouselService>();
+builder.Services.AddScoped<IOfferingService, OfferingService>();
 // Admin services
-builder.Services.AddScoped<AdminDashboardService>();
-builder.Services.AddScoped<AdminBarberService>();
-builder.Services.AddScoped<AdminAppointmentService>();
-builder.Services.AddScoped<AdminOfferingService>();
-builder.Services.AddScoped<AdminMetricService>();
+builder.Services.AddScoped<IAdminDashboardService, AdminDashboardService>();
+builder.Services.AddScoped<IAdminBarberService, AdminBarberService>();
+builder.Services.AddScoped<IAdminAppointmentService, AdminAppointmentService>();
+builder.Services.AddScoped<IAdminOfferingService, AdminOfferingService>();
+builder.Services.AddScoped<IAdminMetricService, AdminMetricService>();
 
 builder.Services.AddCors(options =>
 {

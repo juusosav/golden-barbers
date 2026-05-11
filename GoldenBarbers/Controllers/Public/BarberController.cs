@@ -5,6 +5,7 @@ using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs.Public;
 using GoldenBarbers.Services.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Controllers.Public
 {
@@ -12,9 +13,9 @@ namespace GoldenBarbers.Controllers.Public
     [ApiController]
     public class BarberController : ControllerBase
     {
-        private readonly BarberService _barberService;
+        private readonly IBarberService _barberService;
 
-        public BarberController(BarberService barberService)
+        public BarberController(IBarberService barberService)
         {
             _barberService = barberService;
         }

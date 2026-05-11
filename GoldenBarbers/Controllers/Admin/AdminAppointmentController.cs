@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Public;
 using Shared.DTOs.Admin.Appointments;
+using GoldenBarbers.Services.Admin.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -18,9 +19,9 @@ namespace GoldenBarbers.Controllers.Admin
     [Authorize(Roles = "Admin")]
     public class AdminAppointmentController : ControllerBase
     {
-        private readonly AdminAppointmentService _adminAppointmentService;
+        private readonly IAdminAppointmentService _adminAppointmentService;
 
-        public AdminAppointmentController(AdminAppointmentService adminAppointmentService)
+        public AdminAppointmentController(IAdminAppointmentService adminAppointmentService)
         {
             _adminAppointmentService = adminAppointmentService;
         }

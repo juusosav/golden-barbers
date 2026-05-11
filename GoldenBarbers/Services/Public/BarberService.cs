@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Data;
 using Shared.DTOs.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Services.Public
 {
-    public class BarberService
+    public class BarberService : IBarberService
     {
         private readonly ApplicationDbContext _context;
 

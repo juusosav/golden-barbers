@@ -1,10 +1,13 @@
-﻿using GoldenBarbers.Data;
-using Shared.DTOs.Admin.Metrics;
+﻿using System;
+using System.Threading.Tasks;
+using GoldenBarbers.Data;
+using GoldenBarbers.Services.Admin.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Shared.DTOs.Admin.Metrics;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminMetricService
+    public class AdminMetricService : IAdminMetricService
     {
         private readonly ApplicationDbContext _context;
 

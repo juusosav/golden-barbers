@@ -6,6 +6,7 @@ using GoldenBarbers.Models.Entities;
 using System.Runtime.CompilerServices;
 using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Services.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Controllers.Public
 {
@@ -13,9 +14,9 @@ namespace GoldenBarbers.Controllers.Public
     [ApiController]
     public class OfferingController : ControllerBase
     {
-        private readonly OfferingService _offeringService;
+        private readonly IOfferingService _offeringService;
 
-        public OfferingController(OfferingService offeringService)
+        public OfferingController(IOfferingService offeringService)
         {
             _offeringService = offeringService;
         }

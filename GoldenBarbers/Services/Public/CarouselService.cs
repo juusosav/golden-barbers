@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Services.Public
 {
-    public class CarouselService
+    public class CarouselService : ICarouselService
     {
         private readonly ApplicationDbContext _context;
 

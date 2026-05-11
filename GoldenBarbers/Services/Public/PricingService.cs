@@ -1,8 +1,9 @@
 ﻿using GoldenBarbers.Models.Entities;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Services.Public
 {
-    public class PricingService
+    public class PricingService : IPricingService
     {
         public int CalculatePrice(Offering offering, int? barberPositionId)
         {

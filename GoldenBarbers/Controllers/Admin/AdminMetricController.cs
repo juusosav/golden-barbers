@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Shared.DTOs.Admin.Dashboard;
 using GoldenBarbers.Services.Admin;
 using Shared.DTOs.Admin.Metrics;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Controllers.Admin
 {
@@ -11,9 +12,9 @@ namespace GoldenBarbers.Controllers.Admin
     [Authorize(Roles = "Admin")]
     public class AdminMetricController : ControllerBase
     {
-        private readonly AdminMetricService _metricService;
+        private readonly IAdminMetricService _metricService;
 
-        public AdminMetricController(AdminMetricService metricService)
+        public AdminMetricController(IAdminMetricService metricService)
         {
             _metricService = metricService;
         }

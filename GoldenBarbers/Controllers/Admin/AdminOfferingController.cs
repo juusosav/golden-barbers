@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using GoldenBarbers.Services.Admin;
 using Shared.DTOs.Admin.Offerings;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Controllers.Admin
 {
@@ -10,9 +11,9 @@ namespace GoldenBarbers.Controllers.Admin
     [Authorize(Roles = "Admin")]
     public class AdminOfferingController : ControllerBase
     {
-        private readonly AdminOfferingService _adminOfferingService;
+        private readonly IAdminOfferingService _adminOfferingService;
 
-        public AdminOfferingController(AdminOfferingService adminOfferingService)
+        public AdminOfferingController(IAdminOfferingService adminOfferingService)
         {
             _adminOfferingService = adminOfferingService;
         }

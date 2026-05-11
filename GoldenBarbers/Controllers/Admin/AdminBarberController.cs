@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Shared.DTOs;
 using Shared.DTOs.Admin.Barbers;
 using System.Globalization;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Controllers.Admin
 {
@@ -13,9 +14,9 @@ namespace GoldenBarbers.Controllers.Admin
     [Authorize(Roles = "Admin")]
     public class AdminBarberController : ControllerBase
     {
-        private readonly AdminBarberService _adminBarberService;
+        private readonly IAdminBarberService _adminBarberService;
 
-        public AdminBarberController(AdminBarberService adminBarberService)
+        public AdminBarberController(IAdminBarberService adminBarberService)
         {
             _adminBarberService = adminBarberService;
         }

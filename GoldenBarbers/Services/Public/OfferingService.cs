@@ -3,10 +3,11 @@ using GoldenBarbers.Models.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Services.Public
 {
-    public class OfferingService
+    public class OfferingService : IOfferingService
     {
         private readonly ApplicationDbContext _context;
 

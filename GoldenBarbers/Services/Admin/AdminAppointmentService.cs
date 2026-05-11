@@ -2,13 +2,14 @@
 using GoldenBarbers.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
-using Shared.DTOs.Public;
 using Shared.DTOs.Admin.Appointments;
+using Shared.DTOs.Public;
 using System.Globalization;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminAppointmentService
+    public class AdminAppointmentService : IAdminAppointmentService
     {
         private readonly ApplicationDbContext _context;
 

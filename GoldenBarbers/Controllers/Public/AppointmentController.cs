@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Shared.DTOs.Public;
 using GoldenBarbers.Services.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Controllers.Public
 {
@@ -8,9 +9,9 @@ namespace GoldenBarbers.Controllers.Public
     [ApiController]
     public class AppointmentController : ControllerBase
     {
-        private readonly AppointmentService _appointmentService;
+        private readonly IAppointmentService _appointmentService;
 
-        public AppointmentController(AppointmentService appointmentService)
+        public AppointmentController(IAppointmentService appointmentService)
         {
             _appointmentService = appointmentService;
         }

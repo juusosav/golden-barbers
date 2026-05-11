@@ -3,10 +3,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs.Admin.Barbers;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminBarberService
+    public class AdminBarberService : IAdminBarberService
     {
         private readonly ApplicationDbContext _context;
 

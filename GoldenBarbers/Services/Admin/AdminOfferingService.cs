@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Admin.Offerings;
 using Shared.DTOs.Public;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminOfferingService
+    public class AdminOfferingService : IAdminOfferingService
     {
         private readonly ApplicationDbContext _context;
 

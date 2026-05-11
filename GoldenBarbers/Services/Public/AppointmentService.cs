@@ -1,16 +1,17 @@
 ﻿using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
+using GoldenBarbers.Services.Public.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Public;
 
 namespace GoldenBarbers.Services.Public
 {
-    public class AppointmentService
+    public class AppointmentService : IAppointmentService
     {
         private readonly ApplicationDbContext _context;
-        private readonly PricingService _pricing;
+        private readonly IPricingService _pricing;
 
-        public AppointmentService(ApplicationDbContext context, PricingService pricing)
+        public AppointmentService(ApplicationDbContext context, IPricingService pricing)
         {
             _context = context;
             _pricing = pricing;

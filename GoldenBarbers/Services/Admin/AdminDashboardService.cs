@@ -2,10 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Shared.DTOs.Admin.Dashboard;
+using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminDashboardService
+    public class AdminDashboardService : IAdminDashboardService
     {
         private readonly ApplicationDbContext _context;
 

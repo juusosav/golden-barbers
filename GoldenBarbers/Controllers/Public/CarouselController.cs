@@ -5,6 +5,7 @@ using GoldenBarbers.Data;
 using GoldenBarbers.Models.Entities;
 using Shared.DTOs.Public;
 using GoldenBarbers.Services.Public;
+using GoldenBarbers.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Controllers.Public
 {
@@ -12,9 +13,9 @@ namespace GoldenBarbers.Controllers.Public
     [ApiController]
     public class CarouselController : ControllerBase
     {
-        private readonly CarouselService _carouselService;
+        private readonly ICarouselService _carouselService;
 
-        public CarouselController(CarouselService carouselService)
+        public CarouselController(ICarouselService carouselService)
         {
             _carouselService = carouselService;
         }
