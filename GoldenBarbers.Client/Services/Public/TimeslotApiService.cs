@@ -3,7 +3,7 @@ using Shared.DTOs.Public;
 
 namespace GoldenBarbers.Client.Services.Public
 {
-    public class TimeslotApiService
+    public class TimeslotApiService : ITimeslotApiService
     {
         private readonly HttpClient _http;
 

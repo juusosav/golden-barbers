@@ -5,7 +5,7 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Admin
 {
-    public class AdminBarberApiService
+    public class AdminBarberApiService : IAdminBarberApiService
     {
         private readonly HttpClient _http;
 

@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Public
 {
-    public class CarouselApiService
+    public class CarouselApiService : ICarouselApiService
     {
         private readonly HttpClient _http;
 

@@ -28,20 +28,20 @@ builder.Services.AddScoped(sp =>
 
 // Domain services
 // Public
-builder.Services.AddScoped<BarberApiService>();
-builder.Services.AddScoped<OfferingApiService>();
-builder.Services.AddScoped<TimeslotApiService>();
-builder.Services.AddScoped<AppointmentApiService>();
+builder.Services.AddScoped<IBarberApiService, BarberApiService>();
+builder.Services.AddScoped<IOfferingApiService, OfferingApiService>();
+builder.Services.AddScoped<ITimeslotApiService, TimeslotApiService>();
+builder.Services.AddScoped<IAppointmentApiService, AppointmentApiService>();
 
 // Admin
-builder.Services.AddScoped<AdminDashboardApiService>();
-builder.Services.AddScoped<AdminAppointmentApiService>();
-builder.Services.AddScoped<AdminBarberApiService>();
-builder.Services.AddScoped<AdminOfferingApiService>();
-builder.Services.AddScoped<AdminMetricApiService>();
+builder.Services.AddScoped<IAdminDashboardApiService, AdminDashboardApiService>();
+builder.Services.AddScoped<IAdminAppointmentApiService, AdminAppointmentApiService>();
+builder.Services.AddScoped<IAdminBarberApiService, AdminBarberApiService>();
+builder.Services.AddScoped<IAdminOfferingApiService, AdminOfferingApiService>();
+builder.Services.AddScoped<IAdminMetricApiService, AdminMetricApiService>();
 
 // UI helpers
-builder.Services.AddScoped<CarouselApiService>();
+builder.Services.AddScoped<ICarouselApiService, CarouselApiService>();
 builder.Services.AddScoped<ScrollService>();
 
 var host = builder.Build();

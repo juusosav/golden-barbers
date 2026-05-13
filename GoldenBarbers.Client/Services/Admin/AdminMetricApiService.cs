@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Admin
 {
-    public class AdminMetricApiService
+    public class AdminMetricApiService : IAdminMetricApiService
     {
         private readonly HttpClient _http;
 

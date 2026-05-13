@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Admin
 {
-    public class AdminDashboardApiService
+    public class AdminDashboardApiService : IAdminDashboardApiService
     {
         private readonly HttpClient _http;
 

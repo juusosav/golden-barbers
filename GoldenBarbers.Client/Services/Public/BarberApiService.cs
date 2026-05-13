@@ -3,7 +3,7 @@ using System.Net.Http.Json;
 
 namespace GoldenBarbers.Client.Services.Public
 {
-    public class BarberApiService
+    public class BarberApiService : IBarberApiService
     {
         private readonly HttpClient _http;
 
