@@ -1,5 +1,6 @@
 ﻿using Shared.DTOs.Admin.Dashboard;
 using System.Net.Http.Json;
+using GoldenBarbers.Client.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Client.Services.Admin
 {

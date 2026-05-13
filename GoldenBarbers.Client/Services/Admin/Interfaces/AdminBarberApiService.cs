@@ -3,7 +3,7 @@ using Shared.DTOs.Admin.Barbers;
 using System.Globalization;
 using System.Net.Http.Json;
 
-namespace GoldenBarbers.Client.Services.Admin
+namespace GoldenBarbers.Client.Services.Admin.Interfaces
 {
     public interface IAdminBarberApiService
     {

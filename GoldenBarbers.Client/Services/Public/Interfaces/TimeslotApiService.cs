@@ -1,7 +1,6 @@
-﻿using System.Net.Http.Json;
-using Shared.DTOs.Public;
+﻿using Shared.DTOs.Public;
 
-namespace GoldenBarbers.Client.Services.Public
+namespace GoldenBarbers.Client.Services.Public.Interfaces
 {
     public interface ITimeslotApiService
     {

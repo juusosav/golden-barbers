@@ -1,8 +1,7 @@
 ﻿using Shared.DTOs.Public;
 using Shared.DTOs.Admin.Appointments;
-using System.Net.Http.Json;
 
-namespace GoldenBarbers.Client.Services.Admin
+namespace GoldenBarbers.Client.Services.Admin.Interfaces
 {
     public interface IAdminAppointmentApiService
     {

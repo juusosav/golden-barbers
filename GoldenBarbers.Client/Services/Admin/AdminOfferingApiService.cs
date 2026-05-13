@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Components.Forms;
 using Shared.DTOs.Admin.Offerings;
 using System.Net.Http.Json;
+using GoldenBarbers.Client.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Client.Services.Admin
 {

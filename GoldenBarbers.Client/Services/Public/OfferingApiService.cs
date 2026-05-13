@@ -1,5 +1,6 @@
 ﻿using Shared.DTOs.Public;
 using System.Net.Http.Json;
+using GoldenBarbers.Client.Services.Public.Interfaces;
 
 namespace GoldenBarbers.Client.Services.Public
 {

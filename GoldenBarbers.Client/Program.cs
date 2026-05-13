@@ -2,6 +2,8 @@ using GoldenBarbers.Client;
 using GoldenBarbers.Client.Helpers;
 using GoldenBarbers.Client.Services.Admin;
 using GoldenBarbers.Client.Services.Public;
+using GoldenBarbers.Client.Services.Admin.Interfaces;
+using GoldenBarbers.Client.Services.Public.Interfaces;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;

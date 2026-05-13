@@ -1,7 +1,6 @@
 ﻿using Shared.DTOs.Public;
-using System.Net.Http.Json;
 
-namespace GoldenBarbers.Client.Services.Public
+namespace GoldenBarbers.Client.Services.Public.Interfaces
 {
     public interface IOfferingApiService
     {
