@@ -1,5 +1,7 @@
 <Solution>
+  <Project Path="GoldenBarbers.Client.Tests/GoldenBarbers.Client.Tests.csproj" Id="41660653-a0b6-439e-ac07-229a284053ff" />
   <Project Path="GoldenBarbers.Client/GoldenBarbers.Client.csproj" />
+  <Project Path="GoldenBarbers.Server.Tests/GoldenBarbers.Server.Tests.csproj" Id="45731f83-48d6-4222-bb15-54f3eedc1bb2" />
   <Project Path="GoldenBarbers/GoldenBarbers.csproj" />
   <Project Path="Shared/Shared.csproj" Id="b0af3fe4-0035-427e-ac8d-fa314115f88c" />
 </Solution>
