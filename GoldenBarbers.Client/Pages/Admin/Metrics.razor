@@ -1,5 +1,6 @@
 ﻿@page "/admin/metrics"
-@inject AdminMetricApiService MetricApiService
+
+@inject IAdminMetricApiService MetricApiService
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @if (revenueData != null && appointmentData != null)

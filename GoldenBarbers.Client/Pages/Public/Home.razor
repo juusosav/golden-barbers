@@ -2,12 +2,11 @@
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using GoldenBarbers.Client
-@using System.Globalization
 
 @page "/" 
 
-@inject CarouselApiService CarouselService
-@inject OfferingApiService OfferingService
+@inject ICarouselApiService CarouselService
+@inject IOfferingApiService OfferingService
 @inject NavigationManager Navigation
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 

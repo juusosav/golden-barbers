@@ -16,9 +16,4 @@
 		<PackageReference Include="Microsoft.Extensions.Localization" Version="8.0.22" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Services\Admin\Interfaces\" />
-	  <Folder Include="Services\Public\Interfaces\" />
-	</ItemGroup>
-
 </Project>

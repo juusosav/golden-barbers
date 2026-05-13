@@ -4,10 +4,10 @@
 @using GoldenBarbers.Client.Helpers
 @using System.Globalization
 
-@inject BarberApiService BarberService
-@inject OfferingApiService OfferingService
-@inject TimeslotApiService TimeslotService
-@inject AppointmentApiService AppointmentService
+@inject IBarberApiService BarberService
+@inject IOfferingApiService OfferingService
+@inject ITimeslotApiService TimeslotService
+@inject IAppointmentApiService AppointmentService
 @inject ScrollService ScrollService
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 

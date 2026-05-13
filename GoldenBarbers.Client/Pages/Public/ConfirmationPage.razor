@@ -1,12 +1,11 @@
 ﻿@using GoldenBarbers.Client.Services.Public;
 @using System.Threading.Tasks
 @using Shared.DTOs.Public
-@using GoldenBarbers.Client.Helpers
 @using System.Globalization
 
-@inject AppointmentApiService AppointmentService
-@inject BarberApiService BarberService
-@inject OfferingApiService OfferingService
+@inject IAppointmentApiService AppointmentService
+@inject IBarberApiService BarberService
+@inject IOfferingApiService OfferingService
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 @page "/booking-confirmed/{id:guid}"

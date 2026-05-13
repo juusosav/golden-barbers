@@ -1,8 +1,7 @@
 ﻿@using GoldenBarbers.Client.Services.Public;
-@using Shared.DTOs.Public;
 @using System.Globalization
 
-@inject CarouselApiService CarouselService
+@inject ICarouselApiService CarouselService
 
 <div class="slide fade @(IsActive ? "active" : "")">
     <img src="@Icon" alt="Slide">

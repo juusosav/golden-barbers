@@ -1,12 +1,11 @@
-﻿@using GoldenBarbers.Client.Services;
-@using System.Threading.Tasks
+﻿@using System.Threading.Tasks
 @using Shared.DTOs.Public
 @using Shared.DTOs.Admin.Appointments
 @using System.Globalization
 
 @page "/admin/manage-appointments"
 
-@inject AdminAppointmentApiService AdminAppointmentsApiService
+@inject IAdminAppointmentApiService AdminAppointmentsApiService
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
 <h1>@L["ManageAppointments_Title"]</h1>

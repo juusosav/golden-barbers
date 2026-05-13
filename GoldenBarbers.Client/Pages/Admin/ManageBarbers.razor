@@ -1,8 +1,7 @@
-﻿@using GoldenBarbers.Client.Services;
-@using System.Threading.Tasks
+﻿@using System.Threading.Tasks
 @using Shared.DTOs.Admin.Barbers
 
-@inject AdminBarberApiService BarbersApiService
+@inject IAdminBarberApiService BarbersApiService
 @inject NavigationManager Navigation
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
 
