@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldenBarbers.Server.Tests.Services.Public
 {
-    internal class AppointmentServiceTests
+    public class AppointmentServiceTests
     {
     }
 }

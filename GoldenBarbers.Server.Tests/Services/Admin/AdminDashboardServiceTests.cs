@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoldenBarbers.Server.Tests.Services.Admin
 {
-    internal class AdminDashboardServiceTests
+    public class AdminDashboardServiceTests
     {
     }
 }
