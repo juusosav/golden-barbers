@@ -18,7 +18,6 @@ namespace GoldenBarbers.Services.Admin
             _context = context;
         }
 
-
         public async Task<bool> DeleteAppointmentAsync(Guid id)
         {
             var appointmentToDelete = await _context.Appointments
