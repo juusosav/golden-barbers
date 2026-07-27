@@ -9,32 +9,25 @@ using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminAppointmentService : IAdminAppointmentService
+    public class AdminAppointmentService(ApplicationDbContext context) : IAdminAppointmentService
     {
-        private readonly ApplicationDbContext _context;
-
-        public AdminAppointmentService(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         public async Task<bool> DeleteAppointmentAsync(Guid id)
         {
-            var appointmentToDelete = await _context.Appointments
+            var appointmentToDelete = await context.Appointments
                 .FindAsync(id);
 
             if (appointmentToDelete == null)
                 return false;
 
-            _context.Appointments.Remove(appointmentToDelete);
-            await _context.SaveChangesAsync();
+            context.Appointments.Remove(appointmentToDelete);
+            await context.SaveChangesAsync();
 
             return true;
         }
 
         public async Task<List<AppointmentDto>> GetFilteredAppointmentsAsync(FilterDto filter)
         {
-            var query = _context.Appointments
+            var query = context.Appointments
                 .AsQueryable();
 
             // Filtering logic

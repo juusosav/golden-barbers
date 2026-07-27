@@ -549,9 +549,9 @@ Olitpa tulossa perinteiseen hiustenleikkaukseen, moderniin tyyliin tai asiantunt
     <value>Tilastot</value>
   </data>
   <data name="Metrics_Revenue" xml:space="preserve">
-    <value>Liikevaihto</value>
+    <value>Liikevaihto €</value>
   </data>
   <data name="Metrics_Appointments" xml:space="preserve">
-    <value>Varaukset</value>
+    <value>Varaukset (kpl)</value>
   </data>
 </root>

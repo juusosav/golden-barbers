@@ -10,7 +10,8 @@ namespace Shared.DTOs.Admin.Dashboard
     {
         public DateTime Time { get; set; }
         public string CustomerName { get; set; } = "";
-        public string OfferingName { get; set; } = "";
+        public string OfferingNameEn { get; set; } = "";
+        public string OfferingNameFi { get; set; } = "";
         public string BarberName { get; set; } = "";
 
     }

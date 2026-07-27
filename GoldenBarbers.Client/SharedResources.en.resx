@@ -547,9 +547,9 @@
     <value>Metrics</value>
   </data>
   <data name="Metrics_Revenue" xml:space="preserve">
-    <value>Revenue</value>
+    <value>Revenue €</value>
   </data>
   <data name="Metrics_Appointments" xml:space="preserve">
-    <value>Appointments</value>
+    <value>Appointments (amount)</value>
   </data>
 </root>

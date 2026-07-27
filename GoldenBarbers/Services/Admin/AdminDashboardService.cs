@@ -6,15 +6,8 @@ using GoldenBarbers.Services.Admin.Interfaces;
 
 namespace GoldenBarbers.Services.Admin
 {
-    public class AdminDashboardService : IAdminDashboardService
+    public class AdminDashboardService(ApplicationDbContext _context) : IAdminDashboardService
     {
-        private readonly ApplicationDbContext _context;
-
-        public AdminDashboardService(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
         public async Task<AdminDashboardDto> GetDashboardAsync()
         {
             var today = DateTime.UtcNow.Date;
@@ -39,7 +32,8 @@ namespace GoldenBarbers.Services.Admin
                     Time = a.AppointmentDateTime,
                     CustomerName = a.CustomerName,
                     BarberName = a.BarberName,
-                    OfferingName = a.OfferingNameFi
+                    OfferingNameEn = a.OfferingNameEn,
+                    OfferingNameFi = a.OfferingNameFi
                 })
                 .ToListAsync();
 

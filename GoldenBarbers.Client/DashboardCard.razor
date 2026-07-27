@@ -1,4 +1,5 @@
 ﻿@using Shared.DTOs.Admin.Dashboard;
+@using System.Globalization;
 
 @inject NavigationManager Navigation
 @inject Microsoft.Extensions.Localization.IStringLocalizer<SharedResources> L
@@ -31,7 +32,14 @@
             {
                 <td>@a.Time.ToString("HH:mm")</td>
                 <td>@a.CustomerName</td>
-                <td>@a.OfferingName</td>
+                @if (CultureInfo.CurrentCulture.TwoLetterISOLanguageName == "fi")
+                {
+                    <td>@a.OfferingNameFi</td>
+                }
+                else
+                {
+                    <td>@a.OfferingNameEn</td>
+                }
                 <td>@a.BarberName</td>
             }
         </tr>
