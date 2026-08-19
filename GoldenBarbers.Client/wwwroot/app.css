@@ -72,14 +72,6 @@ h1:focus {
     border-color: #929292;
 }
 
-.custom-loader {
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
-    color: #aaa;
-}
 
 .policy-footer-container {
     display: flex;
@@ -96,6 +88,43 @@ h1:focus {
 
 .policy-footer-container a {
     text-decoration: none;
+}
+
+/* Loading Indicator*/
+
+
+.loading-indicator {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 8px;
+}
+
+.progress-text {
+    font-size: 1rem;
+    color: whitesmoke;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.circular-progress {
+    width: 30px;
+    height: 30px;
+    border: 3px solid rgba(0, 0, 0, 0.1);
+    border-top: 3px solid #3b82f6;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
 }
 
 /* Navigation bar */

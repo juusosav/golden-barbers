@@ -1,0 +1,9 @@
+﻿<div class="loading-indicator" Style="@($"height: {Height}px")">
+    <div class="circular-progress" />
+    <div class="progress-text">Loading...</div>
+</div>
+
+@code {
+    [Parameter]
+    public required int Height { get; set; } = 96;
+}
