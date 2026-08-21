@@ -2,11 +2,6 @@
 using GoldenBarbers.Models.Entities;
 using GoldenBarbers.Data;
 using GoldenBarbers.Server.Tests.Data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GoldenBarbers.Server.Tests.Services.Admin
 {

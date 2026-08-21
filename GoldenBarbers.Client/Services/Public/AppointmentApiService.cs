@@ -20,7 +20,7 @@ namespace GoldenBarbers.Client.Services.Public
             var query = $"{BaseRoute}/available-slots?weekStart={weekStart:yyyy-MM-dd}";
 
             return await _http.GetFromJsonAsync<List<TimeslotDto>>(query)
-                ?? new List<TimeslotDto>();
+                ?? new();
         }
 
         public async Task<AppointmentDto?> CreateAppointmentAsync(AppointmentDto dto)
