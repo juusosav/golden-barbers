@@ -15,22 +15,7 @@ namespace GoldenBarbers.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "8.0.24");
-
-            modelBuilder.Entity("AppointmentOffering", b =>
-                {
-                    b.Property<Guid>("AppointmentsId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<Guid>("OfferingsId")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("AppointmentsId", "OfferingsId");
-
-                    b.HasIndex("OfferingsId");
-
-                    b.ToTable("AppointmentOffering");
-                });
+            modelBuilder.HasAnnotation("ProductVersion", "10.0.13");
 
             modelBuilder.Entity("GoldenBarbers.Models.Entities.Appointment", b =>
                 {
@@ -551,21 +536,6 @@ namespace GoldenBarbers.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
-                });
-
-            modelBuilder.Entity("AppointmentOffering", b =>
-                {
-                    b.HasOne("GoldenBarbers.Models.Entities.Appointment", null)
-                        .WithMany()
-                        .HasForeignKey("AppointmentsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("GoldenBarbers.Models.Entities.Offering", null)
-                        .WithMany()
-                        .HasForeignKey("OfferingsId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

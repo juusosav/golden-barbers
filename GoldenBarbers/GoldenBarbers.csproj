@@ -12,17 +12,26 @@
 	<ItemGroup>
 		<ProjectReference Include="..\GoldenBarbers.Client\GoldenBarbers.Client.csproj" />
 		<ProjectReference Include="..\Shared\Shared.csproj" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.24" />
-		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.24" />
-		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.24" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.24" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.23" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.27" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.23" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.23" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.24" />
-		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.23" />
-		<PackageReference Include="Moq" Version="4.20.72" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="10.0.13" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.13" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="10.0.13" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="10.0.2" />
+		<PackageReference Include="Moq" Version="4.21.0" />
+	</ItemGroup>
+
+	<!-- Explicit package overrides to mitigate known transitive vulnerabilities -->
+	<ItemGroup>
+		<PackageReference Include="NuGet.Packaging" Version="7.9.0" />
+		<PackageReference Include="NuGet.Protocol" Version="7.9.0" />
+		<PackageReference Include="SQLitePCLRaw.lib.e_sqlite3" Version="3.53.3" />
+		<PackageReference Include="AngleSharp" Version="1.8.5" />
+		<PackageReference Include="System.Security.Cryptography.Pkcs" Version="10.0.13" />
 	</ItemGroup>
 
 	<ItemGroup>
